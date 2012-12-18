@@ -1,0 +1,49 @@
+
+<h1>Listing plans</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Image url</th>
+    <th>Place</th>
+    <th>Budget</th>
+    <th>Min people</th>
+    <th>Max people</th>
+    <th>Publish start at</th>
+    <th>Publish end at</th>
+    <th>Target people</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @plans.each{ |plan| %>
+  <tr>
+    <td><%= plan.user_id %></td>
+    <td><%= plan.title %></td>
+    <td><%= plan.description %></td>
+    <td><%= plan.image_url %></td>
+    <td><%= plan.place %></td>
+    <td><%= plan.budget %></td>
+    <td><%= plan.min_people %></td>
+    <td><%= plan.max_people %></td>
+    <td><%= plan.publish_start_at %></td>
+    <td><%= plan.publish_end_at %></td>
+    <td><%= plan.target_people %></td>
+    <td><%= link_to t( "menu.show" ), plan_path( plan ) %></td>
+    <td><%= link_to t( "menu.edit" ), edit_plan_path( plan ) %></td>
+    <td><%= link_to t( "menu.destroy" ), plan_path( plan ), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
+  </tr>
+<% } %>
+</table>
+
+<br />
+
+<%= link_to t( "menu.new" ), new_plan_path %>
+
+<br />
+<br />
+
+<%= link_to t( "menu.top" ), :root %>

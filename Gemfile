@@ -47,12 +47,6 @@ end
 
 # For OmniAuth
 gem 'omniauth-scaffold'
-#gem 'rails_config'
-#gem 'omniauth-twitter'
-#gem 'omniauth-facebook'
-#gem 'omniauth-github'
-#gem 'tapp'
-#gem 'awesome_print'
 
 # For Scaffold Template
 gem 'custom-template'
@@ -65,5 +59,4 @@ gem 'sextant', :group => :development
 
 # Utility
 gem 'kaminari'
-#gem 'action_args'
-
+gem 'action_args'

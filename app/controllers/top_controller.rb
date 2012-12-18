@@ -5,6 +5,10 @@ class TopController < ApplicationController
   # index #
   #-------#
   def index
+    # ログイン済みであればプラン一覧へ
+    if session[:user_id].present?
+      redirect_to plans_path and return
+    end
   end
 
 end

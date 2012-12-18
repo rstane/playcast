@@ -1,0 +1,43 @@
+
+<p>
+  <b>Title:</b><%= @plan.title %>
+</p>
+
+<p>
+  <b>Description:</b><%= @plan.description %>
+</p>
+
+<p>
+  <b>Image url:</b><%= @plan.image_url %>
+</p>
+
+<p>
+  <b>Place:</b><%= @plan.place %>
+</p>
+
+<p>
+  <b>Budget:</b><%= @plan.budget %>
+</p>
+
+<p>
+  <b>Min people:</b><%= @plan.min_people %>
+</p>
+
+<p>
+  <b>Max people:</b><%= @plan.max_people %>
+</p>
+
+<p>
+  <b>Publish start at:</b><%= @plan.publish_start_at %>
+</p>
+
+<p>
+  <b>Publish end at:</b><%= @plan.publish_end_at %>
+</p>
+
+<p>
+  <b>Target people:</b><%= @plan.target_people %>
+</p>
+
+<%= link_to t( "menu.edit" ), edit_plan_path( @plan ) %>
+ | <%= link_to t( "menu.list" ), plans_path %>

@@ -1,0 +1,74 @@
+
+<h1>Editing plan</h1>
+
+<%= form_for( :plan, url: plan_path( @plan ), method: :put, html: { class: "plan_form" } ) do |f| %>
+  <% if @plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+      <ul>
+      <% @plan.errors.full_messages.each{ |msg| %>
+        <li><%= msg %></li>
+      <% } %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, rows: 5, class: "span6" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_url %><br />
+    <%= f.text_field :image_url, class: "span6" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :place %><br />
+    <%= f.text_field :place, class: "span6" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :budget %><br />
+    <%= f.text_field :budget %>
+  </div>
+
+  <div class="field">
+    <%= f.label :min_people %><br />
+    <%= f.number_field :min_people %>
+  </div>
+
+  <div class="field">
+    <%= f.label :max_people %><br />
+    <%= f.number_field :max_people %>
+  </div>
+
+  <div class="field">
+    <%= f.label :publish_start_at %><br />
+    <%= f.datetime_select :publish_start_at, use_month_numbers: true, default: Time.now, minute_step: 5 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :publish_end_at %><br />
+    <%= f.datetime_select :publish_end_at, use_month_numbers: true, default: Time.now, minute_step: 5 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :target_people %><br />
+    <%= f.text_area :target_people, rows: 5, class: "span6" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t( "menu.update" ), data: { 'disable-with' => t( "menu.update" ) } %>
+  </div>
+<% end %>
+
+
+<%= link_to t( "menu.show" ), plan_path( @plan ) %>
+ | <%= link_to t( "menu.list" ), plans_path %>
