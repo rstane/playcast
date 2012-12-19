@@ -21,7 +21,7 @@
 
 <% @plans.each{ |plan| %>
   <tr>
-    <td><%= plan.user_id %></td>
+    <td><%= render partial: '/layouts/user_icon', locals: { user: plan.user } %></td>
     <td><%= link_to plan.title, plan_path( plan ) %></td>
     <td><%= plan.description %></td>
     <td><%= plan.image_url %></td>
