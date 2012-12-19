@@ -1,6 +1,8 @@
 
 <br />
 
+<h3>プラン情報</h3>
+
 <p>
   <b><%= t("plan.title") %></b><br />
   <%= @plan.title %>
@@ -52,4 +54,23 @@
 </p>
 
 <%= link_to t( "menu.edit" ), edit_plan_path( @plan ) %>
- | <%= link_to t( "menu.list" ), plans_path %>
+ | <%= link_to t( "menu.list" ), plans_path %><br />
+
+<br />
+
+<h3>コメント</h3>
+
+<%# コメント投稿フォーム %>
+<%= form_for( :comment, url: plan_comment_path( @plan ) ) do |f| %>
+  <%= text_area_tag "comment_content", params[:comment_content], rows: 5, class: "span6" %><br />
+
+  <%= f.submit "コメント", data: { 'disable-with' => "コメント" } %>
+<% end %>
+
+<%# コメント投稿一覧 %>
+<% @comments.each{ |comment| %>
+  <p>
+    <%= render partial: '/layouts/user_icon', locals: { user: comment.user } %>
+    <%= comment.content %>
+  </p>
+<% } %>

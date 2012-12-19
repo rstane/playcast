@@ -2,6 +2,8 @@
 class User < ActiveRecord::Base
   attr_accessible :provider, :uid, :name, :nickname, :image, :token, :secret
 
+  has_many :comments
+
   private
 
   #---------------------------#

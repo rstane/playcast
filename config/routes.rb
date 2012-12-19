@@ -1,5 +1,7 @@
 Playcast::Application.routes.draw do
-  resources :plans
+  resources :plans do
+    resource :comment
+  end
 
 
   # The priority is based upon order of creation:

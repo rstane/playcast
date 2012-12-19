@@ -12,6 +12,9 @@ class PlansController < ApplicationController
   #------#
   def show( id )
     @plan = Plan.where( id: id, user_id: session[:user_id] ).first
+
+    @comment = Comment.new
+    @comments = Comment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all
   end
 
   #-----#
