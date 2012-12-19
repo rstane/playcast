@@ -4,14 +4,14 @@ class PlansController < ApplicationController
   # index #
   #-------#
   def index
-    @plans = Plan.where( user_id: session[:user_id] ).all
+    @plans = Plan.all
   end
 
   #------#
   # show #
   #------#
   def show( id )
-    @plan = Plan.where( id: id, user_id: session[:user_id] ).first
+    @plan = Plan.where( id: id ).first
 
     @comment = Comment.new
     @comments = Comment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all

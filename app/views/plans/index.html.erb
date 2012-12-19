@@ -32,9 +32,9 @@
     <td><%= plan.publish_start_at %></td>
     <td><%= plan.publish_end_at %></td>
     <td><%= plan.target_people %></td>
-    <td><%= link_to t( "menu.show" ), plan_path( plan ) %></td>
-    <td><%= link_to t( "menu.edit" ), edit_plan_path( plan ) %></td>
-    <td><%= link_to t( "menu.destroy" ), plan_path( plan ), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
+    <td><%= link_to( t( "menu.show" ), plan_path( plan ) ) %></td>
+    <td><%= link_to( t( "menu.edit" ), edit_plan_path( plan ) ) if plan.user_id == session[:user_id] %></td>
+    <td><%= link_to( t( "menu.destroy" ), plan_path( plan ), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } ) if plan.user_id == session[:user_id] %></td>
   </tr>
 <% } %>
 </table>
