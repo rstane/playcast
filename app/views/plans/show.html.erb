@@ -1,42 +1,54 @@
 
+<br />
+
 <p>
-  <b>Title:</b><%= @plan.title %>
+  <b><%= t("plan.title") %></b><br />
+  <%= @plan.title %>
 </p>
 
 <p>
-  <b>Description:</b><%= @plan.description %>
+  <b><%= t("plan.description") %></b><br />
+  <%= @plan.description %>
 </p>
 
 <p>
-  <b>Image url:</b><%= @plan.image_url %>
+  <b><%= t("plan.image_url") %></b><br />
+  <%= @plan.image_url %>
 </p>
 
 <p>
-  <b>Place:</b><%= @plan.place %>
+  <b><%= t("plan.place") %></b><br />
+  <%= @plan.place %>
 </p>
 
 <p>
-  <b>Budget:</b><%= @plan.budget %>
+  <b><%= t("plan.budget") %></b><br />
+  <%= @plan.budget %>
 </p>
 
 <p>
-  <b>Min people:</b><%= @plan.min_people %>
+  <b><%= t("plan.min_people") %></b><br />
+  <%= @plan.min_people %>
 </p>
 
 <p>
-  <b>Max people:</b><%= @plan.max_people %>
+  <b><%= t("plan.max_people") %></b><br />
+  <%= @plan.max_people %>
 </p>
 
 <p>
-  <b>Publish start at:</b><%= @plan.publish_start_at %>
+  <b><%= t("plan.publish_start_at") %></b><br />
+  <%= @plan.publish_start_at %>
 </p>
 
 <p>
-  <b>Publish end at:</b><%= @plan.publish_end_at %>
+  <b><%= t("plan.publish_end_at") %></b><br />
+  <%= @plan.publish_end_at %>
 </p>
 
 <p>
-  <b>Target people:</b><%= @plan.target_people %>
+  <b><%= t("plan.target_people") %></b><br />
+  <%= @plan.target_people %>
 </p>
 
 <%= link_to t( "menu.edit" ), edit_plan_path( @plan ) %>

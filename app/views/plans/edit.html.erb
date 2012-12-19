@@ -1,5 +1,5 @@
 
-<h1>Editing plan</h1>
+<h1>プラン編集</h1>
 
 <%= form_for( :plan, url: plan_path( @plan ), method: :put, html: { class: "plan_form" } ) do |f| %>
   <% if @plan.errors.any? %>
@@ -15,52 +15,52 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= t("plan.title") %><br />
     <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= f.label :description %><br />
+    <%= t("plan.description") %><br />
     <%= f.text_area :description, rows: 5, class: "span6" %>
   </div>
 
   <div class="field">
-    <%= f.label :image_url %><br />
+    <%= t("plan.image_url") %><br />
     <%= f.text_field :image_url, class: "span6" %>
   </div>
 
   <div class="field">
-    <%= f.label :place %><br />
+    <%= t("plan.place") %><br />
     <%= f.text_field :place, class: "span6" %>
   </div>
 
   <div class="field">
-    <%= f.label :budget %><br />
+    <%= t("plan.budget") %><br />
     <%= f.text_field :budget %>
   </div>
 
   <div class="field">
-    <%= f.label :min_people %><br />
+    <%= t("plan.min_people") %><br />
     <%= f.number_field :min_people %>
   </div>
 
   <div class="field">
-    <%= f.label :max_people %><br />
+    <%= t("plan.max_people") %><br />
     <%= f.number_field :max_people %>
   </div>
 
   <div class="field">
-    <%= f.label :publish_start_at %><br />
+    <%= t("plan.publish_start_at") %><br />
     <%= f.datetime_select :publish_start_at, use_month_numbers: true, default: Time.now, minute_step: 5 %>
   </div>
 
   <div class="field">
-    <%= f.label :publish_end_at %><br />
+    <%= t("plan.publish_end_at") %><br />
     <%= f.datetime_select :publish_end_at, use_month_numbers: true, default: Time.now, minute_step: 5 %>
   </div>
 
   <div class="field">
-    <%= f.label :target_people %><br />
+    <%= t("plan.target_people") %><br />
     <%= f.text_area :target_people, rows: 5, class: "span6" %>
   </div>
 

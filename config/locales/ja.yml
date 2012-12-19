@@ -2,14 +2,26 @@
 ja:
   # Add
   menu:
-    new:     "New"
-    show:    "Show"
-    edit:    "Edit"
-    destroy: "Delete"
-    top:     "Top"
-    list:    "List"
-    create:  "Create"
-    update:  "Update"
+    new:     "新規"
+    show:    "詳細"
+    edit:    "編集"
+    destroy: "削除"
+    top:     "トップ"
+    list:    "一覧"
+    create:  "作成"
+    update:  "更新"
+
+  plan:
+    title: "タイトル"
+    description: "説明"
+    image_url: "イメージ画像URL"
+    place: "場所"
+    budget: "予算"
+    min_people: "最低開催人数"
+    max_people: "定員"
+    publish_start_at: "募集開始時刻"
+    publish_end_at: "募集終了時刻"
+    target_people: "こんな人に来てほしい"
 
   activerecord:
     models:
