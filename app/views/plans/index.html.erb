@@ -22,7 +22,7 @@
 <% @plans.each{ |plan| %>
   <tr>
     <td><%= plan.user_id %></td>
-    <td><%= plan.title %></td>
+    <td><%= link_to plan.title, plan_path( plan ) %></td>
     <td><%= plan.description %></td>
     <td><%= plan.image_url %></td>
     <td><%= plan.place %></td>
