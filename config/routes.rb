@@ -3,7 +3,6 @@ Playcast::Application.routes.draw do
     resource :comment
   end
 
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
