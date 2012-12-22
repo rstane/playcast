@@ -35,28 +35,34 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem 'sqlite3', :group => :development
-
-# For Heroku
+# App Server
 gem 'thin'
 
-group :production do
-  gem 'pg'
-  gem 'newrelic_rpm'
-end
-
-# For OmniAuth
+# OmniAuth
 gem 'omniauth-scaffold'
 
-# For Scaffold Template
+# Scaffold Template
 gem 'custom-template'
-
-# For Twitter Bootstrap
-gem 'twitter-bootstrap-scaffold', :group => :development
-
-# For Routing
-gem 'sextant', :group => :development
 
 # Utility
 gem 'kaminari'
 gem 'action_args'
+
+# Development
+group :development do
+  gem 'sqlite3', :group => :development
+  gem "better_errors"
+  gem "binding_of_caller"
+
+  # For Twitter Bootstrap
+  gem 'twitter-bootstrap-scaffold', :group => :development
+
+  # For Routing
+  gem 'sextant', :group => :development
+end
+
+# Production
+group :production do
+  gem 'pg'
+  gem 'newrelic_rpm'
+end
