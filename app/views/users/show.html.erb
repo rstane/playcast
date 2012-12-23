@@ -1,0 +1,14 @@
+
+<h1>マイページ</h1>
+
+<h3>フィード</h3>
+
+<h3>参加中</h3>
+
+<h3>お気に入り</h3>
+
+<% @favorites.each.with_index(1){ |favorite, index| %>
+  <%= index %> : <%= favorite.plan.title %><b><%= link_to( "解除", plan_favorite_path( favorite.plan, favorite ), method: "delete", confirm: "本当に削除してよろしいですか？" ) %></b>
+<% } %>
+
+<h3>企画中</h3>

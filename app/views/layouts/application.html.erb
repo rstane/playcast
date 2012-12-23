@@ -14,7 +14,8 @@
     <% unless session[:user_id].blank? %>
       <%# ログイン済み %>
       <li><%= render partial: '/layouts/user_icon', locals: { user: current_user } %></li>
-      <li class="<%= params[:controller] == 'plans' ? 'active' : '' %>"><%= link_to( "Plan", { controller: "plans" } ) %></li>
+      <li class="<%= params[:controller] == 'plans' ? 'active' : '' %>"><%= link_to( "Plan", plans_path ) %></li>
+      <li class="<%= params[:controller] == 'users' ? 'active' : '' %>"><%= link_to( "MyPage", user_path( session[:user_id] ) ) %></li>
       <li><%= link_to( "Logout", logout_path ) %></li>
     <% else %>
       <%# 未ログイン %>

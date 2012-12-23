@@ -50,15 +50,15 @@ gem 'action_args'
 
 # Development
 group :development do
-  gem 'sqlite3', :group => :development
+  gem 'sqlite3'
   gem "better_errors"
   gem "binding_of_caller"
 
   # For Twitter Bootstrap
-  gem 'twitter-bootstrap-scaffold', :group => :development
+  gem 'twitter-bootstrap-scaffold'
 
   # For Routing
-  gem 'sextant', :group => :development
+  gem 'sextant'
 end
 
 # Production
