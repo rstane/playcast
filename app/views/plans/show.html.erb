@@ -18,10 +18,10 @@
 
 <hr />
 
-<h3>参加者</h3>
+<h3>参加者一覧</h3>
 
 <% @entries.each.with_index(1){ |entry, index| %>
-  <%= index %> : <%= entry.user.name %><br />
+  <%= index %>：<%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %><br />
 <% } %>
 
 <hr />
