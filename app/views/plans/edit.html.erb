@@ -1,6 +1,8 @@
 
 <h1>プラン編集</h1>
 
+<br />
+
 <%= form_for( :plan, url: plan_path( @plan ), method: :put, html: { class: "plan_form" } ) do |f| %>
   <% if @plan.errors.any? %>
     <div id="error_explanation">
@@ -13,6 +15,18 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <h3><%= "カテゴリ" %></h3>
+    <% @categories.each.with_index(1){ |category, index| %>
+      <%= check_box_tag "categories[#{index}]", category.id, @categorize.index(category.id) %>
+      <%= label_tag "categories[#{index}]", category.name %>
+    <% } %>
+  </div>
+
+  <br />
+
+  <h3><%= "プラン情報" %></h3>
 
   <div class="field">
     <%= t("plan.title") %><br />

@@ -5,4 +5,5 @@ class Plan < ActiveRecord::Base
   has_many :comments
   has_many :favorites
   has_many :entries
+  has_many :categorizes
 end

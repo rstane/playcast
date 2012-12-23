@@ -1,12 +1,19 @@
 
 <h1>プラン一覧</h1>
 
+<b><%= "カテゴリ" %> : </b>
+<%= link_to( "すべて", plans_path( category_id: nil ) ) %>
+<% @categories.each{ |category| %>
+  <%= link_to( category.name, plans_path( category_id: category.id ) ) %>
+<% } %>
+
 <table>
   <tr>
     <th>User</th>
     <th>お気に入り</th>
     <th>Title</th>
     <th>Description</th>
+    <th>カテゴリ</th>
     <th>Image url</th>
     <th>Place</th>
     <th>Budget</th>
@@ -32,6 +39,11 @@
     </td>
     <td><%= link_to( plan.title, plan_path( plan ) ) %></td>
     <td><%= plan.description %></td>
+    <td>
+      <% plan.categorizes.each{ |c| %>
+        <%= c.category.name %><br />
+      <% } %>
+    </td>
     <td><%= plan.image_url %></td>
     <td><%= plan.place %></td>
     <td><%= plan.budget %></td>

@@ -26,6 +26,14 @@
 
 <hr />
 
+<h3>カテゴリ</h3>
+
+<% @categorize.each.with_index(1){ |c, index| %>
+  <%= index %> : <%= c.category.name %><br />
+<% } %>
+
+<hr />
+
 <h3>プラン情報</h3>
 
 <p>
