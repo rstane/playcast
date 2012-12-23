@@ -2,6 +2,18 @@
 <h1>マイページ</h1>
 
 <h3>フィード</h3>
+
+<% @feeds.each.with_index(1){ |feed, index| %>
+  <% case feed.type %>
+  <% when "FeedComment" %>
+    <%= index %> : <%= link_to( "「#{feed.plan.title}」に「#{feed.user.name}」から#{feed.happen}", plan_path( feed.plan ) ) %>
+  <% when "FeedEntry" %>
+    <%= index %> : <%= link_to( "「#{feed.plan.title}」に「#{feed.user.name}」が#{feed.happen}", plan_path( feed.plan ) ) %>
+  <% when "FeedPlan" %>
+    <%= index %> : <%= link_to( "「#{feed.plan.title}」の#{feed.happen}", plan_path( feed.plan ) ) %>
+  <% end %>
+  <br />
+<% } %>
 <br />
 
 <h3>参加中</h3>

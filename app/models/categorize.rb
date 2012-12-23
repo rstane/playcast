@@ -1,3 +1,4 @@
+# coding: utf-8
 class Categorize < ActiveRecord::Base
   attr_accessible :category_id, :plan_id
 
