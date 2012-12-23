@@ -1,9 +1,22 @@
 <br />
 
-<b><%= link_to( "お気に入りに登録", plan_favorites_path( @plan ), method: "post" ) %></b>
+<b>
+  <% if @favorite.present? %>
+    <%= link_to( "☆お気に入り登録解除", plan_favorite_path( @favorite.plan, @favorite ), method: "delete", confirm: "本当に削除してよろしいですか？" ) %>
+  <% else %>
+    <%= link_to( "☆お気に入りに登録", plan_favorites_path( @plan ), method: "post" ) %>
+  <% end %>
+</b><br />
 
-<br />
-<br />
+<b>
+  <% if @entry.present? %>
+  <%= link_to( "☆参加キャンセル", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %>
+  <% else %>
+    <%= link_to( "☆参加する", plan_entries_path( @plan ), method: "post" ) %>
+  <% end %>
+</b><br />
+
+<hr />
 
 <h3>プラン情報</h3>
 

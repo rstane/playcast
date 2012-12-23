@@ -15,6 +15,9 @@ class PlansController < ApplicationController
 
     @comment = Comment.new
     @comments = Comment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all
+
+    @favorite = Favorite.where( user_id: session[:user_id], plan_id: @plan.id ).first
+    @entry = Entry.where( user_id: session[:user_id], plan_id: @plan.id ).first
   end
 
   #-----#

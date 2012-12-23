@@ -22,7 +22,7 @@
 <% @plans.each{ |plan| %>
   <tr>
     <td><%= link_to( image_tag( plan.user.image, size: "18x18", class: "margin_minus2" ), user_path( plan.user ) ) %></td>
-    <td><%= link_to plan.title, plan_path( plan ) %></td>
+    <td><%= link_to( plan.title, plan_path( plan ) ) %></td>
     <td><%= plan.description %></td>
     <td><%= plan.image_url %></td>
     <td><%= plan.place %></td>

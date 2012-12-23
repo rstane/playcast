@@ -2,13 +2,29 @@
 <h1>マイページ</h1>
 
 <h3>フィード</h3>
+<br />
 
 <h3>参加中</h3>
+
+<% @entries.each.with_index(1){ |entry, index| %>
+  <%= index %> : <%= link_to( entry.plan.title, plan_path( entry.plan ) ) %>
+  <% if entry.user_id == session[:user_id] %><b><%= link_to( "キャンセル", plan_entry_path( entry.plan, entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %></b><% end %>
+  <br />
+<% } %>
+<br />
 
 <h3>お気に入り</h3>
 
 <% @favorites.each.with_index(1){ |favorite, index| %>
-  <%= index %> : <%= favorite.plan.title %><b><%= link_to( "解除", plan_favorite_path( favorite.plan, favorite ), method: "delete", confirm: "本当に削除してよろしいですか？" ) %></b>
+  <%= index %> : <%= link_to( favorite.plan.title, plan_path( favorite.plan ) ) %>
+  <% if favorite.user_id == session[:user_id] %><b><%= link_to( "解除", plan_favorite_path( favorite.plan, favorite ), method: "delete", confirm: "本当に削除してよろしいですか？" ) %></b><% end %>
+  <br />
 <% } %>
+<br />
 
 <h3>企画中</h3>
+
+<% @plans.each.with_index(1){ |plan, index| %>
+  <%= index %> : <%= link_to( plan.title, plan_path( plan ) ) %><br />
+<% } %>
+<br />
