@@ -4,6 +4,7 @@
 <table>
   <tr>
     <th>User</th>
+    <th>お気に入り</th>
     <th>Title</th>
     <th>Description</th>
     <th>Image url</th>
@@ -22,6 +23,13 @@
 <% @plans.each{ |plan| %>
   <tr>
     <td><%= link_to( image_tag( plan.user.image, size: "18x18", class: "margin_minus2" ), user_path( plan.user ) ) %></td>
+    <td>
+      <% if @favorites[plan.id].present? %>
+        <%= link_to( "お気に入り：解除", plan_favorite_path( @favorites[plan.id].plan, @favorites[plan.id] ), method: "delete", confirm: "本当に削除してよろしいですか？" ) %>
+      <% else %>
+        <%= link_to( "お気に入り：登録", plan_favorites_path( plan ), method: "post" ) %>
+      <% end %>
+    </td>
     <td><%= link_to( plan.title, plan_path( plan ) ) %></td>
     <td><%= plan.description %></td>
     <td><%= plan.image_url %></td>

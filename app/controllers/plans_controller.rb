@@ -4,7 +4,8 @@ class PlansController < ApplicationController
   # index #
   #-------#
   def index
-    @plans = Plan.all
+    @plans = Plan.includes( :user ).all
+    @favorites = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
   end
 
   #------#
