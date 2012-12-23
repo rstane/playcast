@@ -12,13 +12,14 @@ class PlansController < ApplicationController
   # show #
   #------#
   def show( id )
-    @plan = Plan.where( id: id ).first
+    @plan    = Plan.where( id: id ).first
+    @entries = Entry.where( plan_id: @plan.id ).includes( :user ).order( "created_at DESC" ).all
 
-    @comment = Comment.new
+    @comment  = Comment.new
     @comments = Comment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all
 
     @favorite = Favorite.where( user_id: session[:user_id], plan_id: @plan.id ).first
-    @entry = Entry.where( user_id: session[:user_id], plan_id: @plan.id ).first
+    @entry    = Entry.where( user_id: session[:user_id], plan_id: @plan.id ).first
   end
 
   #-----#

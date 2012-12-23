@@ -18,6 +18,14 @@
 
 <hr />
 
+<h3>参加者</h3>
+
+<% @entries.each.with_index(1){ |entry, index| %>
+  <%= index %> : <%= entry.user.name %><br />
+<% } %>
+
+<hr />
+
 <h3>プラン情報</h3>
 
 <p>
