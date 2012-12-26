@@ -2,6 +2,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  # BASIC認証
+  http_basic_authenticate_with name: "playcast", password: "playcast1226" unless Rails.env.development?
+
   # ログイン認証
   before_filter :authorize
 
