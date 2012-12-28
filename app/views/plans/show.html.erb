@@ -8,18 +8,24 @@
   <% end %>
 </b><br />
 
+<hr />
+
 <b>
   <% if @entry.present? %>
     <%= link_to( "☆参加キャンセル", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %>
   <% else %>
-    <%#= form_tag( plan_entries_path( @plan ) ) do %>
-      <%# 1.upto(5){ |n| %>
-        <%#= text_area_tag( "entry[schedule_#{n}]", , rows: "2", class: "span4" ) %><br />
-      <%# } %>
-      <%#= submit_tag '参加する' %>
-    <%# end %>
+    <%= form_tag( plan_entries_path( @plan ) ) do %>
+      <% 5.times{ |i| %>
+        <% if @entry_schedules[i].present? %>
+          <%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], false %>
+          <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y/%m/%d %H:%M") %><br />
+        <% end %>
+      <% } %>
 
-    <%#= link_to( "☆参加する", plan_entries_path( @plan ), method: "post" ) %>
+      <%= text_area_tag( "entry[comment]", nil, rows: "2", class: "span4" ) %><br />
+
+      <%= submit_tag '参加する' %>
+    <% end %>
   <% end %>
 </b><br />
 
@@ -98,7 +104,12 @@
 <h3>候補日</h3>
 
 <% @schedules.each.with_index(1){ |schedule, index| %>
-  <%= index %> : <%= schedule.candidate_day.strftime("%Y/%m/%d %H:%M") %><br />
+  <%= index %> : <%= schedule[1].candidate_day.strftime("%Y/%m/%d %H:%M") if schedule[1].present? %>
+  <% participations = @participations.select{ |x| x.schedule_id == schedule[1].id } %>
+  <% participations.each{ |participation| %>
+    <%= render partial: '/layouts/user_icon', locals: { user: participation.user } %>
+  <% } %>
+  <br />
 <% } %>
 
 <hr />

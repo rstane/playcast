@@ -22,7 +22,12 @@ class PlansController < ApplicationController
     @plan       = Plan.where( id: id ).first
     @entries    = Entry.where( plan_id: @plan.id ).includes( :user ).order( "created_at DESC" ).all
     @categorize = Categorize.where( plan_id: @plan.id ).includes( :category ).order( "categories.name ASC" ).all
-    @schedules  = Schedule.where( plan_id: @plan.id ).order( "candidate_day ASC" ).all
+
+    schedules = Schedule.where( plan_id: @plan.id ).order( "candidate_day ASC" )
+    @entry_schedules  = schedules.pluck(:id)
+    @schedules        = schedules.index_by{ |x| x.id }
+
+    @participations   = Participation.where( plan_id: @plan.id ).includes( :user ).all
 
     @comment  = Comment.new
     @comments = Comment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all

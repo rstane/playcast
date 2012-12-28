@@ -1,10 +1,11 @@
 # coding: utf-8
 class Entry < ActiveRecord::Base
-  attr_accessible :plan_id, :user_id
+  attr_accessible :plan_id, :user_id, :schedule_id, :comment
 
   belongs_to :user
   belongs_to :plan
   has_many :feeds
+  has_many :participations, :dependent => :destroy
 
   # コールバック
   after_create :create_feed_entry
