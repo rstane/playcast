@@ -45,7 +45,7 @@
           <% end %>
         <% } %>
 
-        <%= text_area_tag( "entry[comment]", nil, rows: "2", class: "span4" ) %><br />
+        <%= text_field_tag( "entry[comment]", nil, class: "span6" ) %><br />
 
         <%= submit_tag '参加する' %>
       <% end %>
@@ -112,7 +112,7 @@
 <h3>参加者一覧</h3>
 
 <% @entries.each.with_index(1){ |entry, index| %>
-  <%= index %>：<%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %><br />
+  <%= index %> : <%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %> : <%= entry.comment %><br />
 <% } %>
 
 <hr />
