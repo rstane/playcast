@@ -21,6 +21,9 @@ class EntriesController < ApplicationController
       }
     end
 
+    # 定員／最少開催人数チェック
+    Plan.max_min_people_check( plan_id )
+
     redirect_to( plan_path( plan_id ), notice: "プランに参加しました。" )
   end
 
@@ -30,6 +33,9 @@ class EntriesController < ApplicationController
   def destroy( plan_id, id )
     entry = Entry.where( user_id: session[:user_id], plan_id: plan_id, id: id ).first
     entry.destroy
+
+    # 定員／最少開催人数チェック
+    Plan.max_min_people_check( plan_id )
 
     redirect_to( plan_path( plan_id ), notice: "参加をキャンセルしました。" )
   end

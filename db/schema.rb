@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228080949) do
+ActiveRecord::Schema.define(:version => 20121228085222) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -81,8 +81,10 @@ ActiveRecord::Schema.define(:version => 20121228080949) do
     t.datetime "publish_start_at"
     t.datetime "publish_end_at"
     t.text     "target_people"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "decide_flag",      :default => false
+    t.boolean  "entry_close_flag", :default => false
   end
 
   create_table "schedules", :force => true do |t|

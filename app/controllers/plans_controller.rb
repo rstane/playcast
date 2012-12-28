@@ -100,15 +100,20 @@ class PlansController < ApplicationController
         }
       end
 
-      # 候補日更新
-      Schedule.where( plan_id: @plan.id ).delete_all
-      if schedule.present?
-        schedule.each_pair{ |key, value|
-          if value.present?
-            Schedule.create( plan_id: @plan.id, candidate_day: Time.parse(value) )
-          end
-        }
+      # 候補日更新(参加登録が無い場合のみ)
+      unless Participation.where( plan_id: @plan.id ).exists?
+        Schedule.where( plan_id: @plan.id ).delete_all
+        if schedule.present?
+          schedule.each_pair{ |key, value|
+            if value.present?
+              Schedule.create( plan_id: @plan.id, candidate_day: Time.parse(value) )
+            end
+          }
+        end
       end
+
+      # 定員／最少開催人数チェック
+      Plan.max_min_people_check( @plan.id )
 
       redirect_to( plan_path( @plan ), notice: "プランを更新しました。" )
     else

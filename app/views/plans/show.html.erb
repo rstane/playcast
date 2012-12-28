@@ -1,5 +1,25 @@
 <br />
 
+<h3>
+  <% if @plan.decide_flag %>
+    <span style="color: red;">開催決定</span>
+  <% else %>
+    <span style="color: blue;">開催未定</span>
+  <% end %>
+</h3>
+
+<br />
+
+<h3>
+  <% if @plan.entry_close_flag %>
+    <span style="color: red;">募集終了</span>
+  <% else %>
+    <span style="color: blue;">募集中</span>
+  <% end %>
+</h3>
+
+<hr />
+
 <b>
   <% if @favorite.present? %>
     <%= link_to( "☆お気に入り登録解除", plan_favorite_path( @favorite.plan, @favorite ), method: "delete", confirm: "本当に削除してよろしいですか？" ) %>
@@ -14,17 +34,21 @@
   <% if @entry.present? %>
     <%= link_to( "☆参加キャンセル", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %>
   <% else %>
-    <%= form_tag( plan_entries_path( @plan ) ) do %>
-      <% 5.times{ |i| %>
-        <% if @entry_schedules[i].present? %>
-          <%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], false %>
-          <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y/%m/%d %H:%M") %><br />
-        <% end %>
-      <% } %>
+    <% if @plan.entry_close_flag %>
+      <span style="color: red;">既に募集が終了しています。</span>
+    <% else %>
+      <%= form_tag( plan_entries_path( @plan ) ) do %>
+        <% 5.times{ |i| %>
+          <% if @entry_schedules[i].present? %>
+            <%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], false %>
+            <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y/%m/%d %H:%M") %><br />
+          <% end %>
+        <% } %>
 
-      <%= text_area_tag( "entry[comment]", nil, rows: "2", class: "span4" ) %><br />
+        <%= text_area_tag( "entry[comment]", nil, rows: "2", class: "span4" ) %><br />
 
-      <%= submit_tag '参加する' %>
+        <%= submit_tag '参加する' %>
+      <% end %>
     <% end %>
   <% end %>
 </b><br />
