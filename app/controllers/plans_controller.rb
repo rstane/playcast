@@ -22,6 +22,7 @@ class PlansController < ApplicationController
     @plan       = Plan.where( id: id ).first
     @entries    = Entry.where( plan_id: @plan.id ).includes( :user ).order( "created_at DESC" ).all
     @categorize = Categorize.where( plan_id: @plan.id ).includes( :category ).order( "categories.name ASC" ).all
+    @schedules  = Schedule.where( plan_id: @plan.id ).order( "candidate_day ASC" ).all
 
     @comment  = Comment.new
     @comments = Comment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all
@@ -45,19 +46,30 @@ class PlansController < ApplicationController
     @plan = Plan.where( id: id, user_id: session[:user_id] ).first
     @categories = Category.order( "name ASC" ).all
     @categorize = Categorize.where( plan_id: @plan.id ).pluck(:category_id)
+    @schedules  = Schedule.where( plan_id: @plan.id ).order( "candidate_day ASC" ).pluck(:candidate_day)
   end
 
   #--------#
   # create #
   #--------#
-  def create( plan, categories )
+  def create( plan, categories, schedule )
     @plan = Plan.new( plan )
     @plan.user_id = session[:user_id]
 
     if @plan.save
+      # カテゴリ選択
       if categories.present?
         categories.each_pair{ |key, value|
           Categorize.where( plan_id: @plan.id, category_id: value ).first_or_create
+        }
+      end
+
+      # 候補日作成
+      if schedule.present?
+        schedule.each_pair{ |key, value|
+          if value.present?
+            Schedule.create( plan_id: @plan.id, candidate_day: Time.parse(value) )
+          end
         }
       end
 
@@ -70,14 +82,26 @@ class PlansController < ApplicationController
   #--------#
   # update #
   #--------#
-  def update( id, plan, categories )
+  def update( id, plan, categories, schedule )
     @plan = Plan.where( id: id, user_id: session[:user_id] ).first
 
     if @plan.update_attributes( plan )
+      # カテゴリ更新
       Categorize.where( plan_id: @plan.id ).delete_all
       if categories.present?
+
         categories.each_pair{ |key, value|
           Categorize.where( plan_id: @plan.id, category_id: value ).first_or_create
+        }
+      end
+
+      # 候補日更新
+      Schedule.where( plan_id: @plan.id ).delete_all
+      if schedule.present?
+        schedule.each_pair{ |key, value|
+          if value.present?
+            Schedule.create( plan_id: @plan.id, candidate_day: Time.parse(value) )
+          end
         }
       end
 

@@ -78,6 +78,11 @@
     <%= f.text_area :target_people, rows: 5, class: "span6" %>
   </div>
 
+  候補日<br />
+  <% 5.times{ |i| %>
+    <%= text_field_tag( "schedule[#{i}]", (@schedules[i].present? ? @schedules[i].strftime("%Y/%m/%d %H:%M") : nil), class: "span4" ) %><br />
+  <% } %>
+
   <div class="actions">
     <%= f.submit t( "menu.update" ), data: { 'disable-with' => t( "menu.update" ) } %>
   </div>

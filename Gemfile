@@ -47,6 +47,7 @@ gem 'custom-template'
 # Utility
 gem 'kaminari'
 gem 'action_args'
+gem "i18n_generators"
 
 # Development
 group :development do

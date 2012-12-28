@@ -1,0 +1,17 @@
+# https://github.com/amatsuda/i18n_generators
+ja:
+  activerecord:
+    models:
+      plan: "プラン"
+    attributes:
+      plan:
+        budget: "予算"
+        description: "内容"
+        image_url: "画像URL"
+        max_people: "定員"
+        min_people: "最少開催人数"
+        place: "場所"
+        publish_end_at: "募集終了日時"
+        publish_start_at: "募集開始日時"
+        target_people: "こんな人に来てほしい"
+        title: "タイトル"

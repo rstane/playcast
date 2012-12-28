@@ -29,54 +29,59 @@
   <h3><%= "プラン情報" %></h3>
 
   <div class="field">
-    <%= t("plan.title") %><br />
+    <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= t("plan.description") %><br />
+    <%= f.label :description %><br />
     <%= f.text_area :description, rows: 5, class: "span6" %>
   </div>
 
   <div class="field">
-    <%= t("plan.image_url") %><br />
+    <%= f.label :image_url %><br />
     <%= f.text_field :image_url, class: "span6" %>
   </div>
 
   <div class="field">
-    <%= t("plan.place") %><br />
+    <%= f.label :place %><br />
     <%= f.text_field :place, class: "span6" %>
   </div>
 
   <div class="field">
-    <%= t("plan.budget") %><br />
+    <%= f.label :budget %><br />
     <%= f.text_field :budget %>
   </div>
 
   <div class="field">
-    <%= t("plan.min_people") %><br />
+    <%= f.label :min_people %><br />
     <%= f.number_field :min_people %>
   </div>
 
   <div class="field">
-    <%= t("plan.max_people") %><br />
+    <%= f.label :max_people %><br />
     <%= f.number_field :max_people %>
   </div>
 
   <div class="field">
-    <%= t("plan.publish_start_at") %><br />
+    <%= f.label :publish_start_at %><br />
     <%= f.datetime_select :publish_start_at, use_month_numbers: true, default: Time.now, minute_step: 5 %>
   </div>
 
   <div class="field">
-    <%= t("plan.publish_end_at") %><br />
+    <%= f.label :publish_end_at %><br />
     <%= f.datetime_select :publish_end_at, use_month_numbers: true, default: Time.now, minute_step: 5 %>
   </div>
 
   <div class="field">
-    <%= t("plan.target_people") %><br />
+    <%= f.label :target_people %><br />
     <%= f.text_area :target_people, rows: 5, class: "span6" %>
   </div>
+
+  候補日<br />
+  <% 1.upto(5){ |n| %>
+    <%= text_field_tag( "schedule[#{n}]", nil, class: "span4" ) %><br />
+  <% } %>
 
   <div class="actions">
     <%= f.submit t( "menu.create" ), data: { 'disable-with' => t( "menu.create" ) } %>

@@ -10,27 +10,18 @@
 
 <b>
   <% if @entry.present? %>
-  <%= link_to( "☆参加キャンセル", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %>
+    <%= link_to( "☆参加キャンセル", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %>
   <% else %>
-    <%= link_to( "☆参加する", plan_entries_path( @plan ), method: "post" ) %>
+    <%#= form_tag( plan_entries_path( @plan ) ) do %>
+      <%# 1.upto(5){ |n| %>
+        <%#= text_area_tag( "entry[schedule_#{n}]", , rows: "2", class: "span4" ) %><br />
+      <%# } %>
+      <%#= submit_tag '参加する' %>
+    <%# end %>
+
+    <%#= link_to( "☆参加する", plan_entries_path( @plan ), method: "post" ) %>
   <% end %>
 </b><br />
-
-<hr />
-
-<h3>参加者一覧</h3>
-
-<% @entries.each.with_index(1){ |entry, index| %>
-  <%= index %>：<%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %><br />
-<% } %>
-
-<hr />
-
-<h3>カテゴリ</h3>
-
-<% @categorize.each.with_index(1){ |c, index| %>
-  <%= index %> : <%= c.category.name %><br />
-<% } %>
 
 <hr />
 
@@ -85,6 +76,32 @@
   <b><%= t("plan.target_people") %></b><br />
   <%= @plan.target_people %>
 </p>
+
+<hr />
+
+<h3>参加者一覧</h3>
+
+<% @entries.each.with_index(1){ |entry, index| %>
+  <%= index %>：<%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %><br />
+<% } %>
+
+<hr />
+
+<h3>カテゴリ</h3>
+
+<% @categorize.each.with_index(1){ |c, index| %>
+  <%= index %> : <%= c.category.name %><br />
+<% } %>
+
+<hr />
+
+<h3>候補日</h3>
+
+<% @schedules.each.with_index(1){ |schedule, index| %>
+  <%= index %> : <%= schedule.candidate_day.strftime("%Y/%m/%d %H:%M") %><br />
+<% } %>
+
+<hr />
 
 <%= link_to t( "menu.edit" ), edit_plan_path( @plan ) %>
  | <%= link_to t( "menu.list" ), plans_path %><br />
