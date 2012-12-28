@@ -49,6 +49,9 @@ gem 'kaminari'
 gem 'action_args'
 gem "i18n_generators"
 
+# Exception Error Notice
+gem "exception_notification"
+
 # Development
 group :development do
   gem 'sqlite3'
