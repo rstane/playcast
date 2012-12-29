@@ -1,9 +1,9 @@
 
 <h1>マイページ</h1>
 
-<h3>マイフィード</h3>
+<h3>プランフィード</h3>
 
-<% @my_feeds.each.with_index(1){ |feed, index| %>
+<% @plan_feeds.each.with_index(1){ |feed, index| %>
   <% case feed.type %>
   <% when "FeedComment" %>
     <%= index %> : <%= link_to( "「#{feed.plan.title}」に「#{feed.user.name}」から#{feed.happen}", plan_path( feed.plan ) ) %>
@@ -16,9 +16,9 @@
 <% } %>
 <br />
 
-<h3>プランフィード</h3>
+<h3>マイフィード</h3>
 
-<% @plan_feeds.each.with_index(1){ |feed, index| %>
+<% @my_feeds.each.with_index(1){ |feed, index| %>
   <% case feed.type %>
   <% when "FeedComment" %>
     <%= index %> : <%= link_to( "「#{feed.plan.title}」に「#{feed.user.name}」から#{feed.happen}", plan_path( feed.plan ) ) %>
