@@ -58,10 +58,12 @@ class Plan < ActiveRecord::Base
       Schedule.where( plan_id: plan.id ).update_all( adopt_flag: false )
 
       # 開催取り消しフィード作成
-      FeedPlan.where( plan_id: plan.id, happen: "開催が決定しました。" ).delete_all
-      Entry.where( plan_id: plan.id ).all.each{ |e|
-        FeedPlan.where( plan_id: e.plan_id, user_id: e.user_id, happen: "開催決定が取り消されました。" ).first_or_create
-      }
+      if FeedPlan.where( plan_id: plan.id, happen: "開催が決定しました。" ).exists?
+        FeedPlan.where( plan_id: plan.id, happen: "開催が決定しました。" ).delete_all
+        Entry.where( plan_id: plan.id ).all.each{ |e|
+          FeedPlan.where( plan_id: e.plan_id, user_id: e.user_id, happen: "開催決定が取り消されました。" ).first_or_create
+        }
+      end
     end
 
     plan.save

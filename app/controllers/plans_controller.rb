@@ -9,7 +9,7 @@ class PlansController < ApplicationController
       plan_ids = Categorize.where( category_id: category_id ).pluck(:plan_id)
       @plans   = @plans.where( id: plan_ids )
     end
-    @plans = @plans.includes( :user, { :categorizes => :category } ).all
+    @plans = @plans.includes( :user, { :categorizes => :category } ).order( "plans.created_at DESC" ).all
 
     @favorites = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
     @categories = Category.order( "name ASC" ).all
