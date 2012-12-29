@@ -13,6 +13,9 @@
     <th>お気に入り</th>
     <th>Title</th>
     <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
     <th>カテゴリ</th>
     <th>Image url</th>
     <th>Place</th>
@@ -22,9 +25,6 @@
     <th>Publish start at</th>
     <th>Publish end at</th>
     <th>Target people</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @plans.each{ |plan| %>
@@ -39,6 +39,9 @@
     </td>
     <td><%= link_to( plan.title, plan_path( plan ) ) %></td>
     <td><%= plan.description %></td>
+    <td><%= link_to( t( "menu.show" ), plan_path( plan ) ) %></td>
+    <td><%= link_to( t( "menu.edit" ), edit_plan_path( plan ) ) if plan.user_id == session[:user_id] %></td>
+    <td><%= link_to( t( "menu.destroy" ), plan_path( plan ), method: :delete, data: { confirm: "「#{plan.title}」を削除します。よろしいですか？" } ) if plan.user_id == session[:user_id] %></td>
     <td>
       <% plan.categorizes.each{ |c| %>
         <%= c.category.name %><br />
@@ -52,9 +55,6 @@
     <td><%= plan.publish_start_at %></td>
     <td><%= plan.publish_end_at %></td>
     <td><%= plan.target_people %></td>
-    <td><%= link_to( t( "menu.show" ), plan_path( plan ) ) %></td>
-    <td><%= link_to( t( "menu.edit" ), edit_plan_path( plan ) ) if plan.user_id == session[:user_id] %></td>
-    <td><%= link_to( t( "menu.destroy" ), plan_path( plan ), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } ) if plan.user_id == session[:user_id] %></td>
   </tr>
 <% } %>
 </table>
