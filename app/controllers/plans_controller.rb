@@ -58,7 +58,6 @@ class PlansController < ApplicationController
   # create #
   #--------#
   def create( plan, categories, schedule )
-    puts "[ ---------- schedule ---------- ]" ; schedule.tapp ;
     @plan = Plan.new( plan )
     @plan.user_id = session[:user_id]
 

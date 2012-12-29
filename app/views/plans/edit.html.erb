@@ -80,8 +80,6 @@
 
   候補日<br />
   <% @schedules.each{ |s| %>
-<% puts "[ ---------- s.participations ---------- ]" ; s.participations.tapp ; %>
-
     <%= text_field_tag( "schedules[#{s.id}]", (s.candidate_day.present? ? s.candidate_day.strftime("%Y/%m/%d %H:%M") : nil), class: "span4", readonly: s.participations.present? ) %><br />
     <% s.participations.each{ |participation| %>
       <%= link_to_unless( participation.user.nickname.blank?, image_tag( participation.user.image, size: "18x18", class: "margin_under_plus4" ), "#{Settings.provider_page}#{participation.user.nickname}", target: "_blank" ) %>
