@@ -22,9 +22,19 @@
 
 <b>
   <% if @favorite.present? %>
-    <%= link_to( "☆お気に入り登録解除", plan_favorite_path( @favorite.plan, @favorite ), method: "delete", confirm: "本当に削除してよろしいですか？" ) %>
+    <%= link_to( "☆お気に入り登録解除", plan_favorite_path( @plan, @favorite ), method: "delete", confirm: "お気に入りを解除します。よろしいですか？" ) %>
   <% else %>
     <%= link_to( "☆お気に入りに登録", plan_favorites_path( @plan ), method: "post" ) %>
+  <% end %>
+</b><br />
+
+<hr />
+
+<b>
+  <% if @cheer.present? %>
+    <%= link_to( "☆応援をやめる", plan_cheer_path( @plan, @cheer ), method: "delete", confirm: "応援をやめます。よろしいですか？" ) %>
+  <% else %>
+    <%= link_to( "☆応援する", plan_cheers_path( @plan ), method: "post" ) %>
   <% end %>
 </b><br />
 
@@ -113,6 +123,14 @@
 
 <% @entries.each.with_index(1){ |entry, index| %>
   <%= index %> : <%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %> : <%= entry.comment %><br />
+<% } %>
+
+<hr />
+
+<h3>応援者一覧</h3>
+
+<% @cheers.each.with_index(1){ |cheer, index| %>
+  <%= render partial: '/layouts/user_icon', locals: { user: cheer.user } %>
 <% } %>
 
 <hr />

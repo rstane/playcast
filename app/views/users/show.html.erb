@@ -44,7 +44,16 @@
 
 <% @favorites.each.with_index(1){ |favorite, index| %>
   <%= index %> : <%= link_to( favorite.plan.title, plan_path( favorite.plan ) ) %>
-  <% if favorite.user_id == session[:user_id] %><b><%= link_to( "解除", plan_favorite_path( favorite.plan, favorite ), method: "delete", confirm: "本当に削除してよろしいですか？" ) %></b><% end %>
+  <% if favorite.user_id == session[:user_id] %><b><%= link_to( "解除", plan_favorite_path( favorite.plan, favorite ), method: "delete", confirm: "お気に入りを解除します。よろしいですか？" ) %></b><% end %>
+  <br />
+<% } %>
+<br />
+
+<h3>応援中</h3>
+
+<% @cheers.each.with_index(1){ |cheer, index| %>
+  <%= index %> : <%= link_to( cheer.plan.title, plan_path( cheer.plan ) ) %>
+  <% if cheer.user_id == session[:user_id] %><b><%= link_to( "やめる", plan_cheer_path( cheer.plan, cheer ), method: "delete", confirm: "応援をやめます。よろしいですか？" ) %></b><% end %>
   <br />
 <% } %>
 <br />

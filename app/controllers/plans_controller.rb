@@ -3,13 +3,21 @@ class PlansController < ApplicationController
   #-------#
   # index #
   #-------#
-  def index( category_id )
+  def index( category_id, sort )
     @plans = Plan.scoped
     if category_id.present?
       plan_ids = Categorize.where( category_id: category_id ).pluck(:plan_id)
       @plans   = @plans.where( id: plan_ids )
     end
-    @plans = @plans.includes( :user, { :categorizes => :category } ).order( "plans.created_at DESC" ).all
+    @plans = @plans.includes( :user, { :categorizes => :category } )
+
+    if sort.present? and sort == "populur"
+      @plans = @plans.order( "plans.cheers_count DESC, plans.favorites_count DESC" )
+    else
+      @plans = @plans.order( "plans.created_at DESC" )
+    end
+
+    @plans = @plans.all
 
     @favorites = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
     @categories = Category.order( "name ASC" ).all
@@ -21,6 +29,7 @@ class PlansController < ApplicationController
   def show( id )
     @plan       = Plan.where( id: id ).first
     @entries    = Entry.where( plan_id: @plan.id ).includes( :user ).order( "created_at DESC" ).all
+    @cheers     = Cheer.where( plan_id: @plan.id ).includes( :user ).order( "created_at DESC" ).all
     @categorize = Categorize.where( plan_id: @plan.id ).includes( :category ).order( "categories.name ASC" ).all
 
     schedules = Schedule.where( plan_id: @plan.id ).order( "candidate_day ASC" )
@@ -33,6 +42,7 @@ class PlansController < ApplicationController
     @comments = Comment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all
 
     @favorite = Favorite.where( user_id: session[:user_id], plan_id: @plan.id ).first
+    @cheer    = Cheer.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @entry    = Entry.where( user_id: session[:user_id], plan_id: @plan.id ).first
   end
 

@@ -52,6 +52,9 @@ gem "i18n_generators"
 # Exception Error Notice
 gem "exception_notification"
 
+# Counter Cache
+gem 'counter_culture'
+
 # Development
 group :development do
   gem 'sqlite3'

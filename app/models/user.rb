@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :plans,          :dependent => :destroy
   has_many :comments,       :dependent => :destroy
   has_many :favorites,      :dependent => :destroy
+  has_many :cheers,         :dependent => :destroy
   has_many :entries,        :dependent => :destroy
   has_many :feeds,          :dependent => :destroy
   has_many :participations, :dependent => :destroy

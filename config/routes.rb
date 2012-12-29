@@ -2,6 +2,7 @@ Playcast::Application.routes.draw do
   resources :plans do
     resource :comment
     resources :favorites
+    resources :cheers
     resources :entries
   end
 
