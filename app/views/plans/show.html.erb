@@ -39,7 +39,7 @@
     <% else %>
       <%= form_tag( plan_entries_path( @plan ) ) do %>
         <% 5.times{ |i| %>
-          <% if @entry_schedules[i].present? %>
+          <% if @entry_schedules[i].present? and @schedules[@entry_schedules[i]].candidate_day.present? %>
             <%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], false %>
             <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y/%m/%d %H:%M") %><br />
           <% end %>
@@ -128,12 +128,14 @@
 <h3>候補日</h3>
 
 <% @schedules.each.with_index(1){ |schedule, index| %>
-  <%= index %> : <%= schedule[1].candidate_day.strftime("%Y/%m/%d %H:%M") if schedule[1].present? %>
-  <% participations = @participations.select{ |x| x.schedule_id == schedule[1].id } %>
-  <% participations.each{ |participation| %>
-    <%= render partial: '/layouts/user_icon', locals: { user: participation.user } %>
-  <% } %>
-  <br />
+  <% if schedule[1].candidate_day.present? %>
+    <%= index %> : <%= schedule[1].candidate_day.strftime("%Y/%m/%d %H:%M") if schedule[1].present? %>
+    <% participations = @participations.select{ |x| x.schedule_id == schedule[1].id } %>
+    <% participations.each{ |participation| %>
+      <%= render partial: '/layouts/user_icon', locals: { user: participation.user } %>
+    <% } %>
+    <br />
+  <% end %>
 <% } %>
 
 <hr />

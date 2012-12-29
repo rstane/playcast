@@ -9,6 +9,7 @@ class Plan < ActiveRecord::Base
   has_many :categorizes, :dependent => :destroy
   has_many :feeds,       :dependent => :destroy
   has_many :schedules,   :dependent => :destroy
+  has_many :participations, :dependent => :destroy
 
   # コールバック
   after_create :create_feed_plan_start

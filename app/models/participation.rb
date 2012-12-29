@@ -3,4 +3,6 @@ class Participation < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :entry
+  belongs_to :plan
+  belongs_to :schedule
 end

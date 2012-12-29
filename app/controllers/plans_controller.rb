@@ -51,13 +51,14 @@ class PlansController < ApplicationController
     @plan = Plan.where( id: id, user_id: session[:user_id] ).first
     @categories = Category.order( "name ASC" ).all
     @categorize = Categorize.where( plan_id: @plan.id ).pluck(:category_id)
-    @schedules  = Schedule.where( plan_id: @plan.id ).order( "candidate_day ASC" ).pluck(:candidate_day)
+    @schedules  = Schedule.where( plan_id: @plan.id ).order( "schedules.candidate_day ASC" ).includes( :participations => :user ).all
   end
 
   #--------#
   # create #
   #--------#
   def create( plan, categories, schedule )
+    puts "[ ---------- schedule ---------- ]" ; schedule.tapp ;
     @plan = Plan.new( plan )
     @plan.user_id = session[:user_id]
 
@@ -72,9 +73,11 @@ class PlansController < ApplicationController
       # 候補日作成
       if schedule.present?
         schedule.each_pair{ |key, value|
-          if value.present?
-            Schedule.create( plan_id: @plan.id, candidate_day: Time.parse(value) )
-          end
+          new_schedule = Schedule.new
+          new_schedule.number        = key
+          new_schedule.plan_id       = @plan.id
+          new_schedule.candidate_day = Time.parse(value) rescue nil
+          new_schedule.save
         }
       end
 
@@ -87,7 +90,7 @@ class PlansController < ApplicationController
   #--------#
   # update #
   #--------#
-  def update( id, plan, categories, schedule )
+  def update( id, plan, categories, schedules )
     @plan = Plan.where( id: id, user_id: session[:user_id] ).first
 
     if @plan.update_attributes( plan )
@@ -100,16 +103,15 @@ class PlansController < ApplicationController
         }
       end
 
-      # 候補日更新(参加登録が無い場合のみ)
-      unless Participation.where( plan_id: @plan.id ).exists?
-        Schedule.where( plan_id: @plan.id ).delete_all
-        if schedule.present?
-          schedule.each_pair{ |key, value|
-            if value.present?
-              Schedule.create( plan_id: @plan.id, candidate_day: Time.parse(value) )
-            end
-          }
-        end
+      # 候補日更新(参加登録が無ければ)
+      if schedules.present?
+        schedules.each_pair{ |key, value|
+          unless Participation.where( plan_id: @plan.id, schedule_id: key ).exists?
+            schedule = Schedule.where( id: key, plan_id: @plan.id ).first
+            schedule.candidate_day = Time.parse(value) rescue nil
+            schedule.save
+          end
+        }
       end
 
       # 定員／最少開催人数チェック
