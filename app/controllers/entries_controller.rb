@@ -5,6 +5,10 @@ class EntriesController < ApplicationController
   #--------#
   def create( plan_id, entry )
     if entry.present?
+      if entry[:schedules].blank?
+        redirect_to( plan_path( plan_id ), alert: "参加日を選択してください。" ) and return
+      end
+
       new_entry = Entry.where(
         user_id: session[:user_id],
         plan_id: plan_id,
