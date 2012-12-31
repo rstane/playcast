@@ -70,7 +70,7 @@
 
   <div class="field">
     <%= f.label :publish_end_at %><br />
-    <%= f.datetime_select :publish_end_at, use_month_numbers: true, default: Time.now, minute_step: 5 %>
+    <%= f.datetime_select :publish_end_at, use_month_numbers: true, default: Time.now.since(1.month), minute_step: 5 %>
   </div>
 
   <div class="field">

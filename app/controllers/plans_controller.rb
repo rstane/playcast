@@ -50,7 +50,7 @@ class PlansController < ApplicationController
   # new #
   #-----#
   def new
-    @plan = Plan.new
+    @plan = Plan.new( min_people: 1, max_people: 1 )
     @categories = Category.order( "name ASC" ).all
   end
 
