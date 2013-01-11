@@ -19,7 +19,12 @@
       <li><%= link_to( "Logout", logout_path ) %></li>
     <% else %>
       <%# 未ログイン %>
-      <li><%= link_to "Login", "/auth/#{Settings.provider}" %></li>
+      <li>
+        <%= link_to "/auth/#{Settings.provider}" do %>
+          <%= image_tag( "", size: "28x28", class: "margin_minus2" ) %>
+        マイページ
+        <% end %>
+      </li>a
     <% end %>
   </ul>
 
