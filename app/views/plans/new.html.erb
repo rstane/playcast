@@ -1,91 +1,405 @@
 
-<h1>新規プラン作成</h1>
+<div id="content_plans">
 
-<br />
 
-<%= form_for( :plan, url: plans_path, html: { class: "plan_form" } ) do |f| %>
-  <% if @plan.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
 
-      <ul>
-      <% @plan.errors.full_messages.each{ |msg| %>
-        <li><%= msg %></li>
-      <% } %>
-      </ul>
-    </div>
-  <% end %>
+  <div id="planpost">
+  
+  <h1>プラン投稿</h1>
+  
+  
+  <h2>プランのタイトル
+  <span class="postmark">必須</span>
+  </h2>
+         <form method="get" action="#">
+          <input type="text" placeholder="◯◯に一緒に行きませんか？" size="75" name="keyword"/>
+         </form>
+  
+  
+  <h2>イメージ画像
+  <span class="postmark">必須</span>
+  </h2>
+         <form method="get" action="#">
+          <input type="text" placeholder="◯◯.com" size="75" name="keyword"/>
+         </form>
+  
+  
+  <h2>詳細説明
+  <span class="postmark">必須</span>
+  </h2>
+         <textarea name="comment" rows="4" cols="62" placeholder="気になってはいるけど、なかなか機会が無い◯◯。みんなで楽しい思い出を作りましょう！"></textarea>
+  
+  
+  
+  <h2>日時候補を選択してください(必ず１つ以上選択〜最大5つまで)
+  <span class="postmark">必須</span>
+  </h2>
+  <p style=" font-size: 0.7em; ">※【日時候補とは】<br>あらかじめ開催する日時の候補を決めておき、一番参加者が多く集まった日時で開催します。貴方の都合が良い日時を選びましょう。</p>
 
-  <div class="field">
-    <h3><%= "カテゴリ" %></h3>
-    <% @categories.each.with_index(1){ |category, index| %>
-      <%= check_box_tag "categories[#{index}]", category.id, (params[:categories].present? ? params[:categories].has_value?(category.id.to_s) : false) %>
-      <%= label_tag "categories[#{index}]", category.name %>
-    <% } %>
+          <script type="text/javascript">
+         $(function(){
+　       $("#datepicker").datepicker();
+         });
+         </script>
+         
+         <p>1.<input type="text" placeholder="⇒カレンダーが開きます" id="datepicker" size="21">
+         <select name="time" >
+                <option value="23:30">23:30</option>
+        <option value="23:00">23:00</option>
+          <option value="22:30">22:30</option>
+        <option value="22:00">22:00</option>
+                <option value="21:30">21:30</option>
+                <option value="21:00">21:00</option>
+                <option value="20:30">20:30</option>
+                <option value="20:00">20:00</option>
+                <option value="19:30">19:30</option>
+                <option value="19:00">19:00</option>
+                <option value="18:30">18:30</option>
+                <option value="18:00">18:00</option>
+                <option value="17:30">17:30</option>
+        <option value="17:00">17:00</option>
+                <option value="16:30">16:30</option>
+                <option value="16:00">16:00</option>
+                <option value="15:30">15:30</option>
+                <option value="15:00">15:00</option>
+                <option value="14:30">14:30</option>
+                <option value="14:00">14:00</option>
+                <option value="13:30">13:30</option>
+                <option value="13:00">13:00</option>
+                <option value="12:30">12:30</option>
+                <option value="12:00">12:00</option>
+                <option value="11:30">11:30</option>
+                <option value="11:00">11:00</option>
+                <option value="10:30">10:30</option>
+                <option value="10:00">10:00</option>
+                <option value="09:30">09:30</option>
+                <option value="09:00">09:00</option>
+                <option value="08:30">08:30</option>
+                <option value="08:00">08:00</option>
+                <option value="07:30">07:30</option>
+                <option value="07:00">07:00</option>
+                <option value="06:30">06:30</option>
+                <option value="06:00">06:00</option>
+                <option value="05:30">05:30</option>
+                <option value="05:00">05:00</option>
+                <option value="04:30">04:30</option>
+                <option value="04:00">04:00</option>
+                <option value="03:30">03:30</option>
+                <option value="03:00">03:00</option>
+                <option value="02:30">02:30</option>
+        <option value="02:00">02:00</option>
+                <option value="01:30">01:30</option>
+          <option value="01:00">01:00</option>
+        <option value="00:30">00:30</option>
+                <option value="00:00">00:00</option>
+      　　</select>にスタート</p>   
+            
+            <script type="text/javascript">
+         $(function(){
+　       $("#datepicker2").datepicker();
+         });
+         </script>
+         <p>2.<input type="text" placeholder="⇒カレンダーが開きます" id="datepicker2" size="21">
+         <select name="time" >
+                <option value="23:30">23:30</option>
+        <option value="23:00">23:00</option>
+          <option value="22:30">22:30</option>
+        <option value="22:00">22:00</option>
+                <option value="21:30">21:30</option>
+                <option value="21:00">21:00</option>
+                <option value="20:30">20:30</option>
+                <option value="20:00">20:00</option>
+                <option value="19:30">19:30</option>
+                <option value="19:00">19:00</option>
+                <option value="18:30">18:30</option>
+                <option value="18:00">18:00</option>
+                <option value="17:30">17:30</option>
+        <option value="17:00">17:00</option>
+                <option value="16:30">16:30</option>
+                <option value="16:00">16:00</option>
+                <option value="15:30">15:30</option>
+                <option value="15:00">15:00</option>
+                <option value="14:30">14:30</option>
+                <option value="14:00">14:00</option>
+                <option value="13:30">13:30</option>
+                <option value="13:00">13:00</option>
+                <option value="12:30">12:30</option>
+                <option value="12:00">12:00</option>
+                <option value="11:30">11:30</option>
+                <option value="11:00">11:00</option>
+                <option value="10:30">10:30</option>
+                <option value="10:00">10:00</option>
+                <option value="09:30">09:30</option>
+                <option value="09:00">09:00</option>
+                <option value="08:30">08:30</option>
+                <option value="08:00">08:00</option>
+                <option value="07:30">07:30</option>
+                <option value="07:00">07:00</option>
+                <option value="06:30">06:30</option>
+                <option value="06:00">06:00</option>
+                <option value="05:30">05:30</option>
+                <option value="05:00">05:00</option>
+                <option value="04:30">04:30</option>
+                <option value="04:00">04:00</option>
+                <option value="03:30">03:30</option>
+                <option value="03:00">03:00</option>
+                <option value="02:30">02:30</option>
+        <option value="02:00">02:00</option>
+                <option value="01:30">01:30</option>
+          <option value="01:00">01:00</option>
+        <option value="00:30">00:30</option>
+                <option value="00:00">00:00</option>
+      　　</select>にスタート</p>   
+            
+            <script type="text/javascript">
+         $(function(){
+　       $("#datepicker3").datepicker();
+         });
+         </script>
+         <p>3.<input type="text" placeholder="⇒カレンダーが開きます" id="datepicker3" size="21">
+         <select name="time" >
+                <option value="23:30">23:30</option>
+        <option value="23:00">23:00</option>
+          <option value="22:30">22:30</option>
+        <option value="22:00">22:00</option>
+                <option value="21:30">21:30</option>
+                <option value="21:00">21:00</option>
+                <option value="20:30">20:30</option>
+                <option value="20:00">20:00</option>
+                <option value="19:30">19:30</option>
+                <option value="19:00">19:00</option>
+                <option value="18:30">18:30</option>
+                <option value="18:00">18:00</option>
+                <option value="17:30">17:30</option>
+        <option value="17:00">17:00</option>
+                <option value="16:30">16:30</option>
+                <option value="16:00">16:00</option>
+                <option value="15:30">15:30</option>
+                <option value="15:00">15:00</option>
+                <option value="14:30">14:30</option>
+                <option value="14:00">14:00</option>
+                <option value="13:30">13:30</option>
+                <option value="13:00">13:00</option>
+                <option value="12:30">12:30</option>
+                <option value="12:00">12:00</option>
+                <option value="11:30">11:30</option>
+                <option value="11:00">11:00</option>
+                <option value="10:30">10:30</option>
+                <option value="10:00">10:00</option>
+                <option value="09:30">09:30</option>
+                <option value="09:00">09:00</option>
+                <option value="08:30">08:30</option>
+                <option value="08:00">08:00</option>
+                <option value="07:30">07:30</option>
+                <option value="07:00">07:00</option>
+                <option value="06:30">06:30</option>
+                <option value="06:00">06:00</option>
+                <option value="05:30">05:30</option>
+                <option value="05:00">05:00</option>
+                <option value="04:30">04:30</option>
+                <option value="04:00">04:00</option>
+                <option value="03:30">03:30</option>
+                <option value="03:00">03:00</option>
+                <option value="02:30">02:30</option>
+        <option value="02:00">02:00</option>
+                <option value="01:30">01:30</option>
+          <option value="01:00">01:00</option>
+        <option value="00:30">00:30</option>
+                <option value="00:00">00:00</option>
+      　　</select>にスタート</p>   
+            
+            
+            <script type="text/javascript">
+         $(function(){
+　       $("#datepicker4").datepicker();
+         });
+         </script>
+         <p>4.<input type="text" placeholder="⇒カレンダーが開きます" id="datepicker4" size="21">
+         <select name="time" >
+                <option value="23:30">23:30</option>
+        <option value="23:00">23:00</option>
+          <option value="22:30">22:30</option>
+        <option value="22:00">22:00</option>
+                <option value="21:30">21:30</option>
+                <option value="21:00">21:00</option>
+                <option value="20:30">20:30</option>
+                <option value="20:00">20:00</option>
+                <option value="19:30">19:30</option>
+                <option value="19:00">19:00</option>
+                <option value="18:30">18:30</option>
+                <option value="18:00">18:00</option>
+                <option value="17:30">17:30</option>
+        <option value="17:00">17:00</option>
+                <option value="16:30">16:30</option>
+                <option value="16:00">16:00</option>
+                <option value="15:30">15:30</option>
+                <option value="15:00">15:00</option>
+                <option value="14:30">14:30</option>
+                <option value="14:00">14:00</option>
+                <option value="13:30">13:30</option>
+                <option value="13:00">13:00</option>
+                <option value="12:30">12:30</option>
+                <option value="12:00">12:00</option>
+                <option value="11:30">11:30</option>
+                <option value="11:00">11:00</option>
+                <option value="10:30">10:30</option>
+                <option value="10:00">10:00</option>
+                <option value="09:30">09:30</option>
+                <option value="09:00">09:00</option>
+                <option value="08:30">08:30</option>
+                <option value="08:00">08:00</option>
+                <option value="07:30">07:30</option>
+                <option value="07:00">07:00</option>
+                <option value="06:30">06:30</option>
+                <option value="06:00">06:00</option>
+                <option value="05:30">05:30</option>
+                <option value="05:00">05:00</option>
+                <option value="04:30">04:30</option>
+                <option value="04:00">04:00</option>
+                <option value="03:30">03:30</option>
+                <option value="03:00">03:00</option>
+                <option value="02:30">02:30</option>
+        <option value="02:00">02:00</option>
+                <option value="01:30">01:30</option>
+          <option value="01:00">01:00</option>
+        <option value="00:30">00:30</option>
+                <option value="00:00">00:00</option>
+      　　</select>にスタート</p>   
+            
+            
+            <script type="text/javascript">
+         $(function(){
+　       $("#datepicker5").datepicker();
+         });
+         </script>
+         <p>5.<input type="text" placeholder="⇒カレンダーが開きます" id="datepicker5" size="21">
+         <select name="time" >
+                <option value="23:30">23:30</option>
+        <option value="23:00">23:00</option>
+          <option value="22:30">22:30</option>
+        <option value="22:00">22:00</option>
+                <option value="21:30">21:30</option>
+                <option value="21:00">21:00</option>
+                <option value="20:30">20:30</option>
+                <option value="20:00">20:00</option>
+                <option value="19:30">19:30</option>
+                <option value="19:00">19:00</option>
+                <option value="18:30">18:30</option>
+                <option value="18:00">18:00</option>
+                <option value="17:30">17:30</option>
+        <option value="17:00">17:00</option>
+                <option value="16:30">16:30</option>
+                <option value="16:00">16:00</option>
+                <option value="15:30">15:30</option>
+                <option value="15:00">15:00</option>
+                <option value="14:30">14:30</option>
+                <option value="14:00">14:00</option>
+                <option value="13:30">13:30</option>
+                <option value="13:00">13:00</option>
+                <option value="12:30">12:30</option>
+                <option value="12:00">12:00</option>
+                <option value="11:30">11:30</option>
+                <option value="11:00">11:00</option>
+                <option value="10:30">10:30</option>
+                <option value="10:00">10:00</option>
+                <option value="09:30">09:30</option>
+                <option value="09:00">09:00</option>
+                <option value="08:30">08:30</option>
+                <option value="08:00">08:00</option>
+                <option value="07:30">07:30</option>
+                <option value="07:00">07:00</option>
+                <option value="06:30">06:30</option>
+                <option value="06:00">06:00</option>
+                <option value="05:30">05:30</option>
+                <option value="05:00">05:00</option>
+                <option value="04:30">04:30</option>
+                <option value="04:00">04:00</option>
+                <option value="03:30">03:30</option>
+                <option value="03:00">03:00</option>
+                <option value="02:30">02:30</option>
+        <option value="02:00">02:00</option>
+                <option value="01:30">01:30</option>
+          <option value="01:00">01:00</option>
+        <option value="00:30">00:30</option>
+                <option value="00:00">00:00</option>
+      　　</select>にスタート</p>   
+         
+  <h2>場所
+  <span class="postmark">必須</span>
+  </h2>
+         <form method="get" action="#">
+          <input type="text" placeholder="新宿" size="30" name="keyword"/>
+         </form>
+  
+  <h2>予算
+  <span class="postmark">必須</span>
+  </h2>
+         <form method="get" action="#">
+          <input type="text" placeholder="3000円くらい" size="30" name="keyword"/>
+         </form>
+  
+  <h2>最低開催人数
+  <span class="postmark">必須</span>
+  </h2>
+         <form method="get" action="#">
+          <input type="number" min="0" max="9999" name="keyword"/>人以上集まったら開催決定
+          </form>
+  
+  <h2>定員</h2>
+         <form method="get" action="#">
+          <input type="number" min="0" max="9999"  name="keyword"/>人まで
+         </form>
+  
+  <h2>こんな人に来てほしい</h2>
+         <textarea name="comment" rows="4" cols="43" placeholder="◯◯が好きな人、年代が近めな人"></textarea>
+         
+         
+  
+  <h2>カテゴリ選択
+  <span class="postmark">必須</span>
+  </h2>
+  
+  <input type="radio" name="q1" value="遊び系"> 遊び系プラン
+<input type="radio" name="q1" value="学び系"> 学び系プラン
+<input type="radio" name="q1" value="その他"> その他のプラン
+       
+      
+       
+       
+       
+    <br><br>
+    <a href="#" class="postbutton"></a>
+    
   </div>
+  
+  
+  
+  
+  
+  <div id="explan">
+   
+   <div class="extitle">
+   ※プランの記入例※<br>(このような形で表示されます)
+   </div>   
+   
+    <h1>(例)新宿でカラオケに行きましょう！</h1>
+    <div class="explanimg"><img src="/assets/plansozai.png" alt="みんなでカラオケに行こう！" width="340px" height="220" /></p></div>
 
-  <br />
-
-  <h3><%= "プラン情報" %></h3>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <dl class="explande">
+    <dt>プラン説明：</dt> <dd>主にJ-POP、ロック、アニソンなどが好きです! 中々カラオケに行く機会が無いという方、一緒に歌い尽くしましょう!</dd>
+    <dt>日時候補：</dt> <dd>12月16日 19:00〜<br />12月17日 19:00〜<br />12月22日 19:00〜<br />12月28日 19:00〜<br />12月31日 19:00〜<br />の内、参加者が集まった日にちに開催</dd>
+    <dt>場所：</dt> <dd>渋谷・新宿・六本木あたりをアンケートで決める</dd>
+    <dt>予算：</dt> <dd>普通のカラオケの値段</dd>
+    <dt>最低開催人数：</dt> <dd>6人以上で開催</dd>
+    <dt>定員：</dt> <dd>10人まで</dd>
+    <dt>こんな人に来てほしい：</dt> <dd>大学生限定
+    </dd>
+    </dl>
+   
   </div>
+  
+  
+  
+  
+</div>
 
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, rows: 5, class: "span6" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image_url %><br />
-    <%= f.text_field :image_url, class: "span6" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :place %><br />
-    <%= f.text_field :place, class: "span6" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :budget %><br />
-    <%= f.text_field :budget %>
-  </div>
-
-  <div class="field">
-    <%= f.label :min_people %><br />
-    <%= f.number_field :min_people %>
-  </div>
-
-  <div class="field">
-    <%= f.label :max_people %><br />
-    <%= f.number_field :max_people %>
-  </div>
-
-  <div class="field">
-    <%= f.label :publish_start_at %><br />
-    <%= f.datetime_select :publish_start_at, use_month_numbers: true, default: Time.now, minute_step: 5 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :publish_end_at %><br />
-    <%= f.datetime_select :publish_end_at, use_month_numbers: true, default: Time.now.since(1.month), minute_step: 5 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :target_people %><br />
-    <%= f.text_area :target_people, rows: 5, class: "span6" %>
-  </div>
-
-  候補日<br />
-  <% 1.upto(5){ |n| %>
-    <%= text_field_tag( "schedule[#{n}]", nil, class: "span4" ) %><br />
-  <% } %>
-
-  <div class="actions">
-    <%= f.submit t( "menu.create" ), data: { 'disable-with' => t( "menu.create" ) } %>
-  </div>
-<% end %>
-
-<%= link_to t( "menu.list" ), plans_path %>

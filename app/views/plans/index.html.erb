@@ -1,10 +1,32 @@
-<br />
 
-<h1>プラン一覧</h1>
 
-<br />
 
-<b>ソート : </b>
+  <div id="mainpic">
+    <div id="mainpicinner">
+      <div class="white">
+        <div class="whiteinner">
+          <h2>どうしても、<br />
+            やりたいことがある。</h2>
+          <p>どうしてもやりたい事があるけれど、<br />
+            友達と予定が合わなかったり、友達は乗り気じゃなくて、<br />
+            結局諦めてしまう・・・。<br />
+            そんな時は「Playcast」で、あなたの気持ちに共感してくれる人を<br />
+            見つけて、気の合う仲間と共に最高の思い出を作りましょう。</p>
+          <br />
+          <%= link_to  "" , new_plan_path, class: "postbuttontop" %>
+         </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="content">
+    <div id="content_inner">
+      <div class="post">
+        <h2>参加募集中のプラン一覧</h2>
+      </div>
+
+      <b>ソート : </b>
 <%= link_to( "新着", plans_path( sort: nil ) ) %>
 <%= link_to( "人気", plans_path( sort: "populur" ) ) %>
 <br />
@@ -16,69 +38,37 @@
 <% } %>
 <br />
 
-<br />
+     <% @plans.each{ |plan| %>
+        <div class="imgcaption">
+          <div class="imginner">
+            <a href="plans.html">
+            <p><img src="plansozai.png" width="210" height="117" alt="画像の説明" /></p>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Title</th>
-    <th></th>
-    <th>応援数</th>
-    <th>お気に入り数</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th>カテゴリ</th>
-    <th>Image url</th>
-    <th>Place</th>
-    <th>Budget</th>
-    <th>Min people</th>
-    <th>Max people</th>
-    <th>Publish start at</th>
-    <th>Publish end at</th>
-    <th>Target people</th>
-  </tr>
 
-<% @plans.each{ |plan| %>
-  <tr>
-    <td><%= link_to( image_tag( plan.user.image, size: "18x18", class: "margin_minus2" ), user_path( plan.user ) ) %></td>
-    <td><%= link_to( plan.title, plan_path( plan ) ) %></td>
-    <td>
-      <% if @favorites[plan.id].present? %>
-        <%= link_to( "お気に入り：解除", plan_favorite_path( @favorites[plan.id].plan, @favorites[plan.id] ), method: "delete", confirm: "本当に削除してよろしいですか？" ) %>
+  <%= link_to( plan.title, plan_path( plan ) ) %>
+  <br>
+
+　　　<% if @favorites[plan.id].present? %>
+        <%= link_to( "", plan_favorite_path( @favorites[plan.id].plan, @favorites[plan.id] ), method: "delete", confirm: "お気に入りを解除してよろしいですか？" , class: "btncancell" ) %>
       <% else %>
-        <%= link_to( "お気に入り：登録", plan_favorites_path( plan ), method: "post" ) %>
+        <%= link_to( "", plan_favorites_path( plan ), method: "post" , class: "btn" ) %>
       <% end %>
-    </td>
-    <td><%= plan.cheers_count %></td>
-    <td><%= plan.favorites_count %></td>
-    <td><%= plan.description %></td>
-    <td><%= link_to( t( "menu.show" ), plan_path( plan ) ) %></td>
-    <td><%= link_to( t( "menu.edit" ), edit_plan_path( plan ) ) if plan.user_id == session[:user_id] %></td>
-    <td><%= link_to( t( "menu.destroy" ), plan_path( plan ), method: :delete, data: { confirm: "「#{plan.title}」を削除します。よろしいですか？" } ) if plan.user_id == session[:user_id] %></td>
-    <td>
-      <% plan.categorizes.each{ |c| %>
-        <%= c.category.name %><br />
-      <% } %>
-    </td>
-    <td><%= plan.image_url %></td>
-    <td><%= plan.place %></td>
-    <td><%= plan.budget %></td>
-    <td><%= plan.min_people %></td>
-    <td><%= plan.max_people %></td>
-    <td><%= plan.publish_start_at %></td>
-    <td><%= plan.publish_end_at %></td>
-    <td><%= plan.target_people %></td>
-  </tr>
-<% } %>
-</table>
 
-<br />
 
-<%= link_to t( "menu.new" ), new_plan_path %>
+            </a>
+            <br/>
 
-<br />
-<br />
-
-<%= link_to t( "menu.top" ), :root %>
+          </div>
+        </div>
+        
+             
+     <% } %>
+     
+     
+    </div>
+  </div>
+  
+ 
+</div>
+</body>
+</html>

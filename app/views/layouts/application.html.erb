@@ -1,31 +1,76 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
 <head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <title><%= Settings.app_name %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+
+<script>
+$(function() {
+  $('[placeholder]').ahPlaceholder({
+    placeholderColor : 'silver',
+    placeholderAttr : 'placeholder',
+    likeApple : false
+  });
+});
+</script>
+
+<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/start/jquery-ui.css" rel="stylesheet" />
 </head>
+
 <body>
 
-  <%# グローバルメニュー %>
-  <ul class="nav nav-tabs navbar-fixed-top backcolor_white padding_top10">
-    <li class="navbar offset2 active"><%= link_to Settings.app_name, :root, class: "brand" %></li>
-    <% unless session[:user_id].blank? %>
-      <%# ログイン済み %>
-      <li><%= render partial: '/layouts/user_icon', locals: { user: current_user } %></li>
-      <li class="<%= params[:controller] == 'plans' ? 'active' : '' %>"><%= link_to( "Plan", plans_path ) %></li>
-      <li class="<%= params[:controller] == 'users' ? 'active' : '' %>"><%= link_to( "MyPage", user_path( session[:user_id] ) ) %></li>
-      <li><%= link_to( "Logout", logout_path ) %></li>
-    <% else %>
+<div id="container"> 
+  
+  
+  <div id="header">
+    <div id="header_inner">
+      <h1><a href="http://0.0.0.0:3000/plans/"><img src="/assets/logo1-3.png"/> </a></h1>
+      <p>同じ興味の遊び仲間を探すことが出来るサービス「プレイキャスト」</p>
+      
+      <form method="get" action="#" id="search">
+        <p>
+          <input type="text" placeholder="プランを検索" id="text" name="keyword" />
+          <input type="submit" id="submit" value="検索" />
+        </p>
+      </form>
+
+       <div id="submenu">
+          <ul>
+            <li class="first"><a href="feed.html">お知らせ</a></li>
+
+
+            <li>
+
+
+
+<% if session[:user_id].present? %>
+<%= link_to( user_path( session[:user_id] ) ) do %>
+<%= image_tag( current_user.image, size: "28x28", class: "margin_minus2" )%>
+マイページ
+<% end %>
+
+<% else %>
       <%# 未ログイン %>
-      <li>
-        <%= link_to "/auth/#{Settings.provider}" do %>
-          <%= image_tag( "", size: "28x28", class: "margin_minus2" ) %>
-        マイページ
-        <% end %>
-      </li>a
-    <% end %>
+      <li><%= link_to "Login", "/auth/#{Settings.provider}" %></li>
+<% end %>
+
+
+
+            </li>
+          </ul>
+        </div>
+       
+              
+       
+      </div>
+  </div>
+
   </ul>
 
   <div class="container">
@@ -38,16 +83,15 @@
 
   <%= yield %>
 
-  <br />
-  <br />
-
-  <center>
-    Developed by <a href="https://twitter.com/<%= Settings.programmer_twitter_id %>/" target="_blank">@<%= Settings.programmer_twitter_id %></a>,
-    Designed by <a href="https://twitter.com/<%= Settings.designer_twitter_id %>/" target="_blank">@<%= Settings.designer_twitter_id %></a>,
-    Licence by <a href="https://creativecommons.org/licenses/by-nc-sa/2.1/jp/" target="_blank">CC BY-NC-SA 2.1</a>
-  </center>
-
-  <br />
+   <div id="foot">
+    <div id="footer"
+      <div id="footer_inner">
+        
+        
+        <p>Copyright (c) Playcast.All Rights Reserved.</p><br>
+      </div>
+    </div>
+  </div>
 
   </div>
 

@@ -5,7 +5,7 @@
 /* ==================== レイアウト ==================== */
 
 body	{margin: 0;
-background-image:url(%E8%83%8C%E6%99%AF%E7%B4%A0%E6%9D%90%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B6%E3%83%A9%E3%82%B6%E3%83%A9.png);}
+background-image:url("/assets/backgroundimg.png");}
 	
 
 #container {width: 100%;
@@ -51,7 +51,7 @@ z-index:1;
 
 #header	{width: 100%;
 	height: 45px;
-	background-image:url(%E3%83%8D%E3%82%A4%E3%83%90%E3%83%BC%E3%83%98%E3%83%83%E3%83%80%E3%83%BC.png);
+	background-image:url("/assets/headerimg.png");
 	color: #000000;
 	position: fixed;
 	z-index:2;
@@ -197,12 +197,12 @@ z-index:1;
 　　　　　　　 }
 
 .postbuttontop { display:block;
-                  width:215px; height:52px;
-				  background-image:url(planpost.png);
+                  width:232px; height:53px;
+				  background-image:url("/assets/planpost.png");
 				  background-repeat:no-repeat;
 				  margin-top: -15px;}
 
-.postbuttontop:hover { background-position:0px -52px;
+.postbuttontop:hover { background-position:0px -56px;
                         background-repeat:no-repeat;}
 
 
@@ -256,15 +256,22 @@ border-radius: 5px;        /* CSS3草案 */
 				 font-size:0.8em;}
 
 .btn {display:block;
-      width:102px; height:26px;
+      width: 108px;
+      height: 31px;
 	  background-image:url(btn.png);
 	  background-repeat:no-repeat;
 	  margin:auto;}
 	  
-.btn:hover { background-position:0px -26px;
+.btn:hover { background-position:0px -32px;
              background-repeat:no-repeat;}
 
-
+.btncancell {display:block;
+      width: 108px;
+      height: 31px;
+      background-position:0px -66px;
+	  background-image:url(btn.png);
+	  background-repeat:no-repeat;
+	  margin:auto;}
 
 /* ==================== プラン投稿ページ ==================== */
 
@@ -311,13 +318,13 @@ border-radius: 3px;
 
 
 .postbutton {display:block;
-      width:186px; height:40px;
+      width:188px; height:45px;
 	  background-image:url(postbutton.png);
 	  background-repeat:no-repeat;
 	  margin:auto;
 	 }
 
-.postbutton:hover { background-position:0px -40px;
+.postbutton:hover { background-position:0px -45px;
              background-repeat:no-repeat;}
 
 /* ========プランの例========== */
@@ -490,23 +497,22 @@ dl.castdown dd {
    
 #attend{width: 680px;
      padding:10px;
-     padding-bottom: 40px;margin-bottom:10px;
+     margin-bottom:10px;
 	 background-color:#FFF;
 	    /* firefox　*/
       /* safari、chorme */
-     border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */  
+     border: solid 1px #E0E0E0; border-radius: 5px;        /* CSS3草案 */  
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
-#attendinner { padding-left: 10px;
-               margin-bottom: 10px;}
+#attendinner { padding-left: 10px; }
  
 
 #attend h3 {
 color: white;
 padding: 5px 8px;
-margin: 0 0 20px 0;
+margin: 0;
 font-size: 1.4em;
 background-color: #45AA25;
 border-radius: 5px;
@@ -528,48 +534,75 @@ border-radius: 5px;
 
 
 .attendbutton {display:block;
-      width:218px; height:46px;
+      width:222px; height:51px;
 	  background-image:url(attendbutton.png);
+	  border:none;
+	  background-color:#fff;
 	  background-repeat:no-repeat;
 	  margin:auto;
 	 }
 
-.attendbutton:hover { background-position:0px -46px;
+.attendbutton:hover { background-position:0px -55px;
+         	 background-color:#fff;
              background-repeat:no-repeat;}
 
 
 .attendbutton2 {display:block;
-      width:202px; height:44px;
-	  background-image:url(attendbutton2.png);
+      width:205px; height:47px;
+	  background-image:url(sidebuttons.png);
 	  background-repeat:no-repeat;
 	  margin:auto;
 	  margin-bottom: 10px;
 	 }
 
-.attendbutton2:hover { background-position:0px -44px;
+.attendbutton2:hover { background-position:0px -49px;
              background-repeat:no-repeat;}
 		
 		
 .btn2 {display:block;
-      width:202px; height:42px;
-	  background-image:url(btn2.png);
+      width: 205px;
+height: 47px;
+background-position: -210px 0px;
+	  background-image:url(sidebuttons.png);
 	  background-repeat:no-repeat;
 	  margin:auto;
 	 }
 
-.btn2:hover { background-position:0px -42px;
+.btn2:hover { background-position:-210px -49px;
              background-repeat:no-repeat;}	
 			 	
 
+.btn2cancell {display:block;
+      width: 205px;
+height: 47px;
+background-position: -210px -100px;
+	  background-image:url(sidebuttons.png);
+	  background-repeat:no-repeat;
+	  margin:auto;
+	 }			 	
+
 .ouenbutton {display:block;
-      width:162px; height:31px;
-	  background-image:url(ouenbutton.png);
+      width: 166px;
+      height: 36px;
+      background-position: -419px 0px;
+	  background-image:url(sidebuttons.png);
 	  background-repeat:no-repeat;
 	  margin:auto;
 	 }
 
-.ouenbutton:hover { background-position:0px -31px;
+.ouenbutton:hover { background-position:-419px -38px;
              background-repeat:no-repeat;}
+
+
+
+.ouenbuttoncancell {display:block;
+      width: 166px;
+      height: 36px;
+      background-position: -419px -77px;
+	  background-image:url(sidebuttons.png);
+	  background-repeat:no-repeat;
+	  margin:auto;
+	 }
 
 
 #attendlink{padding-top:50px;
@@ -579,9 +612,8 @@ border-radius: 5px;
 
 
 
-#commentflame {width: 325px;
+#commentflame {width: 680px;
           padding:10px;
-          float:left;
 	      background-color:#FFF;
 	          /* firefox　*/
             /* safari、chorme */
@@ -605,18 +637,7 @@ dl.comms dd {
 	margin-left: 45px;
 }	
 	
-	
-		  
 
-#vote {width: 325px;
-       padding:10px;
-       float:right;
-	   background-color:#FFF;
-           /* firefox　*/
-         /* safari、chorme */
-       border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */  
-       -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
-       -moz-border-radius: 5px;   /* Firefox用 */}
 
 
 
