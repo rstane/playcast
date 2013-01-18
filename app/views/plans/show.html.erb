@@ -1,182 +1,135 @@
 <div id="content_plans">
- 
- <div id="leftcontents">
-  
-   <div id="plan">
-   
-   <h1><%= @plan.title %></h1>
-   <div class="planimg"><img src="plansozai.png" alt="みんなでカラオケに行こう！" width="580px" height="340" /></p></div>
+  <div id="leftcontents">
+    <div id="plan">
+      <h1><%= @plan.title %></h1>
+      <div class="planimg"><img src="/assets/plansozai.png" alt="みんなでカラオケに行こう！" width="580px" height="340" /></p></div>
+      <dl class="plande">
+      <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
+      <dt>日時候補：</dt>
+      <dd>
+        <% @schedules.each.with_index(1){ |schedule, index| %>
+          <% if schedule[1].candidate_day.present? %>
+            <%= schedule[1].candidate_day.strftime("%Y/%m/%d %H:%M") if schedule[1].present? %>
+            <% participations = @participations.select{ |x| x.schedule_id == schedule[1].id } %>
+            <% participations.each{ |participation| %>
+              <%= render partial: '/layouts/user_icon', locals: { user: participation.user } %>
+            <% } %>
+            <br />
+          <% end %>
+        <% } %>
+      </dd>
+      <dt>場所：</dt> <dd><%= @plan.place %></dd>
+      <dt>予算：</dt> <dd><%= @plan.budget %></dd>
+      <dt>最低開催人数：</dt> <dd><%= @plan.min_people %>人以上集まらないと開催しない</dd>
+      <dt>定員：</dt> <dd><%= @plan.max_people %>人まで</dd>
+      <dt>こんな人に来てほしい：</dt> <dd><%= @plan.target_people %>
+      </dd>
+      </dl>
+    </div>
 
-   <dl class="plande">
-   <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
-   <dt>日時候補：</dt> <dd><% @schedules.each.with_index(1){ |schedule, index| %>
-  <% if schedule[1].candidate_day.present? %>
-    <%= schedule[1].candidate_day.strftime("%Y/%m/%d %H:%M") if schedule[1].present? %>
-    <% participations = @participations.select{ |x| x.schedule_id == schedule[1].id } %>
-    <% participations.each{ |participation| %>
-      <%= render partial: '/layouts/user_icon', locals: { user: participation.user } %>
-    <% } %>
-    <br />
-  <% end %>
-<% } %></dd>
-   <dt>場所：</dt> <dd><%= @plan.place %></dd>
-   <dt>予算：</dt> <dd><%= @plan.budget %></dd>
-   <dt>最低開催人数：</dt> <dd><%= @plan.min_people %>人以上集まらないと開催しない</dd>
-   <dt>定員：</dt> <dd><%= @plan.max_people %>人まで</dd>
-   <dt>こんな人に来てほしい：</dt> <dd><%= @plan.target_people %>
-   </dd>
+    <div id="cast">
+      <div id="t-accordion" class="st-accordion">
+        <ul>
+          <li>
+            <a href="#"><p>参加表明中のメンバー</p></a>
 
-   </dl>
-
-
-   </div>
- 
- 
-   <div id="cast">
-   
-   
-        <div id="t-accordion" class="st-accordion">
-                    <ul>
-                        <li>
-                         
-                            <a href="#">
-                            <p>参加表明中のメンバー</p>
-                            </a>
-                         
-                         
-                            <div class="st-content">
-
-                            
-                            <% @entries.each.with_index(1){ |entry, index| %>
-
-                            <%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %> : <%= entry.comment %>
-                             
-                             <% } %>
-
-
-                     
-                            </div>
-                        </li>
-                   </ul>
-       </div>
-    <script type="text/javascript" src="jquery.accordion.js"></script>
-    <script type="text/javascript" src="jquery.easing.1.3.js"></script>
-        <script type="text/javascript">
-            $(function() {
-      
-        $('#st-accordion').accordion();
-        
-            });
-        </script>
-   
-   
-   
-   </div>
-
-
-
-   <div id="attendlink"></div>
-
-   <div id="attend">
-   
-   <h3>参加はこちらから</h3>
-   
-   <div id="attendinner">
-   
-  <% if @entry.present? %><br>
-    <%= link_to( "【参加キャンセル】", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %>
-  <% else %>
-    <% if @plan.entry_close_flag %>
-      <span style="color: red;">既に募集が終了しています。</span>
-    <% else %>
-
- <div class="sannkazyoukenn">※<%= @plan.min_people %>人以上集まった日時で開催/定員<%= @plan.max_people %>人まで</div>
-   
-   <h4>1.候補日を選択 （都合がつかない日のチェックを外してください。）</h4>
-
-      <%= form_tag( plan_entries_path( @plan ) ) do %>
-<div class="dates">
-<% 5.times{ |i| %>
-<% if @entry_schedules[i].present? and @schedules[@entry_schedules[i]].candidate_day.present? %>
-<%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], false %>
-<%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y/%m/%d %H:%M") %><br />
-<% end %>
-<% } %>
-</div>
-<h4 style="margin: 25px 0 5px 0;">2.一言コメントを入力してください。</h4>        
-<%#= text_field_tag( "entry[comment]", nil, class: "span6" ) %><br />
-<textarea name="comment" rows="3" cols="30" placeholder="楽しみ！よろしくおねがいします" style="font-size: 12px;"></textarea><br><br />
-
-        <%= submit_tag '', class: "attendbutton" %>
-      <% end %>
-    <% end %>
-  <% end %>
-   
-   </div>
-   
-   </div>
-   
-  
-   <div id="commentflame">
-   <p>コメント欄</p>
-   <%= form_for( :comment, url: plan_comment_path( @plan ) ) do |f| %>
-  <%= text_area_tag "comment_content", params[:comment_content], rows: 5, cols: 90, class: "span6" %><br />
-
-  <%= f.submit "コメント", data: { 'disable-with' => "コメント" } %>
-<% end %>
-   
-   <% @comments.each{ |comment| %>
-      <div class="comment">
-      
-  <p>
-    <%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.name %>：<%= comment.content %>
-  </p>
+            <div class="st-content">
+              <% @entries.each.with_index(1){ |entry, index| %>
+                <%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %> : <%= entry.comment %>
+              <% } %>
+            </div>
+          </li>
+        </ul>
       </div>
 
-<% } %>
+      <script type="text/javascript" src="jquery.accordion.js"></script>
+      <script type="text/javascript" src="jquery.easing.1.3.js"></script>
+      <script type="text/javascript">
+        $(function() {
+          $('#st-accordion').accordion();
+        });
+      </script>
+    </div>
 
-   </div>
-   
+    <div id="attendlink"></div>
 
- 
- </div>
- 
- 
- <div id="rightcontens">
- 
-   <div id="other1">
-   <a href="#attendlink" class="attendbutton2"></a>
+    <div id="attend">
+      <h3>参加はこちらから</h3>
 
-   <% if @favorite.present? %>
-    <%= link_to( "", plan_favorite_path( @plan, @favorite ), method: "delete", confirm: "お気に入りを解除してもよろしいですか？" , :class => 'btn2cancell' ) %>
-  <% else %>
-    <%= link_to( "", plan_favorites_path( @plan ), method: "post" ,  :class => 'btn2' ) %>
+      <div id="attendinner">
+        <% if @entry.present? %><br>
+          <%= link_to( "【参加キャンセル】", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %>
+        <% else %>
+          <% if @plan.entry_close_flag %>
+            <span style="color: red;">既に募集が終了しています。</span>
+          <% else %>
+            <div class="sannkazyoukenn">※<%= @plan.min_people %>人以上集まった日時で開催/定員<%= @plan.max_people %>人まで</div>
 
-  <% end %>
+            <h4>1.候補日を選択 （都合がつかない日のチェックを外してください。）</h4>
+
+            <%= form_tag( plan_entries_path( @plan ) ) do %>
+              <div class="dates">
+                <% 5.times{ |i| %>
+                  <% if @entry_schedules[i].present? and @schedules[@entry_schedules[i]].candidate_day.present? %>
+                    <%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], false %>
+                    <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y/%m/%d %H:%M") %><br />
+                  <% end %>
+                <% } %>
+              </div>
+
+              <h4 style="margin: 25px 0 5px 0;">2.一言コメントを入力してください。</h4>        
+              <%#= text_field_tag( "entry[comment]", nil, class: "span6" ) %><br />
+              <textarea name="comment" rows="3" cols="30" placeholder="楽しみ！よろしくおねがいします" style="font-size: 12px;"></textarea><br><br />
+
+              <%= submit_tag '', class: "attendbutton" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div id="commentflame">
+      <p>コメント欄</p>
+      <%= form_for( :comment, url: plan_comment_path( @plan ) ) do |f| %>
+        <%= text_area_tag "comment_content", params[:comment_content], rows: 5, cols: 90, class: "span6" %><br />
+
+        <%= f.submit "コメント", data: { 'disable-with' => "コメント" } %>
+      <% end %>
+
+      <% @comments.each{ |comment| %>
+        <div class="comment">
+          <p><%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.name %>：<%= comment.content %></p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <div id="rightcontens">
+    <div id="other1">
+      <a href="#attendlink" class="attendbutton2"></a>
+      <% if @favorite.present? %>
+        <%= link_to( "", plan_favorite_path( @plan, @favorite ), method: "delete", confirm: "お気に入りを解除してもよろしいですか？" , :class => 'btn2cancell' ) %>
+      <% else %>
+        <%= link_to( "", plan_favorites_path( @plan ), method: "post" ,  :class => 'btn2' ) %>
+      <% end %>
+    </div>
+
+    <div id="other2">
+      <div class="ouen">プランを応援しましょう</div>
+      <p style="font-size:0.9em">応援している人が多いと、人気ランキングに載り易くなります。</p>
+
+      <% if @cheer.present? %>
+        <%= link_to( "", plan_cheer_path( @plan, @cheer ), method: "delete", confirm: "応援をやめてもよろしいですか？" , :class => 'ouenbuttoncancell' ) %>
+      <% else %>
+        <%= link_to( "", plan_cheers_path( @plan ), method: "post" , :class => 'ouenbutton' ) %>
+      <% end %>
+    </div>
+
+    <div id="other3">
+      おすすめプラン
+      <img src="グルーヴラフTOPピング のコピー.png" width="180px"/>
+      <img src="グルーヴラフTOPピング のコピー.png" width="180px"/>
+    </div>
+  </div>
 </div>
- 
-   <div id="other2">
-   <div class="ouen">プランを応援しましょう</div>
-   <p style="font-size:0.9em">応援している人が多いと、人気ランキングに載り易くなります。</p>
-
-   <% if @cheer.present? %>
-    <%= link_to( "", plan_cheer_path( @plan, @cheer ), method: "delete", confirm: "応援をやめてもよろしいですか？" , :class => 'ouenbuttoncancell' ) %>
-  <% else %>
-    <%= link_to( "", plan_cheers_path( @plan ), method: "post" , :class => 'ouenbutton' ) %>
-  <% end %>
-   
-   </div>
- 
-   <div id="other3">
-   おすすめプラン
-   
-   <img src="グルーヴラフTOPピング のコピー.png" width="180px"/>
-   <img src="グルーヴラフTOPピング のコピー.png" width="180px"/>
-   
-   </div> 
- 
- </div>
-  
-</div>  
-  
-  
