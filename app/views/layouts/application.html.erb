@@ -4,13 +4,16 @@
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <title><%= Settings.app_name %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/start/jquery-ui.css" rel="stylesheet" />
 
-  <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>-->
+  <%= javascript_include_tag "application" %>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
 
   <script>
+  // TODO: エラー「Uncaught TypeError: Object [object Object] has no method 'ahPlaceholder'」
+/*
   $(function() {
     $('[placeholder]').ahPlaceholder({
       placeholderColor : 'silver',
@@ -18,9 +21,10 @@
       likeApple : false
     });
   });
+*/
   </script>
 
-  <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/start/jquery-ui.css" rel="stylesheet" />
+  <%= csrf_meta_tags %>
 </head>
 
 <body>
