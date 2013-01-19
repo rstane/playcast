@@ -67,7 +67,7 @@ class PlansController < ApplicationController
   #--------#
   # create #
   #--------#
-  def create( plan, categories, schedule )
+  def create( plan, categories, schedules )
     @plan = Plan.new( plan )
     @plan.user_id = session[:user_id]
 
@@ -80,14 +80,12 @@ class PlansController < ApplicationController
       end
 
       # 候補日作成
-      if schedule.present?
-        schedule.each_pair{ |key, value|
-          puts "[ ---------- value ---------- ]" ; value.tapp ;
+      if schedules.present?
+        schedules.each_pair{ |key, value|
           new_schedule = Schedule.new
           new_schedule.number        = key
           new_schedule.plan_id       = @plan.id
-#          new_schedule.candidate_day = Time.parse(value) rescue nil
-          new_schedule.candidate_day = Time.parse( "#{value['date']} #{value['time(4i)']}:#{value['time(5i)']}"  ) rescue nil
+          new_schedule.candidate_day = (value['date'].present? ? Time.parse( "#{value['date']} #{value['time(4i)']}:#{value['time(5i)']}" ) : nil)
           new_schedule.save
         }
       end
@@ -117,10 +115,13 @@ class PlansController < ApplicationController
       # 候補日更新(参加登録が無ければ)
       if schedules.present?
         schedules.each_pair{ |key, value|
+          # 参加者が居なければ
           unless Participation.where( plan_id: @plan.id, schedule_id: key ).exists?
             schedule = Schedule.where( id: key, plan_id: @plan.id ).first
-            schedule.candidate_day = Time.parse(value) rescue nil
-            schedule.save
+            schedule.candidate_day = (value['date'].present? ? Time.parse( "#{value['date']} #{value['time(4i)']}:#{value['time(5i)']}" ) : nil)
+            schedule.save!
+          else
+            flash[:alert] = "既に参加者の居る候補日は変更出来ません。"
           end
         }
       end

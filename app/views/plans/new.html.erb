@@ -21,8 +21,8 @@
       </script>
 
       <p>
-        <%= n %>.<%= text_field_tag( "schedule[#{n}][date]", nil, placeholder: "⇒カレンダーが開きます", id: "datepicker#{n}", size: "21" ) %>
-        <%= datetime_select( "schedule[#{n}]", "time", { discard_day: true, discard_month: true, discard_year: true, minute_step: 10 } ) %>
+        <%= n %>.<%= text_field_tag( "schedules[#{n}][date]", nil, placeholder: "⇒カレンダーが開きます", id: "datepicker#{n}", size: "21" ) %>
+        <%= datetime_select( "schedules[#{n}]", "time", { discard_day: true, discard_month: true, discard_year: true, minute_step: 10 } ) %>
         にスタート
       </p>
     <% } %>
