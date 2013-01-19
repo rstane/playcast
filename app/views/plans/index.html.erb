@@ -39,7 +39,7 @@
         <div class="imgcaption">
           <div class="imginner">
             <%= link_to( plan_path( plan ) ) do %>
-              <p><img src="/assets/plansozai.png" width="210" height="117" alt="画像の説明" /></p>
+              <p><img src="<%= plan.image_url %>" width="210" height="117" alt="<%= plan.title %>" /></p>
             <% end %>
 
             <%= link_to( plan.title, plan_path( plan ) ) %>
