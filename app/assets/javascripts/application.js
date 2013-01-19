@@ -15,6 +15,8 @@
 //= require_tree .
 
 // ツールチップ
+/*
 $(function(){
   $('a[rel=tooltip]').tooltip();
 });
+*/
