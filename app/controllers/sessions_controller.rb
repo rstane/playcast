@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       return
     end
 
-    redirect_to :root, notice: "ログインしました。"
+    redirect_to plans_path
   end
 
   #---------#
