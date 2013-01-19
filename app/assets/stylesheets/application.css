@@ -12,14 +12,3 @@
  *= require_tree .
  */
 
-.plan_form select {
-  width: 55px;
-}
-
-#plan_publish_start_at_1i {
-  width: 70px;
-}
-
-#plan_publish_end_at_1i {
-  width: 70px;
-}
