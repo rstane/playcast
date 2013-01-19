@@ -82,10 +82,12 @@ class PlansController < ApplicationController
       # 候補日作成
       if schedule.present?
         schedule.each_pair{ |key, value|
+          puts "[ ---------- value ---------- ]" ; value.tapp ;
           new_schedule = Schedule.new
           new_schedule.number        = key
           new_schedule.plan_id       = @plan.id
-          new_schedule.candidate_day = Time.parse(value) rescue nil
+#          new_schedule.candidate_day = Time.parse(value) rescue nil
+          new_schedule.candidate_day = Time.parse( "#{value['date']} #{value['time(4i)']}:#{value['time(5i)']}"  ) rescue nil
           new_schedule.save
         }
       end

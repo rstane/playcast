@@ -2,7 +2,9 @@
   <div id="leftcontents">
     <div id="plan">
       <h1><%= @plan.title %></h1>
-      <div class="planimg"><img src="/assets/plansozai.png" alt="みんなでカラオケに行こう！" width="580px" height="340" /></p></div>
+      <%= link_to( "編集", edit_plan_path( @plan ) ) if @plan.user_id == session[:user_id] %>
+
+      <div class="planimg"><img src="<%= @plan.image_url %>" alt="<%= @plan.title %>" width="580px" height="340" /></p></div>
       <dl class="plande">
       <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
       <dt>日時候補：</dt>
@@ -42,8 +44,8 @@
         </ul>
       </div>
 
-      <script type="text/javascript" src="jquery.accordion.js"></script>
-      <script type="text/javascript" src="jquery.easing.1.3.js"></script>
+      <script type="text/javascript" src="/assets/jquery.accordion.js"></script>
+      <!--<script type="text/javascript" src="/assets/jquery.easing.1.3.js"></script>-->
       <script type="text/javascript">
         $(function() {
           $('#st-accordion').accordion();
@@ -79,7 +81,8 @@
 
               <h4 style="margin: 25px 0 5px 0;">2.一言コメントを入力してください。</h4>        
               <%#= text_field_tag( "entry[comment]", nil, class: "span6" ) %><br />
-              <textarea name="comment" rows="3" cols="30" placeholder="楽しみ！よろしくおねがいします" style="font-size: 12px;"></textarea><br><br />
+              <!--<textarea name="comment" rows="3" cols="30" placeholder="楽しみ！よろしくおねがいします" style="font-size: 12px;"></textarea><br><br />-->
+              <%= text_area_tag "entry[comment]", "", rows: "3", cols: "30", placeholder: "楽しみ！よろしくおねがいします", style: "font-size: 12px;" %>
 
               <%= submit_tag '', class: "attendbutton" %>
             <% end %>
