@@ -53,6 +53,24 @@
       </script>
     </div>
 
+    <% if @cheers.present? %>
+    <div id="cast">
+      <div id="t-accordion" class="st-accordion">
+        <ul>
+          <li>
+            <a href="#"><p>応援している人</p></a>
+
+            <div class="st-content">
+              <% @cheers.each.with_index(1){ |cheer, index| %>
+                <%= render partial: '/layouts/user_icon', locals: { user: cheer.user } %>
+              <% } %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <% end %>
+
     <div id="attendlink"></div>
 
     <div id="attend">
