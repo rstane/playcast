@@ -6,7 +6,7 @@
 
 body	{margin: 0;
 background-image:url("/assets/backgroundimg.png");}
-	
+
 
 #container {width: 100%;
 	margin: auto;}
@@ -14,35 +14,35 @@ background-image:url("/assets/backgroundimg.png");}
 
 #content {width: 950px;
 	margin: auto;
-	margin-top:20px;}
+	margin-top: 20px;}
 
 
-#content_plans{width:950px;
-	margin:auto;
-	margin-top:60px;}
-	
+#content_plans{width: 950px;
+	margin: auto;
+	margin-top: 60px;}
+
 #foot	{clear: both;
-    padding-top:40px;}
+    padding-top: 40px;}
 
 
 a {text-decoration: none;}
 
-a img {border-style:none; }
+a img {border-style:none;}
 
 
 a:hover {
-opacity:0.9;
+opacity: 0.9;
 filter:alpha(opacity=90);
--ms-filter: “alpha( opacity=90 )”;
-z-index:1;
+-ms-filter: "alpha( opacity=90 )";
+z-index: 1;
 }
 
 
 a:hover img{
-opacity:0.8;
-filter:alpha(opacity=80);
--ms-filter: “alpha( opacity=80 )”;
-z-index:1;
+opacity: 0.8;
+filter: alpha(opacity=80);
+-ms-filter: "alpha( opacity=80 )";
+z-index: 1;
 }
 
 
@@ -57,13 +57,13 @@ z-index:1;
 	z-index:2;
 	top: 0;
     left: 0;
-	
+
 	/* 影指定 */
     box-shadow: 0 1px 8px #333333;
     -moz-box-shadow: 0 1px 8px #333333; /* Firefox対応 */
     -webkit-box-shadow: 0 1px 8px #333333; /* Safari、Chrome対応 */
 	}
-	
+
 
 #header_inner	{
 	width: 950px;
@@ -85,8 +85,8 @@ z-index:1;
 
 
 
-	
-	
+
+
 /* ==================== フォーム ==================== */
 
 
@@ -119,7 +119,7 @@ z-index:1;
 	background: none;
 	background-image: url(search_button.png);
 	background-repeat: no-repeat;
-	
+
 	vertical-align:top;
 	text-indent: -9999px;}
 
@@ -130,11 +130,11 @@ z-index:1;
 
 
 /* ====================サブメニュー ==================== */
-	
-	
+
+
 #submenu	{
 	}
-	
+
 #submenu ul {width: 215px;float: left;padding: 0;padding-top: 1px;margin: 2px 0 0 49px;}
 
 #submenu li a	{font-size: 0.75em;
@@ -153,9 +153,9 @@ z-index:1;
 
 #submenu ul	{
 	}
-	
+
 #submenu li img {width:30px; height:30px; vertical-align: -10px;padding-right: 6px;}
-	
+
 
 
 /* ==================== アイキャッチ ==================== */
@@ -172,16 +172,16 @@ z-index:1;
 	height: 300px;
 	margin: auto;
 }
-			   
+
 .white {background: rgba(255, 255, 255, 0.9); /* RGBを10進数(0～255)で指定、不透明度を0～1.0で指定 */
         margin-left:450px;
         width:500px;
-		height:300px;}   
+		height:300px;}
 
 .whiteinner {
 	padding: 25px;
 	padding-left: 30px;
-	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "Osaka", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 	text-shadow: -1px 1px 0 rgba(255,255,255,1);
 }
 
@@ -194,7 +194,7 @@ z-index:1;
 .whiteinner p {margin:0;
                font-weight:900;
 			   font-size:0.9em;
-　　　　　　　 }
+}
 
 .postbuttontop { display:block;
                   width:232px; height:53px;
@@ -244,8 +244,8 @@ a { color:#333;}
 	box-shadow: 2px 2px 2px #DDD;
 	-moz-box-shadow: 2px 2px 2px #DDD;    /* firefox　*/
 -webkit-box-shadow: 2px 2px 2px #DDD;  /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */
 }
 
@@ -261,7 +261,7 @@ border-radius: 5px;        /* CSS3草案 */
 	  background-image:url(btn.png);
 	  background-repeat:no-repeat;
 	  margin:auto;}
-	  
+
 .btn:hover { background-position:0px -32px;
              background-repeat:no-repeat;}
 
@@ -286,8 +286,8 @@ border-radius: 5px;        /* CSS3草案 */
 	 background-color:#FFF;
 	border: solid 1px rgb(224, 224, 224);-moz-box-shadow: 0px 0px 6px 3px #DDD;    /* firefox　*/
   /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
@@ -298,11 +298,11 @@ border-radius: 5px;        /* CSS3草案 */
 #planpost h2 {margin: 0;
              margin-top: 20px;
 			 font-size: 0.8em;font-weight:bold;
-			 
+
 	border-left: 5px solid #9CFF5A;
-	
+
 	padding-left: 5px;}
-	
+
 .postmark {
 font-size: 11px;
 color: white;
@@ -313,7 +313,7 @@ background-color: #FD1A6C;
 -ms-border-radius: 3px;
 -o-border-radius: 3px;
 border-radius: 3px;
-}	
+}
 
 
 
@@ -349,18 +349,18 @@ border-radius: 3px;
 	 margin-top: 47px;background-color: white;
 	border: solid 1px rgb(228, 228, 228);-moz-box-shadow: 0px 0px 6px 3px #DDD;    /* firefox　*/
   /* safari、chorme */
-    border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+    border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
-	
-	
-	
+
+
+
 
 #explan h1 {margin:0;
-          margin-bottom:5px;font-size: 1.3em;color: rgb(3, 3, 3);}	
-	
-	
-	 
+          margin-bottom:5px;font-size: 1.3em;color: rgb(3, 3, 3);}
+
+
+
 .explanimg{width:340px;
          height:220px;
          margin:auto;
@@ -389,7 +389,7 @@ dl.explande {margin:auto;
 	       font-size: 0.7em;}
 
 
-	
+
 /* ==================== プラン詳細ページ ==================== */
 
 
@@ -406,15 +406,15 @@ dl.explande {margin:auto;
 	 background-color:#FFF;
 	    /* firefox　*/
   /* safari、chorme */
-border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
-	
+
 #plan h1 {margin:0;
-          margin-bottom:5px;}	
-	
-	
-	 
+          margin-bottom:5px;}
+
+
+
 .planimg{width:580px;
          height:340px;
          margin:auto;
@@ -450,8 +450,8 @@ dl.plande {margin:auto;
 	 background-color:#FFF;
 	    /* firefox　*/
   /* safari、chorme */
-border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
@@ -463,18 +463,18 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 	 background-color:#FFF;
 	    /* firefox　*/
   /* safari、chorme */
-border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
-	
-	
+
+
    #cast ul {margin-left: -40px;}
-   	
+
    #cast li	{list-style-type: none;}
-   
+
    #cast a {text-decoration:none;
-            color:#000;}  
-   #cast a:hover{color:#666;}			 
+            color:#000;}
+   #cast a:hover{color:#666;}
 
 #cast p { font-weight:bold;
           font-size: 1.2em;
@@ -485,29 +485,29 @@ dl.castdown dt {
  vertical-align:top;
  margin-right: 10px;
  font-size: 0.8em;
- font-weight:bold; 
+ font-weight:bold;
  margin-top:10px;}
 
 dl.castdown dd {
 	font-size: 0.8em;
 	margin-left: 45px; }
-   
- 
-   
-   
+
+
+
+
 #attend{width: 680px;
      padding:10px;
      margin-bottom:10px;
 	 background-color:#FFF;
 	    /* firefox　*/
       /* safari、chorme */
-     border: solid 1px #E0E0E0; border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+     border: solid 1px #E0E0E0; border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
 #attendinner { padding-left: 10px; }
- 
+
 
 #attend h3 {
 color: white;
@@ -529,13 +529,13 @@ border-radius: 5px;
 #attend h4 { font-weight: bold; margin: 20px 0 -10px 0; border-bottom: solid 1px #ACACAC;}
 
 
-.attenduser{ vertical-align:middle; 
+.attenduser{ vertical-align:middle;
              margin-left:5px;}
 
 
 .attendbutton {display:block;
       width:222px; height:51px;
-	  background-image:url(attendbutton.png);
+	  background-image:url("attendbutton.png");
 	  border:none;
 	  background-color:#fff;
 	  background-repeat:no-repeat;
@@ -549,7 +549,7 @@ border-radius: 5px;
 
 .attendbutton2 {display:block;
       width:205px; height:47px;
-	  background-image:url(sidebuttons.png);
+	  background-image:url("sidebuttons.png");
 	  background-repeat:no-repeat;
 	  margin:auto;
 	  margin-bottom: 10px;
@@ -557,35 +557,35 @@ border-radius: 5px;
 
 .attendbutton2:hover { background-position:0px -49px;
              background-repeat:no-repeat;}
-		
-		
+
+
 .btn2 {display:block;
       width: 205px;
 height: 47px;
 background-position: -210px 0px;
-	  background-image:url(sidebuttons.png);
+	  background-image:url("sidebuttons.png");
 	  background-repeat:no-repeat;
 	  margin:auto;
 	 }
 
 .btn2:hover { background-position:-210px -49px;
-             background-repeat:no-repeat;}	
-			 	
+             background-repeat:no-repeat;}
+
 
 .btn2cancell {display:block;
       width: 205px;
 height: 47px;
 background-position: -210px -100px;
-	  background-image:url(sidebuttons.png);
+	  background-image:url("sidebuttons.png");
 	  background-repeat:no-repeat;
 	  margin:auto;
-	 }			 	
+	 }
 
 .ouenbutton {display:block;
       width: 166px;
       height: 36px;
       background-position: -419px 0px;
-	  background-image:url(sidebuttons.png);
+	  background-image:url("sidebuttons.png");
 	  background-repeat:no-repeat;
 	  margin:auto;
 	 }
@@ -599,7 +599,7 @@ background-position: -210px -100px;
       width: 166px;
       height: 36px;
       background-position: -419px -77px;
-	  background-image:url(sidebuttons.png);
+	  background-image:url("sidebuttons.png");
 	  background-repeat:no-repeat;
 	  margin:auto;
 	 }
@@ -617,14 +617,14 @@ background-position: -210px -100px;
 	      background-color:#FFF;
 	          /* firefox　*/
             /* safari、chorme */
-          border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */  
-          -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+          border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+          -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
           -moz-border-radius: 5px;   /* Firefox用 */}
-	
+
 .comment {border-top: 1px dotted #BDB8AD;
           margin-bottom: -5px;
-          margin-top: 10px;}	
-	
+          margin-top: 10px;}
+
 dl.comms dt {
  vertical-align:top;
  margin-right: 10px;
@@ -635,8 +635,8 @@ dl.comms dt {
 dl.comms dd {
 	font-size: 0.8em;
 	margin-left: 45px;
-}	
-	
+}
+
 
 
 
@@ -646,8 +646,8 @@ dl.comms dd {
 	 margin-bottom: 10px;background-color:#FFF;
 	    /* firefox　*/
   /* safari、chorme */
-border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
@@ -656,8 +656,8 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
     font-weight: bold;
     background-color: #FFD283;
     margin: -4px;
-    border-radius: 3px; 
-    -webkit-border-radius: 3px; 
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
 }
 
@@ -667,8 +667,8 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 	 text-align: center;font-weight: bold;background-color:#FFF;
 	    /* firefox　*/
   /* safari、chorme */
-border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
@@ -687,8 +687,8 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 	 background-color:#FFF;
 	border: solid 1px #E0E0E0;    /* firefox　*/
   /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
@@ -741,8 +741,8 @@ border-radius: 5px;        /* CSS3草案 */
 	 background-color:#FFF;
 	border: solid 1px #E0E0E0;    /* firefox　*/
   /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
@@ -759,7 +759,7 @@ float: left;}
 width: 168px;
 line-height: 43px;
 border-right: solid 1px rgb(141, 138, 138);
-color: #1D1D1D; 
+color: #1D1D1D;
 font-weight: bold;font-size: 0.8em;text-align: center;
 background: -moz-linear-gradient( top, white 0%, #EEE);
 background: -webkit-gradient( linear, left top, left bottom, from(white), to(#EEE));
@@ -810,8 +810,8 @@ text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.4), 0px 1px 0px rgba(255, 255, 2
 	 border: solid 1px #E0E0E0;
 	    /* firefox　*/
   /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 #feed h1 {color: white; padding: 5px 8px;margin: 0;font-size: 1.6em;   background-color: #3FBD2D ;border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;}
