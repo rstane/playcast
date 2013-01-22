@@ -11,7 +11,7 @@
       <dd>
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
-            <%= schedule[1].candidate_day.strftime("%Y/%m/%d %H:%M") if schedule[1].present? %>
+            <%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M") if schedule[1].present? %>
             <% participations = @participations.select{ |x| x.schedule_id == schedule[1].id } %>
             <% participations.each{ |participation| %>
               <%= render partial: '/layouts/user_icon', locals: { user: participation.user } %>
@@ -92,7 +92,7 @@
                 <% 5.times{ |i| %>
                   <% if @entry_schedules[i].present? and @schedules[@entry_schedules[i]].candidate_day.present? %>
                     <%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], false %>
-                    <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y/%m/%d %H:%M") %><br />
+                    <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y年%m月%d日 %H:%M") %><br />
                   <% end %>
                 <% } %>
               </div>
