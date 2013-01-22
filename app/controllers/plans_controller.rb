@@ -3,14 +3,22 @@ class PlansController < ApplicationController
   #-------#
   # index #
   #-------#
-  def index( category_id, sort )
+  def index( category_id, sort, keyword )
     @plans = Plan.scoped
+
+    # ----- 抽出条件 ----- #
     if category_id.present?
       plan_ids = Categorize.where( category_id: category_id ).pluck(:plan_id)
       @plans   = @plans.where( id: plan_ids )
     end
+
+    if keyword.present?
+      @plans   = @plans.where( "title LIKE ?", "%#{keyword}%" )
+    end
+
     @plans = @plans.includes( :user, { :categorizes => :category } )
 
+    # ----- ソート順 ----- #
     if sort.present? and sort == "populur"
       @plans = @plans.order( "plans.cheers_count DESC, plans.favorites_count DESC" )
     else
@@ -19,7 +27,7 @@ class PlansController < ApplicationController
 
     @plans = @plans.all
 
-    @favorites = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
+    @favorites  = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
     @categories = Category.order( "name ASC" ).all
   end
 

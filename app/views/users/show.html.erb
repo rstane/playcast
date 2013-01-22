@@ -5,12 +5,12 @@
       <h1>プロフィール</h1>
 
       <div id="userdatawrap">
-        <img class="userpagepic" src="/assets/userpicbig.jpg" width="140" height="140" />
+        <img class="userpagepic" src="<%= @user.image %>" width="140" height="140" />
 
         <div id="userdata">
-          <h2>白川　遼</h2>
+          <h2><%= @user.name %></h2>
           <p style=" font-size: 0.8em; margin: 5px 0; ">お酒は弱いですが、飲むのは好きです。よろしくどうぞ</p>
-          <a class="fbbutton" href="#"><img src="/assets/fb.png" alt="Facebookのページを見る" style=" float: right; " /></a>
+          <a class="fbbutton" href="<%= Settings.provider_page + @user.nickname %>" target="_blank"><img src="/assets/fb.png" alt="Facebookのページを見る" style=" float: right;" /></a>
         </div>
       </div>
 
@@ -21,10 +21,10 @@
     <div id="userplan">
       <div class="userplanmenu">
         <ul>
-        <li><a href="#toukou">投稿したプラン</a></li>
-        <li><a href="#sannka">参加表明したプラン</a></li>
-        <li><a href="#okiniiri">お気に入りのプラン</a></li>
-        <li><a href="#ouen">応援したプラン</a></li>
+          <li><%= link_to( "投稿したプラン", { anchor: "toukou" } ) %></li>
+          <li><%= link_to( "参加表明したプラン", { anchor: "sannka" } ) %></li>
+          <li><%= link_to( "お気に入りのプラン", { anchor: "okiniiri" } ) %></li>
+          <li><%= link_to( "応援したプラン", { anchor: "ouen" } ) %></li>
         </ul>
       </div>
 
@@ -34,45 +34,17 @@
 
       <h3>投稿したプラン</h3>
         <div class="userpostplanwrap">
-          <div class="userpostplan">
-            <div class="uppimg">
-              <a href="プランの画像にリンクを掛ける"><img src="/assets/plansozai.png" width="162px" height="100px"></a>
-            </div>
+          <% @my_plans.each{ |plan| %>
+            <div class="userpostplan">
+              <div class="uppimg">
+                <a href="<%= plan_path( plan ) %>"><img src="<%= plan.image_url %>" width="162px" height="100px"></a>
+              </div>
 
-            <div class="upptitle">
-              <a href="プラン全体にリンクをかける">みんなでカラオケに行こう！</a>
+              <div class="upptitle">
+                <a href="<%= plan_path( plan ) %>"><%= plan.title %></a>
+              </div>
             </div>
-          </div>
-
-          <div class="userpostplan">
-            <div class="uppimg">
-              <a href="プランの画像にリンクを掛ける"><img src="/assets/plansozai.png" width="162px" height="100px"></a>
-            </div>
-
-            <div class="upptitle">
-              <a href="プラン全体にリンクをかける">みんなでカラオケに行こう！</a>
-            </div>
-          </div>
-
-          <div class="userpostplan">
-            <div class="uppimg">
-              <a href="プランの画像にリンクを掛ける"><img src="/assets/plansozai.png" width="162px" height="100px"></a>
-            </div>
-
-            <div class="upptitle">
-              <a href="プラン全体にリンクをかける">みんなでカラオケに行こう！</a>
-            </div>
-          </div>
-
-          <div class="userpostplan">
-            <div class="uppimg">
-              <a href="プランの画像にリンクを掛ける"><img src="/assets/plansozai.png" width="162px" height="100px"></a>
-            </div>
-
-            <div class="upptitle">
-              <a href="プラン全体にリンクをかける">みんなでカラオケに行こう！</a>
-            </div>
-          </div>
+          <% } %>
         </div>
 
         <br class="clear" style="clear:both" />
@@ -80,9 +52,8 @@
         <div class="space"></div>
         <h3>参加表明したプラン</h3>
 
-        <% @entries.each.with_index(1){ |entry, index| %>
+        <% @entries.each{ |entry| %>
           <%= link_to( entry.plan.title, plan_path( entry.plan ) ) %>
-          <% if entry.user_id == session[:user_id] %><% end %>
           <br />
         <% } %>
         <br />
@@ -92,15 +63,14 @@
         <div class="space"></div>
         <h3>お気に入りのプラン</h3>
 
-        <% @favorites.each.with_index(1){ |favorite, index| %>
+        <% @favorites.each{ |favorite| %>
           <div class="userpostplan">
             <div class="uppimg">
-              <a href="プランの画像にリンクを掛ける"><img src="/assets/plansozai.png" width="162px" height="100px"></a>
+              <a href="<%= plan_path( favorite.plan ) %>"><img src="<%= favorite.plan.image_url %>" width="162px" height="100px"></a>
             </div>
 
             <div class="upptitle">
               <%= link_to( favorite.plan.title, plan_path( favorite.plan ) ) %>
-              <% if favorite.user_id == session[:user_id] %><% end %>
               <br />
             </div>
           </div>
@@ -111,15 +81,14 @@
         <div class="space"></div>
         <h3>応援したプラン</h3>
 
-        <% @cheers.each.with_index(1){ |cheer, index| %>
+        <% @cheers.each{ |cheer| %>
           <div class="userpostplan">
             <div class="uppimg">
-              <a href="プランの画像にリンクを掛ける"><img src="/assets/plansozai.png" width="162px" height="100px"></a>
+              <a href="<%= plan_path( cheer.plan ) %>"><img src="<%= cheer.plan.image_url %>" width="162px" height="100px"></a>
             </div>
 
             <div class="upptitle">
               <%= link_to( cheer.plan.title, plan_path( cheer.plan ) ) %>
-              <% if cheer.user_id == session[:user_id] %><% end %>
             </div>
           </div>
         <% } %>
@@ -127,12 +96,11 @@
         <br class="clear" style="clear:both" />
       </div>
 
-      <a class="gotop" href="#planmenulink">ページの上へ</a>
+      <%= link_to( "ページの上へ", { anchor: "planmenulink" }, class: "gotop" ) %>
     </div>
 
     <div id="rightcontens">
       <div id="other1">
-        <%= link_to( "Logout", logout_path ) %>
         関連プラン
         <img src="/assets/rough_top.png" width="180px"/>
       </div>

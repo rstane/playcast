@@ -30,9 +30,10 @@
       <h1><a href="/plans"><img src="/assets/logo1-3.png"> </a></h1>
       <p>同じ興味の遊び仲間を探すことが出来るサービス「プレイキャスト」</p>
 
-      <form method="get" action="#" id="search">
+      <%# 検索フォーム %>
+      <form method="get" action="<%= plans_path %>" id="search">
         <p>
-          <input type="text" placeholder="プランを検索" id="text" name="keyword" />
+          <input type="text" placeholder="プランを検索" id="text" name="keyword" value="<%= params[:keyword] %>" />
           <input type="submit" id="submit" value="検索" />
         </p>
       </form>
@@ -40,17 +41,17 @@
        <div id="submenu">
         <ul>
           <li class="first"><a href="feed.html">お知らせ</a></li>
-          <li>
           <% if session[:user_id].present? %>
-            <%= link_to( user_path( session[:user_id] ) ) do %>
-              <%= image_tag( current_user.image, size: "28x28", class: "margin_minus2" )%>
-              マイページ
-            <% end %>
+            <li>
+              <%= link_to( user_path( session[:user_id] ) ) do %>
+                <%= image_tag( current_user.image, size: "28x28", class: "margin_minus2" )%>
+                マイページ
+              <% end %>
+            </li>
           <% else %>
             <%# 未ログイン %>
             <li><%= link_to "Login", "/auth/#{Settings.provider}" %></li>
           <% end %>
-          </li>
         </ul>
       </div>
     </div>
@@ -67,6 +68,7 @@
      <div id="foot">
       <div id="footer"
         <div id="footer_inner">
+          <p><%= link_to "Logout", logout_path %></p>
           <p>Copyright (c) Playcast. All Rights Reserved.</p><br>
         </div>
       </div>

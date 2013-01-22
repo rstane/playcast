@@ -109,7 +109,6 @@
       </div>
     </div>
 
-
     <div id="commentflame">
       <p>コメント欄</p>
       <%= form_for( :comment, url: plan_comment_path( @plan ) ) do |f| %>
@@ -120,7 +119,7 @@
 
       <% @comments.each{ |comment| %>
         <div class="comment">
-          <p><%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.name %>：<%= comment.content %></p>
+          <p><%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.try(:name) %>：<%= comment.content %></p>
         </div>
       <% } %>
     </div>
