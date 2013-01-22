@@ -59,8 +59,8 @@
   <div class="container">
     <div class="margin_top50"><div>
     <%# 通知／エラーメッセージ %>
-    <%= simple_format( flash[:notice], style: "color: green;" ) unless flash[:notice].blank? %>
-    <%= simple_format( flash[:alert], style: "color: red;" ) unless flash[:alert].blank? %>
+    <%= simple_format( flash[:notice], style: "color: green;" ) if flash[:notice].present? %>
+    <%= simple_format( flash[:alert], style: "color: red;" ) if flash[:alert].present? %>
 
     <%= yield %>
 

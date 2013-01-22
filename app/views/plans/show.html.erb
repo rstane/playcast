@@ -128,7 +128,8 @@
 
   <div id="rightcontens">
     <div id="other1">
-      <a href="#attendlink" class="attendbutton2"></a>
+      <%= link_to( "", { anchor: "attendlink" }, class: 'attendbutton2' ) %>
+
       <% if @favorite.present? %>
         <%= link_to( "", plan_favorite_path( @plan, @favorite ), method: "delete", confirm: "お気に入りを解除してもよろしいですか？" , :class => 'btn2cancell' ) %>
       <% else %>

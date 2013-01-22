@@ -10,6 +10,6 @@ class UsersController < ApplicationController
     @my_feeds   = Feed.where( user_id: @user.id ).includes( :plan, :user ).order( "created_at DESC" ).all
     @entries    = Entry.where( user_id: @user.id ).includes( :user, :plan ).order( "created_at DESC" ).all
     @favorites  = Favorite.where( user_id: @user.id ).includes( :user, :plan ).order( "created_at DESC" ).all
-    @cheers  = Cheer.where( user_id: @user.id ).includes( :user, :plan ).order( "created_at DESC" ).all
+    @cheers     = Cheer.where( user_id: @user.id ).includes( :user, :plan ).order( "created_at DESC" ).all
   end
 end

@@ -12,3 +12,7 @@
  *= require vendor
  *= require_tree .
  */
+
+.margin_top50 {
+  margin: 50px 0px 0px 0px;
+}
