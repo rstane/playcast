@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
 #    puts "[ ---------- auth ---------- ]" ; auth.tapp ;
     user = User.where( provider: auth["provider"], uid: auth["uid"] ).first || User.create_with_omniauth( auth )
+
+    # auth情報更新
     user.auth_update( auth )
 
     session[:user_id] = user.id
