@@ -40,7 +40,7 @@
 
        <div id="submenu">
         <ul>
-          <li class="first"><a href="feed.html">お知らせ</a></li>
+          <li class="first"><%= link_to( "お知らせ", feed_users_path ) %></li>
           <% if session[:user_id].present? %>
             <li>
               <%= link_to( user_path( session[:user_id] ) ) do %>

@@ -6,7 +6,12 @@ Playcast::Application.routes.draw do
     resources :entries
   end
 
-  resources :users
+  resources :users, only: [:show] do
+    collection do
+      get "feed"
+      get "notice"
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

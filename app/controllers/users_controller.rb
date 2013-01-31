@@ -12,4 +12,16 @@ class UsersController < ApplicationController
     @favorites  = Favorite.where( user_id: @user.id ).includes( :user, :plan ).order( "created_at DESC" ).all
     @cheers     = Cheer.where( user_id: @user.id ).includes( :user, :plan ).order( "created_at DESC" ).all
   end
+
+  #------#
+  # feed #
+  #------#
+  def feed
+  end
+
+  #--------#
+  # notice #
+  #--------#
+  def notice
+  end
 end
