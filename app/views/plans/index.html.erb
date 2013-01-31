@@ -45,11 +45,10 @@
             <%= link_to( plan.title, plan_path( plan ) ) %>
             <br>
 
-      　　　<% if @favorites[plan.id].present? %>
-              <%= link_to( "", plan_favorite_path( @favorites[plan.id].plan, @favorites[plan.id] ), method: "delete", confirm: "お気に入りを解除してよろしいですか？" , class: "btncancell" ) %>
-            <% else %>
-              <%= link_to( "", plan_favorites_path( plan ), method: "post" , class: "btn" ) %>
-            <% end %>
+            <%# お気に入りボタン %>
+            <div id="favorite<%= plan.id %>">
+              <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "btn" } %>
+            </div>
             <br/>
           </div>
         </div>

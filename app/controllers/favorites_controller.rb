@@ -1,3 +1,4 @@
+=begin
 # coding: utf-8
 class FavoritesController < ApplicationController
   #--------#
@@ -19,3 +20,4 @@ class FavoritesController < ApplicationController
     redirect_to( plan_path( plan_id ), notice: "お気に入りを解除しました。" )
   end
 end
+=end

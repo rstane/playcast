@@ -1,9 +1,13 @@
 Playcast::Application.routes.draw do
   resources :plans do
     resource :comment
-    resources :favorites
+#    resources :favorites
     resources :cheers
     resources :entries
+
+    member do
+      post "favorite"
+    end
   end
 
   resources :users, only: [:show] do

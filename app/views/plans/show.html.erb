@@ -129,11 +129,10 @@
     <div id="other1">
       <%= link_to( "", { anchor: "attendlink" }, class: 'attendbutton2' ) %>
 
-      <% if @favorite.present? %>
-        <%= link_to( "", plan_favorite_path( @plan, @favorite ), method: "delete", confirm: "お気に入りを解除してもよろしいですか？" , :class => 'btn2cancell' ) %>
-      <% else %>
-        <%= link_to( "", plan_favorites_path( @plan ), method: "post" ,  :class => 'btn2' ) %>
-      <% end %>
+      <%# お気に入りボタン %>
+      <div id="favorite<%= @plan.id %>">
+        <%= render partial: '/plans/favorite', locals: { favorite: @favorite, plan: @plan, klass: "btn2" } %>
+      </div>
     </div>
 
     <div id="other2">

@@ -28,6 +28,7 @@ class PlansController < ApplicationController
     @plans = @plans.all
 
     @favorites  = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
+    puts "[ ---------- @favorites ---------- ]" ; @favorites.tapp ;
     @categories = Category.order( "name ASC" ).all
   end
 
@@ -151,5 +152,23 @@ class PlansController < ApplicationController
     plan.destroy ? flash[:notice] = "Plan was successfully deleted." : flash[:alert] = "Plan was failed deleted."
 
     redirect_to plans_path
+  end
+
+  #----------#
+  # favorite #
+  #----------#
+  def favorite( id, klass )
+    plan = Plan.where( id: id ).first
+    favorite = Favorite.where( user_id: session[:user_id], plan_id: id ).first_or_initialize
+
+    # 登録／解除
+    if favorite.id.present?
+      favorite.destroy
+      favorite = nil
+    else
+      favorite.save
+    end
+
+    render partial: 'favorite', locals: { favorite: favorite, plan: plan, klass: klass }
   end
 end
