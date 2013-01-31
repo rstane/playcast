@@ -1,20 +1,10 @@
 <div id="mainpic">
-  <div id="mainpicinner">
-    <div class="white">
-      <div class="whiteinner">
-        <h2>どうしても、<br />
-          やりたいことがある。</h2>
-        <p>どうしてもやりたい事があるけれど、<br />
-          友達と予定が合わなかったり、友達は乗り気じゃなくて、<br />
-          結局諦めてしまう・・・。<br />
-          そんな時は「Playcast」で、あなたの気持ちに共感してくれる人を<br />
-          見つけて、気の合う仲間と共に最高の思い出を作りましょう。</p>
-        <br />
-        <%= link_to  "" , new_plan_path, class: "postbuttontop" %>
-       </div>
+          <%= link_to  "" , new_plan_path, class: "postbuttontop" %>
+        
     </div>
   </div>
-</div>
+
+
 
 <div id="content">
   <div id="content_inner">
@@ -42,14 +32,18 @@
               <p><img src="<%= plan.image_url %>" width="210" height="117" alt="<%= plan.title %>" /></p>
             <% end %>
 
-            <%= link_to( plan.title, plan_path( plan ) ) %>
+            <p><%= link_to( plan.title, plan_path( plan ) ) %><p>
             <br>
+           
+           <%= link_to  "" , new_plan_path, class: "attendbtntop" %>
 
       　　　<% if @favorites[plan.id].present? %>
-              <%= link_to( "", plan_favorite_path( @favorites[plan.id].plan, @favorites[plan.id] ), method: "delete", confirm: "お気に入りを解除してよろしいですか？" , class: "btncancell" ) %>
+              <%= link_to( "", plan_favorite_path( @favorites[plan.id].plan, @favorites[plan.id] ), method: "delete", confirm: "お気に入りを解除してよろしいですか？" , class: "favoritebtntopcancell" ) %>
             <% else %>
-              <%= link_to( "", plan_favorites_path( plan ), method: "post" , class: "btn" ) %>
+              <%= link_to( "", plan_favorites_path( plan ), method: "post" , class: "favoritebtntop" ) %>
             <% end %>
+
+
             <br/>
           </div>
         </div>
