@@ -8,9 +8,6 @@
 
 <div id="content">
   <div id="content_inner">
-    <div class="post">
-      <h2>参加募集中のプラン一覧</h2>
-    </div>
 
     <b>ソート : </b>
     <%= link_to( "新着", plans_path( sort: nil ) ) %>
@@ -24,6 +21,9 @@
       <%= link_to( category.name, plans_path( category_id: category.id ) ) %>
     <% } %>
     <br />
+        <div class="post">
+      <h2>参加募集中のプラン一覧</h2>
+    </div>
 
      <% @plans.each{ |plan| %>
         <div class="imgcaption">

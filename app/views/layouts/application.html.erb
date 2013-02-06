@@ -28,7 +28,7 @@
   <div id="header">
     <div id="header_inner">
       <h1><a href="/plans"><img src="/assets/logo.png"> </a></h1>
-      <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</p>
+      <p>　　　　　　　　　　　　　　　　　　　　　　　　　</p>
 
       <%# 検索フォーム %>
       <form method="get" action="<%= plans_path %>" id="search">
@@ -66,9 +66,22 @@
     <%= yield %>
 
      <div id="foot">
-      <div id="footer"
+
+     <div id="footmenu">
+<ul>
+<li class="first"><a href="#">お問い合わせ・ご意見はこちら</a></li>
+<li><a href="#">利用規約</a></li>
+<li><a href="#">プライバシーポリシー</a></li>
+<li><%= link_to "ログアウト", logout_path %></li>
+
+</ul>
+</div>
+
+
+
+
+      <div id="footer">
         <div id="footer_inner">
-          <p><%= link_to "Logout", logout_path %></p>
           <p>Copyright (c) Playcast. All Rights Reserved.</p><br>
         </div>
       </div>

@@ -100,7 +100,7 @@
               <h4 style="margin: 25px 0 5px 0;">2.一言コメントを入力してください。</h4>        
               <%#= text_field_tag( "entry[comment]", nil, class: "span6" ) %><br />
               <!--<textarea name="comment" rows="3" cols="30" placeholder="楽しみ！よろしくおねがいします" style="font-size: 12px;"></textarea><br><br />-->
-              <%= text_area_tag "entry[comment]", "", rows: "3", cols: "30", placeholder: "楽しみ！よろしくおねがいします", style: "font-size: 12px;" %>
+              <%= text_area_tag "entry[comment]", "", rows: "3", cols: "30", placeholder: "楽しみ！よろしくおねがいします", style: "font-size: 12px; margin-bottom: 30px;" %>
 
               <%= submit_tag '', class: "attendbutton" %>
             <% end %>
