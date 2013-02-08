@@ -15,6 +15,14 @@ class Plan < ActiveRecord::Base
   # コールバック
   after_create :create_feed_plan_start
 
+  # バリデーション
+  validates :title, presence: true, length: { maximum: 300 }
+  validates :description, presence: true, length: { maximum: 1000 }
+  validates :place, presence: true, length: { maximum: 500 }
+  validates :budget, presence: true, length: { maximum: 100 }
+  validates :max_people, numericality: { only_integer: true }
+  validates :min_people, presence: true, numericality: { only_integer: true }
+
   #--------------#
   # participant? #
   #--------------#

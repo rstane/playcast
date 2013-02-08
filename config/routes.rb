@@ -1,6 +1,6 @@
 Playcast::Application.routes.draw do
   resources :plans do
-    resource :comment
+    resources :comments, only: [:create, :destroy]
 #    resources :favorites
     resources :cheers
     resources :entries

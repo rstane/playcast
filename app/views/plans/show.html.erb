@@ -4,7 +4,9 @@
       <h1><%= @plan.title %></h1>
       <%= link_to( "編集", edit_plan_path( @plan ) ) if @plan.user_id == session[:user_id] %>
 
+<% if false %>
       <div class="planimg"><img src="<%= @plan.image_url %>" alt="<%= @plan.title %>" width="580px" height="340" /></p></div>
+<% end %>
       <dl class="plande">
       <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
       <dt>日時候補：</dt>
@@ -111,7 +113,7 @@
 
     <div id="commentflame">
       <p>コメント欄</p>
-      <%= form_for( :comment, url: plan_comment_path( @plan ) ) do |f| %>
+      <%= form_for( :comment, url: plan_comments_path( @plan ) ) do |f| %>
         <%= text_area_tag "comment_content", params[:comment_content], rows: 5, cols: 90, class: "span6" %><br />
 
         <%= f.submit "コメント", data: { 'disable-with' => "コメント" } %>
@@ -119,7 +121,11 @@
 
       <% @comments.each{ |comment| %>
         <div class="comment">
-          <p><%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.try(:name) %>：<%= comment.content %></p>
+          <p>
+            <%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.try(:name) %>：
+            <%= comment.content %>
+            <%= link_to( "削除", plan_comment_path( comment.plan, comment ), confirm: "コメントを削除してよろしいですか？", method: "delete" ) if comment.user_id == session[:user_id] %>
+          </p>
         </div>
       <% } %>
     </div>

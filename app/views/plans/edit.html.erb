@@ -4,11 +4,25 @@
   <div id="planpost">
     <h1>プラン編集</h1>
 
+    <%# エラーメッセージ %>
+    <% if @plan.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @plan.errors.full_messages.each do |msg| %>
+          <li style="color: red;"><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <h2>プランのタイトル<span class="postmark">必須</span></h2>
     <%= f.text_field :title, placeholder: "◯◯に一緒に行きませんか？", size: "75" %>
 
+<%# 一旦無し %>
+<% if false %>
     <h2>イメージ画像<span class="postmark">必須</span></h2>
     <%= f.text_field :image_url, placeholder: "◯◯.com", size: "75" %>
+<% end %>
 
     <h2>詳細説明<span class="postmark">必須</span></h2>
     <%= f.text_area :description, rows: "4", cols: "62", placeholder: "気になってはいるけど、なかなか機会が無い◯◯。みんなで楽しい思い出を作りましょう！" %>

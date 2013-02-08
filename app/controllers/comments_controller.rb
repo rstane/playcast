@@ -18,4 +18,14 @@ class CommentsController < ApplicationController
 
     redirect_to( plan_path( plan_id ) )
   end
+
+  #---------#
+  # destroy #
+  #---------#
+  def destroy( id, plan_id )
+    comment = Comment.where( id: id, user_id: session[:user_id] ).first
+    comment.destroy
+
+    redirect_to( plan_path( plan_id ) )
+  end
 end

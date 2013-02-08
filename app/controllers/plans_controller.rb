@@ -149,6 +149,8 @@ class PlansController < ApplicationController
 
       redirect_to( plan_path( @plan ), notice: "プランを更新しました。" )
     else
+      @categorize = Categorize.where( plan_id: @plan.id ).pluck(:category_id)
+      @schedules  = Schedule.where( plan_id: @plan.id ).order( "schedules.candidate_day ASC" ).includes( :participations => :user ).all
       render action: "edit"
     end
   end

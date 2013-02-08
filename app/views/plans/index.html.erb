@@ -38,9 +38,11 @@
      <% @plans.each{ |plan| %>
         <div class="imgcaption">
           <div class="imginner">
+<% if false %>
             <%= link_to( plan_path( plan ) ) do %>
               <p><img src="<%= plan.image_url %>" width="210" height="117" alt="<%= plan.title %>" /></p>
             <% end %>
+<% end %>
 
             <%= link_to( plan.title, plan_path( plan ) ) %>
             <br>
