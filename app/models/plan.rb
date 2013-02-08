@@ -15,6 +15,14 @@ class Plan < ActiveRecord::Base
   # コールバック
   after_create :create_feed_plan_start
 
+  #--------------#
+  # participant? #
+  #--------------#
+  def participant?( user_id )
+    schedule_ids = Participation.where( plan_id: self.id, user_id: user_id ).pluck(:schedule_id)
+    Schedule.where( id: schedule_ids, adopt_flag: true ).exists? ? true : false
+  end
+
   private
 
   #------------------------#

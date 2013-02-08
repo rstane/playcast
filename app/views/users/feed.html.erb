@@ -7,9 +7,9 @@
         <p>
         <% case feed.type %>
         <% when "FeedPlan" %>
-          「<%= feed.plan.title %>」の<%= feed.happen %>
+          「<%= link_to( feed.plan.title, plan_path(feed.plan) ) %>」の<%= feed.happen %>
         <% when "FeedEntry" %>
-          「<%= feed.plan.title %>」に「<%= link_to( feed.entry.user.name, user_path(feed.entry.user) ) if feed.entry.present? %>」さんが<%= feed.happen %>
+          「<%= link_to( feed.plan.title, plan_path(feed.plan) ) %>」に「<%= link_to( feed.entry.user.name, user_path(feed.entry.user) ) if feed.entry.present? %>」さんが<%= feed.happen %>
         <% when "FeedComment" %>
           「<%= link_to( feed.plan.title, plan_path(feed.plan) ) %>」に「<%= link_to( feed.comment.user.name, user_path(feed.comment.user) ) %>」さんから<%= feed.happen %>
         <% end %>

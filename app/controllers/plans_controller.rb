@@ -6,6 +6,9 @@ class PlansController < ApplicationController
   def index( category_id, sort, keyword )
     @plans = Plan.scoped
 
+    # 開催決定／募集終了除外
+    @plans = @plans.where( decide_flag: false, entry_close_flag: false )
+
     # カテゴリ条件追加
     if category_id.present?
       plan_ids = Categorize.where( category_id: category_id ).pluck(:plan_id)
@@ -35,7 +38,16 @@ class PlansController < ApplicationController
   # show #
   #------#
   def show( id )
-    @plan       = Plan.where( id: id ).first
+    @plan = Plan.where( id: id ).first
+
+    if @plan.decide_flag == true
+      # 参加者チェック
+      unless @plan.participant?( session[:user_id] )
+        flash[:alert] = "開催決定後のプランは参加者以外閲覧出来ません。"
+        redirect_to plans_path and return
+      end
+    end
+
     @entries    = Entry.where( plan_id: @plan.id ).includes( :user ).order( "created_at DESC" ).all
     @cheers     = Cheer.where( plan_id: @plan.id ).includes( :user ).order( "created_at DESC" ).all
     @categorize = Categorize.where( plan_id: @plan.id ).includes( :category ).order( "categories.name ASC" ).all
@@ -126,8 +138,8 @@ class PlansController < ApplicationController
             schedule = Schedule.where( id: key, plan_id: @plan.id ).first
             schedule.candidate_day = (value['date'].present? ? Time.parse( "#{value['date']} #{value['time(4i)']}:#{value['time(5i)']}" ) : nil)
             schedule.save!
-          else
-            flash[:alert] = "既に参加者の居る候補日は変更出来ません。"
+          # else
+          #   flash[:alert] = "既に参加者の居る候補日は変更出来ません。"
           end
         }
       end
