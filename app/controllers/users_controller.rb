@@ -17,11 +17,6 @@ class UsersController < ApplicationController
   # feed #
   #------#
   def feed
-  end
-
-  #--------#
-  # notice #
-  #--------#
-  def notice
+    @feeds = Feed.where( user_id: session[:user_id] ).includes( [:plan, {:entry => :user}, {:comment => [:user, :plan]}, :user] ).order( "created_at DESC" ).all
   end
 end

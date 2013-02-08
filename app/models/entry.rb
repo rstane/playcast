@@ -17,6 +17,7 @@ class Entry < ActiveRecord::Base
   #-------------------#
   # フィード作成
   def create_feed_entry
-    FeedEntry.create( entry_id: self.id, plan_id: self.plan_id, user_id: self.user_id, happen: "参加しました。" )
+    plan = Plan.where( id: self.plan_id ).first
+    FeedEntry.create( entry_id: self.id, plan_id: self.plan_id, user_id: plan.user_id, happen: "参加しました。" )
   end
 end

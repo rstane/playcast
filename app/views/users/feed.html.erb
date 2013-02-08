@@ -1,38 +1,28 @@
 <div id="content_plans">
+  <div id="leftcontents">
+    <div id="feed">
+      <img class="feedbtn" src="/assets/feedbtn1.png" />
 
- <div id="leftcontents">
+      <% @feeds.each{ |feed| %>
+        <p>
+        <% case feed.type %>
+        <% when "FeedPlan" %>
+          「<%= feed.plan.title %>」の<%= feed.happen %>
+        <% when "FeedEntry" %>
+          「<%= feed.plan.title %>」に「<%= link_to( feed.entry.user.name, user_path(feed.entry.user) ) if feed.entry.present? %>」さんが<%= feed.happen %>
+        <% when "FeedComment" %>
+          「<%= link_to( feed.plan.title, plan_path(feed.plan) ) %>」に「<%= link_to( feed.comment.user.name, user_path(feed.comment.user) ) %>」さんから<%= feed.happen %>
+        <% end %>
+        </p>
+      <% } %>
+    </div>
+  </div>
 
-   <div id="feed">
-   　　
-   　　<img class="feedbtn" src="/assets/お知らせボタン.png" />
-       <%= link_to( notice_users_path ) do %><img class="messageboxbtn" src="/assets/メッセージボックス.png" /><% end %>
-
-        <p>「タネマキ 壁部」に「Ryo Shirakawa」が参加しました。</p>
-        <p>「タネマキ 壁部」に「Ryo Shirakawa」からコメントが投稿されました。 </p>
-        <p>「タネマキ 壁部」に「Ryo Shirakawa」からコメントが投稿されました。 </p>
-        <p>「タネマキ 壁部」に「Ryo Shirakawa」からコメントが投稿されました。 </p>
-        <p>「タネマキ 壁部」に「Ryo Shirakawa」からコメントが投稿されました。 </p>
-        <p>「タネマキ 壁部」に「Ryo Shirakawa」からコメントが投稿されました。 </p>
-
-   </div>
-
-
-
- </div>
-
-
- <div id="rightcontens">
-
-   <div id="other2">
-   おすすめプラン
-
-   <img src="/assets/グルーヴラフTOPピング のコピー.png" width="180px"/>
-   <img src="/assets/グルーヴラフTOPピング のコピー.png" width="180px"/>
-
-   </div>
-
- </div>
-
+  <div id="rightcontens">
+    <div id="other2">
+      おすすめプラン
+      <img src="/assets/グルーヴラフTOPピング のコピー.png" width="180px"/>
+      <img src="/assets/グルーヴラフTOPピング のコピー.png" width="180px"/>
+    </div>
+  </div>
 </div>
-
-</html>

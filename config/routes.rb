@@ -13,7 +13,7 @@ Playcast::Application.routes.draw do
   resources :users, only: [:show] do
     collection do
       get "feed"
-      get "notice"
+#      get "notice"
     end
   end
 
