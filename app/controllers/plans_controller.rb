@@ -6,19 +6,20 @@ class PlansController < ApplicationController
   def index( category_id, sort, keyword )
     @plans = Plan.scoped
 
-    # ----- 抽出条件 ----- #
+    # カテゴリ条件追加
     if category_id.present?
       plan_ids = Categorize.where( category_id: category_id ).pluck(:plan_id)
       @plans   = @plans.where( id: plan_ids )
     end
 
+    # 検索キーワード条件追加
     if keyword.present?
       @plans   = @plans.where( "title LIKE ?", "%#{keyword}%" )
     end
 
     @plans = @plans.includes( :user, { :categorizes => :category } )
 
-    # ----- ソート順 ----- #
+    # ソート順指定
     if sort.present? and sort == "populur"
       @plans = @plans.order( "plans.cheers_count DESC, plans.favorites_count DESC" )
     else
