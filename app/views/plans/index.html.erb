@@ -35,26 +35,28 @@
     <% } %>
     <br />
 
-     <% @plans.each{ |plan| %>
-        <div class="imgcaption">
-          <div class="imginner">
+    <% @plans.each{ |plan| %>
+      <%# 募集終了判定 %>
+      <% if Time.now <= (plan.schedules.sort{ |a, b| b.candidate_day.to_i <=> a.candidate_day.to_i }.first.candidate_day.end_of_day) %>
+      <div class="imgcaption">
+        <div class="imginner">
 <% if false %>
             <%= link_to( plan_path( plan ) ) do %>
               <p><img src="<%= plan.image_url %>" width="210" height="117" alt="<%= plan.title %>" /></p>
             <% end %>
 <% end %>
+          <%= link_to( plan.title, plan_path( plan ) ) %>
+          <br>
 
-            <%= link_to( plan.title, plan_path( plan ) ) %>
-            <br>
-
-            <%# お気に入りボタン %>
-            <div id="favorite<%= plan.id %>">
-              <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "btn" } %>
-            </div>
-            <br/>
+          <%# お気に入りボタン %>
+          <div id="favorite<%= plan.id %>">
+            <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "btn" } %>
           </div>
+
+          <br/>
         </div>
-     <% } %>
-    </div>
+      </div>
+      <% end %>
+    <% } %>
   </div>
 </div>

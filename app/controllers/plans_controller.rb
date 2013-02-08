@@ -5,6 +5,7 @@ class PlansController < ApplicationController
   #-------#
   def index( category_id, sort, keyword )
     @plans = Plan.scoped
+    @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
 
     # 開催決定／募集終了除外
     @plans = @plans.where( decide_flag: false, entry_close_flag: false )
@@ -19,8 +20,6 @@ class PlansController < ApplicationController
     if keyword.present?
       @plans   = @plans.where( "title LIKE ?", "%#{keyword}%" )
     end
-
-    @plans = @plans.includes( :user, { :categorizes => :category } )
 
     # ソート順指定
     if sort.present? and sort == "populur"
