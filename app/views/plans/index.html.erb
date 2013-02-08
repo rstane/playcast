@@ -30,7 +30,7 @@
     <b>カテゴリ : </b>
     <%= link_to( "すべて", plans_path( category_id: nil ) ) %>
 
-    <% @categories.each{ |category| %>
+    <% Category.all.each{ |category| %>
       <%= link_to( category.name, plans_path( category_id: category.id ) ) %>
     <% } %>
     <br />

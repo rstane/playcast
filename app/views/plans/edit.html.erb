@@ -48,7 +48,7 @@
     <%= f.text_area :target_people, rows: "4", cols: "43", placeholder: "◯◯が好きな人、年代が近めな人" %>
 
     <h2>カテゴリ選択<span class="postmark">必須</span></h2>
-    <% @categories.each.with_index(1){ |category, index| %>
+    <% Category.all.each.with_index(1){ |category, index| %>
       <%= check_box_tag "categories[#{index}]", category.id, @categorize.index(category.id).present? %>
       <%= label_tag "categories[#{index}]", category.name %>
     <% } %>

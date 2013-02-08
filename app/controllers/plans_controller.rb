@@ -28,8 +28,6 @@ class PlansController < ApplicationController
     @plans = @plans.all
 
     @favorites  = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
-    puts "[ ---------- @favorites ---------- ]" ; @favorites.tapp ;
-    @categories = Category.order( "name ASC" ).all
   end
 
   #------#
@@ -60,7 +58,6 @@ class PlansController < ApplicationController
   #-----#
   def new
     @plan = Plan.new( min_people: 1, max_people: 1 )
-    @categories = Category.order( "name ASC" ).all
   end
 
   #------#
@@ -68,7 +65,6 @@ class PlansController < ApplicationController
   #------#
   def edit( id )
     @plan = Plan.where( id: id, user_id: session[:user_id] ).first
-    @categories = Category.order( "name ASC" ).all
     @categorize = Categorize.where( plan_id: @plan.id ).pluck(:category_id)
     @schedules  = Schedule.where( plan_id: @plan.id ).order( "schedules.candidate_day ASC" ).includes( :participations => :user ).all
   end
