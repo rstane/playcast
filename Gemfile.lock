@@ -70,6 +70,7 @@ GEM
       mechanize
       rails (>= 3.0.0)
     journey (1.0.4)
+    jpmobile (3.0.7)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -208,6 +209,7 @@ DEPENDENCIES
   exception_notification
   html5_validators
   i18n_generators
+  jpmobile
   jquery-rails
   kaminari
   newrelic_rpm
