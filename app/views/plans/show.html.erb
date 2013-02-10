@@ -2,19 +2,19 @@
   <div id="leftcontents">
     <div id="plan">
       <h1><%= @plan.title %></h1>
-      <%= link_to( "編集", edit_plan_path( @plan ) ) if @plan.user_id == session[:user_id] %>
-
-      <div class="planimg"><img src="<%= @plan.image_url %>" alt="<%= @plan.title %>" width="580px" height="340" /></p></div>
+      
       <dl class="plande">
+      <dt>投稿者：</dt> <dd><%= @plan.description %></dd>
       <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
+      <dt>こんな人に来てほしい：</dt> <dd class="target"><%= @plan.target_people %></dd>
       <dt>日時候補：</dt>
-      <dd>
+      <dd><span class="datedes">※下記候補の中で、一番参加者が多い日時で開催</span><br>
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
             <%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M") if schedule[1].present? %>
             <% participations = @participations.select{ |x| x.schedule_id == schedule[1].id } %>
             <% participations.each{ |participation| %>
-              <%= render partial: '/layouts/user_icon', locals: { user: participation.user } %>
+              <div class="atndmembers">参加予定メンバー:<%= render partial: '/layouts/user_icon', locals: { user: participation.user } %></div>
             <% } %>
             <br />
           <% end %>
@@ -24,9 +24,11 @@
       <dt>予算：</dt> <dd><%= @plan.budget %></dd>
       <dt>最低開催人数：</dt> <dd><%= @plan.min_people %>人以上集まらないと開催しない</dd>
       <dt>定員：</dt> <dd><%= @plan.max_people %>人まで</dd>
-      <dt>こんな人に来てほしい：</dt> <dd><%= @plan.target_people %>
+      
       </dd>
       </dl>
+      <div class="planedit"><%= link_to( "編集", edit_plan_path( @plan ) ) if @plan.user_id == session[:user_id] %></div>
+
     </div>
 
     <div id="cast">
@@ -97,10 +99,12 @@
                 <% } %>
               </div>
 
+
+
               <h4 style="margin: 25px 0 5px 0;">2.一言コメントを入力してください。</h4>        
               <%#= text_field_tag( "entry[comment]", nil, class: "span6" ) %><br />
               <!--<textarea name="comment" rows="3" cols="30" placeholder="楽しみ！よろしくおねがいします" style="font-size: 12px;"></textarea><br><br />-->
-              <%= text_area_tag "entry[comment]", "", rows: "3", cols: "30", placeholder: "楽しみ！よろしくおねがいします", style: "font-size: 12px; margin-bottom: 30px;" %>
+              <%= text_area_tag "entry[comment]", "", placeholder: "楽しみ！よろしくおねがいします", class: "atndcom" %>
 
               <%= submit_tag '', class: "attendbutton" %>
             <% end %>
@@ -110,7 +114,7 @@
     </div>
 
     <div id="commentflame">
-      <p>コメント欄</p>
+      <p class="comm">コメント欄</p>
       <%= form_for( :comment, url: plan_comment_path( @plan ) ) do |f| %>
         <%= text_area_tag "comment_content", params[:comment_content], rows: 5, cols: 90, class: "span6" %><br />
 

@@ -28,19 +28,15 @@
   <div id="header">
     <div id="header_inner">
       <h1><a href="/plans"><img src="/assets/logo.png"> </a></h1>
-      <p>　　　　　　　　　　　　　　　　　　　　　　　　　</p>
+      <p>プレイキャスト</p>
 
-      <%# 検索フォーム %>
-      <form method="get" action="<%= plans_path %>" id="search">
-        <p>
-          <input type="text" placeholder="プランを検索" id="text" name="keyword" value="<%= params[:keyword] %>" />
-          <input type="submit" id="submit" value="検索" />
-        </p>
-      </form>
-
-       <div id="submenu">
+     
+  <div id="navbar">
+      <div id="submenu">
         <ul>
-          <li class="first"><a href="feed.html">お知らせ</a></li>
+          <li class="first"><a href="/plans/new"><img src="/assets/postbtnmini.png"></a></li>
+       
+          <li><a href="feed.html">お知らせ</a></li>
           <% if session[:user_id].present? %>
             <li>
               <%= link_to( user_path( session[:user_id] ) ) do %>
@@ -54,6 +50,8 @@
           <% end %>
         </ul>
       </div>
+     </div> 
+    </div>
     </div>
   </div>
 
