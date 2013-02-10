@@ -14,10 +14,12 @@ class User < ActiveRecord::Base
   # auth_update #
   #-------------#
   def auth_update( auth )
-    if self.name != auth["info"]["name"] or self.nickname != auth["info"]["nickname"] or self.image != auth["info"]["image"] or self.email != auth["info"]["email"] or self.location != auth["info"]["location"]
+    image_path = "https://graph.facebook.com/#{auth['info']['nickname']}/picture?type=large"
+
+    if self.name != auth["info"]["name"] or self.nickname != auth["info"]["nickname"] or self.image != image_path or self.email != auth["info"]["email"] or self.location != auth["info"]["location"]
       self.name     = auth["info"]["name"]
       self.nickname = auth["info"]["nickname"]
-      self.image    = auth["info"]["image"]
+      self.image    = image_path
       self.email    = auth["info"]["email"]
       self.location = auth["info"]["location"]
       self.save

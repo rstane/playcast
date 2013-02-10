@@ -1,6 +1,10 @@
 # coding: utf-8
 class ApplicationController < ActionController::Base
+  include Jpmobile::ViewSelector
   protect_from_forgery
+
+  # タブレット非スマートフォン判定
+  before_filter :disable_mobile_view_if_tablet
 
   # BASIC認証
   http_basic_authenticate_with name: "playcast", password: "playcast1226" unless Rails.env.development?
@@ -12,6 +16,16 @@ class ApplicationController < ActionController::Base
   before_filter :reset_session_expires
 
   private
+
+  #-------------------------------#
+  # disable_mobile_view_if_tablet #
+  #-------------------------------#
+  # タブレット非スマートフォン化
+  def disable_mobile_view_if_tablet
+    if request.mobile and request.mobile.tablet?
+      disable_mobile_view!
+    end
+  end
 
   #-----------#
   # authorize #

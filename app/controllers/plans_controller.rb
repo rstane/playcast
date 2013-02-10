@@ -5,20 +5,23 @@ class PlansController < ApplicationController
   #-------#
   def index( category_id, sort, keyword )
     @plans = Plan.scoped
+    @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
 
-    # ----- 抽出条件 ----- #
+    # 開催決定／募集終了除外
+    @plans = @plans.where( decide_flag: false, entry_close_flag: false )
+
+    # カテゴリ条件追加
     if category_id.present?
       plan_ids = Categorize.where( category_id: category_id ).pluck(:plan_id)
       @plans   = @plans.where( id: plan_ids )
     end
 
+    # 検索キーワード条件追加
     if keyword.present?
       @plans   = @plans.where( "title LIKE ?", "%#{keyword}%" )
     end
 
-    @plans = @plans.includes( :user, { :categorizes => :category } )
-
-    # ----- ソート順 ----- #
+    # ソート順指定
     if sort.present? and sort == "populur"
       @plans = @plans.order( "plans.cheers_count DESC, plans.favorites_count DESC" )
     else
@@ -28,14 +31,22 @@ class PlansController < ApplicationController
     @plans = @plans.all
 
     @favorites  = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
-    @categories = Category.order( "name ASC" ).all
   end
 
   #------#
   # show #
   #------#
   def show( id )
-    @plan       = Plan.where( id: id ).first
+    @plan = Plan.where( id: id ).first
+
+    if @plan.decide_flag == true
+      # 参加者チェック
+      unless @plan.participant?( session[:user_id] )
+        flash[:alert] = "開催決定後のプランは参加者以外閲覧出来ません。"
+        redirect_to plans_path and return
+      end
+    end
+
     @entries    = Entry.where( plan_id: @plan.id ).includes( :user ).order( "created_at DESC" ).all
     @cheers     = Cheer.where( plan_id: @plan.id ).includes( :user ).order( "created_at DESC" ).all
     @categorize = Categorize.where( plan_id: @plan.id ).includes( :category ).order( "categories.name ASC" ).all
@@ -59,7 +70,6 @@ class PlansController < ApplicationController
   #-----#
   def new
     @plan = Plan.new( min_people: 1, max_people: 1 )
-    @categories = Category.order( "name ASC" ).all
   end
 
   #------#
@@ -67,7 +77,6 @@ class PlansController < ApplicationController
   #------#
   def edit( id )
     @plan = Plan.where( id: id, user_id: session[:user_id] ).first
-    @categories = Category.order( "name ASC" ).all
     @categorize = Categorize.where( plan_id: @plan.id ).pluck(:category_id)
     @schedules  = Schedule.where( plan_id: @plan.id ).order( "schedules.candidate_day ASC" ).includes( :participations => :user ).all
   end
@@ -128,8 +137,8 @@ class PlansController < ApplicationController
             schedule = Schedule.where( id: key, plan_id: @plan.id ).first
             schedule.candidate_day = (value['date'].present? ? Time.parse( "#{value['date']} #{value['time(4i)']}:#{value['time(5i)']}" ) : nil)
             schedule.save!
-          else
-            flash[:alert] = "既に参加者の居る候補日は変更出来ません。"
+          # else
+          #   flash[:alert] = "既に参加者の居る候補日は変更出来ません。"
           end
         }
       end
@@ -139,6 +148,8 @@ class PlansController < ApplicationController
 
       redirect_to( plan_path( @plan ), notice: "プランを更新しました。" )
     else
+      @categorize = Categorize.where( plan_id: @plan.id ).pluck(:category_id)
+      @schedules  = Schedule.where( plan_id: @plan.id ).order( "schedules.candidate_day ASC" ).includes( :participations => :user ).all
       render action: "edit"
     end
   end
@@ -151,5 +162,23 @@ class PlansController < ApplicationController
     plan.destroy ? flash[:notice] = "Plan was successfully deleted." : flash[:alert] = "Plan was failed deleted."
 
     redirect_to plans_path
+  end
+
+  #----------#
+  # favorite #
+  #----------#
+  def favorite( id, klass )
+    plan = Plan.where( id: id ).first
+    favorite = Favorite.where( user_id: session[:user_id], plan_id: id ).first_or_initialize
+
+    # 登録／解除
+    if favorite.id.present?
+      favorite.destroy
+      favorite = nil
+    else
+      favorite.save
+    end
+
+    render partial: 'favorite', locals: { favorite: favorite, plan: plan, klass: klass }
   end
 end

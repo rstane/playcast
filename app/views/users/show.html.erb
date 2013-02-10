@@ -64,6 +64,7 @@
         <h3>お気に入りのプラン</h3>
 
         <% @favorites.each{ |favorite| %>
+          <% if favorite.plan.present? %>
           <div class="userpostplan">
             <div class="uppimg">
               <a href="<%= plan_path( favorite.plan ) %>"><img src="<%= favorite.plan.image_url %>" width="162px" height="100px"></a>
@@ -74,6 +75,7 @@
               <br />
             </div>
           </div>
+          <% end %>
         <% } %>
 
         <br class="clear" style="clear:both" />

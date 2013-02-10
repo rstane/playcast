@@ -1,12 +1,21 @@
 Playcast::Application.routes.draw do
   resources :plans do
-    resource :comment
-    resources :favorites
+    resources :comments, only: [:create, :destroy]
+#    resources :favorites
     resources :cheers
     resources :entries
+
+    member do
+      post "favorite"
+    end
   end
 
-  resources :users
+  resources :users, only: [:show] do
+    collection do
+      get "feed"
+#      get "notice"
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -7,13 +7,29 @@ class Plan < ActiveRecord::Base
   has_many :favorites,      :dependent => :destroy
   has_many :cheers,         :dependent => :destroy
   has_many :entries,        :dependent => :destroy
-  has_many :categorizes,    :dependent => :destroy
   has_many :feeds,          :dependent => :destroy
   has_many :schedules,      :dependent => :destroy
   has_many :participations, :dependent => :destroy
+  has_many :categorizes,    :dependent => :destroy
 
   # コールバック
   after_create :create_feed_plan_start
+
+  # バリデーション
+  validates :title, presence: true, length: { maximum: 300 }
+  validates :description, presence: true, length: { maximum: 1000 }
+  validates :place, presence: true, length: { maximum: 500 }
+  validates :budget, presence: true, length: { maximum: 100 }
+  validates :max_people, numericality: { only_integer: true }
+  validates :min_people, presence: true, numericality: { only_integer: true }
+
+  #--------------#
+  # participant? #
+  #--------------#
+  def participant?( user_id )
+    schedule_ids = Participation.where( plan_id: self.id, user_id: user_id ).pluck(:schedule_id)
+    Schedule.where( id: schedule_ids, adopt_flag: true ).exists? ? true : false
+  end
 
   private
 

@@ -22,3 +22,33 @@ $(function(){
   $('a[rel=tooltip]').tooltip();
 });
 */
+
+// お気に入り登録／解除
+function toggle_favorite( plan_id, klass, kind ) {
+  if(kind == "delete"){
+    if(!(window.confirm('お気に入りを解除してよろしいですか？'))){
+      return
+    }
+  }
+
+  $.post(
+    // 送信先
+    "/plans/" + plan_id + "/favorite",
+    // 送信データ
+    {
+      "klass": klass
+    },
+    // コールバック処理
+    function(data, status) {
+      $("#favorite" + plan_id).html(data)
+
+      if (kind == "delete") {
+        window.alert('お気に入りを解除しました。');
+      } else {
+        window.alert('お気に入りに登録しました。');
+      };
+    },
+    // 応答データ形式
+    "html"
+  );
+};

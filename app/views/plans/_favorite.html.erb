@@ -1,0 +1,5 @@
+<% if favorite.present? %>
+  <%= link_to( "", "javascript:void(0);", onClick: "toggle_favorite( '#{plan.id}', '#{klass}', 'delete' )", class: "#{klass}cancell" ) %>
+<% else %>
+  <%= link_to( "", "javascript:void(0);", onClick: "toggle_favorite( '#{plan.id}', '#{klass}', 'create' )", class: klass ) %>
+<% end %>

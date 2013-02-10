@@ -47,7 +47,8 @@ gem 'custom-template'
 # Utility
 gem 'kaminari'
 gem 'action_args'
-gem "i18n_generators"
+gem 'i18n_generators'
+gem 'html5_validators'
 
 # Exception Error Notice
 gem "exception_notification"
@@ -74,3 +75,6 @@ group :production do
   gem 'pg'
   gem 'newrelic_rpm'
 end
+
+# Mobile
+gem 'jpmobile'

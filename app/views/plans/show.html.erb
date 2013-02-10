@@ -2,7 +2,15 @@
   <div id="leftcontents">
     <div id="plan">
       <h1><%= @plan.title %></h1>
+<<<<<<< HEAD
       
+=======
+      <%= link_to( "編集", edit_plan_path( @plan ) ) if @plan.user_id == session[:user_id] %>
+
+<% if false %>
+      <div class="planimg"><img src="<%= @plan.image_url %>" alt="<%= @plan.title %>" width="580px" height="340" /></p></div>
+<% end %>
+>>>>>>> 853b41e81bd88300015aab05d6627a83296b5579
       <dl class="plande">
       <dt>投稿者：</dt> <dd><%= @plan.description %></dd>
       <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
@@ -123,7 +131,11 @@
 
       <% @comments.each{ |comment| %>
         <div class="comment">
-          <p><%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.try(:name) %>：<%= comment.content %></p>
+          <p>
+            <%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.try(:name) %>：
+            <%= comment.content %>
+            <%= link_to( "削除", plan_comment_path( comment.plan, comment ), confirm: "コメントを削除してよろしいですか？", method: "delete" ) if comment.user_id == session[:user_id] %>
+          </p>
         </div>
       <% } %>
     </div>
@@ -133,11 +145,10 @@
     <div id="other1">
       <%= link_to( "", { anchor: "attendlink" }, class: 'attendbutton2' ) %>
 
-      <% if @favorite.present? %>
-        <%= link_to( "", plan_favorite_path( @plan, @favorite ), method: "delete", confirm: "お気に入りを解除してもよろしいですか？" , :class => 'btn2cancell' ) %>
-      <% else %>
-        <%= link_to( "", plan_favorites_path( @plan ), method: "post" ,  :class => 'btn2' ) %>
-      <% end %>
+      <%# お気に入りボタン %>
+      <div id="favorite<%= @plan.id %>">
+        <%= render partial: '/plans/favorite', locals: { favorite: @favorite, plan: @plan, klass: "btn2" } %>
+      </div>
     </div>
 
     <div id="other2">

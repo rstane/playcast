@@ -4,6 +4,18 @@
   <div id="planpost">
     <h1>プラン投稿</h1>
 
+    <%# エラーメッセージ %>
+    <% if @plan.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @plan.errors.full_messages.each do |msg| %>
+          <li style="color: red;"><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
     <h2>カテゴリ選択<span class="postmark">必須</span></h2>
     <% @categories.each.with_index(1){ |category, index| %>
       <%= check_box_tag "categories[#{index}]", category.id, (params[:categories].present? ? params[:categories].has_value?(category.id.to_s) : false) %>
@@ -15,6 +27,7 @@
 
     <h2>プランの説明<span class="postmark">必須</span></h2>
     <%= f.text_area :description, placeholder: "AKB48、いきものがかり、EXILEなどのJ-POPが好きな人！カラオケ行きましょう☆", class: "inputdes" %>
+
 
 　　 <h2>こんな人に来てほしい</h2>
     <%= f.text_area :target_people, rows: "4", cols: "43", placeholder: "J-POP好きな人、20代の人、男女両方OK", class: "inputtitle" %>
@@ -47,7 +60,6 @@
 
     <h2>定員</h2>
     <%= f.number_field :max_people, min: "1", max: "9999", value: "", class: "inputcount" %>人まで
-
 
     <br><br>
 
