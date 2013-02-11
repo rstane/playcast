@@ -86,13 +86,16 @@ class PlansController < ApplicationController
     @plan = Plan.new( plan )
     @plan.user_id = session[:user_id]
 
+    if categories.blank?
+      flash.now[:alert] = "カテゴリを選択してください。"
+      render action: "new" and return
+    end
+
     if @plan.save
       # カテゴリ選択
-      if categories.present?
-        categories.each_pair{ |key, value|
-          Categorize.where( plan_id: @plan.id, category_id: value ).first_or_create
-        }
-      end
+      categories.each_pair{ |key, value|
+        Categorize.where( plan_id: @plan.id, category_id: value ).first_or_create
+      }
 
       # 候補日作成
       if schedules.present?
