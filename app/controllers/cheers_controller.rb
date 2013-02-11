@@ -6,7 +6,7 @@ class CheersController < ApplicationController
   def create( plan_id )
     Cheer.where( user_id: session[:user_id], plan_id: plan_id ).first_or_create
 
-    redirect_to( plan_path( plan_id ), notice: "応援しました。" )
+    redirect_to( plan_path( plan_id ) )
   end
 
   #---------#
@@ -16,6 +16,6 @@ class CheersController < ApplicationController
     cheer = Cheer.where( user_id: session[:user_id], plan_id: plan_id, id: id ).first
     cheer.destroy
 
-    redirect_to( plan_path( plan_id ), notice: "応援をやめました。" )
+    redirect_to( plan_path( plan_id ) )
   end
 end
