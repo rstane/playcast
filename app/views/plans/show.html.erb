@@ -93,7 +93,7 @@
               <div class="dates">
                 <% 5.times{ |i| %>
                   <% if @entry_schedules[i].present? and @schedules[@entry_schedules[i]].candidate_day.present? %>
-                    <%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], false %>
+                    <%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], true %>
                     <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y年%m月%d日 %H:%M") %><br />
                   <% end %>
                 <% } %>
