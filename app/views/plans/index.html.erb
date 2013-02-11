@@ -40,8 +40,6 @@
 
     <div id="paging">
     <% @plans.each{ |plan| %>
-      <%# 募集終了判定 %>
-      <% if (Time.now <= plan.schedules.sort{ |a, b| b.candidate_day.to_i <=> a.candidate_day.to_i }.first.candidate_day.end_of_day rescue false) %>
       <div class="imgcaption">
         <div class="imginner">
           <%= link_to( plan.title, plan_path( plan ) ) %>
@@ -55,7 +53,6 @@
           <br/>
         </div>
       </div>
-      <% end %>
     <% } %>
     </div>
 

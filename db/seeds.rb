@@ -20,6 +20,16 @@ Plan.includes( :cheers, :favorites ).all.each{ |plan|
   plan.update_attributes( cheers_count: plan.cheers.length, favorites_count: plan.favorites.length )
 }
 
+# 募集終了日時格納
+Schedule.all.each{ |schedule|
+  if schedule.candidate_day.present?
+    schedule.close_at = schedule.candidate_day.end_of_day
+    schedule.save
+  end
+}
+
+# -------------------------------------------------- #
+
 # サンプルデータ
 if Rails.env.development?
   1.upto(10){ |num|

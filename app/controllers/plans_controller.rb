@@ -8,7 +8,7 @@ class PlansController < ApplicationController
     @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
 
     # 開催決定／募集終了除外
-    @plans = @plans.where( decide_flag: false, entry_close_flag: false )
+    @plans = @plans.where( decide_flag: false, entry_close_flag: false ).where( "schedules.close_at > ?", Time.now )
 
     # カテゴリ条件追加
     if category_id.present?
