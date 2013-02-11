@@ -50,7 +50,7 @@ class Plan < ActiveRecord::Base
     entry_count = Participation.where( plan_id: plan.id ).group( "schedule_id" ).count.sort{ |a, b| b[1].to_i <=> a[1].to_i }
     max_count = (entry_count.present? ? entry_count.first[1] : 0)
 
-    if max_count >= plan.max_people.to_i
+    if plan.max_people.present? and max_count >= plan.max_people.to_i
       # 募集終了
       plan.entry_close_flag = true
     else

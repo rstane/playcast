@@ -10,6 +10,9 @@ class Entry < ActiveRecord::Base
   # コールバック
   after_create :create_feed_entry
 
+  # バリデーション
+  validates :comment, presence: true, length: { maximum: 1000 }
+
   private
 
   #-------------------#

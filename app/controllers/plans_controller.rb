@@ -86,6 +86,11 @@ class PlansController < ApplicationController
     @plan = Plan.new( plan )
     @plan.user_id = session[:user_id]
 
+    if schedules.blank?
+      flash.now[:alert] = "候補日を選択してください。"
+      render action: "new" and return
+    end
+
     if categories.blank?
       flash.now[:alert] = "カテゴリを選択してください。"
       render action: "new" and return

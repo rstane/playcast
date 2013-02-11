@@ -7,6 +7,8 @@ class EntriesController < ApplicationController
     if entry.present?
       if entry[:schedules].blank?
         redirect_to( plan_path( plan_id ), alert: "参加日を選択してください。" ) and return
+      elsif entry[:comment].blank?
+        redirect_to( plan_path( plan_id ), alert: "コメントを入力してください。" ) and return
       end
 
       new_entry = Entry.where(
