@@ -8,7 +8,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # カテゴリ
-Category.delete_all
+#Category.delete_all
 Category.where( name: "カラオケ・アミューズメント", sort: 1 ).first_or_create
 Category.where( name: "飲み会・食事会", sort: 2 ).first_or_create
 Category.where( name: "スポーツ・アウトドア", sort: 3 ).first_or_create
