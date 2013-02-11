@@ -86,7 +86,12 @@ class PlansController < ApplicationController
     @plan = Plan.new( plan )
     @plan.user_id = session[:user_id]
 
-    if schedules.blank?
+    date_count = 0
+    schedules.each{ |s|
+      date_count += 1 if s[1]["date"].present?
+    }
+
+    if schedules.blank? or date_count == 0
       flash.now[:alert] = "候補日を選択してください。"
       render action: "new" and return
     end
@@ -124,38 +129,49 @@ class PlansController < ApplicationController
   #--------#
   def update( id, plan, categories, schedules )
     @plan = Plan.where( id: id, user_id: session[:user_id] ).first
+    @categorize = Categorize.where( plan_id: @plan.id ).pluck(:category_id)
+    @schedules  = Schedule.where( plan_id: @plan.id ).order( "schedules.candidate_day ASC" ).includes( :participations => :user ).all
+
+    date_count = 0
+    schedules.each{ |s|
+      date_count += 1 if s[1]["date"].present?
+    }
+
+    if schedules.blank? or date_count == 0
+      flash.now[:alert] = "候補日を選択してください。"
+      render action: "edit" and return
+    end
+
+    if categories.blank?
+      flash.now[:alert] = "カテゴリを選択してください。"
+      render action: "edit" and return
+    end
 
     if @plan.update_attributes( plan )
       # カテゴリ更新
       Categorize.where( plan_id: @plan.id ).delete_all
-      if categories.present?
 
-        categories.each_pair{ |key, value|
-          Categorize.where( plan_id: @plan.id, category_id: value ).first_or_create
-        }
-      end
+      categories.each_pair{ |key, value|
+        Categorize.where( plan_id: @plan.id, category_id: value ).first_or_create
+      }
 
       # 候補日更新(参加登録が無ければ)
-      if schedules.present?
-        schedules.each_pair{ |key, value|
-          # 参加者が居なければ
-          unless Participation.where( plan_id: @plan.id, schedule_id: key ).exists?
-            schedule = Schedule.where( id: key, plan_id: @plan.id ).first
-            schedule.candidate_day = (value['date'].present? ? Time.parse( "#{value['date']} #{value['time(4i)']}:#{value['time(5i)']}" ) : nil)
-            schedule.save!
-          # else
-          #   flash[:alert] = "既に参加者の居る候補日は変更出来ません。"
-          end
-        }
-      end
+      schedules.each_pair{ |key, value|
+        # 参加者が居なければ
+        unless Participation.where( plan_id: @plan.id, schedule_id: key ).exists?
+          schedule = Schedule.where( id: key, plan_id: @plan.id ).first
+          schedule.candidate_day = (value['date'].present? ? Time.parse( "#{value['date']} #{value['time(4i)']}:#{value['time(5i)']}" ) : nil)
+          schedule.save!
+        # else
+        #   flash[:alert] = "既に参加者の居る候補日は変更出来ません。"
+        end
+      }
 
       # 定員／最少開催人数チェック
       Plan.max_min_people_check( @plan.id )
 
       redirect_to( plan_path( @plan ), notice: "プランを更新しました。" )
     else
-      @categorize = Categorize.where( plan_id: @plan.id ).pluck(:category_id)
-      @schedules  = Schedule.where( plan_id: @plan.id ).order( "schedules.candidate_day ASC" ).includes( :participations => :user ).all
       render action: "edit"
     end
   end

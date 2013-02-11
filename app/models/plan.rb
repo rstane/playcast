@@ -13,6 +13,7 @@ class Plan < ActiveRecord::Base
   has_many :categorizes,    :dependent => :destroy
 
   # コールバック
+  after_create :create_owner_entry
   after_create :create_feed_plan_start
 
   # バリデーション
@@ -32,6 +33,27 @@ class Plan < ActiveRecord::Base
   end
 
   private
+
+  #--------------------#
+  # create_owner_entry #
+  #--------------------#
+  # プラン投稿者：参加メンバー作成
+  def create_owner_entry
+    entry = Entry.where(
+      user_id: self.user_id,
+      plan_id: self.id,
+      comment: "主催者"
+    ).first_or_create
+
+    self.schedules.each{ |schedule|
+      Participation.where(
+        user_id: self.user_id,
+        plan_id: self.id,
+        schedule_id: schedule.id,
+        entry_id: entry.id
+      ).first_or_create
+    }
+  end
 
   #------------------------#
   # create_feed_plan_start #
