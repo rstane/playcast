@@ -41,12 +41,6 @@ function toggle_favorite( plan_id, klass, kind ) {
     // コールバック処理
     function(data, status) {
       $("#favorite" + plan_id).html(data)
-
-      if (kind == "delete") {
-        window.alert('お気に入りを解除しました。');
-      } else {
-        window.alert('お気に入りに登録しました。');
-      };
     },
     // 応答データ形式
     "html"
