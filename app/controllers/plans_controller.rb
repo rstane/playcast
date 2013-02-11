@@ -3,8 +3,8 @@ class PlansController < ApplicationController
   #-------#
   # index #
   #-------#
-  def index( category_id, sort, keyword )
-    @plans = Plan.scoped
+  def index( category_id, sort, keyword, page )
+    @plans = Plan.page(page).per(1)
     @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
 
     # 開催決定／募集終了除外
@@ -27,8 +27,6 @@ class PlansController < ApplicationController
     else
       @plans = @plans.order( "plans.created_at DESC" )
     end
-
-    @plans = @plans.all
 
     @favorites  = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
   end

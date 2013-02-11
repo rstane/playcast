@@ -9,11 +9,6 @@
 
 # カテゴリ
 #Category.delete_all
-# Category.where( name: "イベント" ).first_or_create
-# Category.where( name: "遊び" ).first_or_create
-# Category.where( name: "カラオケ" ).first_or_create
-# Category.where( name: "アウトドア" ).first_or_create
-# Category.where( name: "飲み会" ).first_or_create
 Category.where( name: "カラオケ・その他アミューズメント", sort: 1 ).first_or_create
 Category.where( name: "飲み会・食事会", sort: 2 ).first_or_create
 Category.where( name: "スポーツ", sort: 3 ).first_or_create
@@ -24,3 +19,23 @@ Category.where( name: "インドアゲーム", sort: 5 ).first_or_create
 Plan.includes( :cheers, :favorites ).all.each{ |plan|
   plan.update_attributes( cheers_count: plan.cheers.length, favorites_count: plan.favorites.length )
 }
+
+# サンプルデータ
+if Rails.env.development?
+  1.upto(10){ |num|
+    plan = Plan.where(
+      title: "プラン#{num}",
+      description: "プラン説明#{num}",
+      place: "場所#{num}",
+      budget: "予算#{num}",
+      max_people: 10,
+      min_people: 1
+    ).first_or_create
+
+    schedule = Schedule.new
+    schedule.number        = 1
+    schedule.plan_id       = plan.id
+    schedule.candidate_day = Time.now.since(1.month)
+    schedule.save
+  }
+end

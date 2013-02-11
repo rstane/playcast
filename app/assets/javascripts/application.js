@@ -52,3 +52,13 @@ function toggle_favorite( plan_id, klass, kind ) {
     "html"
   );
 };
+
+// オートページャー
+$(function() {
+  $.autopager({
+    start: function(current, next) { $("#loading").show() },
+    load: function(current, next) { $("#loading").hide() },
+    content: '#paging', // コンテンツ要素部分のセレクタを指定
+    link: 'a[rel=next]'  // 次ページのリンク部分のセレクタを指定
+  });
+});
