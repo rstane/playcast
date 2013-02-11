@@ -147,18 +147,23 @@ vertical-align: -10px;
       height: 366px;
       background-repeat:repeat-x;
       background-position:center;
-      margin-top: 45px;
       }
 
 
-  
+.copy {
+text-align: center;
+position: relative;
+top: 105px;
+}
+
+
 .postbuttontop {
 margin: auto;
 position: relative;
-top: 190px;
+top: 109px;
 display: block;
-width: 247px;
-height: 53px;
+width: 322px;
+height: 58px;
 background-image: url(startbtn.png);
 background-repeat: no-repeat;
 }
@@ -210,62 +215,73 @@ text-decoration: none;
 a { color:#333;}
 
 
-.imgcaption {float: left;
-  
-  width: 210px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border: solid 1px #CCC;
-  padding: 7px;
-  background-color:#FFF;
-  box-shadow: 2px 2px 2px #DDD;
-  -moz-box-shadow: 2px 2px 2px #DDD;    /* firefox　*/
--webkit-box-shadow: 2px 2px 2px #DDD;  /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
-    -moz-border-radius: 5px;   /* Firefox用 */
-    height: 235px;
+.imgcaption {
+float: left;
+width: 290px;
+margin-right: 10px;
+margin-bottom: 10px;
+border: solid 1px #CCC;
+padding: 7px;
+background-color: #FFF;
+box-shadow: 2px 2px 2px #DDD;
+-moz-box-shadow: 2px 2px 2px #DDD;
+-webkit-box-shadow: 2px 2px 2px #DDD;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+height: 100px;
 }
 
-.imgcaption img {margin-bottom: 29px;}
-
-
-.imgcaption p {
-margin: 0;
-font-weight: 700;
-font-size: 0.8em;
-margin-bottom: -23px;
-height: 80px;
+.planimgtop {
+    float: left;
+    margin-right: 5px;
 }
 
-.planinner {
-margin-top: 69px;
+.plancap {
+    font-size: 13px;
+    overflow: auto;
+    height: 64px;
+    font-weight: bold;
 }
 
-.attendbtntop {display:block;
-      width: 95px;
-      height: 28px;
-    background-image:url(attendbtntop.png);
-    background-repeat:no-repeat;
-    float: left;margin-top: 5px;}
+.planfoot {
+    border-top: solid 1px rgb(189, 189, 189);
+    width: 290px;
+    padding-top: 7px;
+}
 
 
-.favoritebtntop {display:block;
-      width: 96px;
-      height: 28px;
-    background-image:url(favoritebtntop.png);
-    background-repeat:no-repeat;
-    float: right;margin-top: -15px;}
+.sannkabtn {
+display: block;
+width: 95px;
+height: 28px;
+background-image: url(attendbtntop.png);
+background-repeat: no-repeat;
+float: left;
+position: relative;
+left: 50px;
+}
 
-.btn:hover { background-position:0px -32px;
-             background-repeat:no-repeat;}
+.favoritebtntop {
+display: block;
+width: 96px;
+height: 28px;
+background-image: url(favoritebtntop.png);
+background-repeat: no-repeat;
+float: right;
+position: relative;
+top: -24px;
+}
+
 
 .favoritebtntopcancell {display:block;
       width: 96px;
       height: 28px;
     background-image:url(favingbtn.png);
     background-repeat:no-repeat;
-    float: right;margin-top: -15px;}
+    float: right;
+    position: relative;
+    top: -24px; }
 
 /* ==================== プラン投稿ページ ==================== */
 
@@ -354,7 +370,7 @@ font-size: 14px;
 
 .inputcount {
 font-size: 17px;
-width: 40px;
+width: 47px;
 }
 
 
@@ -406,6 +422,7 @@ border-left: solid 7px rgb(210, 0, 0);
 padding-left: 3px;
 color: #000;
 font-size: 15px;
+border-bottom: dotted 1px rgb(85, 85, 85);
 }
 
 dl.plande dd {
@@ -423,12 +440,17 @@ dl.plande {margin:auto;
 .target {margin-left: 100px;}
 
 .datedes {
-font-weight: bold;
-color: 
-red;
 position: relative;
-left: -15px;
+left: -16px;
+top: -1px;
 font-family: sans-serif;
+}
+
+.plandatedes {
+font-size: 16px;
+font-weight: bold;
+position: relative;
+line-height: 34px;
 }
 
 .planedit {
@@ -533,7 +555,21 @@ font-size: 20px;
 margin: 5px 0 5px 0;
 }
 
-.atndmembers {}
+.atndmembers {
+margin-left: 10px;
+font-size: 12px;
+vertical-align: top;
+position: relative;
+top: -5px;
+margin-bottom: -23px;
+}
+
+.atndmembersimg {
+position: relative;
+left: 140px;
+margin-bottom: -25px;
+}
+
 
 #attend h4 {
 font-weight: bold;
@@ -545,6 +581,14 @@ border-bottom: solid 1px
 .attenduser{ vertical-align:middle;
              margin-left:5px;}
 
+
+.st-content { margin-left: 10px;}
+
+.st-content-ouen {
+margin-top: -10px;
+margin-bottom: -10px;
+margin-left: 10px;
+}
 
 .attendbutton {
 display: block;
@@ -694,36 +738,37 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 
 
 
-#userpage{width: 680px;
-     margin-bottom:10px;
-   padding:10px;
-   background-color:#FFF;
-  border: solid 1px #E0E0E0;    /* firefox　*/
-  /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */  
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
-    -moz-border-radius: 5px;   /* Firefox用 */}
+#userpage {
+width: 680px;
+margin-bottom: 10px;
+padding: 10px 10px 0px 10px;
+background-color: #FFF;
+border: solid 1px #E0E0E0;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+}
 
 
-#userpage h1{
-  background: rgb(235, 235, 235);
-    
-    
-    
-    
-    
-    display: block;
-    font-size: 26px;
-    
-  font-weight: 600;
-    height: 39px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
-    padding-bottom: 5px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 5px; }
+#userpage h1 {
+background: rgb(235, 235, 235);
+display: block;
+font-size: 30px;
+font-weight: 600;
+height: 39px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 5px;
+}
+
+.fbbutton {
+position: relative;
+left: -10px;
+}
 
 
 #userdatawrap { width: 680px;
@@ -812,26 +857,36 @@ text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.4), 0px 1px 0px rgba(255, 255, 2
 
 /* ==================== お知らせページ==================== */
 
-
-#feed {width:680px;
+#feed {width: 680px;
      margin-bottom:10px;
-	 padding:10px;
-	 background-color:#FFF;
-	 border: solid 1px #E0E0E0;
-	    /* firefox　*/
+   padding:10px;
+   background-color:#FFF;
+  border: solid 1px #E0E0E0;    /* firefox　*/
   /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+border-radius: 5px;        /* CSS3草案 */  
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
     -moz-border-radius: 5px;   /* Firefox用 */}
 
-#feed h1 {color: white; padding: 5px 8px;margin: 0;font-size: 1.6em;   background-color: #3FBD2D ;border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;}
 
+#feed h1 {
+background: rgb(235, 235, 235);
+display: block;
+font-size: 30px;
+font-weight: 600;
+height: 39px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 5px;
+}
 #feed p {
     margin: 15px 0 -1px 0;
     border-bottom: solid 1px rgb(156, 156, 156);
     font-size: 0.9em;
 }
-
 
 
 /* ==================== フッター ==================== */

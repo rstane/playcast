@@ -1,4 +1,7 @@
 <div id="mainpic">
+          
+          <div class="copy"><img src="/assets/copy.png" width="657" height="96" alt="遊びを通じて、趣味の合う仲間を作れる。あなたのやりたい趣味を募集して、集まった仲間と実際に遊ぶ。ソーシャル・レジャーマッチングサービス「Playcast」" /></div>
+
           <%= link_to  "" , new_plan_path, class: "postbuttontop" %>
         
     </div>
@@ -21,36 +24,30 @@
     </div>
 
 
+
     <% @plans.each{ |plan| %>
       <%# 募集終了判定 %>
       <% if (Time.now <= plan.schedules.sort{ |a, b| b.candidate_day.to_i <=> a.candidate_day.to_i }.first.candidate_day.end_of_day rescue false) %>
-      <div class="imgcaption">
-        <div class="imginner">
-<% if false %>
-
+     
+     <div class="imgcaption">
             <%= link_to( plan_path( plan ) ) do %>
-              <p><img src="<%= plan.image_url %>" width="210" height="117" alt="<%= plan.title %>" /></p>
-            <% end %>
-<% end %>
-          <%= link_to( plan.title, plan_path( plan ) ) %>
-          <br>
+              <img class="planimgtop" src="/assets/amuplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><%= link_to( plan.title, plan_path( plan ) ) %></div>
+           <% end %>
 
-
-            <div class="planinner">
-            <p><%= link_to( plan.title, plan_path( plan ) ) %><p>
-            <br>
-           
-           <%= link_to  "" , new_plan_path, class: "attendbtntop" %>
+               <div class="planfoot">
+　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 5px;" )%>
+                <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
+              
 
           <%# お気に入りボタン %>
           <div id="favorite<%= plan.id %>">
-            <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "btn" } %>
-          </div>
+                   <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "favoritebtntop" } %>
+                </div>
+               </div>
           </div>
 
-            <br/>
-        </div>
-      </div>
+      
       <% end %>
     <% } %>
   </div>

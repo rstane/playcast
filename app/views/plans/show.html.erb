@@ -2,15 +2,11 @@
   <div id="leftcontents">
     <div id="plan">
       <h1><%= @plan.title %></h1>
-<<<<<<< HEAD
-      
-=======
-      <%= link_to( "編集", edit_plan_path( @plan ) ) if @plan.user_id == session[:user_id] %>
 
 <% if false %>
       <div class="planimg"><img src="<%= @plan.image_url %>" alt="<%= @plan.title %>" width="580px" height="340" /></p></div>
 <% end %>
->>>>>>> 853b41e81bd88300015aab05d6627a83296b5579
+
       <dl class="plande">
       <dt>投稿者：</dt> <dd><%= @plan.description %></dd>
       <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
@@ -19,11 +15,19 @@
       <dd><span class="datedes">※下記候補の中で、一番参加者が多い日時で開催</span><br>
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
-            <%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M") if schedule[1].present? %>
+            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M スタート") if schedule[1].present? %></span>
+            <div class="atndmembers">【参加予定メンバー】:</div>
+            
+            <div class="atndmembersimg">
             <% participations = @participations.select{ |x| x.schedule_id == schedule[1].id } %>
             <% participations.each{ |participation| %>
-              <div class="atndmembers">参加予定メンバー:<%= render partial: '/layouts/user_icon', locals: { user: participation.user } %></div>
+              <% if participation.user.present? %>
+                <%= link_to_unless( participation.user.nickname.blank?, image_tag( participation.user.image, size: "24x24", class: "margin_minus2" ), "#{Settings.provider_page}#{participation.user.nickname}", target: "_blank", rel: "tooltip", "data-original-title" => participation.user.nickname, title: participation.user.nickname ) %>
+              <% end %>
+
             <% } %>
+           </div>
+
             <br />
           <% end %>
         <% } %>
@@ -35,20 +39,20 @@
       
       </dd>
       </dl>
-      <div class="planedit"><%= link_to( "編集", edit_plan_path( @plan ) ) if @plan.user_id == session[:user_id] %></div>
-
+      <div class="planedit"><%= link_to( "編集", edit_plan_path( @plan ) ) if @plan.user_id == session[:user_id] %>　削除</div>
+　　　
     </div>
 
     <div id="cast">
       <div id="t-accordion" class="st-accordion">
         <ul>
           <li>
-            <a href="#"><p>参加表明中のメンバー</p></a>
+            <p>参加表明中のメンバー</p>
 
             <div class="st-content">
               <% @entries.each.with_index(1){ |entry, index| %>
-                <%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %> : <%= entry.comment %>
-              <% } %>
+              <%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %> : <%= entry.comment %>
+             <br> <% } %>
             </div>
           </li>
         </ul>
@@ -68,9 +72,9 @@
       <div id="t-accordion" class="st-accordion">
         <ul>
           <li>
-            <a href="#"><p>応援している人</p></a>
+            <p>応援している人</p>
 
-            <div class="st-content">
+            <div class="st-content-ouen">
               <% @cheers.each.with_index(1){ |cheer, index| %>
                 <%= render partial: '/layouts/user_icon', locals: { user: cheer.user } %>
               <% } %>
@@ -88,7 +92,7 @@
 
       <div id="attendinner">
         <% if @entry.present? %><br>
-          <%= link_to( "【参加キャンセル】", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %>
+          <%= link_to( "参加キャンセル", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %><br>
         <% else %>
           <% if @plan.entry_close_flag %>
             <span style="color: red;">既に募集が終了しています。</span>
@@ -102,7 +106,7 @@
                 <% 5.times{ |i| %>
                   <% if @entry_schedules[i].present? and @schedules[@entry_schedules[i]].candidate_day.present? %>
                     <%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], false %>
-                    <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y年%m月%d日 %H:%M") %><br />
+                    <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y年%m月%d日 %H:%M スタート") %><br />
                   <% end %>
                 <% } %>
               </div>
@@ -123,7 +127,7 @@
 
     <div id="commentflame">
       <p class="comm">コメント欄</p>
-      <%= form_for( :comment, url: plan_comment_path( @plan ) ) do |f| %>
+      <%= form_for( :comment, url: plan_comments_path( @plan ) ) do |f| %>
         <%= text_area_tag "comment_content", params[:comment_content], rows: 5, cols: 90, class: "span6" %><br />
 
         <%= f.submit "コメント", data: { 'disable-with' => "コメント" } %>
@@ -134,7 +138,7 @@
           <p>
             <%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.try(:name) %>：
             <%= comment.content %>
-            <%= link_to( "削除", plan_comment_path( comment.plan, comment ), confirm: "コメントを削除してよろしいですか？", method: "delete" ) if comment.user_id == session[:user_id] %>
+            <%= link_to( "削除", plan_comment_path( comment.plan, comment ), confirm: "コメントを削除してよろしいですか？", method: "delete", style: "font-size: 13px; float: right;" ) if comment.user_id == session[:user_id] %>
           </p>
         </div>
       <% } %>
