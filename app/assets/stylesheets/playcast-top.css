@@ -49,21 +49,20 @@ z-index: 1;
 
 /* ==================== ヘッダー ==================== */
 
-#header	{width: 100%;
-	height: 45px;
-	background-image:url("/assets/headerimg.png");
-	color: #000000;
-	position: fixed;
-	z-index:2;
-	top: 0;
-    left: 0;
-
-	/* 影指定 */
-    box-shadow: 0 1px 8px #333333;
-    -moz-box-shadow: 0 1px 8px #333333; /* Firefox対応 */
-    -webkit-box-shadow: 0 1px 8px #333333; /* Safari、Chrome対応 */
-	}
-
+#header {
+width: 100%;
+height: 45px;
+ackground-image: url("/assets/headerimg.png");
+background-color: rgb(218, 0, 0);
+color: rgb(255, 255, 255);
+position: fixed;
+z-index: 2;
+top: 0;
+left: 0;
+box-shadow: 0 1px 8px #333333;
+-moz-box-shadow: 0 1px 8px #333333;
+-webkit-box-shadow: 0 1px 8px #333333;
+}
 
 #header_inner	{
 	width: 950px;
@@ -72,8 +71,10 @@ z-index: 1;
 				 }
 
 
-#header_inner h1 {margin: -2px 0 0px 0;
-             float:left;}
+#header_inner h1 {
+margin: 3px 0 0px 0;
+float: left;
+}
 
 
 #header_inner p {
@@ -84,141 +85,127 @@ z-index: 1;
 }
 
 
-
-
-
-/* ==================== フォーム ==================== */
-
-
-
-#search p	{
-	width: 200px;
-	float: left;
-	margin-top: 6px;
-	margin-right: -50px;
-	margin-bottom: 0px;
-	margin-left: 69px;
-}
-
-#search #text	{width: 150px;
-	margin-left: 3px;padding: 5px 10px;
-	font-size: 12px;
-	line-height: 1;
-	border: none;
-	outline: none;
-	background: none;
-	background-image:url(textbox_gray.png);
-	background-repeat: no-repeat;}
-
-#search #submit	{width: 22px;
-	padding: 4px 0;
-	font-size: 14px;
-	line-height: 1;
-	border: none;
-	outline: none;
-	background: none;
-	background-image: url(search_button.png);
-	background-repeat: no-repeat;
-
-	vertical-align:top;
-	text-indent: -9999px;}
-
-#search #submit:hover	{background-position: 0 -32px;}
-
-
-
-
-
 /* ====================サブメニュー ==================== */
 
 
-#submenu	{
-	}
-
-#submenu ul {width: 215px;float: left;padding: 0;padding-top: 1px;margin: 2px 0 0 49px;}
-
-#submenu li a	{font-size: 0.75em;
-	color: #000;
-	text-decoration: none;}
-
-#submenu li a:hover	{color: #999;}
-
-#submenu li	{display: inline;
-	list-style-type: none;
-	border-left: solid 1px #aaaaaa;
-	margin-left: 8px;
-	padding-left: 13px;}
-
-#submenu li.first	{}
-
-#submenu ul	{
-	}
-
-#submenu li img {width:30px; height:30px; vertical-align: -10px;padding-right: 6px;}
+#navbar {
+height: 26px;
+background: 
+#fff;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-ms-border-radius: 10px;
+border: 1px solid 
+#CCC;
+padding: 4px;
+width: 385px;
+float: right;
+}
 
 
+#submenu ul {
+position: relative;
+top: -16px;
+margin-left: -40px;
+}
+
+
+#submenu li a {
+font-size: 0.75em;
+color: 
+#000;
+text-decoration: none;
+}
+
+
+#submenu li {
+display: inline;
+list-style-type: none;
+border-left: solid 1px 
+rgb(163, 163, 163);
+margin-left: 6px;
+padding-left: 10px;
+}
+
+
+#submenu li.first {
+border: none;
+position: relative;
+top: -2px;
+}
+
+
+#submenu li img {
+vertical-align: -10px;
+}
 
 /* ==================== アイキャッチ ==================== */
 
 #mainpic {background-image:url(mainpic.png);
-          width:100%;
-		  height:300px;
-		  background-repeat:repeat-x;
-		  background-position:center;
-		  margin-top:40px;
-		  }
-#mainpicinner {
-	width: 950px;
-	height: 300px;
-	margin: auto;
+          
+      height: 366px;
+      background-repeat:repeat-x;
+      background-position:center;
+      }
+
+
+.copy {
+text-align: center;
+position: relative;
+top: 105px;
 }
 
-.white {background: rgba(255, 255, 255, 0.9); /* RGBを10進数(0～255)で指定、不透明度を0～1.0で指定 */
-        margin-left:450px;
-        width:500px;
-		height:300px;}
 
-.whiteinner {
-	padding: 25px;
-	padding-left: 30px;
-	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "Osaka", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-	text-shadow: -1px 1px 0 rgba(255,255,255,1);
+.postbuttontop {
+margin: auto;
+position: relative;
+top: 109px;
+display: block;
+width: 322px;
+height: 58px;
+background-image: url(startbtn.png);
+background-repeat: no-repeat;
 }
 
-.whiteinner h2 {font-size:2em;
-                letter-spacing:-3px;
-                margin:0;
-				margin-bottom:10px;
-				line-height:1.2;}
-
-.whiteinner p {margin:0;
-               font-weight:900;
-			   font-size:0.9em;
-}
-
-.postbuttontop { display:block;
-                  width:232px; height:53px;
-				  background-image:url("/assets/planpost.png");
-				  background-repeat:no-repeat;
-				  margin-top: -15px;}
-
-.postbuttontop:hover { background-position:0px -56px;
-                        background-repeat:no-repeat;}
 
 
 
 /* ==================== コンテンツ ==================== */
 
 
+#categorymenu {
+}
+
+#categorymenu li a {
+font-size: 15px;
+color: #000;
+text-decoration: none;
+}
+#categorymenu li a:hover  {color: #CCC;}
+
+#categorymenu li  {display: inline;
+  list-style-type: none;
+  border-left: solid 1px #000;}
+
+#categorymenu li.first  {border-left: none;}
+
+#categorymenu ul  {margin: 0;
+  padding: 0;}
+
+
+
+
+
 /* ===== コンテンツタイトル ======= */
 
-.post	{width: 100%;}
+.post {width: 100%;}
 
-.post h2	{font-size: 1em;
-	margin: 0;
-	margin-bottom: 5px;
-	padding-left:0px;
-	color:#000;}
+.post h2  {font-size: 1em;
+  margin: 0;
+  margin-bottom: 5px;
+  padding-left:0px;
+  color:#000;}
 
 
 /* ===== プラン一覧 ========= */
@@ -228,165 +215,178 @@ z-index: 1;
 a { color:#333;}
 
 
-.imginner {width: 210px;
-	height:210px;
-	margin:auto;
-	margin-top:5px;}
-
-.imgcaption	{float: left;
-	width: 220px;
-	height:210px;
-	margin-right: 10px;
-	margin-bottom: 10px;
-	border: solid 1px #CCC;
-	padding: 2px;
-	background-color:#FFF;
-	box-shadow: 2px 2px 2px #DDD;
-	-moz-box-shadow: 2px 2px 2px #DDD;    /* firefox　*/
--webkit-box-shadow: 2px 2px 2px #DDD;  /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
-    -moz-border-radius: 5px;   /* Firefox用 */
+.imgcaption {
+float: left;
+width: 290px;
+margin-right: 10px;
+margin-bottom: 10px;
+border: solid 1px #CCC;
+padding: 7px;
+background-color: #FFF;
+box-shadow: 2px 2px 2px #DDD;
+-moz-box-shadow: 2px 2px 2px #DDD;
+-webkit-box-shadow: 2px 2px 2px #DDD;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+height: 100px;
 }
 
-.imgcaption img	{margin-bottom: 5px;}
+.planimgtop {
+    float: left;
+    margin-right: 5px;
+}
 
-.imgcaption p	{margin: 0;
-                 font-weight:700;
-				 font-size:0.8em;}
+.plancap {
+    font-size: 13px;
+    overflow: auto;
+    height: 64px;
+    font-weight: bold;
+}
 
-.btn {display:block;
-      width: 108px;
-      height: 31px;
-	  background-image:url(btn.png);
-	  background-repeat:no-repeat;
-	  margin:auto;}
+.planfoot {
+    border-top: solid 1px rgb(189, 189, 189);
+    width: 290px;
+    padding-top: 7px;
+}
 
-.btn:hover { background-position:0px -32px;
-             background-repeat:no-repeat;}
 
-.btncancell {display:block;
-      width: 108px;
-      height: 31px;
-      background-position:0px -66px;
-	  background-image:url(btn.png);
-	  background-repeat:no-repeat;
-	  margin:auto;}
+.sannkabtn {
+display: block;
+width: 95px;
+height: 28px;
+background-image: url(attendbtntop.png);
+background-repeat: no-repeat;
+float: left;
+position: relative;
+left: 50px;
+}
+
+.favoritebtntop {
+display: block;
+width: 96px;
+height: 28px;
+background-image: url(favoritebtntop.png);
+background-repeat: no-repeat;
+float: right;
+position: relative;
+top: -24px;
+}
+
+
+.favoritebtntopcancell {display:block;
+      width: 96px;
+      height: 28px;
+    background-image:url(favingbtn.png);
+    background-repeat:no-repeat;
+    float: right;
+    position: relative;
+    top: -24px; }
 
 /* ==================== プラン投稿ページ ==================== */
 
 
-/* ========投稿フォームたち========== */
 
-
-#planpost{width:530px;
+#planpost{width:100%;
      float:left;
      margin: 0px;
-	 padding:10px;
-	 background-color:#FFF;
-	border: solid 1px rgb(224, 224, 224);-moz-box-shadow: 0px 0px 6px 3px #DDD;    /* firefox　*/
+   padding:10px;
+   background-color:#FFF;
+  border: solid 1px rgb(224, 224, 224);-moz-box-shadow: 0px 0px 6px 3px #DDD;    /* firefox　*/
   /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+border-radius: 5px;        /* CSS3草案 */  
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
 
-#planpost h1 {color: white; padding: 5px 8px;margin: 0;font-size: 1.6em;   background-color: #3FBD2D ;border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;}
+#planpost h1 {¥: rgb(0, 0, 0); font-family: sans-serif; padding: 5px 8px;margin: 0;font-size: 2em;   background-color: rgb(230, 230, 230);  }
 
-
-#planpost h2 {margin: 0;
-             margin-top: 20px;
-			 font-size: 0.8em;font-weight:bold;
-
-	border-left: 5px solid #9CFF5A;
-
-	padding-left: 5px;}
-
+#planpost h2 {
+margin: 0;
+margin-top: 20px;
+font-size: 1.5em;
+font-weight: bold;
+border-left: 7px solid 
+rgb(205, 0, 0);
+padding-left: 5px;
+font-family: sans-serif;
+margin-bottom: 5px;
+}
+  
 .postmark {
-font-size: 11px;
-color: white;
-padding: 1px 3px;
-background-color: #FD1A6C;
+font-size: 13px;
+color: 
+white;
+padding: 2px 3px;
+background-color: 
+rgb(112, 112, 112);
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 -ms-border-radius: 3px;
 -o-border-radius: 3px;
 border-radius: 3px;
+margin-left: 5px;
 }
 
+.words {
+font-size: 14px;
+}
+
+.des {
+margin: 10px 0px 5px 0px;
+font-size: 15px;
+font-weight: 100;
+font-family: sans-serif;
+}
+
+.inputtitle {
+width: 940px;
+height: 25px;
+font-size: 15px;
+}
+
+.inputdes {
+width: 940px;
+height: 80px;
+font-size: 14px;
+}
+
+.inputdate {
+width: 200px;
+height: 20px;
+font-size: 15px;
+}
+
+.inputtime {
+font-size: 1em;
+}
+
+.inputplace {
+width: 250px;
+height: 20px;
+font-size: 14px;
+}
+
+.inputcount {
+font-size: 17px;
+width: 47px;
+}
 
 
 .postbutton {display:block;
-      width:188px; height:45px;
-	  background-image:url(postbutton.png);
-	  background-repeat:no-repeat;
-	  margin:auto;
-	 }
+      width:183px; height:45px;
+    background-image:url(postbutton.png);
+    background-repeat:no-repeat;
+    margin:auto;
+    background-color: white;
+    border: none;
+   }
 
-.postbutton:hover { background-position:0px -45px;
+.postbutton:hover { 
+background-image:url(postbutton.png);
+background-position:0px -48px;
              background-repeat:no-repeat;}
-
-/* ========プランの例========== */
-
-.extitle
-	{
-	font-size: 1.1em;
-	font-weight:bold;
-	color: rgb(111, 111, 111);
-	background: #E2E2E2;
-	padding: 7px 8px;
-	margin-bottom: 10px;
-	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
-}
-
-
-#explan{width: 360px;
-     float:right;
-     margin-bottom:10px;
-	 margin-right: 10px;
-	 padding:10px;
-	 margin-top: 47px;background-color: white;
-	border: solid 1px rgb(228, 228, 228);-moz-box-shadow: 0px 0px 6px 3px #DDD;    /* firefox　*/
-  /* safari、chorme */
-    border-radius: 5px;        /* CSS3草案 */
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
-    -moz-border-radius: 5px;   /* Firefox用 */}
-
-
-
-
-#explan h1 {margin:0;
-          margin-bottom:5px;font-size: 1.3em;color: rgb(3, 3, 3);}
-
-
-
-.explanimg{width:340px;
-         height:220px;
-         margin:auto;
-		 border:solid 1px #ccc;
-		 padding:4px}
-
-
-
-
-dl.explande dt {
-  font-weight:bold;
-  clear: left;
-  float: left;
-  border-left: solid 7px #B0FF5A;
-  padding-left: 3px;
-  color: #000;
-}
-
-dl.explande dd {
-  margin-bottom: 0.8em;
-  margin-left: 8.5em;
-}
-
-dl.explande {margin:auto;
-           padding: 10px 5px 0 5px;
-	       font-size: 0.7em;}
 
 
 
@@ -414,35 +414,48 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
           margin-bottom:5px;}
 
 
-
-.planimg{width:580px;
-         height:340px;
-         margin:auto;
-		 border:solid 1px #ccc;
-		 padding:4px}
-
-
-
-
 dl.plande dt {
-  font-weight:bold;
-  clear: left;
-  float: left;
-  border-left: solid 7px #B0FF5A;
-  padding-left: 3px;
-  color: #000;
+font-weight: bold;
+clear: left;
+margin-bottom: -5px;
+border-left: solid 7px rgb(210, 0, 0);
+padding-left: 3px;
+color: #000;
+font-size: 15px;
+border-bottom: dotted 1px rgb(85, 85, 85);
 }
 
 dl.plande dd {
-  margin-bottom: 0.8em;
-  margin-left: 8.5em;
+position: relative;
+top: -18px;
+left: 75px;
+width: 550px;
+font-size: 15px;
 }
 
 dl.plande {margin:auto;
            padding: 10px 20px 0 10px;
 	       font-size:0.8em;}
 
+.target {margin-left: 100px;}
 
+.datedes {
+position: relative;
+left: -16px;
+top: -1px;
+font-family: sans-serif;
+}
+
+.plandatedes {
+font-size: 16px;
+font-weight: bold;
+position: relative;
+line-height: 34px;
+}
+
+.planedit {
+text-align: right;
+}
 
 #other1{width: 210px;
      padding:10px;
@@ -510,37 +523,84 @@ dl.castdown dd {
 
 
 #attend h3 {
-color: white;
+color: rgb(255, 255, 255);
 padding: 5px 8px;
 margin: 0;
 font-size: 1.4em;
-background-color: #45AA25;
-border-radius: 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
+background-color: rgb(226, 9, 9);
 }
 
 
-.sannkazyoukenn {font-weight: bold;
-                 color: #F06;
-                 font-size: 1.2em;}
+.sannkazyoukenn {
+font-weight: bold;
+color: #F06;
+font-size: 1.2em;
+margin-top: -10px;
+}
+
+.dates {
+margin-top: -10px;
+line-height: 30px;
+}
+
+.atndcom {
+width: 600px;
+font-size: 14px;
+margin: -15px 0 15px 0;
+}
+
+.comm {
+font-weight: bold;
+font-size: 20px;
+margin: 5px 0 5px 0;
+}
+
+.atndmembers {
+margin-left: 10px;
+font-size: 12px;
+vertical-align: top;
+position: relative;
+top: -5px;
+margin-bottom: -23px;
+}
+
+.atndmembersimg {
+position: relative;
+left: 140px;
+margin-bottom: -25px;
+}
 
 
-#attend h4 { font-weight: bold; margin: 20px 0 -10px 0; border-bottom: solid 1px #ACACAC;}
-
+#attend h4 {
+font-weight: bold;
+margin: 10x 0 10px 0;
+border-bottom: solid 1px 
+#ACACAC;
+}
 
 .attenduser{ vertical-align:middle;
              margin-left:5px;}
 
 
-.attendbutton {display:block;
-      width:222px; height:51px;
-	  background-image:url("attendbutton.png");
-	  border:none;
-	  background-color:#fff;
-	  background-repeat:no-repeat;
-	  margin:auto;
-	 }
+.st-content { margin-left: 10px;}
+
+.st-content-ouen {
+margin-top: -10px;
+margin-bottom: -10px;
+margin-left: 10px;
+}
+
+.attendbutton {
+display: block;
+width: 222px;
+height: 51px;
+background-image: url("attendbutton.png");
+border: none;
+background-color: #fff;
+background-repeat: no-repeat;
+margin: auto;
+margin-bottom: 10px;
+}
 
 .attendbutton:hover { background-position:0px -55px;
          	 background-color:#fff;
@@ -652,15 +712,11 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 
 
 .ouen {
-    text-align: center;
-    font-weight: bold;
-    background-color: #FFD283;
-    margin: -4px;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
+text-align: center;
+font-weight: bold;
+background-color: rgb(228, 228, 228);
+margin: -4px;
 }
-
 
 #other3{width: 210px;
      padding:10px;
@@ -681,46 +737,48 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 
 
 
-#userpage{width: 680px;
-     margin-bottom:10px;
-	 padding:10px;
-	 background-color:#FFF;
-	border: solid 1px #E0E0E0;    /* firefox　*/
-  /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
-    -moz-border-radius: 5px;   /* Firefox用 */}
+
+#userpage {
+width: 680px;
+margin-bottom: 10px;
+padding: 10px 10px 0px 10px;
+background-color: #FFF;
+border: solid 1px #E0E0E0;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+}
 
 
-#userpage h1{
-	text-shadow: 1px -1px 0px #45AC2B;
-	background: #3FBD2D;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    color: rgb(255, 255, 255);
-    display: block;
-    font-size: 26px;
-    font-weight: bold;
-    height: 39px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
-    padding-bottom: 5px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 5px; }
+#userpage h1 {
+background: rgb(235, 235, 235);
+display: block;
+font-size: 30px;
+font-weight: 600;
+height: 39px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 5px;
+}
+
+.fbbutton {
+position: relative;
+left: -10px;
+}
 
 
 #userdatawrap { width: 680px;
-            height: 180px; margin:auto; background-color: #f1f1f1;}
+            height: 180px; margin:auto;}
 
 
 .userpagepic {float:left;
               border:solid 1px #999999;
-			  padding:5px;
-			  margin: 5px 10px;}
+        padding:5px;
+        margin: 5px 10px;}
 
 #userdata {width: 500px;float:left;}
 
@@ -731,11 +789,10 @@ border-radius: 5px;        /* CSS3草案 */
 
 
 
-
 #planmenulink{padding-top: 50px;
               margin-top: -50px;}
 
-#userplan{width: 680px;
+#userplan{width: 682px;
      margin-bottom:10px;
 	 padding:10px;
 	 background-color:#FFF;
@@ -746,8 +803,6 @@ border-radius: 5px;        /* CSS3草案 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
-
-.userplanmenu {margin-top: -25px;}
 
 .userplanmenu ul	{margin: 0;
 padding: 0;}
@@ -802,26 +857,36 @@ text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.4), 0px 1px 0px rgba(255, 255, 2
 
 /* ==================== お知らせページ==================== */
 
-
-#feed {width:680px;
+#feed {width: 680px;
      margin-bottom:10px;
-	 padding:10px;
-	 background-color:#FFF;
-	 border: solid 1px #E0E0E0;
-	    /* firefox　*/
+   padding:10px;
+   background-color:#FFF;
+  border: solid 1px #E0E0E0;    /* firefox　*/
   /* safari、chorme */
-border-radius: 5px;        /* CSS3草案 */
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+border-radius: 5px;        /* CSS3草案 */  
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
     -moz-border-radius: 5px;   /* Firefox用 */}
 
-#feed h1 {color: white; padding: 5px 8px;margin: 0;font-size: 1.6em;   background-color: #3FBD2D ;border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;}
 
+#feed h1 {
+background: rgb(235, 235, 235);
+display: block;
+font-size: 30px;
+font-weight: 600;
+height: 39px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 5px;
+}
 #feed p {
     margin: 15px 0 -1px 0;
     border-bottom: solid 1px rgb(156, 156, 156);
     font-size: 0.9em;
 }
-
 
 
 /* ==================== フッター ==================== */

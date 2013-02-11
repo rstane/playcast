@@ -27,20 +27,18 @@
 <div id="container">
   <div id="header">
     <div id="header_inner">
-      <h1><a href="/plans"><img src="/assets/logo1-3.png"> </a></h1>
-      <p>同じ興味の遊び仲間を探すことが出来るサービス「プレイキャスト」</p>
+      <h1><a href="/plans"><img src="/assets/logo.png"> </a></h1>
+      <p>プレイキャスト</p>
 
-      <%# 検索フォーム %>
-      <form method="get" action="<%= plans_path %>" id="search">
-        <p>
-          <input type="text" placeholder="プランを検索" id="text" name="keyword" value="<%= params[:keyword] %>" />
-          <input type="submit" id="submit" value="検索" />
-        </p>
-      </form>
-
-       <div id="submenu">
+     
+  <div id="navbar">
+      <div id="submenu">
         <ul>
-          <li class="first"><%= link_to( "お知らせ", feed_users_path ) %></li>
+
+          <li class="first"><a href="/plans/new"><img src="/assets/postmini.png"></a></li>
+       
+          <li><%= link_to( "お知らせ", feed_users_path ) %></li>
+
           <% if session[:user_id].present? %>
             <li>
               <%= link_to( user_path( session[:user_id] ) ) do %>
@@ -54,6 +52,8 @@
           <% end %>
         </ul>
       </div>
+     </div> 
+    </div>
     </div>
   </div>
 
@@ -66,9 +66,22 @@
     <%= yield %>
 
      <div id="foot">
-      <div id="footer"
+
+     <div id="footmenu">
+<ul>
+<li class="first"><a href="#">お問い合わせ・ご意見はこちら</a></li>
+<li><a href="#">利用規約</a></li>
+<li><a href="#">プライバシーポリシー</a></li>
+<li><%= link_to "ログアウト", logout_path %></li>
+
+</ul>
+</div>
+
+
+
+
+      <div id="footer">
         <div id="footer_inner">
-          <p><%= link_to "Logout", logout_path %></p>
           <p>Copyright (c) Playcast. All Rights Reserved.</p><br>
         </div>
       </div>

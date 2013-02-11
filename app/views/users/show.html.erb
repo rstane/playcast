@@ -9,13 +9,9 @@
 
         <div id="userdata">
           <h2><%= @user.name %></h2>
-          <p style=" font-size: 0.8em; margin: 5px 0; ">お酒は弱いですが、飲むのは好きです。よろしくどうぞ</p>
-          <a class="fbbutton" href="<%= Settings.provider_page + @user.nickname %>" target="_blank"><img src="/assets/fb.png" alt="Facebookのページを見る" style=" float: right;" /></a>
+          <a class="fbbutton" href="<%= Settings.provider_page + @user.nickname %>" target="_blank"><img src="/assets/fb.png" alt="Facebookのページを見る" /></a>
         </div>
       </div>
-
-      <p style="margin:0;font-weight: bold;color: rgb(102, 102, 102);margin: 15px 0px -5px 5px;">興味のあるコミュニティ</p>
-      <img src="/assets/tags.png" width="675" height="76" style=" margin-bottom: 10px; " />
     </div>
 
     <div id="userplan">

@@ -2,57 +2,50 @@
 </script>
 
 <div id="mainpic">
-  <div id="mainpicinner">
-    <div class="white">
-      <div class="whiteinner">
-        <h2>どうしても、<br />
-          やりたいことがある。</h2>
-        <p>どうしてもやりたい事があるけれど、<br />
-          友達と予定が合わなかったり、友達は乗り気じゃなくて、<br />
-          結局諦めてしまう・・・。<br />
-          そんな時は「Playcast」で、あなたの気持ちに共感してくれる人を<br />
-          見つけて、気の合う仲間と共に最高の思い出を作りましょう。</p>
-        <br />
-        <%= link_to  "" , new_plan_path, class: "postbuttontop" %>
-       </div>
+
+          <div class="copy"><img src="/assets/copy.png" width="657" height="96" alt="遊びを通じて、趣味の合う仲間を作れる。あなたのやりたい趣味を募集して、集まった仲間と実際に遊ぶ。ソーシャル・レジャーマッチングサービス「Playcast」" /></div>
+
+          <%= link_to  "" , new_plan_path, class: "postbuttontop" %>
+
     </div>
   </div>
-</div>
+
+
 
 <div id="content">
   <div id="content_inner">
-    <div class="post">
-      <h2>参加募集中のプラン一覧</h2>
-    </div>
 
-    <b>ソート : </b>
-    <%= link_to( "新着", plans_path( sort: nil ) ) %>
-    <%= link_to( "人気", plans_path( sort: "populur" ) ) %>
-    <br />
 
-    <b>カテゴリ : </b>
-    <%= link_to( "すべて", plans_path( category_id: nil ) ) %>
 
     <% Category.all.each{ |category| %>
       <%= link_to( category.name, plans_path( category_id: category.id ) ) %>
     <% } %>
+
     <br />
+        <div class="post">
+      <h2>参加募集中のプラン一覧</h2>
+    </div>
+
+
 
     <div id="paging">
     <% @plans.each{ |plan| %>
-      <div class="imgcaption">
-        <div class="imginner">
-          <%= link_to( plan.title, plan_path( plan ) ) %>
-          <br>
+     <div class="imgcaption">
+            <%= link_to( plan_path( plan ) ) do %>
+              <img class="planimgtop" src="/assets/amuplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><%= link_to( plan.title, plan_path( plan ) ) %></div>
+           <% end %>
+
+               <div class="planfoot">
+　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 5px;" )%>
+                <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
 
           <%# お気に入りボタン %>
           <div id="favorite<%= plan.id %>">
-            <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "btn" } %>
+                   <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "favoritebtntop" } %>
+                </div>
+               </div>
           </div>
-
-          <br/>
-        </div>
-      </div>
     <% } %>
     </div>
 
