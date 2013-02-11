@@ -8,12 +8,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # カテゴリ
-#Category.delete_all
-Category.where( name: "カラオケ・その他アミューズメント", sort: 1 ).first_or_create
+Category.delete_all
+Category.where( name: "カラオケ・アミューズメント", sort: 1 ).first_or_create
 Category.where( name: "飲み会・食事会", sort: 2 ).first_or_create
-Category.where( name: "スポーツ", sort: 3 ).first_or_create
-Category.where( name: "アウトドア遊び", sort: 4 ).first_or_create
-Category.where( name: "インドアゲーム", sort: 5 ).first_or_create
+Category.where( name: "スポーツ・アウトドア", sort: 3 ).first_or_create
+Category.where( name: "インドアゲーム", sort: 4 ).first_or_create
 
 # カウントキャッシュ再計算
 Plan.includes( :cheers, :favorites ).all.each{ |plan|
