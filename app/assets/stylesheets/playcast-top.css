@@ -414,6 +414,7 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
           margin-bottom:5px;}
 
 
+
 dl.plande dt {
 font-weight: bold;
 clear: left;
@@ -460,11 +461,11 @@ text-align: right;
 #other1{width: 210px;
      padding:10px;
      margin-bottom:10px;
-	 background-color:#FFF;
-	    /* firefox　*/
+   background-color:#FFF;
+      /* firefox　*/
   /* safari、chorme */
-border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */  
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
@@ -728,6 +729,61 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
 
+
+
+
+
+/* ==================== 関連プラン ==================== */
+
+.imgcaption2 {
+width: 195px;
+margin-bottom: 10px;
+border: solid 1px #CCC;
+padding: 5px;
+background-color: #FFF;
+box-shadow: 2px 2px 2px #DDD;
+-moz-box-shadow: 2px 2px 2px #DDD;
+-webkit-box-shadow: 2px 2px 2px #DDD;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+height: 108px;
+}
+
+.planimgtop2 {
+    float: left;
+    margin-right: 5px;
+}
+
+.plancap2 {
+    font-size: 12px;
+    overflow: hidden;
+    height: 73px;
+    font-weight: bold;
+    width: 125px;
+}
+
+.planfoot2 {
+    border-top: solid 1px rgb(189, 189, 189);
+}
+
+
+
+
+.sannkabtn2 {display:block;
+      width: 95px;
+      height: 28px;
+    background-image:url(attendbtntop.png);
+    background-repeat:no-repeat;
+    position: relative;top: 6px;}
+
+
+.okinibtn2 {display:block;
+      width: 96px;
+      height: 28px;
+    background-image:url(favoritebtntop.png);
+    background-repeat:no-repeat;
+    float: right;position: relative;top: -22px;}
 
 
 
