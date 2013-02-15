@@ -24,11 +24,23 @@
 </head>
 
 <body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
 <div id="container">
   <div id="header">
     <div id="header_inner">
       <h1><a href="/plans"><img src="/assets/logo.png"> </a></h1>
-      <p>プレイキャスト</p>
+      <p>ソーシャル・レジャーマッチングサービス「Playcast」</p>
 
      
   <div id="navbar">
@@ -58,11 +70,14 @@
   </div>
 
   <div class="container">
-    <div class="margin_top50"><div>
+    <div id="content">
+     <div id="content_inner">
     <%# 通知／エラーメッセージ %>
-    <%= simple_format( flash[:notice], style: "color: green;" ) if flash[:notice].present? %>
-    <%= simple_format( flash[:alert], style: "color: red;" ) if flash[:alert].present? %>
-
+    <%= simple_format( flash[:notice], class: "alert2"  ) if flash[:notice].present? %>
+    <%= simple_format( flash[:alert], class: "alert" ) if flash[:alert].present? %>
+ </div>
+ </div>
+ 
     <%= yield %>
 
      <div id="foot">

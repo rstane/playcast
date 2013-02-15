@@ -1,0 +1,1149 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/* ==================== レイアウト ==================== */
+
+body {
+margin: 0;
+background-image: url("/assets/backgroundimg.png");
+background-color: rgb(230, 230, 230);
+}
+
+
+#container {width: 100%;
+	margin: auto;}
+
+#content {
+width: 950px;
+margin: auto;
+margin-top: 37px;
+}
+
+#content_plans{width: 950px;
+	margin: auto;
+	margin-top: 60px;}
+
+#foot	{clear: both;
+    padding-top: 40px;}
+
+
+a {text-decoration: none;}
+
+a img {border-style:none;}
+
+
+a:hover {
+opacity: 0.9;
+filter:alpha(opacity=90);
+-ms-filter: "alpha( opacity=90 )";
+z-index: 1;
+}
+
+
+a:hover img{
+opacity: 0.8;
+filter: alpha(opacity=80);
+-ms-filter: "alpha( opacity=80 )";
+z-index: 1;
+}
+
+.alert {
+position: relative;
+top: 100px;
+margin: auto;
+font-size: 17px;
+margin-top: -70px;
+background-color: rgb(231, 59, 120);
+padding: 10px;
+border-radius: 10px;
+color: rgb(255, 255, 255);
+width: 700px;
+left: -10px;
+}
+
+
+.alert2 {
+position: relative;
+top: 46px;
+font-weight: bold;
+font-size: 17px;
+margin-top: -30px;
+color: green;
+}
+
+/* ==================== ヘッダー ==================== */
+
+#header {
+width: 100%;
+height: 45px;
+ackground-image: url("/assets/headerimg.png");
+background-color: rgb(218, 0, 0);
+color: rgb(255, 255, 255);
+position: fixed;
+z-index: 2;
+top: 0;
+left: 0;
+box-shadow: 0 1px 8px #333333;
+-moz-box-shadow: 0 1px 8px #333333;
+-webkit-box-shadow: 0 1px 8px #333333;
+}
+
+#header_inner	{
+	width: 950px;
+	margin: auto;
+	padding-top: 5px;
+				 }
+
+
+#header_inner h1 {
+margin: 3px 0 0px 0;
+float: left;
+}
+
+
+#header_inner p {
+	margin-left: 10px;
+	margin-top: 14px;
+	font-size: 0.5em;
+	float: left;
+}
+
+
+/* ====================サブメニュー ==================== */
+
+
+#navbar {
+height: 26px;
+background: 
+#fff;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-ms-border-radius: 10px;
+border: 1px solid 
+#CCC;
+padding: 4px;
+width: 385px;
+float: right;
+}
+
+
+#submenu ul {
+position: relative;
+top: -16px;
+margin-left: -40px;
+}
+
+
+#submenu li a {
+font-size: 0.75em;
+color: 
+#000;
+text-decoration: none;
+}
+
+
+#submenu li {
+display: inline;
+list-style-type: none;
+border-left: solid 1px 
+rgb(163, 163, 163);
+margin-left: 6px;
+padding-left: 10px;
+}
+
+
+#submenu li.first {
+border: none;
+position: relative;
+top: -2px;
+}
+
+
+#submenu li img {
+vertical-align: -10px;
+}
+
+/* ==================== アイキャッチ ==================== */
+
+#mainpic {background-image:url(mainpic.png);
+          
+      height: 366px;
+      background-repeat:repeat-x;
+      background-position:center;
+      }
+
+
+.copy {
+text-align: center;
+position: relative;
+top: 105px;
+}
+
+
+.postbuttontop {
+margin: auto;
+position: relative;
+top: 109px;
+display: block;
+width: 322px;
+height: 58px;
+background-image: url(startbtn.png);
+background-repeat: no-repeat;
+}
+
+
+#social {
+text-align: center;
+position: relative;
+top: -35px;
+left: -17px;
+}
+
+.fb-like {
+position: relative;
+top: -3px;
+left: 64px;
+}
+
+.twitter-share-button {
+position: relative;
+left: 80px;
+}
+
+/* ==================== コンテンツ ==================== */
+
+.sort {}
+
+
+
+/* ===== コンテンツタイトル ======= */
+
+.post {width: 100%;}
+
+.post h2  {font-size: 1em;
+  margin: 0;
+  margin-bottom: 5px;
+  padding-left:0px;
+  color:#000;}
+
+
+/* ===== プラン一覧 ========= */
+
+
+
+a { color:#333;}
+
+
+.imgcaption {
+float: left;
+width: 290px;
+margin-right: 10px;
+margin-bottom: 10px;
+border: solid 1px #CCC;
+padding: 7px;
+background-color: #FFF;
+box-shadow: 2px 2px 2px #DDD;
+-moz-box-shadow: 2px 2px 2px #DDD;
+-webkit-box-shadow: 2px 2px 2px #DDD;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+height: 130px;
+}
+
+.planimgtop {
+    float: left;
+    margin-right: 5px;
+}
+
+.plancap {
+font-size: 15px;
+overflow: auto;
+height: 69px;
+font-weight: bold;
+}
+
+.planfoot {
+border-top: solid 3px rgb(170, 170, 170);
+width: 290px;
+padding-top: 31px;
+position: relative;
+top: -27px;
+}
+
+
+.sannkabtn {
+display: block;
+width: 95px;
+height: 28px;
+background-image: url(attendbtntop.png);
+background-repeat: no-repeat;
+float: left;
+position: relative;
+left: 50px;
+}
+
+.favoritebtntop {
+display: block;
+width: 96px;
+height: 28px;
+background-image: url(favoritebtntop.png);
+background-repeat: no-repeat;
+float: right;
+position: relative;
+top: -24px;
+}
+
+
+.favoritebtntopcancell {display:block;
+      width: 96px;
+      height: 28px;
+    background-image:url(favingbtn.png);
+    background-repeat:no-repeat;
+    float: right;
+    position: relative;
+    top: -24px; }
+
+.ribbon {
+background-image: url(/assets/ribbon.jpg);
+background-repeat: no-repeat;
+position: relative;
+top: 6px;
+left: -15px;
+font-size: 14px;
+color: rgb(255, 255, 255);
+padding-bottom: 5px;
+}
+
+.ribbon2 {
+background-image: url(/assets/ribbon2.jpg);
+background-repeat: no-repeat;
+position: relative;
+top: 6px;
+left: -15px;
+font-size: 14px;
+color: rgb(255, 255, 255);
+padding-bottom: 5px;
+}
+
+/* ==================== プラン投稿ページ ==================== */
+
+
+
+#planpost{width:100%;
+     float:left;
+     margin: 0px;
+   padding:10px;
+   background-color:#FFF;
+  border: solid 1px rgb(224, 224, 224);-moz-box-shadow: 0px 0px 6px 3px #DDD;    /* firefox　*/
+  /* safari、chorme */
+border-radius: 5px;        /* CSS3草案 */  
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 5px;   /* Firefox用 */}
+
+
+#planpost h1 {
+¥: rgb(0, 0, 0);
+font-family: sans-serif;
+padding: 31px 8px;
+margin: 0;
+font-size: 2em;
+background-color: rgb(230, 230, 230);
+background-image: url(1234.png);
+background-repeat: no-repeat;
+background-size: 40%;
+background-position-x: 500px;
+background-position-y: -7px;
+}
+
+#planpost h2 {
+margin: 0;
+margin-top: 20px;
+font-size: 1.5em;
+font-weight: bold;
+border-left: 7px solid 
+rgb(205, 0, 0);
+padding-left: 5px;
+font-family: sans-serif;
+margin-bottom: 5px;
+}
+  
+.postmark {
+font-size: 13px;
+color: 
+white;
+padding: 2px 3px;
+background-color: 
+rgb(112, 112, 112);
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+-ms-border-radius: 3px;
+-o-border-radius: 3px;
+border-radius: 3px;
+margin-left: 5px;
+}
+
+.words {
+font-size: 14px;
+}
+
+.des {
+margin: 10px 0px 5px 0px;
+font-size: 15px;
+font-weight: 100;
+font-family: sans-serif;
+}
+
+.inputtitle {
+width: 940px;
+height: 25px;
+font-size: 15px;
+}
+
+.inputdes {
+width: 940px;
+height: 80px;
+font-size: 14px;
+}
+
+.inputdate {
+width: 200px;
+height: 20px;
+font-size: 15px;
+}
+
+.inputtime {
+font-size: 1em;
+}
+
+.inputplace {
+width: 250px;
+height: 20px;
+font-size: 14px;
+}
+
+.inputcount {
+font-size: 17px;
+width: 47px;
+}
+
+
+.postbutton {display:block;
+      width:183px; height:45px;
+    background-image:url(postbutton.png);
+    background-repeat:no-repeat;
+    margin:auto;
+    background-color: white;
+    border: none;
+   }
+
+.postbutton:hover { 
+background-image:url(postbutton.png);
+background-position:0px -48px;
+             background-repeat:no-repeat;}
+
+
+
+/* ==================== プラン詳細ページ ==================== */
+
+
+#plantitle {
+background-color: rgb(255, 255, 255);
+height: 190px;
+border-bottom: solid 1px rgb(218, 218, 218);
+margin-bottom: -50px;
+}
+
+#plantitleinner {
+width: 950px;
+margin: auto;
+} 
+.imageeee {
+float: left;
+margin-right: 10px;
+margin-top: 30px;
+}
+
+#plantitleinner h1 {
+position: relative;
+top: 20px;
+color: rgb(0, 0, 0);
+width: 700px;
+line-height: 40px;
+height: 80px;
+}
+
+
+.poster {
+font-size: 14px;
+position: relative;
+top: 23px;
+left: -330px;
+}
+
+#socialshow {
+position: relative;
+left: -200px;
+top: 28px;
+text-align: right;
+}
+
+
+#rightcontens {
+float: right;
+}
+#rightcontensshow {
+float: right;
+position: relative;
+top: -135px;
+}
+
+#leftcontents{float:left;}
+
+
+
+#decide {width: 680px;
+     margin-bottom:10px;
+   padding:10px;
+   background-color:#FFF;
+      /* firefox　*/
+  /* safari、chorme */
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */}
+
+#decide h1 {
+margin: 0;
+background-color: rgb(250, 17, 82);
+color: white;
+padding: 5px;
+}
+
+#decide p {
+font-weight: bold;
+color: rgb(233, 0, 75);
+}
+
+
+
+#plan{width: 680px;
+     margin-bottom:10px;
+	 padding:10px;
+	 background-color:#FFF;
+	    /* firefox　*/
+  /* safari、chorme */
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */}
+
+
+
+
+dl.plande dt {
+font-weight: bold;
+clear: left;
+margin-bottom: -5px;
+border-left: solid 7px rgb(210, 0, 0);
+padding-left: 3px;
+color: #000;
+font-size: 15px;
+
+}
+
+dl.plande dd {
+position: relative;
+top: -18px;
+padding-left: 116px;
+left: -40px;
+width: 550px;
+font-size: 15px;
+background: url("/assets/dotted.png") repeat-x 0 bottom;
+}
+
+dl.plande {margin:auto;
+           padding: 10px 20px 0 10px;
+	       font-size:0.8em;}
+
+.target {
+margin-top: 25px;
+}
+
+.datedes {
+font-family: sans-serif;
+}
+
+.plandatedes {
+font-size: 16px;
+font-weight: bold;
+position: relative;
+line-height: 34px;
+}
+
+.planedit {
+text-align: right;
+}
+
+#other1 {
+width: 210px;
+padding: 10px;
+margin-bottom: 10px;
+position: relative;
+top: -20px;
+}
+
+
+
+#cast{width: 680px;
+     padding:10px;
+     margin-bottom:10px;
+	 background-color:#FFF;
+	    /* firefox　*/
+  /* safari、chorme */
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */}
+
+
+   #cast ul {margin-left: -40px;}
+
+   #cast li	{list-style-type: none;}
+
+   #cast a {text-decoration:none;
+            color:#000;}
+   #cast a:hover{color:#666;}
+
+#cast p {
+font-weight: bold;
+font-size: 1.2em;
+margin-top: -20px;
+}
+
+
+dl.castdown dt {
+ vertical-align:top;
+ margin-right: 10px;
+ font-size: 0.8em;
+ font-weight:bold;
+ margin-top:10px;}
+
+dl.castdown dd {
+	font-size: 0.8em;
+	margin-left: 45px; }
+
+
+
+
+#attend{width: 680px;
+     padding:10px;
+     margin-bottom:10px;
+	 background-color:#FFF;
+	    /* firefox　*/
+      /* safari、chorme */
+     border: solid 1px #E0E0E0; border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */}
+
+
+#attendinner { padding-left: 10px; }
+
+
+#attend h3 {
+color: rgb(255, 255, 255);
+padding: 5px 8px;
+margin: 0;
+font-size: 1.8em;
+background-color: rgb(226, 9, 9);
+}
+
+
+.sannkazyoukenn {
+font-weight: bold;
+color: #F06;
+font-size: 1.2em;
+margin-top: -10px;
+}
+
+.dates {
+margin-top: -10px;
+line-height: 30px;
+}
+
+.atndcom {
+width: 600px;
+font-size: 14px;
+margin: -15px 0 15px 0;
+}
+
+.comm {
+font-weight: bold;
+font-size: 20px;
+position: relative;
+top: -5px;
+}
+
+.atndmembers {
+margin-left: 10px;
+font-size: 12px;
+vertical-align: top;
+position: relative;
+top: -5px;
+margin-bottom: -23px;
+}
+
+.atndmembersimg {
+position: relative;
+left: 140px;
+margin-bottom: -25px;
+}
+
+
+#attend h4 {
+font-weight: bold;
+margin: 10x 0 10px 0;
+border-bottom: solid 1px 
+#ACACAC;
+}
+
+.attenduser{ vertical-align:middle;
+             margin-left:5px;}
+
+
+.st-content { margin-left: 10px;}
+
+.st-content-ouen {
+margin-top: -10px;
+margin-bottom: -10px;
+margin-left: 10px;
+}
+
+.attendbutton {
+display: block;
+width: 222px;
+height: 51px;
+background-image: url("attendbutton.png");
+border: none;
+background-color: #fff;
+background-repeat: no-repeat;
+margin: auto;
+margin-bottom: 10px;
+}
+
+.attendbutton:hover { background-position:0px -55px;
+         	 background-color:#fff;
+             background-repeat:no-repeat;}
+
+
+.attendbutton2 {display:block;
+      width:205px; height:47px;
+	  background-image:url("sidebuttons.png");
+	  background-repeat:no-repeat;
+	  margin:auto;
+	  margin-bottom: 10px;
+	 }
+
+.attendbutton2:hover { background-position:0px -49px;
+             background-repeat:no-repeat;}
+
+
+.btn2 {display:block;
+      width: 205px;
+height: 47px;
+background-position: -210px 0px;
+	  background-image:url("sidebuttons.png");
+	  background-repeat:no-repeat;
+	  margin:auto;
+	 }
+
+.btn2:hover { background-position:-210px -49px;
+             background-repeat:no-repeat;}
+
+
+.btn2cancell {display:block;
+      width: 205px;
+height: 47px;
+background-position: -210px -100px;
+	  background-image:url("sidebuttons.png");
+	  background-repeat:no-repeat;
+	  margin:auto;
+	 }
+
+.ouenbutton {display:block;
+      width: 166px;
+      height: 36px;
+      background-position: -419px 0px;
+	  background-image:url("sidebuttons.png");
+	  background-repeat:no-repeat;
+	  margin:auto;
+	 }
+
+.ouenbutton:hover { background-position:-419px -38px;
+             background-repeat:no-repeat;}
+
+
+
+.ouenbuttoncancell {display:block;
+      width: 166px;
+      height: 36px;
+      background-position: -419px -77px;
+	  background-image:url("sidebuttons.png");
+	  background-repeat:no-repeat;
+	  margin:auto;
+	 }
+
+
+#attendlink{padding-top:50px;
+            margin-top:-50px;}
+
+
+
+
+
+#commentflame {width: 680px;
+          padding:10px;
+	      background-color:#FFF;
+	          /* firefox　*/
+            /* safari、chorme */
+          border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+          -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+          -moz-border-radius: 5px;   /* Firefox用 */}
+
+.comment {border-bottom: 1px dotted #BDB8AD;}
+
+.comment2 {border-top: 1px dotted #BDB8AD;
+          margin-bottom: -5px;
+          margin-top: 10px;}
+
+dl.comms dt {
+ vertical-align:top;
+ margin-right: 10px;
+ font-size: 0.8em;
+ font-weight:bold;
+   }
+
+dl.comms dd {
+	font-size: 0.8em;
+	margin-left: 45px;
+}
+
+
+
+
+
+#other2{width: 210px;
+     padding:10px;
+	 margin-bottom: 10px;background-color:#FFF;
+	    /* firefox　*/
+  /* safari、chorme */
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */}
+
+
+.ouen {
+text-align: center;
+font-weight: bold;
+background-color: rgb(228, 228, 228);
+margin: -4px;
+}
+
+#other3{width: 210px;
+     padding:10px;
+	 text-align: center;font-weight: bold;background-color:#FFF;
+	    /* firefox　*/
+  /* safari、chorme */
+border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */}
+
+
+
+
+
+
+/* ==================== 関連プラン ==================== */
+
+.imgcaption2 {
+width: 195px;
+margin-bottom: 10px;
+border: solid 1px #CCC;
+padding: 5px;
+background-color: #FFF;
+box-shadow: 2px 2px 2px #DDD;
+-moz-box-shadow: 2px 2px 2px #DDD;
+-webkit-box-shadow: 2px 2px 2px #DDD;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+height: 108px;
+}
+
+.planimgtop2 {
+    float: left;
+    margin-right: 5px;
+}
+
+.plancap2 {
+    font-size: 12px;
+    overflow: hidden;
+    height: 73px;
+    font-weight: bold;
+    width: 125px;
+}
+
+.planfoot2 {
+    border-top: solid 1px rgb(189, 189, 189);
+}
+
+
+
+
+.sannkabtn2 {display:block;
+      width: 95px;
+      height: 28px;
+    background-image:url(attendbtntop.png);
+    background-repeat:no-repeat;
+    position: relative;top: 6px;}
+
+
+.okinibtn2 {display:block;
+      width: 96px;
+      height: 28px;
+    background-image:url(favoritebtntop.png);
+    background-repeat:no-repeat;
+    float: right;position: relative;top: -22px;}
+
+
+
+
+
+/* ==================== ユーザーページ ==================== */
+
+
+
+
+#userpage {
+width: 680px;
+margin-bottom: 10px;
+padding: 10px 10px 0px 10px;
+background-color: #FFF;
+border: solid 1px #E0E0E0;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+}
+
+
+#userpage h1 {
+background: rgb(235, 235, 235);
+display: block;
+font-size: 30px;
+font-weight: 600;
+height: 39px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 5px;
+}
+
+.fbbutton {
+position: relative;
+left: -10px;
+}
+
+
+#userdatawrap { width: 680px;
+            height: 180px; margin:auto;}
+
+
+.userpagepic {float:left;
+              border:solid 1px #999999;
+        padding:5px;
+        margin: 5px 10px;}
+
+#userdata {width: 500px;float:left;}
+
+#userdata h2 {margin: 0; margin-top: 20px;}
+
+
+
+
+
+
+#planmenulink{padding-top: 50px;
+              margin-top: -50px;}
+
+#userplan{width: 682px;
+     margin-bottom:10px;
+	 padding:10px;
+	 background-color:#FFF;
+	border: solid 1px #E0E0E0;    /* firefox　*/
+  /* safari、chorme */
+border-radius: 5px;        /* CSS3草案 */
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 5px;   /* Firefox用 */}
+
+
+
+.userplanmenu ul	{margin: 0;
+padding: 0;}
+
+.userplanmenu li	{list-style-type: none;
+float: left;}
+
+.userplanmenu li a	{background-color: rgb(241, 241, 241);border: solid 1px gray;height: 40px;display: block;
+width: 168px;
+line-height: 43px;
+border-right: solid 1px rgb(141, 138, 138);
+color: #1D1D1D;
+font-weight: bold;font-size: 0.8em;text-align: center;
+background: -moz-linear-gradient( top, white 0%, #EEE);
+background: -webkit-gradient( linear, left top, left bottom, from(white), to(#EEE));
+}
+
+#userplan h3 {
+margin: 10px 0px 5px 0;
+background-color: rgb(255, 53, 53);
+color: white;
+padding: 7px;
+}
+
+
+.userpostplan {height:160px;
+               width: 164px;
+            	margin: 3px;
+              background-color:F5F5F5;
+			  float:left;}
+
+.upptitle { margin-top: 3px;
+            font-size: 0.9em;}
+
+.upptitle a{ text-decoration: none;
+color: black;
+ font-size: 0.8em;
+font-weight:800;}
+
+
+.space{height:40px;}
+
+
+.gotop { text-align: center;
+ padding: 8px 302px;
+background-color: #757575;
+color: #fff;
+margin: auto;
+background: -moz-linear-gradient( top, #AFAFAF 0%, #8B8989);
+background: -webkit-gradient( linear, left top, left bottom, from(#AFAFAF), to(#8B8989));
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.4), 0px 1px 0px rgba(255, 255, 255, 0.3);}
+
+
+.imgcaptionshow {
+float: left;
+width: 290px;
+margin-right: 10px;
+margin-bottom: 10px;
+border: solid 1px #CCC;
+padding: 7px;
+background-color: #FFF;
+box-shadow: 2px 2px 2px #DDD;
+-moz-box-shadow: 2px 2px 2px #DDD;
+-webkit-box-shadow: 2px 2px 2px #DDD;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+height: 70px;
+}
+
+.planimgtopshow {
+    float: left;
+    margin-right: 5px;
+}
+
+.plancapshow {
+font-size: 15px;
+overflow: auto;
+height: 69px;
+font-weight: bold;
+}
+
+
+/* ==================== お知らせページ==================== */
+
+#feed {width: 680px;
+     margin-bottom:10px;
+   padding:10px;
+   background-color:#FFF;
+  border: solid 1px #E0E0E0;    /* firefox　*/
+  /* safari、chorme */
+border-radius: 5px;        /* CSS3草案 */  
+    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 5px;   /* Firefox用 */}
+
+
+#feed h1 {
+background: rgb(235, 235, 235);
+display: block;
+font-size: 30px;
+font-weight: 600;
+height: 39px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 5px;
+}
+#feed p {
+    margin: 15px 0 -1px 0;
+    border-bottom: solid 1px rgb(156, 156, 156);
+    font-size: 0.9em;
+}
+
+#feed a {
+color: rgb(238, 83, 108);
+font-weight: bold;
+}
+/* ==================== フッター ==================== */
+
+#footer	{width: 100%;
+	background-color: #F5F5F5;}
+
+#footer_inner	{padding: 10px;}
+
+#footer p	{color: #666;
+	font-size: 0.75em;
+	margin: 0;
+	text-align: center;}
+
+/* ==================== フッターメニュー ================== */
+
+#footmenu	{text-align: center;
+	margin-bottom: 8px;}
+
+#footmenu li a	{font-size: 0.75em;
+	color: #666;
+	text-decoration: none;}
+
+#footmenu li a:hover	{color: #CCC;}
+
+#footmenu li	{display: inline;
+	list-style-type: none;
+	border-left: solid 1px #aaaaaa;
+	margin-left: 15px;
+	padding-left: 15px;}
+
+#footmenu li.first	{border-left: none;
+text-align:center;
+      padding-left: 10;}
+
+#footmenu ul	{margin: 0;
+	padding: 0;}
+

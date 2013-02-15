@@ -1,0 +1,81 @@
+
+<div id="content_plans">
+<%= form_for( :plan, url: plans_path, html: { class: "plan_form" } ) do |f| %>
+  <div id="planpost">
+    <h1>プラン投稿</h1>
+
+    <%# エラーメッセージ %>
+    <% if @plan.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @plan.errors.full_messages.each do |msg| %>
+          <li style="color: red;"><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+    <h2>カテゴリ選択<span class="postmark">必須</span></h2>
+    <% Category.all.each.with_index(1){ |category, index| %>
+      <%= check_box_tag "categories[#{index}]", category.id, (params[:categories].present? ? params[:categories].has_value?(category.id.to_s) : false) %>
+      <%= label_tag "categories[#{index}]", category.name %>
+    <% } %>
+
+    <h2>プランのタイトル<span class="words">（50文字以内）</span><span class="postmark">必須</span></h2>
+    <%= f.text_field :title, placeholder: "（例） J-POP好き限定でカラオケ行きましょう！【AKB48、いきものがかり、EXILEとか】", class: "inputtitle" %>
+
+    <h2>プランの説明<span class="postmark">必須</span></h2>
+    <%= f.text_area :description, placeholder: "AKB48、いきものがかり、EXILEなどのJ-POPが好きな人！カラオケ行きましょう☆", class: "inputdes" %>
+
+
+　　 <h2>こんな人に来てほしい</h2>
+    <%= f.text_area :target_people, rows: "4", cols: "43", placeholder: "J-POP好きな人、20代の人、男女両方OK", class: "inputtitle" %>
+
+   
+
+    <h2>日時候補を選択（必ず１つ以上選択〜最大5つまで）<span class="postmark">必須</span></h2>
+    <p class="des">※日時候補とは<br>あらかじめ、開催する日時の候補を決めておき、一番参加者が多く集まった日時で開催します。あなたの都合が良い日時を選びましょう。</p>
+    <p style=" color: red; ">※既に参加希望者のいる日時の変更はできません。<p>
+    <% 1.upto(5){ |n| %>
+      <script type="text/javascript">
+        $(function(){ $("#datepicker<%= n %>").datepicker(); });
+      </script>
+　　　　　　
+
+
+
+
+<input name="mydate" id="mydate" type="date" data-role="datebox"
+   data-options='{"mode": "calbox"}'>
+
+
+
+
+      <p>
+        <%= n %>.<%= text_field_tag( "schedules[#{n}][date]", nil, placeholder: "⇒カレンダーが開きます", id: "datepicker#{n}", size: "21", class: "inputdate" ) %>
+        <div class="inputtime"><%= datetime_select( "schedules[#{n}]", "time", { discard_day: true, discard_month: true, discard_year: true, minute_step: 10 }, class: "inputtime" ) %></div>
+        にスタート
+      </p>
+    <% } %>
+
+    <h2>場所<span class="postmark">必須</span><span class="des"> ※決まっていない場合は、大体の場所を記入しておきましょう。</span></h2>
+
+    <%= f.text_field :place, placeholder: "渋谷", size: "30", class: "inputplace" %>
+
+    <h2>予算<span class="postmark">必須</span></h2>
+    <%= f.text_field :budget, placeholder: "一人3000円くらい", size: "30", class: "inputplace" %>
+
+    <h2>最低開催人数<span class="postmark">必須</span></h2>
+    <%= f.number_field :min_people, min: "1", max: "9999", class: "inputcount" %>人以上集まったら開催決定
+
+    <h2>定員</h2>
+    <%= f.number_field :max_people, min: "1", max: "9999", value: "", class: "inputcount" %>人まで
+
+    <br><br>
+
+    <%= f.submit "", data: { 'disable-with' => "" }, class: "postbutton" %>
+  </div>
+<% end %>
+
+

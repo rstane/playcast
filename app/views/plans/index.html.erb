@@ -15,15 +15,40 @@
 <div id="content">
   <div id="content_inner">
 
+  <div id="social">
+  <div class="fb-like" data-href="http://www.facebook.com/pages/Playcast/292086317583536" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
+
+　<a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp">ツイート</a>
+　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 
+  <div class="g-plusone" data-size="medium"></div>
+　<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+
+  </div>
+
 
 
     <% Category.all.each{ |category| %>
       <%= link_to( category.name, plans_path( category_id: category.id ) ) %>
     <% } %>
+    
+    <div class="sort">
+    <%= link_to( "新着順", plans_path( sort: nil ) ) %>
+    <%= link_to( "人気順", plans_path( sort: "populur" ) ) %>
+    </div>
 
     <br />
         <div class="post">
-      <h2>参加募集中のプラン一覧</h2>
+      <h2>本日の参加募集中プラン一覧</h2>
     </div>
 
 
@@ -35,6 +60,10 @@
               <img class="planimgtop" src="/assets/amuplanico.png" width="63" height="56" alt="" />
               <div class="plancap"><%= link_to( plan.title, plan_path( plan ) ) %></div>
            <% end %>
+                
+
+
+                <div class="ribbon">　先着4人で開催！</div>
 
                <div class="planfoot">
 　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 5px;" )%>
@@ -48,6 +77,380 @@
           </div>
     <% } %>
     </div>
+
+
+    <div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a> <div class="ribbon">　先着6人で開催！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   <div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/indoorplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a> <div class="ribbon">　先着6人で開催！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   <div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/sportsplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a> <div class="ribbon">　先着6人で開催！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   <div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div> 
+
+                 <div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+<div class="imgcaption">
+            <a href="/plans/38">
+              <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
+</a><div class="ribbon2">　開催決定！</div>
+               <div class="planfoot">
+　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
+                <a href="/plans/38" class="sannkabtn"></a>
+
+          <div id="favorite38">
+                     <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
+
+                </div>
+               </div> </div>   
+
+
+
+
 
     <img id="loading" src='/assets/ajax-loader.gif' alt='loading' width='32px' height='32px' style="display: none;" />
     <div style="display: none;"><%= paginate @plans %></div>

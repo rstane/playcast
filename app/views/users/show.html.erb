@@ -28,68 +28,66 @@
       <div id="toukou"></div>
       <div class="space"></div>
 
-      <h3>投稿したプラン</h3>
-        <div class="userpostplanwrap">
-          <% @my_plans.each{ |plan| %>
-            <div class="userpostplan">
-              <div class="uppimg">
-                <a href="<%= plan_path( plan ) %>"><img src="<%= plan.image_url %>" width="162px" height="100px"></a>
-              </div>
 
-              <div class="upptitle">
-                <a href="<%= plan_path( plan ) %>"><%= plan.title %></a>
-              </div>
-            </div>
-          <% } %>
-        </div>
+
+      <h3>投稿したプラン</h3>
+
+
+             <% @my_plans.each{ |plan| %>
+               <a href="<%= plan_path( plan ) %>">
+               <div class="imgcaptionshow">
+              <img class="planimgtopshow" src="/assets/amuplanico.png" width="63" height="56" alt="" />
+              <div class="plancapshow"><%= plan.title %></div>
+          　</div>
+          </a>
+           <% } %>
+
 
         <br class="clear" style="clear:both" />
         <div id="sannka"></div>
         <div class="space"></div>
         <h3>参加表明したプラン</h3>
 
-        <% @entries.each{ |entry| %>
-          <%= link_to( entry.plan.title, plan_path( entry.plan ) ) %>
-          <br />
-        <% } %>
-        <br />
+
+　　　　　　 <% @entries.each{ |entry| %>
+               <a href="<%= plan_path( entry.plan ) %>">
+               <div class="imgcaptionshow">
+              <img class="planimgtopshow" src="/assets/amuplanico.png" width="63" height="56" alt="" />
+              <div class="plancapshow"><%= entry.plan.title %></div>
+          　</div>
+          </a>
+           <% } %>
+
 
         <br class="clear" style="clear:both" />
         <div id="okiniiri"></div>
         <div class="space"></div>
         <h3>お気に入りのプラン</h3>
 
-        <% @favorites.each{ |favorite| %>
-          <% if favorite.plan.present? %>
-          <div class="userpostplan">
-            <div class="uppimg">
-              <a href="<%= plan_path( favorite.plan ) %>"><img src="<%= favorite.plan.image_url %>" width="162px" height="100px"></a>
-            </div>
-
-            <div class="upptitle">
-              <%= link_to( favorite.plan.title, plan_path( favorite.plan ) ) %>
-              <br />
-            </div>
-          </div>
-          <% end %>
-        <% } %>
+　　　　　　<% @favorites.each{ |favorite| %>
+            <% if favorite.plan.present? %>
+               <a href="<%= plan_path( favorite.plan ) %>">
+               <div class="imgcaptionshow">
+              <img class="planimgtopshow" src="/assets/amuplanico.png" width="63" height="56" alt="" />
+              <div class="plancapshow"><%= favorite.plan.title %></div>
+          　</div>
+          </a>
+            <% end %>
+           <% } %>
 
         <br class="clear" style="clear:both" />
         <div id="ouen"></div>
         <div class="space"></div>
         <h3>応援したプラン</h3>
-
-        <% @cheers.each{ |cheer| %>
-          <div class="userpostplan">
-            <div class="uppimg">
-              <a href="<%= plan_path( cheer.plan ) %>"><img src="<%= cheer.plan.image_url %>" width="162px" height="100px"></a>
-            </div>
-
-            <div class="upptitle">
-              <%= link_to( cheer.plan.title, plan_path( cheer.plan ) ) %>
-            </div>
-          </div>
-        <% } %>
+      
+　　　　　　 <% @cheers.each{ |cheer| %>
+               <a href="<%= plan_path( cheer.plan ) %>">
+               <div class="imgcaptionshow">
+              <img class="planimgtopshow" src="/assets/amuplanico.png" width="63" height="56" alt="" />
+              <div class="plancapshow"><%= cheer.plan.title %></div>
+          　</div>
+          </a>
+           <% } %>
 
         <br class="clear" style="clear:both" />
       </div>
@@ -98,13 +96,9 @@
     </div>
 
     <div id="rightcontens">
-      <div id="other1">
-        関連プラン
-        <img src="/assets/rough_top.png" width="180px"/>
-      </div>
 
       <div id="other2">
-        おすすめプラン
+        新着プラン
 
         <img src="/assets/rough_top.png" width="180px"/>
         <img src="/assets/rough_top.png" width="180px"/>

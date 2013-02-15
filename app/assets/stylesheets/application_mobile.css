@@ -1,0 +1,8 @@
+/*
+ *= require_self
+ *= require_tree ./mobile
+ */
+
+.margin_top50 {
+margin: 37px 0px 0px 0px;
+}

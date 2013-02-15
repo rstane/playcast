@@ -1,62 +1,159 @@
 <div id="mainpic">
-  <div id="mainpicinner">
-    <div class="white">
-      <div class="whiteinner">
-        <h2>どうしても、<br />
-          やりたいことがある。</h2>
-        <p>どうしてもやりたい事があるけれど、<br />
-          友達と予定が合わなかったり、友達は乗り気じゃなくて、<br />
-          結局諦めてしまう・・・。<br />
-          そんな時は「Playcast」で、あなたの気持ちに共感してくれる人を<br />
-          見つけて、気の合う仲間と共に最高の思い出を作りましょう。</p>
-        <br />
-        <%= link_to  "" , new_plan_path, class: "postbuttontop" %>
-       </div>
-    </div>
-  </div>
+
+          <img class="copy" src="/assets/copy.png" />
+          <%= link_to  "" , new_plan_path, class: "postbtntop" %>
+          
 </div>
 
-<div id="content">
-  <div id="content_inner">
-    <div class="post">
-      <h2>参加募集中のプラン一覧</h2>
-    </div>
 
-    <b>ソート : </b>
-    <%= link_to( "新着", plans_path( sort: nil ) ) %>
-    <%= link_to( "人気", plans_path( sort: "populur" ) ) %>
-    <br />
 
-    <b>カテゴリ : </b>
-    <%= link_to( "すべて", plans_path( category_id: nil ) ) %>
+ <div id="socialmobi">
+  
+ <div class="fbmobi"><div class="fb-like" data-href="http://www.facebook.com/pages/Playcast/292086317583536" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div></div>
+
+ <div class="twmobi"><a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp">ツイート</a></div>
+　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 
+ <div class="gmobi"><div class="g-plusone" data-size="medium"></div></div>
+　<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+
+  </div>
+
+         
+
+
 
     <% Category.all.each{ |category| %>
       <%= link_to( category.name, plans_path( category_id: category.id ) ) %>
     <% } %>
+    
+    <div class="sort">
+    <%= link_to( "新着順", plans_path( sort: nil ) ) %>
+    <%= link_to( "人気順", plans_path( sort: "populur" ) ) %>
+    </div>
+
     <br />
 
+
+   
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
+                                すべてのカテゴリ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
+                                カラオケ・アミューズメント
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
+                                飲み会・食事会
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
+                                スポーツ・アウトドア
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
+                                インドアゲーム
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+<div id="contents">
+            
+
+<div class="contentdescription">本日の参加募集中プラン一覧</div>
+
+
+
+
+
+    <div id="paging">
     <% @plans.each{ |plan| %>
-      <%# 募集終了判定 %>
-      <% if (Time.now <= plan.schedules.sort{ |a, b| b.candidate_day.to_i <=> a.candidate_day.to_i }.first.candidate_day.end_of_day rescue false) %>
-      <div class="imgcaption">
-        <div class="imginner">
-<% if false %>
+     <div class="imgcaption">
             <%= link_to( plan_path( plan ) ) do %>
-              <p><img src="<%= plan.image_url %>" width="210" height="117" alt="<%= plan.title %>" /></p>
-            <% end %>
-<% end %>
-          <%= link_to( plan.title, plan_path( plan ) ) %>
-          <br>
+              <img class="planimgtop" src="/assets/amuplanico.png" width="63" height="56" alt="" />
+              <div class="plancap"><%= link_to( plan.title, plan_path( plan ) ) %></div>
+           <% end %>
+                
+
+
+                <div class="ribbon">　先着4人で開催！</div>
+
+               <div class="planfoot">
+　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 5px;" )%>
+                <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
 
           <%# お気に入りボタン %>
           <div id="favorite<%= plan.id %>">
-            <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "btn" } %>
+                   <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "favoritebtntop" } %>
+                </div>
+               </div>
           </div>
-
-          <br/>
-        </div>
-      </div>
-      <% end %>
     <% } %>
-  </div>
+    </div>
+
+
+    <div id="footmenu">
+<ul>
+<li><a href="#">お問い合わせ・ご意見はこちら</a></li>
+<li><a href="#">利用規約</a></li>
+<li><a href="#">プライバシーポリシー</a></li>
+<li><%= link_to "ログアウト", logout_path %></li>
+
+</ul>
 </div>
+
+<p style=" clear: both; text-align: center; font-size: 11px; ">Copyright (c) Playcast. All Rights Reserved.</p>
+
+
+  <div data-theme="a" data-role="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="#page1" data-transition="fade">
+                             <img class="category" src="/assets/Ampoule.png" width="20px" height="20px"/>
+                                 <div class="btnname">投稿する</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" >
+                             <img class="category" src="/assets/Infos.png" width="20px" height="20px"/>
+                                 <div class="btnname">お知らせ</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade">
+                            <img class="category" src="/assets/mypagepic.png" width="20px" height="20px"/>
+                                 <div class="btnname1">マイページ</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+</div>            
