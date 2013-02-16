@@ -1,6 +1,5 @@
 # coding: utf-8
 class TopController < ApplicationController
-
   #-------#
   # index #
   #-------#
@@ -10,5 +9,4 @@ class TopController < ApplicationController
       redirect_to plans_path and return
     end
   end
-
 end

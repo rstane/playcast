@@ -42,13 +42,13 @@
       <h1><a href="/plans"><img src="/assets/logo.png"> </a></h1>
       <p>ソーシャル・レジャーマッチングサービス「Playcast」</p>
 
-     
+
   <div id="navbar">
       <div id="submenu">
         <ul>
 
           <li class="first"><a href="/plans/new"><img src="/assets/postmini.png"></a></li>
-       
+
           <li><%= link_to( "お知らせ", feed_users_path ) %></li>
 
           <% if session[:user_id].present? %>
@@ -64,7 +64,7 @@
           <% end %>
         </ul>
       </div>
-     </div> 
+     </div>
     </div>
     </div>
   </div>
@@ -77,7 +77,7 @@
     <%= simple_format( flash[:alert], class: "alert" ) if flash[:alert].present? %>
  </div>
  </div>
- 
+
     <%= yield %>
 
      <div id="foot">
@@ -85,8 +85,8 @@
      <div id="footmenu">
 <ul>
 <li class="first"><a href="#">お問い合わせ・ご意見はこちら</a></li>
-<li><a href="#">利用規約</a></li>
-<li><a href="#">プライバシーポリシー</a></li>
+<li><a href="<%= pages_terms_path %>">利用規約</a></li>
+<li><a href="<%= pages_privacy_path %>">プライバシーポリシー</a></li>
 <li><%= link_to "ログアウト", logout_path %></li>
 
 </ul>

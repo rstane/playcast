@@ -1,4 +1,7 @@
 Playcast::Application.routes.draw do
+  get "/pages/privacy"
+  get "/pages/terms"
+
   resources :plans do
     resources :comments, only: [:create, :destroy]
 #    resources :favorites
