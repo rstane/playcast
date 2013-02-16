@@ -8,6 +8,7 @@ body {
 margin: 0;
 background-image: url("/assets/backgroundimg.png");
 background-color: rgb(230, 230, 230);
+font-family: sans-serif;
 }
 
 
@@ -211,6 +212,7 @@ left: 64px;
 position: relative;
 left: 80px;
 }
+
 
 /* ==================== コンテンツ ==================== */
 
