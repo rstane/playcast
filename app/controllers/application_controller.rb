@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
         # リクエストURL保管
         session[:request_url] = request.url
 
-        redirect_to :root and return
+        redirect_to "/auth/#{Settings.provider}"
       end
     end
   end

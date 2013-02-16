@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
 
-    redirect_to :root, notice: "ログアウトしました。"
+    redirect_to plans_path, notice: "ログアウトしました。"
   end
 
   #---------#

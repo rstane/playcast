@@ -1,5 +1,7 @@
 # coding: utf-8
 class PlansController < ApplicationController
+  skip_before_filter :authorize, only: [:index]
+
   #-------#
   # index #
   #-------#
