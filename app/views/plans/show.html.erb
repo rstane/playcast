@@ -89,8 +89,13 @@
 
       </dd>
       </dl>
-      <div class="planedit"><%= link_to( "編集", edit_plan_path( @plan ) ) if @plan.user_id == session[:user_id] %>　削除</div>
-　　　
+
+      <% if @plan.user_id == session[:user_id] %>
+        <div class="planedit">
+          <%= link_to( "編集", edit_plan_path( @plan ) ) %>
+          　<%= link_to( "削除", plan_path( @plan ), method: "delete", confirm: "「#{@plan.title}」を削除してよろしいですか？" ) %>
+        </div>
+      <% end %>
     </div>
 
     <div id="cast">
