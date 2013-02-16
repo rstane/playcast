@@ -123,6 +123,9 @@ class PlansController < ApplicationController
         }
       end
 
+      # 定員／最少開催人数チェック
+      Plan.max_min_people_check( @plan.id )
+
       redirect_to( plan_path( @plan ), notice: "プランを作成しました。" )
     else
       render action: "new"
