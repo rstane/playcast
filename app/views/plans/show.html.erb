@@ -220,9 +220,13 @@
     </div>
 
     <div id="other3">
-      おすすめプラン
-      <img src="/assets/rough_top.png" width="180px"/>
-      <img src="/assets/rough_top.png" width="180px"/>
+      <p>新着プラン</p>
+      <% @recent_plans.each{ |plan| %>
+        <%= link_to( plan_path( plan ) ) do %>
+          <img class="planimgtop" src="/assets/amuplanico.png" width="63" height="56" alt="" />
+          <div class="plancap"><%= link_to( plan.title, plan_path( plan ) ) %></div>
+       <% end %>
+      <% } %>
     </div>
   </div>
 </div>
