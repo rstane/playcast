@@ -15,12 +15,12 @@
   <div id="socialshow">
 
   <div class="poster">投稿者：<%= render partial: '/layouts/user_icon', locals: { user: @plan.user } %><%= @plan.user.name %></div>
-  
+
   <div class="fb-like" data-href="http://www.facebook.com/pages/Playcast/292086317583536" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
 
 　<a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp">ツイート</a>
 　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
- 
+
   <div class="g-plusone" data-size="medium"></div>
 　<script type="text/javascript">
   window.___gcfg = {lang: 'ja'};
@@ -42,7 +42,7 @@
 <div id="content_plans">
 
   <div id="leftcontents">
-    
+
    <div id="decide">
    <h1>開催決定！</h1>
   <p>おめでとうございます！参加人数が集まり、開催が決定しました。</p>
@@ -180,7 +180,8 @@
       <img src="/assets/showcomico.png/" style="width:40px; height:30px; margin-right:3px;"><span class="comm">コメント欄</span>
 
       <%= form_for( :comment, url: plan_comments_path( @plan ) ) do |f| %>
-        <%= text_area_tag "comment_content", params[:comment_content], rows: 5, cols: 90, class: "span6" %><br />
+        <%#= f.text_area "comment_content", params[:comment_content], rows: 5, cols: 90, class: "span6" %><br />
+        <%= f.text_area :content, rows: 5, cols: 90, class: "span6" %>
 
         <%= f.submit "コメント", data: { 'disable-with' => "コメント" } %>
       <% end %>

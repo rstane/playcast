@@ -3,14 +3,12 @@ class CommentsController < ApplicationController
   #--------#
   # create #
   #--------#
-  def create( plan_id, comment_content )
-    comment = Comment.new(
-      user_id: session[:user_id],
-      plan_id: plan_id,
-      content: comment_content
-    )
+  def create( plan_id, comment )
+    com = Comment.new( comment )
+    com.user_id = session[:user_id]
+    com.plan_id = plan_id
 
-    if comment.save
+    if com.save!
       flash[:notice] = "コメントを投稿しました。"
     else
       flash[:alert] = "コメントを投稿出来ませんでした。"

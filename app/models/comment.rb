@@ -9,6 +9,9 @@ class Comment < ActiveRecord::Base
   # コールバック
   after_create :create_feed_comment
 
+  # バリデーション
+  validates :content, presence: true, length: { maximum: 1000 }
+
   private
 
   #---------------------#
