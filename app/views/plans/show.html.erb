@@ -70,9 +70,8 @@
             <% participations = @participations.select{ |x| x.schedule_id == schedule[1].id } %>
             <% participations.each{ |participation| %>
               <% if participation.user.present? %>
-                <%= link_to_unless( participation.user.nickname.blank?, image_tag( participation.user.image, size: "24x24", class: "margin_minus2" ), "#{Settings.provider_page}#{participation.user.nickname}", target: "_blank", rel: "tooltip", "data-original-title" => participation.user.nickname, title: participation.user.nickname ) %>
+                <%= link_to_unless( participation.user.nickname.blank?, image_tag( participation.user.image, size: "24x24", class: "margin_minus2" ), user_path(participation.user), rel: "tooltip", "data-original-title" => participation.user.nickname, title: participation.user.nickname ) %>
               <% end %>
-
             <% } %>
            </div>
 

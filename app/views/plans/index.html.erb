@@ -66,7 +66,7 @@
 <% if plan.closed? %>
   <%# 募集終了 %>
   <div class="ribbon3">　募集終了</div>
-<% elsif condition %>
+<% elsif plan.hold_decide? %>
   <%# 開催決定／募集中 %>
   <div class="ribbon2">　開催決定！</div>
 <% else %>
