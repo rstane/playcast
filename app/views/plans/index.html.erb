@@ -37,8 +37,10 @@
 
 
 
-    <% Category.all.each{ |category| %>
-      <%= link_to( category.name, plans_path( category_id: category.id ) ) %>
+    <% Category.all.each.with_index(1){ |category, index| %>
+      <%= link_to( plans_path( category_id: category.id ) ) do %>
+        <%= image_tag( "category#{index}.gif" )%><%= category.name %>
+      <% end %>
     <% } %>
     
     <div class="sort">
@@ -63,7 +65,7 @@
                 
 
 
-                <div class="ribbon">　先着4人で開催！</div>
+                <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
 
                <div class="planfoot">
 　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 5px;" )%>
@@ -83,7 +85,7 @@
             <a href="/plans/38">
               <img class="planimgtop" src="/assets/beerplanico.png" width="63" height="56" alt="" />
               <div class="plancap"><a href="/plans/38"><span style="color: rgb(255, 92, 157);"></span>ボルダリングいこう</a></div>
-</a> <div class="ribbon">　先着6人で開催！</div>
+</a> <div class="ribbon">　先着人で開催！</div>
                <div class="planfoot">
 　　　　       　<img alt="Picture?type=large" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?type=large" style="float: left; position: relative; left: 5px;" width="28" />
                 <a href="/plans/38" class="sannkabtn"></a>

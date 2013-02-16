@@ -67,7 +67,7 @@
         
           <% else %>
             <%# 未ログイン %>
-         <%= link_to "Login", "/auth/#{Settings.provider}" %>
+         <%= link_to "Login", "/auth/#{Settings.provider}", "data-ajax" => "false" %>
           <% end %>
 
 

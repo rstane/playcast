@@ -96,7 +96,7 @@
     <div id="paging">
     <% @plans.each{ |plan| %>
      <div class="imgcaption">
-            <%= link_to( plan_path( plan ) ) do %>
+            <%= link_to( plan_path( plan ), "data-ajax" => "false" ) do %>
               <img class="planimgtop" src="/assets/amuplanico.png" width="63" height="56" alt="" />
               <div class="plancap"><%= link_to( plan.title, plan_path( plan ) ) %></div>
            <% end %>

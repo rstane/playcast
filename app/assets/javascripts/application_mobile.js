@@ -1,8 +1,9 @@
 //= require jquery
+//= require jquery_ujs
 //= require_directory ./mobile
 
 // お気に入り登録／解除
-function toggle_favorite( plan_id, klass, kind ) {
+function toggle_favorite( plan_id, klass, kind, authenticity_token ) {
   if(kind == "delete"){
     if(!(window.confirm('お気に入りを解除してよろしいですか？'))){
       return
@@ -14,7 +15,8 @@ function toggle_favorite( plan_id, klass, kind ) {
     "/plans/" + plan_id + "/favorite",
     // 送信データ
     {
-      "klass": klass
+      "klass": klass,
+      "authenticity_token": authenticity_token
     },
     // コールバック処理
     function(data, status) {

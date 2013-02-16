@@ -1,6 +1,6 @@
 
 <div id="content_plans">
-<%= form_for( :plan, url: plans_path, html: { class: "plan_form" } ) do |f| %>
+<%= form_for( :plan, url: plans_path, html: { class: "plan_form", "data-ajax" => "false" } ) do |f| %>
   <div id="planpost">
     <h1>プラン投稿</h1>
 
@@ -45,14 +45,15 @@
 
 
 
+<% if false %>
 <input name="mydate" id="mydate" type="date" data-role="datebox"
    data-options='{"mode": "calbox"}'>
-
+<% end %>
 
 
 
       <p>
-        <%= n %>.<%= text_field_tag( "schedules[#{n}][date]", nil, placeholder: "⇒カレンダーが開きます", id: "datepicker#{n}", size: "21", class: "inputdate" ) %>
+        <%= n %>.<%= text_field_tag( "schedules[#{n}][date]", nil, placeholder: "⇒カレンダーが開きます", id: "datepicker#{n}", size: "21", class: "inputdate",  type: "date", data: { role: "datebox", options: '{"mode": "calbox"}' } ) %>
         <div class="inputtime"><%= datetime_select( "schedules[#{n}]", "time", { discard_day: true, discard_month: true, discard_year: true, minute_step: 10 }, class: "inputtime" ) %></div>
         にスタート
       </p>
