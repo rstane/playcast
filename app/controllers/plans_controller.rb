@@ -9,8 +9,8 @@ class PlansController < ApplicationController
     @plans = Plan.page(page).per(1)
     @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
 
-    # 募集終了以外
-    @plans = @plans.where( entry_close_flag: false ).where( "schedules.close_at > ?", Time.now )
+    # 募集終了以外 => 全部出す
+#    @plans = @plans.where( entry_close_flag: false ).where( "schedules.close_at > ?", Time.now )
 
     # カテゴリ条件追加
     if category_id.present?

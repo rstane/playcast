@@ -63,8 +63,16 @@
            <% end %>
 
 
-
-                <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
+<% if plan.closed? %>
+  <%# 募集終了 %>
+  <div class="ribbon3">　募集終了</div>
+<% elsif condition %>
+  <%# 開催決定／募集中 %>
+  <div class="ribbon2">　開催決定！</div>
+<% else %>
+  <%# 開催未決定／募集中 %>
+  <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
+<% end %>
 
                <div class="planfoot">
 　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 5px;" )%>

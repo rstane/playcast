@@ -32,6 +32,16 @@ class Plan < ActiveRecord::Base
     Schedule.where( id: schedule_ids, adopt_flag: true ).exists? ? true : false
   end
 
+  #---------#
+  # closed? #
+  #---------#
+  # 募集終了判定
+  def closed?
+    return true if self.entry_close_flag == true
+    return true if self.schedules.sort{ |a, b| b.close_at.to_i <=> a.close_at.to_i }.first.close_at.to_i <= Time.now.to_i
+    return false
+  end
+
   private
 
   #--------------------#
