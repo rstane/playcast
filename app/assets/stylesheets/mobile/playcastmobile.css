@@ -109,6 +109,16 @@ top: -19px;
 left: -80px;
 }
 
+.categorymobi {
+font-size: 15px;
+text-align: center;
+border-bottom: solid 1px #AAA;
+}
+
+.cateimg {
+width: 40px;
+margin-right: 3px;
+}
 
 
 #contents {
@@ -190,14 +200,16 @@ top: -44px;
 }
 
 
-.favoritebtntopcancell {display:block;
-      width: 96px;
-      height: 28px;
-    background-image:url(favingbtn.png);
-    background-repeat:no-repeat;
-    float: right;
-    position: relative;
-    top: -24px; }
+.favoritebtntopcancell {
+display: block;
+width: 96px;
+height: 28px;
+background-image: url(favingbtn.png);
+background-repeat: no-repeat;
+float: right;
+position: relative;
+top: -44px;
+}
 
 .ribbon {
 background-image: url(/assets/ribbon.jpg);
@@ -276,7 +288,7 @@ top: 20px;}
 margin-top: 20px;
 margin-bottom: -10px;
 background-color: 
-rgb(255, 53, 53);
+rgb(236, 0, 0);
 padding: 5px;
 color: 
 white;
@@ -290,7 +302,7 @@ font-size: 20px;
 margin-top: 20px;
 margin-bottom: 10px;
 background-color: 
-rgb(255, 53, 53);
+rgb(236, 0, 0);
 padding: 5px;
 color: 
 white;
@@ -304,7 +316,7 @@ font-size: 20px;
 margin-top: 20px;
 margin-bottom: -10px;
 background-color: 
-rgb(255, 53, 53);
+rgb(236, 0, 0);
 padding: 5px;
 color: 
 white;
@@ -318,7 +330,7 @@ font-size: 20px;
 margin-top: 20px;
 margin-bottom: 10px;
 background-color: 
-rgb(255, 53, 53);
+rgb(236, 0, 0);
 padding: 5px;
 color: 
 white;
@@ -512,6 +524,8 @@ font-weight: bold;
 position: relative;
 line-height: 25px;
 }
+
+.atndcom {position: relative; top: -20px;}
 
 .atndmembers {
 

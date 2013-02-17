@@ -213,10 +213,25 @@ position: relative;
 left: 80px;
 }
 
+.catego {
+float: left;
+margin-top: -30px;
+}
 
+.cateimg {}
+
+.catedes {
+font-weight: bold;
+border-right: solid 1px rgb(156, 156, 156);
+padding-right: 10px;
+margin-right: 10px;
+margin-left: 5px;
+position: relative;
+top: -14px;
+}
 /* ==================== コンテンツ ==================== */
 
-.sort {}
+.sort { clear: both;}
 
 
 
@@ -237,12 +252,11 @@ left: 80px;
 
 a { color:#333;}
 
-
 .imgcaption {
 float: left;
-width: 290px;
-margin-right: 10px;
-margin-bottom: 10px;
+width: 280px;
+margin-right: 20px;
+margin-bottom: 15px;
 border: solid 1px #CCC;
 padding: 7px;
 background-color: #FFF;
@@ -268,8 +282,8 @@ font-weight: bold;
 }
 
 .planfoot {
-border-top: solid 3px rgb(170, 170, 170);
-width: 290px;
+border-top: solid 1px rgb(170, 170, 170);
+width: 280px;
 padding-top: 31px;
 position: relative;
 top: -27px;
@@ -312,7 +326,7 @@ top: -24px;
 background-image: url(/assets/ribbon.jpg);
 background-repeat: no-repeat;
 position: relative;
-top: 6px;
+top: 4px;
 left: -15px;
 font-size: 14px;
 color: rgb(255, 255, 255);
@@ -1009,7 +1023,7 @@ background: -webkit-gradient( linear, left top, left bottom, from(white), to(#EE
 
 #userplan h3 {
 margin: 10px 0px 5px 0;
-background-color: rgb(255, 53, 53);
+background-color: rgb(236, 0, 0);
 color: white;
 padding: 7px;
 }
