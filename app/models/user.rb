@@ -1,6 +1,6 @@
 # coding: utf-8
 class User < ActiveRecord::Base
-  attr_accessible :provider, :uid, :name, :nickname, :image, :email, :location, :token, :secret
+  attr_accessible :provider, :uid, :name, :nickname, :image, :email, :location, :token, :secret, :slug
 
   has_many :plans,          :dependent => :destroy
   has_many :comments,       :dependent => :destroy
@@ -9,6 +9,13 @@ class User < ActiveRecord::Base
   has_many :entries,        :dependent => :destroy
   has_many :feeds,          :dependent => :destroy
   has_many :participations, :dependent => :destroy
+
+  # Friendly ID
+  extend FriendlyId
+  friendly_id :nickname, use: :slugged
+
+  # バリデーション
+  validate :slug, uniqueness: { case_sensitive: false }
 
   #-------------#
   # auth_update #

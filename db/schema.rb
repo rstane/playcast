@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211074622) do
+ActiveRecord::Schema.define(:version => 20130217075243) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(:version => 20130211074622) do
     t.datetime "updated_at",                          :null => false
     t.boolean  "decide_flag",      :default => false
     t.boolean  "entry_close_flag", :default => false
+    t.integer  "index"
+    t.integer  "number"
     t.integer  "cheers_count",     :default => 0
     t.integer  "favorites_count",  :default => 0
   end
@@ -119,6 +121,9 @@ ActiveRecord::Schema.define(:version => 20130211074622) do
     t.datetime "updated_at", :null => false
     t.string   "email"
     t.string   "location"
+    t.string   "slug"
   end
+
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
 end
