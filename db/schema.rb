@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217075243) do
+ActiveRecord::Schema.define(:version => 20130217093509) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20130217075243) do
     t.integer  "number"
     t.integer  "cheers_count",     :default => 0
     t.integer  "favorites_count",  :default => 0
+    t.string   "area"
   end
 
   create_table "schedules", :force => true do |t|

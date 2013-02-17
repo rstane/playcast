@@ -15,6 +15,8 @@
       </div>
     <% end %>
 
+    <h2>地域選択<span class="postmark">必須</span></h2>
+    <%= f.select :area, Settings.plan.area %>
 
     <h2>カテゴリ選択<span class="postmark">必須</span></h2>
     <% Category.all.each.with_index(1){ |category, index| %>
@@ -33,7 +35,7 @@
 　　 <h2>こんな人に来てほしい</h2>
     <%= f.text_area :target_people, rows: "4", cols: "43", placeholder: "J-POP好きな人、20代の人、男女両方OK", class: "inputtitle" %>
 
-   
+
 
     <h2>日時候補を選択（必ず１つ以上選択〜最大5つまで）<span class="postmark">必須</span></h2>
     <p class="des">※日時候補とは<br>あらかじめ、開催する日時の候補を決めておき、一番参加者が多く集まった日時で開催します。あなたの都合が良い日時を選びましょう。</p>
