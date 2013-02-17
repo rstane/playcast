@@ -2,15 +2,11 @@
 </script>
 
 <div id="mainpic">
+  <div class="copy"><img src="/assets/copy.png" width="657" height="96" alt="遊びを通じて、趣味の合う仲間を作れる。あなたのやりたい趣味を募集して、集まった仲間と実際に遊ぶ。ソーシャル・レジャーマッチングサービス「Playcast」" /></div>
 
-          <div class="copy"><img src="/assets/copy.png" width="657" height="96" alt="遊びを通じて、趣味の合う仲間を作れる。あなたのやりたい趣味を募集して、集まった仲間と実際に遊ぶ。ソーシャル・レジャーマッチングサービス「Playcast」" /></div>
-
-          <%= link_to  "" , new_plan_path, class: "postbuttontop" %>
-
-    </div>
-  </div>
-
-
+  <%= link_to  "" , new_plan_path, class: "postbuttontop" %>
+</div>
+</div>
 
 <div id="content">
   <div id="content_inner">
@@ -20,7 +16,7 @@
 
 　<a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp">ツイート</a>
 　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
- 
+
   <div class="g-plusone" data-size="medium"></div>
 　<script type="text/javascript">
   window.___gcfg = {lang: 'ja'};
@@ -37,6 +33,9 @@
 
 
 
+    <%# カテゴリ %>
+    <%= link_to( plans_path( category_id: nil ) ) do %><%= image_tag( "category0.gif" )%>すべて<% end %>
+
     <% Category.all.each.with_index(1){ |category, index| %>
       <div class="catego">
       <%= link_to( plans_path( category_id: category.id ) ) do %>
@@ -44,8 +43,12 @@
       <% end %>
     </div>
     <% } %>
+<<<<<<< HEAD
     
     <br><br>
+=======
+
+>>>>>>> 14383f96c88573328558821d7414b962c021fd7e
     <div class="sort">
     <%= link_to( "新着順", plans_path( sort: nil ) ) %>
     <%= link_to( "人気順", plans_path( sort: "populur" ) ) %>
@@ -65,21 +68,31 @@
               <img class="planimgtop" src="/assets/amuplanico.png" width="63" height="56" alt="" />
               <div class="plancap"><%= link_to( plan.title, plan_path( plan ) ) %></div>
            <% end %>
-                
 
 
-                <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
+<% if plan.closed? %>
+  <%# 募集終了 %>
+  <div class="ribbon3">　募集終了</div>
+<% elsif plan.hold_decide? %>
+  <%# 開催決定／募集中 %>
+  <div class="ribbon2">　開催決定！</div>
+<% else %>
+  <%# 開催未決定／募集中 %>
+  <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
+<% end %>
 
                <div class="planfoot">
 　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 5px;" )%>
                 <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
 
           <%# お気に入りボタン %>
+          <% if session[:user_id].present? %>
           <div id="favorite<%= plan.id %>">
                    <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "favoritebtntop" } %>
                 </div>
                </div>
           </div>
+          <% end %>
     <% } %>
     </div>
 
@@ -136,7 +149,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div> 
+               </div> </div>
 
                  <div class="imgcaption">
             <a href="/plans/38">
@@ -151,7 +164,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -166,7 +179,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -181,7 +194,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -196,7 +209,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -211,7 +224,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -226,7 +239,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -241,7 +254,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -256,7 +269,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -271,7 +284,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -286,7 +299,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -301,7 +314,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -316,7 +329,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -331,7 +344,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -346,7 +359,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -361,7 +374,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -376,7 +389,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -391,7 +404,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -406,7 +419,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -421,7 +434,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -436,7 +449,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 <div class="imgcaption">
             <a href="/plans/38">
@@ -451,7 +464,7 @@
                      <a href="javascript:void(0);" class="favoritebtntopcancell" onClick="toggle_favorite( &#x27;38&#x27;, &#x27;favoritebtntop&#x27;, &#x27;delete&#x27; )"></a>
 
                 </div>
-               </div> </div>   
+               </div> </div>
 
 
 

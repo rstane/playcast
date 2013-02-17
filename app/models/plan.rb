@@ -17,7 +17,7 @@ class Plan < ActiveRecord::Base
   after_create :create_feed_plan_start
 
   # バリデーション
-  validates :title, presence: true, length: { maximum: 50 }
+  validates :title, presence: true, length: { maximum: 40 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :place, presence: true, length: { maximum: 500 }
   validates :budget, presence: true, length: { maximum: 100 }
@@ -27,9 +27,29 @@ class Plan < ActiveRecord::Base
   #--------------#
   # participant? #
   #--------------#
+  # 参加者判定
   def participant?( user_id )
     schedule_ids = Participation.where( plan_id: self.id, user_id: user_id ).pluck(:schedule_id)
     Schedule.where( id: schedule_ids, adopt_flag: true ).exists? ? true : false
+  end
+
+  #--------------#
+  # hold_decide? #
+  #--------------#
+  # 開催決定判定
+  def hold_decide?
+    return true if self.decide_flag == true
+    return false
+  end
+
+  #---------#
+  # closed? #
+  #---------#
+  # 募集終了判定
+  def closed?
+    return true if self.entry_close_flag == true
+    return true if self.schedules.sort{ |a, b| b.close_at.to_i <=> a.close_at.to_i }.first.close_at.to_i <= Time.now.to_i
+    return false
   end
 
   private
@@ -44,15 +64,6 @@ class Plan < ActiveRecord::Base
       plan_id: self.id,
       comment: "主催者"
     ).first_or_create
-
-    self.schedules.each{ |schedule|
-      Participation.where(
-        user_id: self.user_id,
-        plan_id: self.id,
-        schedule_id: schedule.id,
-        entry_id: entry.id
-      ).first_or_create
-    }
   end
 
   #------------------------#

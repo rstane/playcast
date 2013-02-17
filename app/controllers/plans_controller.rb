@@ -1,5 +1,7 @@
 # coding: utf-8
 class PlansController < ApplicationController
+  skip_before_filter :authorize, only: [:index]
+
   #-------#
   # index #
   #-------#
@@ -7,8 +9,8 @@ class PlansController < ApplicationController
     @plans = Plan.page(page).per(1)
     @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
 
-    # 開催決定／募集終了除外
-    @plans = @plans.where( decide_flag: false, entry_close_flag: false ).where( "schedules.close_at > ?", Time.now )
+    # 募集終了以外 => 全部出す
+#    @plans = @plans.where( entry_close_flag: false ).where( "schedules.close_at > ?", Time.now )
 
     # カテゴリ条件追加
     if category_id.present?
@@ -61,6 +63,9 @@ class PlansController < ApplicationController
     @favorite = Favorite.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @cheer    = Cheer.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @entry    = Entry.where( user_id: session[:user_id], plan_id: @plan.id ).first
+
+    # 新着プラン
+    @recent_plans = Plan.order( "created_at DESC" ).limit(10)
   end
 
   #-----#
@@ -117,6 +122,9 @@ class PlansController < ApplicationController
           new_schedule.save
         }
       end
+
+      # 定員／最少開催人数チェック
+      Plan.max_min_people_check( @plan.id )
 
       redirect_to( plan_path( @plan ), notice: "プランを作成しました。" )
     else
