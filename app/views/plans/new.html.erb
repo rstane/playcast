@@ -19,8 +19,8 @@
     <h2>カテゴリ選択<span class="postmark">必須</span></h2>
     <% Category.all.each.with_index(1){ |category, index| %>
       <%= check_box_tag "categories[#{index}]", category.id, (params[:categories].present? ? params[:categories].has_value?(category.id.to_s) : false) %>
-      <%= image_tag( "category#{index}.png" )%>
-      <%= label_tag "categories[#{index}]", category.name %>
+       <span class="cateimg2"><%= image_tag( "category#{index}.png" )%></span>
+      <span class="catename"><%= label_tag "categories[#{index}]", category.name %></span>
     <% } %>
 
     <h2>プランのタイトル<span class="words">（40文字以内）</span><span class="postmark">必須</span></h2>

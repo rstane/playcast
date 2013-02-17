@@ -213,6 +213,25 @@ position: relative;
 left: 80px;
 }
 
+.catewrap {}
+
+.cateall {
+float: left;
+position: relative;
+top: -17px;
+font-weight: bold;
+font-size: 14px;
+}
+
+.catealldes {
+position: relative;
+top: -8px;
+margin-left: 4px;
+border-right: solid 1px rgb(148, 148, 148);
+margin-right: 5px;
+padding-right: 10px;
+}
+
 .catego {
 float: left;
 margin-top: -30px;
@@ -225,25 +244,30 @@ font-weight: bold;
 border-right: solid 1px rgb(156, 156, 156);
 padding-right: 10px;
 margin-right: 10px;
-margin-left: 5px;
 position: relative;
 top: -14px;
+font-size: 14px;
 }
+
 /* ==================== コンテンツ ==================== */
 
-.sort { clear: both;}
-
-
+.sort {
+text-align: center;
+position: relative;
+top: -25px;
+}
 
 /* ===== コンテンツタイトル ======= */
 
-.post {width: 100%;}
+.post {
+width: 100%;
+margin-bottom: -20px;
+}
 
-.post h2  {font-size: 1em;
-  margin: 0;
-  margin-bottom: 5px;
-  padding-left:0px;
-  color:#000;}
+.post h2 {
+font-size: 1em;
+margin: 0;
+}
 
 
 /* ===== プラン一覧 ========= */
@@ -255,17 +279,11 @@ a { color:#333;}
 .imgcaption {
 float: left;
 width: 280px;
-margin-right: 20px;
+margin-right: 14px;
 margin-bottom: 15px;
-border: solid 1px #CCC;
+border: solid 4px rgb(207, 207, 207);
 padding: 7px;
 background-color: #FFF;
-box-shadow: 2px 2px 2px #DDD;
--moz-box-shadow: 2px 2px 2px #DDD;
--webkit-box-shadow: 2px 2px 2px #DDD;
-border-radius: 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
 height: 130px;
 }
 
@@ -326,7 +344,7 @@ top: -24px;
 background-image: url(/assets/ribbon.jpg);
 background-repeat: no-repeat;
 position: relative;
-top: 4px;
+top: 3px;
 left: -15px;
 font-size: 14px;
 color: rgb(255, 255, 255);
@@ -334,10 +352,22 @@ padding-bottom: 5px;
 }
 
 .ribbon2 {
+background-image: url(/assets/ribbon.jpg);
+background-repeat: no-repeat;
+position: relative;
+top: 3px;
+left: -15px;
+font-size: 14px;
+color: rgb(255, 255, 255);
+padding-bottom: 5px;
+}
+
+
+.ribbon3 {
 background-image: url(/assets/ribbon2.jpg);
 background-repeat: no-repeat;
 position: relative;
-top: 6px;
+top: 3px;
 left: -15px;
 font-size: 14px;
 color: rgb(255, 255, 255);
@@ -346,6 +376,13 @@ padding-bottom: 5px;
 
 /* ==================== プラン投稿ページ ==================== */
 
+.catename {
+margin-right: 10px;
+font-size: 14px;
+margin-left: -5px;
+}
+
+.cateimg2 {}
 
 
 #planpost{width:100%;
@@ -446,20 +483,27 @@ width: 47px;
 }
 
 
-.postbutton {display:block;
-      width:183px; height:45px;
-    background-image:url(postbutton.png);
-    background-repeat:no-repeat;
-    margin:auto;
-    background-color: white;
-    border: none;
-   }
+.postbutton {
+display: block;
+width: 344px;
+height: 68px;
+background-image: url(postbutton.png);
+background-repeat: no-repeat;
+margin: auto;
+background-color: white;
+border: none;
+margin-bottom: 15px;
+}
 
 .postbutton:hover { 
 background-image:url(postbutton.png);
-background-position:0px -48px;
-             background-repeat:no-repeat;}
+background-position-y: -75px;
+background-repeat:no-repeat;}
 
+.postbutton:active { 
+background-image:url(postbutton.png);
+background-position-y: -148px;
+background-repeat:no-repeat;}
 
 
 /* ==================== プラン詳細ページ ==================== */
@@ -866,7 +910,7 @@ margin: -4px;
 
 #other3{width: 210px;
      padding:10px;
-	 text-align: center;font-weight: bold;background-color:#FFF;
+     font-weight: bold;background-color:#FFF;
 	    /* firefox　*/
   /* safari、chorme */
 border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
@@ -930,9 +974,29 @@ height: 108px;
     background-repeat:no-repeat;
     float: right;position: relative;top: -22px;}
 
+#other3 p {
+padding-left: 5px;
+margin: 0px 0px 15px 0px;
+background-color: rgb(78, 78, 78);
+color: white;
+padding: 4px;
+margin-bottom: 20px;
+text-align: center;
+font-weight: 100;
+}
 
+.planother {
+border-bottom: solid 1px rgb(196, 196, 196);
+margin-bottom: 10px;
+}
 
-
+.plancapother {
+font-size: 14px;
+overflow: auto;
+height: 69px;
+font-weight: bold;
+line-height: 20px;
+}
 
 /* ==================== ユーザーページ ==================== */
 
@@ -1065,15 +1129,8 @@ float: left;
 width: 290px;
 margin-right: 10px;
 margin-bottom: 10px;
-border: solid 1px #CCC;
+border: solid 3px #CCC;
 padding: 7px;
-background-color: #FFF;
-box-shadow: 2px 2px 2px #DDD;
--moz-box-shadow: 2px 2px 2px #DDD;
--webkit-box-shadow: 2px 2px 2px #DDD;
-border-radius: 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
 height: 70px;
 }
 

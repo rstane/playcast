@@ -63,9 +63,6 @@ class PlansController < ApplicationController
     @favorite = Favorite.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @cheer    = Cheer.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @entry    = Entry.where( user_id: session[:user_id], plan_id: @plan.id ).first
-
-    # 新着プラン
-    @recent_plans = Plan.order( "created_at DESC" ).limit(10)
   end
 
   #-----#

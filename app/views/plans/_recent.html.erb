@@ -1,0 +1,9 @@
+<p>新着プラン</p>
+<% Plan.order( "created_at DESC" ).limit(10).each{ |plan| %>
+<%= link_to( plan_path( plan ) ) do %>
+<div class="planother">
+  <img class="planimgtop" src="/assets/category1.png" width="45" alt="" />
+  <div class="plancapother"><%= plan.title %></div>
+</div>
+<% end %>
+<% } %>
