@@ -40,7 +40,7 @@
   <div id="header">
     <div id="header_inner">
       <h1><a href="/plans"><img src="/assets/logo.png"> </a></h1>
-      <p>ソーシャル・レジャーマッチングサービス「Playcast」</p>
+      <p>実名性ソーシャル・レジャーマッチングサービス「プレイキャスト」</p>
 
 
   <div id="navbar">
@@ -60,7 +60,7 @@
             </li>
           <% else %>
             <%# 未ログイン %>
-            <li><%= link_to "Login", "/auth/#{Settings.provider}" %></li>
+            <li><%= link_to "ログイン", "/auth/#{Settings.provider}" %></li>
           <% end %>
         </ul>
       </div>
@@ -69,9 +69,6 @@
     </div>
   </div>
 
-  <div class="container">
-    <div id="content">
-     <div id="content_inner">
     <%# 通知／エラーメッセージ %>
     <%= simple_format( flash[:notice], class: "alert2"  ) if flash[:notice].present? %>
     <%= simple_format( flash[:alert], class: "alert" ) if flash[:alert].present? %>

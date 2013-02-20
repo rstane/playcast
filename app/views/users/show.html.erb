@@ -1,7 +1,7 @@
 <div id="content_plans">
   <div id="leftcontents">
     <div id="planmenulink"></div>
-    <div id="userpage">
+     <div id="userplan">
       <h1>プロフィール</h1>
 
       <div id="userdatawrap">
@@ -12,9 +12,8 @@
           <a class="fbbutton" href="<%= Settings.provider_page + @user.nickname %>" target="_blank"><img src="/assets/fb.png" alt="Facebookのページを見る" /></a>
         </div>
       </div>
-    </div>
 
-    <div id="userplan">
+
       <div class="userplanmenu">
         <ul>
           <li><%= link_to( "投稿したプラン", { anchor: "toukou" } ) %></li>
@@ -26,9 +25,7 @@
 
       <br class="clear" style="clear:both" />
       <div id="toukou"></div>
-      <div class="space"></div>
-
-
+      <br>
 
       <h3>投稿したプラン</h3>
 

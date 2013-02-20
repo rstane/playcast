@@ -7,7 +7,6 @@
 body {
 margin: 0;
 background-image: url("/assets/backgroundimg.png");
-background-color: rgb(230, 230, 230);
 font-family: sans-serif;
 }
 
@@ -51,18 +50,16 @@ z-index: 1;
 
 .alert {
 position: relative;
-top: 100px;
-margin: auto;
-font-size: 17px;
-margin-top: -70px;
-background-color: rgb(231, 59, 120);
+top: 43px;
+font-size: 19px;
+margin-top: -42px;
+background-color: rgb(255, 0, 90);
 padding: 10px;
-border-radius: 10px;
 color: rgb(255, 255, 255);
-width: 700px;
-left: -10px;
+text-align: center;
+margin-bottom: -15px;
+z-index: 2;
 }
-
 
 .alert2 {
 position: relative;
@@ -168,13 +165,13 @@ vertical-align: -10px;
 
 /* ==================== アイキャッチ ==================== */
 
-#mainpic {background-image:url(mainpic.png);
-          
-      height: 366px;
-      background-repeat:repeat-x;
-      background-position:center;
-      }
-
+#mainpic {
+background-image: url(mainpic.png);
+height: 366px;
+background-repeat: repeat-x;
+background-position: center;
+margin-top: 37px;
+}
 
 .copy {
 text-align: center;
@@ -188,7 +185,7 @@ margin: auto;
 position: relative;
 top: 109px;
 display: block;
-width: 322px;
+width: 340px;
 height: 58px;
 background-image: url(startbtn.png);
 background-repeat: no-repeat;
@@ -225,7 +222,7 @@ font-size: 14px;
 
 .catealldes {
 position: relative;
-top: -8px;
+top: -13px;
 margin-left: 4px;
 border-right: solid 1px rgb(148, 148, 148);
 margin-right: 5px;
@@ -276,17 +273,30 @@ margin: 0;
 
 a { color:#333;}
 
+.planp {
+margin: 0;
+font-size: 10px;
+margin-top: -25px;
+background-color: rgb(255, 0, 61);
+color: white;
+text-align: center;
+border-radius: 2px;
+margin-bottom: 5px;
+padding: 2px 0 0 0;
+width: 145px;
+}
+
 .imgcaption {
 float: left;
 width: 280px;
 margin-right: 14px;
 margin-bottom: 15px;
-border: solid 4px rgb(207, 207, 207);
+border: solid 4px rgb(209, 209, 209);
 padding: 7px;
-background-color: #FFF;
-height: 130px;
+background-color: white;
+height: 200px;
+box-shadow: 0px 1px 0px rgb(117, 117, 117);
 }
-
 .planimgtop {
     float: left;
     margin-right: 5px;
@@ -299,14 +309,56 @@ height: 69px;
 font-weight: bold;
 }
 
-.planfoot {
-border-top: solid 1px rgb(170, 170, 170);
-width: 280px;
-padding-top: 31px;
+.ribbon {
+background-image: url(/assets/ribbon.png);
+background-repeat: no-repeat;
 position: relative;
-top: -27px;
+top: 50px;
+left: -18px;
+font-size: 14px;
+color: rgb(255, 255, 255);
+padding-bottom: 5px;
 }
 
+.ribbon2 {
+background-image: url(/assets/ribbon.png);
+background-repeat: no-repeat;
+position: relative;
+top: 50px;
+left: -18px;
+font-size: 14px;
+color: rgb(255, 255, 255);
+padding-bottom: 5px;
+}
+
+.ribbon3 {
+background-image: url(/assets/ribbon2.jpg);
+background-repeat: no-repeat;
+position: relative;
+top: 50px;
+left: -18px;
+font-size: 14px;
+color: rgb(255, 255, 255);
+padding-bottom: 5px;
+}
+
+
+.planfoot {
+border-top: dotted 1px rgb(170, 170, 170);
+width: 280px;
+padding-top: 11px;
+position: relative;
+top: -29px;
+}
+
+
+.plandes {
+font-size: 11px;
+color: rgb(119, 119, 119);
+position: relative;
+top: -19px;
+height: 49px;
+}
 
 .sannkabtn {
 display: block;
@@ -340,39 +392,7 @@ top: -24px;
     position: relative;
     top: -24px; }
 
-.ribbon {
-background-image: url(/assets/ribbon.jpg);
-background-repeat: no-repeat;
-position: relative;
-top: 3px;
-left: -15px;
-font-size: 14px;
-color: rgb(255, 255, 255);
-padding-bottom: 5px;
-}
 
-.ribbon2 {
-background-image: url(/assets/ribbon.jpg);
-background-repeat: no-repeat;
-position: relative;
-top: 3px;
-left: -15px;
-font-size: 14px;
-color: rgb(255, 255, 255);
-padding-bottom: 5px;
-}
-
-
-.ribbon3 {
-background-image: url(/assets/ribbon2.jpg);
-background-repeat: no-repeat;
-position: relative;
-top: 3px;
-left: -15px;
-font-size: 14px;
-color: rgb(255, 255, 255);
-padding-bottom: 5px;
-}
 
 /* ==================== プラン投稿ページ ==================== */
 
@@ -398,17 +418,16 @@ border-radius: 5px;        /* CSS3草案 */
 
 
 #planpost h1 {
-¥: rgb(0, 0, 0);
 font-family: sans-serif;
-padding: 31px 8px;
+padding: 10px 8px;
 margin: 0;
 font-size: 2em;
-background-color: rgb(230, 230, 230);
-background-image: url(1234.png);
+background-color: rgb(224, 0, 0);
 background-repeat: no-repeat;
 background-size: 40%;
 background-position-x: 500px;
 background-position-y: -7px;
+color: white;
 }
 
 #planpost h2 {
@@ -416,8 +435,7 @@ margin: 0;
 margin-top: 20px;
 font-size: 1.5em;
 font-weight: bold;
-border-left: 7px solid 
-rgb(205, 0, 0);
+border-left: 7px solid rgb(205, 0, 0);
 padding-left: 5px;
 font-family: sans-serif;
 margin-bottom: 5px;
@@ -511,15 +529,31 @@ background-repeat:no-repeat;}
 
 #plantitle {
 background-color: rgb(255, 255, 255);
-height: 190px;
-border-bottom: solid 1px rgb(218, 218, 218);
+height: 230px;
+border-bottom: solid 1px rgb(199, 199, 199);
 margin-bottom: -50px;
+margin-top: 37px;
 }
 
 #plantitleinner {
 width: 950px;
 margin: auto;
 } 
+
+.planshowp {margin: 0;
+font-size: 10px;
+position: relative;
+top: 30px;
+background-color: rgb(255, 0, 51);
+width: 146px;
+text-align: center;
+color: white;
+padding: 2px;
+border-radius: 3px;
+margin-bottom: 10px;
+margin-top: -10px;
+}
+
 .imageeee {
 float: left;
 margin-right: 10px;
@@ -528,13 +562,11 @@ margin-top: 30px;
 
 #plantitleinner h1 {
 position: relative;
-top: 20px;
+top: 25px;
 color: rgb(0, 0, 0);
 width: 700px;
 line-height: 40px;
-height: 80px;
-}
-
+height: 80px;}
 
 .poster {
 font-size: 14px;
@@ -903,14 +935,14 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 
 .ouen {
 text-align: center;
-font-weight: bold;
 background-color: rgb(228, 228, 228);
 margin: -4px;
+padding: 3px;
 }
 
 #other3{width: 210px;
      padding:10px;
-     font-weight: bold;background-color:#FFF;
+     background-color:#FFF;
 	    /* firefox　*/
   /* safari、chorme */
 border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
@@ -975,18 +1007,16 @@ height: 108px;
     float: right;position: relative;top: -22px;}
 
 #other3 p {
-padding-left: 5px;
 margin: 0px 0px 15px 0px;
-background-color: rgb(78, 78, 78);
-color: white;
+background-color: rgb(230, 230, 230);
+color: rgb(0, 0, 0);
 padding: 4px;
 margin-bottom: 20px;
 text-align: center;
-font-weight: 100;
 }
 
 .planother {
-border-bottom: solid 1px rgb(196, 196, 196);
+border-bottom: solid 1px rgb(200, 200, 200);
 margin-bottom: 10px;
 }
 
@@ -994,29 +1024,14 @@ margin-bottom: 10px;
 font-size: 14px;
 overflow: auto;
 height: 69px;
-font-weight: bold;
 line-height: 20px;
 }
 
 /* ==================== ユーザーページ ==================== */
 
 
-
-
-#userpage {
-width: 680px;
-margin-bottom: 10px;
-padding: 10px 10px 0px 10px;
-background-color: #FFF;
-border: solid 1px #E0E0E0;
-border-radius: 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-}
-
-
-#userpage h1 {
-background: rgb(235, 235, 235);
+#userplan h1 {
+background: rgb(220, 0, 0);
 display: block;
 font-size: 30px;
 font-weight: 600;
@@ -1028,6 +1043,7 @@ padding-bottom: 8px;
 padding-left: 8px;
 padding-right: 8px;
 padding-top: 5px;
+color: white;
 }
 
 .fbbutton {
@@ -1087,11 +1103,11 @@ background: -webkit-gradient( linear, left top, left bottom, from(white), to(#EE
 
 #userplan h3 {
 margin: 10px 0px 5px 0;
-background-color: rgb(236, 0, 0);
-color: white;
+background-color: rgb(230, 230, 230);
+color: rgb(0, 0, 0);
 padding: 7px;
+font-weight: 100;
 }
-
 
 .userpostplan {height:160px;
                width: 164px;
@@ -1127,11 +1143,11 @@ text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.4), 0px 1px 0px rgba(255, 255, 2
 .imgcaptionshow {
 float: left;
 width: 290px;
-margin-right: 10px;
+margin-right: 20px;
 margin-bottom: 10px;
-border: solid 3px #CCC;
 padding: 7px;
 height: 70px;
+border-bottom: solid 1px rgb(180, 180, 180);
 }
 
 .planimgtopshow {
@@ -1143,7 +1159,6 @@ height: 70px;
 font-size: 15px;
 overflow: auto;
 height: 69px;
-font-weight: bold;
 }
 
 
