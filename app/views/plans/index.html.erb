@@ -4,8 +4,8 @@
 <div id="mainpic">
   <div class="copy"><img src="/assets/copy.png" width="" height="" alt="遊びを通じて、趣味の合う仲間を作れる。あなたのやりたい趣味を募集して、集まった仲間と実際に遊ぶ。ソーシャル・レジャーマッチングサービス「Playcast」" /></div>
 
-  <%= link_to  "" , new_plan_path, class: "postbuttontop1" %>
-</div>
+  <%= link_to "" , new_plan_path, class: "postbuttontop#{session[:user_id].present? ? '2' : '1'}" %>
+  </div>
 </div>
 
 <div id="content">
