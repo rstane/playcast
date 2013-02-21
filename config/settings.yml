@@ -17,3 +17,6 @@ programmer_twitter_id: "shu_0115"
 # デザイナーTwitterID
 designer_twitter_id: "xxxxryoxxxxxxx"
 
+# プラン
+plan:
+  area: [ "関東", "関西", "北海道・東北", "九州・沖縄" ]

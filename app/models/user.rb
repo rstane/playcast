@@ -1,6 +1,6 @@
 # coding: utf-8
 class User < ActiveRecord::Base
-  attr_accessible :provider, :uid, :name, :nickname, :image, :email, :location, :token, :secret
+  attr_accessible :provider, :uid, :name, :nickname, :image, :email, :location, :token, :secret, :slug
 
   has_many :plans,          :dependent => :destroy
   has_many :comments,       :dependent => :destroy
@@ -10,11 +10,18 @@ class User < ActiveRecord::Base
   has_many :feeds,          :dependent => :destroy
   has_many :participations, :dependent => :destroy
 
+  # Friendly ID
+  extend FriendlyId
+  friendly_id :nickname, use: :slugged
+
+  # バリデーション
+  validate :slug, uniqueness: { case_sensitive: false }
+
   #-------------#
   # auth_update #
   #-------------#
   def auth_update( auth )
-    image_path = "https://graph.facebook.com/#{auth['info']['nickname']}/picture?type=large"
+    image_path = "https://graph.facebook.com/#{auth['info']['nickname']}/picture?width=200&height=200"
 
     if self.name != auth["info"]["name"] or self.nickname != auth["info"]["nickname"] or self.image != image_path or self.email != auth["info"]["email"] or self.location != auth["info"]["location"]
       self.name     = auth["info"]["name"]

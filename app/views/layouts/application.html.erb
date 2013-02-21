@@ -77,7 +77,7 @@
 
           <% if session[:user_id].present? %>
             <li>
-              <%= link_to( user_path( session[:user_id] ) ) do %>
+              <%= link_to( user_path( current_user.slug ) ) do %>
                 <%= image_tag( current_user.image, size: "28x28", class: "margin_minus2" )%>
                 マイページ
               <% end %>
@@ -105,7 +105,7 @@
 
      <div id="footmenu">
 <ul>
-<li class="first"><a href="#">お問い合わせ・ご意見はこちら</a></li>
+<li class="first"><a href="<%= pages_contact_path %>">お問い合わせ・ご意見はこちら</a></li>
 <li><a href="<%= pages_terms_path %>">利用規約</a></li>
 <li><a href="<%= pages_privacy_path %>">プライバシーポリシー</a></li>
 <li><%= link_to "ログアウト", logout_path %></li>

@@ -6,8 +6,9 @@ class PlansController < ApplicationController
   # index #
   #-------#
   def index( category_id, sort, keyword, page )
-    @plans = Plan.page(page).per(1)
-    @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
+    @plans = Plan.page(page).per(100)
+#    @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
+    @plans = @plans.includes( :user, :categories, :schedules )
 
     # 募集終了以外 => 全部出す
 #    @plans = @plans.where( entry_close_flag: false ).where( "schedules.close_at > ?", Time.now )
@@ -25,10 +26,12 @@ class PlansController < ApplicationController
 
     # ソート順指定
     if sort.present? and sort == "populur"
-      @plans = @plans.order( "plans.cheers_count DESC, plans.favorites_count DESC" )
+      plan_order = "plans.cheers_count DESC, plans.favorites_count DESC"
     else
-      @plans = @plans.order( "plans.created_at DESC" )
+      plan_order = "plans.created_at DESC"
     end
+
+    @plans = @plans.order( "#{plan_order}, categories.sort ASC" )
 
     @favorites  = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
   end
@@ -37,7 +40,7 @@ class PlansController < ApplicationController
   # show #
   #------#
   def show( id )
-    @plan = Plan.where( id: id ).first
+    @plan = Plan.where( id: id ).includes( :categories ).order( "categories.sort ASC" ).first
 
     if @plan.decide_flag == true
       # 参加者チェック
@@ -162,13 +165,12 @@ class PlansController < ApplicationController
 
       # 候補日更新(参加登録が無ければ)
       schedules.each_pair{ |key, value|
-        # 参加者が居なければ
-        unless Participation.where( plan_id: @plan.id, schedule_id: key ).exists?
+        # 参加者が1人以下なら(主催自身以外に1人)
+        if Participation.where( plan_id: @plan.id, schedule_id: key ).count <= 1
+          # 候補日を更新
           schedule = Schedule.where( id: key, plan_id: @plan.id ).first
           schedule.candidate_day = (value['date'].present? ? Time.parse( "#{value['date']} #{value['time(4i)']}:#{value['time(5i)']}" ) : nil)
           schedule.save!
-        # else
-        #   flash[:alert] = "既に参加者の居る候補日は変更出来ません。"
         end
       }
 

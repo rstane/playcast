@@ -3,35 +3,18 @@
 <div id="plantitleinner">
 
  <p class="planshowp">カラオケ・アミューズメント</p>
- <img class="imageeee" src="/assets/imageeee.png"  width="120px" />
+ <img class="imageeee" src="/assets/category_img<%= @plan.categories.first.try(:sort) %>.png"  width="120px" />
 
-      <h1><%= @plan.title %></h1>
-
-<% if false %>
-      <div class="planimg"><img src="<%= @plan.image_url %>" alt="<%= @plan.title %>" width="580px" height="340" /></p></div>
-<% end %>
-
+  <h1><%= @plan.title %></h1>
 
   <div id="socialshow">
 
   <div class="poster">投稿者：<%= render partial: '/layouts/user_icon', locals: { user: @plan.user } %><%= @plan.user.name %></div>
 
-  <div class="fb-like" data-href="http://www.facebook.com/pages/Playcast/292086317583536" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
-
+<!--   <div class="fb-like" data-href="http://www.facebook.com/pages/Playcast/292086317583536" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div> -->
+  <div class="fb-like" data-href='<%= "http://#{request.env['HTTP_HOST']}/plans/#{@plan.id}" %>' data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
 　<a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp">ツイート</a>
 　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-  <div class="g-plusone" data-size="medium"></div>
-　<script type="text/javascript">
-  window.___gcfg = {lang: 'ja'};
-
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-
 </div>
   </div>
 
@@ -43,20 +26,17 @@
 
   <div id="leftcontents">
 
-   <div id="decide">
-   <h1>開催決定！</h1>
-  <p>おめでとうございます！参加人数が集まり、開催が決定しました。</p>
-  <p class="dedes">ページ下のコメント欄にて、待ち合わせ場所と時間を決めましょう。<br>※このページは参加者以外は見る事が出来ないようになっています。<p>
-
-
-   </div>
-
+  <% if @plan.decide_flag.present? %>
+    <div id="decide">
+      <h1>開催決定！</h1>
+      <p>おめでとうございます！参加人数が集まり、開催が決定しました。</p>
+      <p class="dedes">ページ下のコメント欄にて、待ち合わせ場所と時間を決めましょう。<br>※このページは参加者以外は見る事が出来ないようになっています。<p>
+    </div>
+   <% end %>
 
     <div id="plan">
-
-
-
       <dl class="plande">
+      <dt>地域：</dt> <dd><%= @plan.area %></dd>
       <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
       <dt>こんな人に来てほしい：</dt> <dd class="target"><%= @plan.target_people %></dd>
       <dt>日時候補：</dt>

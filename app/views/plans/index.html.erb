@@ -4,7 +4,8 @@
 <div id="mainpic">
   <div class="copy"><img src="/assets/copy.png" width="" height="" alt="遊びを通じて、趣味の合う仲間を作れる。あなたのやりたい趣味を募集して、集まった仲間と実際に遊ぶ。ソーシャル・レジャーマッチングサービス「Playcast」" /></div>
 
-  <%= link_to  "" , new_plan_path, class: "postbuttontop1" %>
+  <%= link_to "" , new_plan_path, class: "postbuttontop#{session[:user_id].present? ? '2' : '1'}" %>
+  </div>
 </div>
 
 <div id="content">
@@ -16,70 +17,58 @@
 
 　<a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp" data-count="none">ツイート</a>
 　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-
   </div>
 
-
-
-    <%# カテゴリ %>
+    <%# カテゴリ一覧 %>
     <div class="catewrap">
     <%= link_to( plans_path( category_id: nil ), class:"cateall" ) do %><%= image_tag( "category0.png" )%><span class="catealldes">すべて</span><% end %>
 
     <% Category.all.each.with_index(1){ |category, index| %>
       <div class="catego">
       <%= link_to( plans_path( category_id: category.id ) ) do %>
-        <span class="cateimg"><%= image_tag( "category#{index}.png" )%></span><span class="catedes"><%= category.name %></span>
+        <span class="cateimg"><%= image_tag( "category#{category.sort}.png" )%></span><span class="catedes"><%= category.name %></span>
       <% end %>
     </div>
     <% } %>
     </div>
 
-
     <br><br>
-
-
         <div class="post">
       <h2>本日の参加募集中プラン一覧</h2>
 
-
-
     <div id="paging">
     <% @plans.each{ |plan| %>
-     <div class="imgcaption">
+      <div class="imgcaption">
+      <% if plan.closed? %>
+        <%# 募集終了 %>
+        <div class="ribbon2">　募集終了</div>
+      <% elsif plan.hold_decide? %>
+        <%# 開催決定／募集中 %>
+        <div class="ribbon2">　開催決定！</div>
+      <% else %>
+        <%# 開催未決定／募集中 %>
+        <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
+      <% end %>
 
-     <% if plan.closed? %>
-  <%# 募集終了 %>
-  <div class="ribbon2">　募集終了</div>
-<% elsif plan.hold_decide? %>
-  <%# 開催決定／募集中 %>
-  <div class="ribbon2">　開催決定！</div>
-<% else %>
-  <%# 開催未決定／募集中 %>
-  <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
-<% end %>
-
-            <%= link_to( plan_path( plan ) ) do %>
-              <img class="planimgtop" src="/assets/category1.png" width="63" height="56" alt="" />
-              <div class="plancap"><%= plan.title %></div>
-           <% end %>
+      <%= link_to( plan_path( plan ) ) do %>
+        <img class="planimgtop" src="/assets/category<%= plan.categories.first.try(:sort) %>.png" width="63" height="56" alt="" />
+        <div class="plancap"><%= plan.title %></div>
+      <% end %>
 
 
-               <div class="planfoot">
-                <p class="plandes">J-popやK−POPが好きだという方！カラオケで思いっきり歌いませんか？時間はまだ...</p>
-　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 2px;" )%>
-                <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
+      <div class="planfoot">
+        <p class="plandes"><%= "#{plan.description.to_s.slice(0..45)}..." %></p>
+        <%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 2px;" )%>
+        <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
 
-          <%# お気に入りボタン %>
-          <% if session[:user_id].present? %>
-            <div id="favorite<%= plan.id %>">
-              <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "favoritebtntop" } %>
-            </div>
-          <% end %>
+        <%# お気に入りボタン %>
+        <div id="favorite<%= plan.id %>">
+          <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "favoritebtntop" } %>
         </div>
       </div>
-    <% } %>
     </div>
+  <% } %>
+  </div>
 
 
 

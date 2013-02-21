@@ -1,6 +1,6 @@
 # coding: utf-8
 class Plan < ActiveRecord::Base
-  attr_accessible :budget, :description, :image_url, :max_people, :min_people, :place, :publish_end_at, :publish_start_at, :target_people, :title, :user_id, :cheers_count, :favorites_count
+  attr_accessible :budget, :description, :image_url, :max_people, :min_people, :place, :publish_end_at, :publish_start_at, :target_people, :title, :user_id, :cheers_count, :favorites_count, :area
 
   belongs_to :user
   has_many :comments,       :dependent => :destroy
@@ -11,6 +11,7 @@ class Plan < ActiveRecord::Base
   has_many :schedules,      :dependent => :destroy
   has_many :participations, :dependent => :destroy
   has_many :categorizes,    :dependent => :destroy
+  has_many :categories, :through => :categorizes
 
   # コールバック
   after_create :create_owner_entry
@@ -48,7 +49,7 @@ class Plan < ActiveRecord::Base
   # 募集終了判定
   def closed?
     return true if self.entry_close_flag == true
-    return true if self.schedules.sort{ |a, b| b.close_at.to_i <=> a.close_at.to_i }.first.close_at.to_i <= Time.now.to_i
+    return true if self.schedules.sort{ |a, b| b.try(:close_at).to_i <=> a.try(:close_at).to_i }.first.try(:close_at).to_i <= Time.now.to_i
     return false
   end
 
