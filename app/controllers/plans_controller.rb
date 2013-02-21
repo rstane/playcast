@@ -6,7 +6,7 @@ class PlansController < ApplicationController
   # index #
   #-------#
   def index( category_id, sort, keyword, page )
-    @plans = Plan.page(page).per(1)
+    @plans = Plan.page(page).per(100)
     @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
 
     # 募集終了以外 => 全部出す

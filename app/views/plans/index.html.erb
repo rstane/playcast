@@ -17,13 +17,9 @@
 
 　<a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp" data-count="none">ツイート</a>
 　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-
   </div>
 
-
-
-    <%# カテゴリ %>
+    <%# カテゴリ一覧 %>
     <div class="catewrap">
     <%= link_to( plans_path( category_id: nil ), class:"cateall" ) do %><%= image_tag( "category0.png" )%><span class="catealldes">すべて</span><% end %>
 
@@ -36,14 +32,9 @@
     <% } %>
     </div>
 
-
     <br><br>
-
-
         <div class="post">
       <h2>本日の参加募集中プラン一覧</h2>
-
-
 
     <div id="paging">
     <% @plans.each{ |plan| %>
@@ -67,7 +58,7 @@
 
 
                <div class="planfoot">
-                <p class="plandes">J-popやK−POPが好きだという方！カラオケで思いっきり歌いませんか？時間はまだ...</p>
+                <p class="plandes"><%= "#{plan.description.to_s.slice(0..45)}..." %></p>
 　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 2px;" )%>
                 <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
 

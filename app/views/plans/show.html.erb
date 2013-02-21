@@ -3,35 +3,18 @@
 <div id="plantitleinner">
 
  <p class="planshowp">カラオケ・アミューズメント</p>
- <img class="imageeee" src="/assets/imageeee.png"  width="120px" />
+ <img class="imageeee" src="/assets/category_img<%=  %>.png"  width="120px" />
 
-      <h1><%= @plan.title %></h1>
-
-<% if false %>
-      <div class="planimg"><img src="<%= @plan.image_url %>" alt="<%= @plan.title %>" width="580px" height="340" /></p></div>
-<% end %>
-
+  <h1><%= @plan.title %></h1>
 
   <div id="socialshow">
 
   <div class="poster">投稿者：<%= render partial: '/layouts/user_icon', locals: { user: @plan.user } %><%= @plan.user.name %></div>
 
-  <div class="fb-like" data-href="http://www.facebook.com/pages/Playcast/292086317583536" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
-
+<!--   <div class="fb-like" data-href="http://www.facebook.com/pages/Playcast/292086317583536" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div> -->
+  <div class="fb-like" data-href='<%= "http://#{request.env['HTTP_HOST']}/plans/#{@plan.id}" %>' data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
 　<a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp">ツイート</a>
 　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-  <div class="g-plusone" data-size="medium"></div>
-　<script type="text/javascript">
-  window.___gcfg = {lang: 'ja'};
-
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-
 </div>
   </div>
 
