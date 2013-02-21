@@ -13,4 +13,10 @@ class PagesController < ApplicationController
   def terms
 #    render layout: false
   end
+
+  #---------#
+  # contact #
+  #---------#
+  def contact
+  end
 end
