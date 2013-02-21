@@ -5,4 +5,5 @@ class Category < ActiveRecord::Base
   default_scope { order( "sort ASC" ) }
 
   has_many :categorizes
+  has_many :plans, :through => :categorizes
 end

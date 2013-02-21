@@ -7,7 +7,8 @@ class PlansController < ApplicationController
   #-------#
   def index( category_id, sort, keyword, page )
     @plans = Plan.page(page).per(100)
-    @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
+#    @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
+    @plans = @plans.includes( :user, :categories, :schedules )
 
     # 募集終了以外 => 全部出す
 #    @plans = @plans.where( entry_close_flag: false ).where( "schedules.close_at > ?", Time.now )
@@ -25,10 +26,12 @@ class PlansController < ApplicationController
 
     # ソート順指定
     if sort.present? and sort == "populur"
-      @plans = @plans.order( "plans.cheers_count DESC, plans.favorites_count DESC" )
+      plan_order = "plans.cheers_count DESC, plans.favorites_count DESC"
     else
-      @plans = @plans.order( "plans.created_at DESC" )
+      plan_order = "plans.created_at DESC"
     end
+
+    @plans = @plans.order( "#{plan_order}, categories.sort ASC" )
 
     @favorites  = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
   end
@@ -37,7 +40,7 @@ class PlansController < ApplicationController
   # show #
   #------#
   def show( id )
-    @plan = Plan.where( id: id ).first
+    @plan = Plan.where( id: id ).includes( :categories ).order( "categories.sort ASC" ).first
 
     if @plan.decide_flag == true
       # 参加者チェック

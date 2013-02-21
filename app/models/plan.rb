@@ -11,6 +11,7 @@ class Plan < ActiveRecord::Base
   has_many :schedules,      :dependent => :destroy
   has_many :participations, :dependent => :destroy
   has_many :categorizes,    :dependent => :destroy
+  has_many :categories, :through => :categorizes
 
   # コールバック
   after_create :create_owner_entry

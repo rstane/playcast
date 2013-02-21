@@ -3,7 +3,7 @@
 <div id="plantitleinner">
 
  <p class="planshowp">カラオケ・アミューズメント</p>
- <img class="imageeee" src="/assets/category_img<%=  %>.png"  width="120px" />
+ <img class="imageeee" src="/assets/category_img<%= @plan.categories.first.try(:sort) %>.png"  width="120px" />
 
   <h1><%= @plan.title %></h1>
 
