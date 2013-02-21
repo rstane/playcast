@@ -49,7 +49,7 @@ class Plan < ActiveRecord::Base
   # 募集終了判定
   def closed?
     return true if self.entry_close_flag == true
-    return true if self.schedules.sort{ |a, b| b.close_at.to_i <=> a.close_at.to_i }.first.close_at.to_i <= Time.now.to_i
+    return true if self.schedules.sort{ |a, b| b.try(:close_at).to_i <=> a.try(:close_at).to_i }.first.try(:close_at).to_i <= Time.now.to_i
     return false
   end
 
