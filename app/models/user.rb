@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   # auth_update #
   #-------------#
   def auth_update( auth )
-    image_path = "https://graph.facebook.com/#{auth['info']['nickname']}/picture?type=large"
+    image_path = "https://graph.facebook.com/#{auth['info']['nickname']}/picture?width=200&height=200"
 
     if self.name != auth["info"]["name"] or self.nickname != auth["info"]["nickname"] or self.image != image_path or self.email != auth["info"]["email"] or self.location != auth["info"]["location"]
       self.name     = auth["info"]["name"]
