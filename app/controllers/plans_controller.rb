@@ -42,7 +42,7 @@ class PlansController < ApplicationController
     if @plan.decide_flag == true
       # 参加者チェック
       unless @plan.participant?( session[:user_id] )
-        flash[:alert] = "開催決定後のプランは参加者以外閲覧出来ません。"
+        flash[:alert] = "募集終了後のプランは参加者以外閲覧出来ません。<br>↓新しくあなたのプランを投稿してみましょう↓"
         redirect_to plans_path and return
       end
     end
@@ -63,9 +63,6 @@ class PlansController < ApplicationController
     @favorite = Favorite.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @cheer    = Cheer.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @entry    = Entry.where( user_id: session[:user_id], plan_id: @plan.id ).first
-
-    # 新着プラン
-    @recent_plans = Plan.order( "created_at DESC" ).limit(10)
   end
 
   #-----#

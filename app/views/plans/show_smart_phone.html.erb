@@ -156,11 +156,11 @@
 
 
               <h4 style="margin: 25px 0 5px 0;">2.一言コメントを入力してください。(必須)</h4>        
-              <%#= text_field_tag( "entry[comment]", nil, class: "span6" ) %><br />
+              <%#= text_field_tag( "entry[comment]", nil, class: "span6" ) %>
               <!--<textarea name="comment" rows="3" cols="30" placeholder="楽しみ！よろしくおねがいします" style="font-size: 12px;"></textarea><br><br />-->
               <%= text_area_tag "entry[comment]", "", placeholder: "楽しみ！よろしくおねがいします", class: "atndcom" %>
 
-            <%= submit_tag '参加したい!', class: "attendbutton" %>
+            <%= submit_tag '参加したい!' %>
             <% end %>
           <% end %>
         <% end %>

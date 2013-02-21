@@ -1,7 +1,7 @@
 <div id="mainpic">
 
           <img class="copy" src="/assets/copy.png" />
-          <%= link_to  "" , new_plan_path, class: "postbtntop" %>
+          <%= link_to  "" , new_plan_path, class: "postbtntop", "data-ajax" => "false" %>
           
 </div>
 
@@ -27,61 +27,29 @@
 
 
   </div>
-
+<br>
          
 
 
-
-    <% Category.all.each{ |category| %>
-      <%= link_to( category.name, plans_path( category_id: category.id ) ) %>
+    <p style=" text-align: center; background-color: #AAA; padding: 8px; color: white; font-size: 11px; margin: 0; ">カテゴリ</p>
+    <% Category.all.each.with_index(1){ |category, index| %>
+     
+      <%= link_to( plans_path( category_id: category.id ) ) do %>
+        <div class="categorymobi">
+        <%= image_tag( "category#{index}.png", class: "cateimg" )%><%= category.name %>
+      <br>
+     </div>
+      <% end %>
+    
     <% } %>
+
     
     <div class="sort">
     <%= link_to( "新着順", plans_path( sort: nil ) ) %>
     <%= link_to( "人気順", plans_path( sort: "populur" ) ) %>
     </div>
-
     <br />
 
-
-   
-                <div data-role="navbar" data-iconpos="top">
-                    <ul>
-                        <li>
-                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
-                                すべてのカテゴリ
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div data-role="navbar" data-iconpos="top">
-                    <ul>
-                        <li>
-                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
-                                カラオケ・アミューズメント
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
-                                飲み会・食事会
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div data-role="navbar" data-iconpos="top">
-                    <ul>
-                        <li>
-                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
-                                スポーツ・アウトドア
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
-                                インドアゲーム
-                            </a>
-                        </li>
-                    </ul>
-                </div>
 
 
 <div id="contents">
@@ -98,16 +66,16 @@
      <div class="imgcaption">
             <%= link_to( plan_path( plan ), "data-ajax" => "false" ) do %>
               <img class="planimgtop" src="/assets/amuplanico.png" width="63" height="56" alt="" />
-              <div class="plancap"><%= link_to( plan.title, plan_path( plan ) ) %></div>
+              <div class="plancap"><%=  plan.title %></div>
            <% end %>
                 
 
 
-                <div class="ribbon">　先着4人で開催！</div>
+                <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
 
                <div class="planfoot">
 　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 5px;" )%>
-                <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
+                <%= link_to  "" , plan_path( plan ),  class: "sannkabtn", "data-ajax" => "false"  %>
 
           <%# お気に入りボタン %>
           <div id="favorite<%= plan.id %>">
@@ -136,22 +104,22 @@
                 <div data-role="navbar" data-iconpos="top">
                     <ul>
                         <li>
-                            <a href="#page1" data-transition="fade">
+                            <%= link_to( new_plan_path, "data-ajax" => "false" ) do %>
                              <img class="category" src="/assets/Ampoule.png" width="20px" height="20px"/>
-                                 <div class="btnname">投稿する</div>
-                            </a>
+                             <div class="btnname">投稿する</div>
+                             <% end %>
                         </li>
                         <li>
-                            <a href="#page1" data-transition="fade" >
+                            <%= link_to( feed_users_path, "data-ajax" => "false" ) do %>
                              <img class="category" src="/assets/Infos.png" width="20px" height="20px"/>
                                  <div class="btnname">お知らせ</div>
-                            </a>
+                            <% end %>
                         </li>
                         <li>
-                            <a href="#page1" data-transition="fade">
+                            <%= link_to( user_path( session[:user_id] ), "data-ajax" => "false" ) do %>
                             <img class="category" src="/assets/mypagepic.png" width="20px" height="20px"/>
                                  <div class="btnname1">マイページ</div>
-                            </a>
+                            <% end %>
                         </li>
                     </ul>
                 </div>

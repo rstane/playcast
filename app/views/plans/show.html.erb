@@ -2,7 +2,7 @@
 <div id="plantitle">
 <div id="plantitleinner">
 
-
+ <p class="planshowp">カラオケ・アミューズメント</p>
  <img class="imageeee" src="/assets/imageeee.png"  width="120px" />
 
       <h1><%= @plan.title %></h1>
@@ -61,7 +61,7 @@
       <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
       <dt>こんな人に来てほしい：</dt> <dd class="target"><%= @plan.target_people %></dd>
       <dt>日時候補：</dt>
-      <dd><span class="datedes">下記候補の中で、一番参加者が多い日時で開催</span><br>
+      <dd><span class="datedes">下記候補の中で、<%= @plan.min_people %>人以上集まった日時で開催</span><br>
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
             <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M スタート") if schedule[1].present? %></span>
@@ -148,7 +148,7 @@
       <div id="attendinner">
         <% if @entry.present? %><br>
        <span style=" color: rgb(255, 0, 112); font-weight: bold;">現在参加中です：</span>
-          <%= link_to( "参加キャンセル", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %><br>
+          <%= link_to( "参加日時変更・参加キャンセル", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %><br>
         <% else %>
           <% if @plan.entry_close_flag %>
             <span style="color: red;">既に募集が終了しています。</span>
@@ -186,9 +186,9 @@
 
       <%= form_for( :comment, url: plan_comments_path( @plan ) ) do |f| %>
         <%#= f.text_area "comment_content", params[:comment_content], rows: 5, cols: 90, class: "span6" %><br />
-        <%= f.text_area :content, rows: 5, cols: 90, class: "span6" %>
-
-        <%= f.submit "コメント", data: { 'disable-with' => "コメント" } %>
+        <%= f.text_area :content, rows: 5, cols: 70, class: "span6" %>
+        <br>
+        <%= f.submit "コメントする", data: { 'disable-with' => "コメント" } %>
       <% end %>
 
       <% @comments.each{ |comment| %>
@@ -225,13 +225,7 @@
     </div>
 
     <div id="other3">
-      <p>新着プラン</p>
-      <% @recent_plans.each{ |plan| %>
-        <%= link_to( plan_path( plan ) ) do %>
-          <img class="planimgtop" src="/assets/amuplanico.png" width="63" height="56" alt="" />
-          <div class="plancap"><%= link_to( plan.title, plan_path( plan ) ) %></div>
-       <% end %>
-      <% } %>
+      <%= render partial: "/plans/recent" %>
     </div>
   </div>
 </div>

@@ -7,13 +7,52 @@
 body {
 margin: 0;
 background-image: url("/assets/backgroundimg.png");
-background-color: rgb(230, 230, 230);
 font-family: sans-serif;
 }
 
 
+table, tr, th, td {
+border: none;
+}
+
+#like-fake .uiGrid {
+border: 0;
+border-collapse: collapse;
+border-spacing: 0;
+position: relative;
+top: -19px;
+left: 66px;
+}
+
+
+#like-fake {
+font-size: 11px;
+font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+color: 
+#333;
+line-height: 1.28;
+text-align: left;
+direction: ltr;
+margin-top: 1px !important;
+margin-left: -2px!important;
+position: relative;
+float: left;
+top: 16px;
+}
+
+
+.fb_iframe_widget span {
+display: inline-block;
+position: relative;
+text-align: justify;
+vertical-align: text-bottom;
+top: -41px;
+}
+
+
+
 #container {width: 100%;
-	margin: auto;}
+  margin: auto;}
 
 #content {
 width: 950px;
@@ -21,11 +60,13 @@ margin: auto;
 margin-top: 37px;
 }
 
-#content_plans{width: 950px;
-	margin: auto;
-	margin-top: 60px;}
+#content_plans {
+width: 950px;
+margin: auto;
+margin-top: 40px;
+}
 
-#foot	{clear: both;
+#foot {clear: both;
     padding-top: 40px;}
 
 
@@ -51,18 +92,16 @@ z-index: 1;
 
 .alert {
 position: relative;
-top: 100px;
-margin: auto;
-font-size: 17px;
-margin-top: -70px;
-background-color: rgb(231, 59, 120);
+top: 43px;
+font-size: 19px;
+margin-top: -42px;
+background-color: rgb(255, 0, 90);
 padding: 10px;
-border-radius: 10px;
 color: rgb(255, 255, 255);
-width: 700px;
-left: -10px;
+text-align: center;
+margin-bottom: -15px;
+z-index: 2;
 }
-
 
 .alert2 {
 position: relative;
@@ -90,11 +129,11 @@ box-shadow: 0 1px 8px #333333;
 -webkit-box-shadow: 0 1px 8px #333333;
 }
 
-#header_inner	{
-	width: 950px;
-	margin: auto;
-	padding-top: 5px;
-				 }
+#header_inner {
+  width: 950px;
+  margin: auto;
+  padding-top: 5px;
+         }
 
 
 #header_inner h1 {
@@ -104,10 +143,10 @@ float: left;
 
 
 #header_inner p {
-	margin-left: 10px;
-	margin-top: 14px;
-	font-size: 0.5em;
-	float: left;
+  margin-left: 10px;
+  margin-top: 14px;
+  font-size: 0.5em;
+  float: left;
 }
 
 
@@ -168,12 +207,13 @@ vertical-align: -10px;
 
 /* ==================== アイキャッチ ==================== */
 
-#mainpic {background-image:url(mainpic.png);
-          
-      height: 366px;
-      background-repeat:repeat-x;
-      background-position:center;
-      }
+#mainpic {
+background-image: url(mainpic.png);
+height: 366px;
+background-repeat: repeat-x;
+background-position: center;
+margin-top: 12px;
+}
 
 
 .copy {
@@ -183,12 +223,12 @@ top: 105px;
 }
 
 
-.postbuttontop {
+.postbuttontop1 {
 margin: auto;
 position: relative;
-top: 109px;
+top: 114px;
 display: block;
-width: 322px;
+width: 340px;
 height: 58px;
 background-image: url(startbtn.png);
 background-repeat: no-repeat;
@@ -198,8 +238,8 @@ background-repeat: no-repeat;
 #social {
 text-align: center;
 position: relative;
-top: -35px;
-left: -17px;
+top: -30px;
+left: -70px;
 }
 
 .fb-like {
@@ -210,25 +250,66 @@ left: 64px;
 
 .twitter-share-button {
 position: relative;
-left: 80px;
+left: 70px;
+top: -4px;
 }
 
 
+.catewrap {}
+
+.cateall {
+float: left;
+position: relative;
+top: -17px;
+font-weight: bold;
+font-size: 14px;
+}
+
+.catealldes {
+position: relative;
+top: -13px;
+margin-left: 4px;
+border-right: solid 1px rgb(148, 148, 148);
+margin-right: 5px;
+padding-right: 10px;
+}
+
+.catego {
+float: left;
+margin-top: -30px;
+}
+
+.cateimg {}
+
+.catedes {
+font-weight: bold;
+border-right: solid 1px rgb(156, 156, 156);
+padding-right: 10px;
+margin-right: 10px;
+position: relative;
+top: -14px;
+font-size: 14px;
+}
+
 /* ==================== コンテンツ ==================== */
 
-.sort {}
-
-
+.sort {
+text-align: center;
+position: relative;
+top: -25px;
+}
 
 /* ===== コンテンツタイトル ======= */
 
-.post {width: 100%;}
+.post {
+width: 100%;
+margin-bottom: -20px;
+}
 
-.post h2  {font-size: 1em;
-  margin: 0;
-  margin-bottom: 5px;
-  padding-left:0px;
-  color:#000;}
+.post h2 {
+font-size: 1em;
+margin: 0;
+}
 
 
 /* ===== プラン一覧 ========= */
@@ -237,44 +318,96 @@ left: 80px;
 
 a { color:#333;}
 
+.planp {
+margin: 0;
+font-size: 10px;
+margin-top: -25px;
+background-color: rgb(255, 0, 61);
+color: white;
+text-align: center;
+border-radius: 2px;
+margin-bottom: 5px;
+padding: 2px 0 0 0;
+width: 145px;
+}
 
 .imgcaption {
 float: left;
-width: 290px;
-margin-right: 10px;
-margin-bottom: 10px;
-border: solid 1px #CCC;
+width: 273px;
+margin-right: 20px;
+margin-bottom: 20px;
+border: solid 4px rgb(209, 209, 209);
 padding: 7px;
-background-color: #FFF;
-box-shadow: 2px 2px 2px #DDD;
--moz-box-shadow: 2px 2px 2px #DDD;
--webkit-box-shadow: 2px 2px 2px #DDD;
-border-radius: 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-height: 130px;
+background-color: white;
+height: 185px;
+box-shadow: 0px 1px 0px rgb(117, 117, 117);
 }
 
 .planimgtop {
-    float: left;
-    margin-right: 5px;
+float: left;
+margin-right: 5px;
+position: relative;
+top: 5px;
 }
+
 
 .plancap {
 font-size: 15px;
 overflow: auto;
-height: 69px;
+height: 95px;
 font-weight: bold;
+position: relative;
+top: 5px;
 }
+
+.ribbon {
+background-image: url(/assets/ribbontt.png);
+background-repeat: no-repeat;
+position: relative;
+left: -18px;
+font-size: 14px;
+color: rgb(255, 255, 255);
+padding-bottom: 5px;
+}
+
+
+.ribbon2 {
+background-image: url(/assets/ribbontt.png);
+background-repeat: no-repeat;
+position: relative;
+left: -18px;
+font-size: 14px;
+color: rgb(255, 255, 255);
+padding-bottom: 5px;
+}
+
+.ribbon3 {
+background-image: url(/assets/ribbontr.jpg);
+background-repeat: no-repeat;
+position: relative;
+left: -18px;
+font-size: 14px;
+color: rgb(255, 255, 255);
+padding-bottom: 5px;
+}
+
 
 .planfoot {
-border-top: solid 3px rgb(170, 170, 170);
-width: 290px;
-padding-top: 31px;
+border-top: dotted 1px rgb(170, 170, 170);
+width: 270px;
+padding-top: 10px;
 position: relative;
-top: -27px;
+top: -25px;
 }
 
+
+.plandes {
+font-size: 11px;
+color: rgb(119, 119, 119);
+position: relative;
+top: -15px;
+height: 25px;
+}
 
 .sannkabtn {
 display: block;
@@ -284,7 +417,7 @@ background-image: url(attendbtntop.png);
 background-repeat: no-repeat;
 float: left;
 position: relative;
-left: 50px;
+left: 40px;
 }
 
 .favoritebtntop {
@@ -308,30 +441,17 @@ top: -24px;
     position: relative;
     top: -24px; }
 
-.ribbon {
-background-image: url(/assets/ribbon.jpg);
-background-repeat: no-repeat;
-position: relative;
-top: 6px;
-left: -15px;
-font-size: 14px;
-color: rgb(255, 255, 255);
-padding-bottom: 5px;
-}
 
-.ribbon2 {
-background-image: url(/assets/ribbon2.jpg);
-background-repeat: no-repeat;
-position: relative;
-top: 6px;
-left: -15px;
-font-size: 14px;
-color: rgb(255, 255, 255);
-padding-bottom: 5px;
-}
 
 /* ==================== プラン投稿ページ ==================== */
 
+.catename {
+margin-right: 10px;
+font-size: 14px;
+margin-left: -5px;
+}
+
+.cateimg2 {}
 
 
 #planpost{width:100%;
@@ -347,26 +467,24 @@ border-radius: 5px;        /* CSS3草案 */
 
 
 #planpost h1 {
-¥: rgb(0, 0, 0);
 font-family: sans-serif;
-padding: 31px 8px;
+padding: 10px 8px;
 margin: 0;
 font-size: 2em;
-background-color: rgb(230, 230, 230);
-background-image: url(1234.png);
+background-color: rgb(224, 0, 0);
 background-repeat: no-repeat;
 background-size: 40%;
 background-position-x: 500px;
 background-position-y: -7px;
+color: white;
 }
 
 #planpost h2 {
 margin: 0;
-margin-top: 20px;
+margin-top: 35px;
 font-size: 1.5em;
 font-weight: bold;
-border-left: 7px solid 
-rgb(205, 0, 0);
+border-left: 7px solid rgb(205, 0, 0);
 padding-left: 5px;
 font-family: sans-serif;
 margin-bottom: 5px;
@@ -432,20 +550,27 @@ width: 47px;
 }
 
 
-.postbutton {display:block;
-      width:183px; height:45px;
-    background-image:url(postbutton.png);
-    background-repeat:no-repeat;
-    margin:auto;
-    background-color: white;
-    border: none;
-   }
+.postbutton {
+display: block;
+width: 344px;
+height: 68px;
+background-image: url(postbutton.png);
+background-repeat: no-repeat;
+margin: auto;
+background-color: white;
+border: none;
+margin-bottom: 15px;
+}
 
 .postbutton:hover { 
 background-image:url(postbutton.png);
-background-position:0px -48px;
-             background-repeat:no-repeat;}
+background-position-y: -75px;
+background-repeat:no-repeat;}
 
+.postbutton:active { 
+background-image:url(postbutton.png);
+background-position-y: -148px;
+background-repeat:no-repeat;}
 
 
 /* ==================== プラン詳細ページ ==================== */
@@ -453,15 +578,31 @@ background-position:0px -48px;
 
 #plantitle {
 background-color: rgb(255, 255, 255);
-height: 190px;
-border-bottom: solid 1px rgb(218, 218, 218);
-margin-bottom: -50px;
+height: 230px;
+border-bottom: solid 1px rgb(199, 199, 199);
+margin-bottom: -30px;
+margin-top: 15px;
 }
 
 #plantitleinner {
 width: 950px;
 margin: auto;
 } 
+
+.planshowp {margin: 0;
+font-size: 10px;
+position: relative;
+top: 30px;
+background-color: rgb(255, 0, 51);
+width: 146px;
+text-align: center;
+color: white;
+padding: 2px;
+border-radius: 3px;
+margin-bottom: 10px;
+margin-top: -10px;
+}
+
 .imageeee {
 float: left;
 margin-right: 10px;
@@ -470,13 +611,11 @@ margin-top: 30px;
 
 #plantitleinner h1 {
 position: relative;
-top: 20px;
+top: 25px;
 color: rgb(0, 0, 0);
 width: 700px;
 line-height: 40px;
-height: 80px;
-}
-
+height: 80px;}
 
 .poster {
 font-size: 14px;
@@ -532,9 +671,9 @@ color: rgb(233, 0, 75);
 
 #plan{width: 680px;
      margin-bottom:10px;
-	 padding:10px;
-	 background-color:#FFF;
-	    /* firefox　*/
+   padding:10px;
+   background-color:#FFF;
+      /* firefox　*/
   /* safari、chorme */
 border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -566,7 +705,7 @@ background: url("/assets/dotted.png") repeat-x 0 bottom;
 
 dl.plande {margin:auto;
            padding: 10px 20px 0 10px;
-	       font-size:0.8em;}
+         font-size:0.8em;}
 
 .target {
 margin-top: 25px;
@@ -600,8 +739,8 @@ top: -20px;
 #cast{width: 680px;
      padding:10px;
      margin-bottom:10px;
-	 background-color:#FFF;
-	    /* firefox　*/
+   background-color:#FFF;
+      /* firefox　*/
   /* safari、chorme */
 border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -610,7 +749,7 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 
    #cast ul {margin-left: -40px;}
 
-   #cast li	{list-style-type: none;}
+   #cast li {list-style-type: none;}
 
    #cast a {text-decoration:none;
             color:#000;}
@@ -631,8 +770,8 @@ dl.castdown dt {
  margin-top:10px;}
 
 dl.castdown dd {
-	font-size: 0.8em;
-	margin-left: 45px; }
+  font-size: 0.8em;
+  margin-left: 45px; }
 
 
 
@@ -640,8 +779,8 @@ dl.castdown dd {
 #attend{width: 680px;
      padding:10px;
      margin-bottom:10px;
-	 background-color:#FFF;
-	    /* firefox　*/
+   background-color:#FFF;
+      /* firefox　*/
       /* safari、chorme */
      border: solid 1px #E0E0E0; border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -733,17 +872,17 @@ margin-bottom: 10px;
 }
 
 .attendbutton:hover { background-position:0px -55px;
-         	 background-color:#fff;
+           background-color:#fff;
              background-repeat:no-repeat;}
 
 
 .attendbutton2 {display:block;
       width:205px; height:47px;
-	  background-image:url("sidebuttons.png");
-	  background-repeat:no-repeat;
-	  margin:auto;
-	  margin-bottom: 10px;
-	 }
+    background-image:url("sidebuttons.png");
+    background-repeat:no-repeat;
+    margin:auto;
+    margin-bottom: 10px;
+   }
 
 .attendbutton2:hover { background-position:0px -49px;
              background-repeat:no-repeat;}
@@ -753,10 +892,10 @@ margin-bottom: 10px;
       width: 205px;
 height: 47px;
 background-position: -210px 0px;
-	  background-image:url("sidebuttons.png");
-	  background-repeat:no-repeat;
-	  margin:auto;
-	 }
+    background-image:url("sidebuttons.png");
+    background-repeat:no-repeat;
+    margin:auto;
+   }
 
 .btn2:hover { background-position:-210px -49px;
              background-repeat:no-repeat;}
@@ -766,19 +905,19 @@ background-position: -210px 0px;
       width: 205px;
 height: 47px;
 background-position: -210px -100px;
-	  background-image:url("sidebuttons.png");
-	  background-repeat:no-repeat;
-	  margin:auto;
-	 }
+    background-image:url("sidebuttons.png");
+    background-repeat:no-repeat;
+    margin:auto;
+   }
 
 .ouenbutton {display:block;
       width: 166px;
       height: 36px;
       background-position: -419px 0px;
-	  background-image:url("sidebuttons.png");
-	  background-repeat:no-repeat;
-	  margin:auto;
-	 }
+    background-image:url("sidebuttons.png");
+    background-repeat:no-repeat;
+    margin:auto;
+   }
 
 .ouenbutton:hover { background-position:-419px -38px;
              background-repeat:no-repeat;}
@@ -789,10 +928,10 @@ background-position: -210px -100px;
       width: 166px;
       height: 36px;
       background-position: -419px -77px;
-	  background-image:url("sidebuttons.png");
-	  background-repeat:no-repeat;
-	  margin:auto;
-	 }
+    background-image:url("sidebuttons.png");
+    background-repeat:no-repeat;
+    margin:auto;
+   }
 
 
 #attendlink{padding-top:50px;
@@ -804,8 +943,8 @@ background-position: -210px -100px;
 
 #commentflame {width: 680px;
           padding:10px;
-	      background-color:#FFF;
-	          /* firefox　*/
+        background-color:#FFF;
+            /* firefox　*/
             /* safari、chorme */
           border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
           -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -825,8 +964,8 @@ dl.comms dt {
    }
 
 dl.comms dd {
-	font-size: 0.8em;
-	margin-left: 45px;
+  font-size: 0.8em;
+  margin-left: 45px;
 }
 
 
@@ -835,8 +974,8 @@ dl.comms dd {
 
 #other2{width: 210px;
      padding:10px;
-	 margin-bottom: 10px;background-color:#FFF;
-	    /* firefox　*/
+   margin-bottom: 10px;background-color:#FFF;
+      /* firefox　*/
   /* safari、chorme */
 border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -845,15 +984,15 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 
 .ouen {
 text-align: center;
-font-weight: bold;
 background-color: rgb(228, 228, 228);
 margin: -4px;
+padding: 3px;
 }
 
 #other3{width: 210px;
      padding:10px;
-	 text-align: center;font-weight: bold;background-color:#FFF;
-	    /* firefox　*/
+     background-color:#FFF;
+      /* firefox　*/
   /* safari、chorme */
 border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -916,29 +1055,32 @@ height: 108px;
     background-repeat:no-repeat;
     float: right;position: relative;top: -22px;}
 
+#other3 p {
+margin: 0px 0px 15px 0px;
+background-color: rgb(230, 230, 230);
+color: rgb(0, 0, 0);
+padding: 4px;
+margin-bottom: 20px;
+text-align: center;
+}
 
+.planother {
+border-bottom: solid 1px rgb(200, 200, 200);
+margin-bottom: 10px;
+}
 
-
+.plancapother {
+font-size: 14px;
+overflow: auto;
+height: 69px;
+line-height: 20px;
+}
 
 /* ==================== ユーザーページ ==================== */
 
 
-
-
-#userpage {
-width: 680px;
-margin-bottom: 10px;
-padding: 10px 10px 0px 10px;
-background-color: #FFF;
-border: solid 1px #E0E0E0;
-border-radius: 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-}
-
-
-#userpage h1 {
-background: rgb(235, 235, 235);
+#userplan h1 {
+background: rgb(220, 0, 0);
 display: block;
 font-size: 30px;
 font-weight: 600;
@@ -950,6 +1092,7 @@ padding-bottom: 8px;
 padding-left: 8px;
 padding-right: 8px;
 padding-top: 5px;
+color: white;
 }
 
 .fbbutton {
@@ -981,9 +1124,9 @@ left: -10px;
 
 #userplan{width: 682px;
      margin-bottom:10px;
-	 padding:10px;
-	 background-color:#FFF;
-	border: solid 1px #E0E0E0;    /* firefox　*/
+   padding:10px;
+   background-color:#FFF;
+  border: solid 1px #E0E0E0;    /* firefox　*/
   /* safari、chorme */
 border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -991,13 +1134,13 @@ border-radius: 5px;        /* CSS3草案 */
 
 
 
-.userplanmenu ul	{margin: 0;
+.userplanmenu ul  {margin: 0;
 padding: 0;}
 
-.userplanmenu li	{list-style-type: none;
+.userplanmenu li  {list-style-type: none;
 float: left;}
 
-.userplanmenu li a	{background-color: rgb(241, 241, 241);border: solid 1px gray;height: 40px;display: block;
+.userplanmenu li a  {background-color: rgb(241, 241, 241);border: solid 1px gray;height: 40px;display: block;
 width: 168px;
 line-height: 43px;
 border-right: solid 1px rgb(141, 138, 138);
@@ -1009,17 +1152,17 @@ background: -webkit-gradient( linear, left top, left bottom, from(white), to(#EE
 
 #userplan h3 {
 margin: 10px 0px 5px 0;
-background-color: rgb(255, 53, 53);
-color: white;
+background-color: rgb(230, 230, 230);
+color: rgb(0, 0, 0);
 padding: 7px;
+font-weight: 100;
 }
-
 
 .userpostplan {height:160px;
                width: 164px;
-            	margin: 3px;
+              margin: 3px;
               background-color:F5F5F5;
-			  float:left;}
+        float:left;}
 
 .upptitle { margin-top: 3px;
             font-size: 0.9em;}
@@ -1049,18 +1192,11 @@ text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.4), 0px 1px 0px rgba(255, 255, 2
 .imgcaptionshow {
 float: left;
 width: 290px;
-margin-right: 10px;
+margin-right: 20px;
 margin-bottom: 10px;
-border: solid 1px #CCC;
 padding: 7px;
-background-color: #FFF;
-box-shadow: 2px 2px 2px #DDD;
--moz-box-shadow: 2px 2px 2px #DDD;
--webkit-box-shadow: 2px 2px 2px #DDD;
-border-radius: 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
 height: 70px;
+border-bottom: solid 1px rgb(180, 180, 180);
 }
 
 .planimgtopshow {
@@ -1072,7 +1208,6 @@ height: 70px;
 font-size: 15px;
 overflow: auto;
 height: 69px;
-font-weight: bold;
 }
 
 
@@ -1115,37 +1250,37 @@ font-weight: bold;
 }
 /* ==================== フッター ==================== */
 
-#footer	{width: 100%;
-	background-color: #F5F5F5;}
+#footer {width: 100%;
+  background-color: #F5F5F5;}
 
-#footer_inner	{padding: 10px;}
+#footer_inner {padding: 10px;}
 
-#footer p	{color: #666;
-	font-size: 0.75em;
-	margin: 0;
-	text-align: center;}
+#footer p {color: #666;
+  font-size: 0.75em;
+  margin: 0;
+  text-align: center;}
 
 /* ==================== フッターメニュー ================== */
 
-#footmenu	{text-align: center;
-	margin-bottom: 8px;}
+#footmenu {text-align: center;
+  margin-bottom: 8px;}
 
-#footmenu li a	{font-size: 0.75em;
-	color: #666;
-	text-decoration: none;}
+#footmenu li a  {font-size: 0.75em;
+  color: #666;
+  text-decoration: none;}
 
-#footmenu li a:hover	{color: #CCC;}
+#footmenu li a:hover  {color: #CCC;}
 
-#footmenu li	{display: inline;
-	list-style-type: none;
-	border-left: solid 1px #aaaaaa;
-	margin-left: 15px;
-	padding-left: 15px;}
+#footmenu li  {display: inline;
+  list-style-type: none;
+  border-left: solid 1px #aaaaaa;
+  margin-left: 15px;
+  padding-left: 15px;}
 
-#footmenu li.first	{border-left: none;
+#footmenu li.first  {border-left: none;
 text-align:center;
       padding-left: 10;}
 
-#footmenu ul	{margin: 0;
-	padding: 0;}
+#footmenu ul  {margin: 0;
+  padding: 0;}
 

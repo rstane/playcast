@@ -25,12 +25,12 @@
             
           
              <% @my_plans.each{ |plan| %>
-               <a href="<%= plan_path( plan ) %>">
-               <div class="imgcaptionshow">
+             <%= link_to( plan_path( plan ), "data-ajax" => "false" ) do %>
+              <div class="imgcaptionshow">
               <img class="planimgtopshow" src="/assets/amuplanico.png" width="63" height="56" alt="" />
               <div class="plancapshow"><%= plan.title %></div>
           　</div>
-          </a>
+          <% end %>
            <% } %>
 
 
@@ -39,12 +39,12 @@
            <div class="attendplan">参加表明中</div>
 
 　　　　　　 <% @entries.each{ |entry| %>
-               <a href="<%= plan_path( entry.plan ) %>">
+            <%= link_to( plan_path( entry.plan ), "data-ajax" => "false" ) do %>          
                <div class="imgcaptionshow">
               <img class="planimgtopshow" src="/assets/amuplanico.png" width="63" height="56" alt="" />
               <div class="plancapshow"><%= entry.plan.title %></div>
           　</div>
-          </a>
+          <% end %>
            <% } %>
            
            
@@ -53,12 +53,12 @@
 
          　　　　　　<% @favorites.each{ |favorite| %>
             <% if favorite.plan.present? %>
-               <a href="<%= plan_path( favorite.plan ) %>">
+            <%= link_to( plan_path( favorite.plan ), "data-ajax" => "false" ) do %>     
                <div class="imgcaptionshow">
               <img class="planimgtopshow" src="/assets/amuplanico.png" width="63" height="56" alt="" />
               <div class="plancapshow"><%= favorite.plan.title %></div>
           　</div>
-          </a>
+          <% end %>
             <% end %>
            <% } %>
 
@@ -67,35 +67,35 @@
 
 
           <% @cheers.each{ |cheer| %>
-               <a href="<%= plan_path( cheer.plan ) %>">
+           <%= link_to( plan_path( cheer.plan ), "data-ajax" => "false" ) do %>
                <div class="imgcaptionshow">
               <img class="planimgtopshow" src="/assets/amuplanico.png" width="63" height="56" alt="" />
               <div class="plancapshow"><%= cheer.plan.title %></div>
           　</div>
-          </a>
+          <% end %>
            <% } %>
 
            
            <div data-theme="a" data-role="footer" data-position="fixed">
                 <div data-role="navbar" data-iconpos="top">
-                    <ul>
+                     <ul>
                         <li>
-                            <a href="#page1" data-transition="fade">
+                            <%= link_to( new_plan_path, "data-ajax" => "false" ) do %>
                              <img class="category" src="/assets/Ampoule.png" width="20px" height="20px"/>
-                                 <div class="btnname">投稿する</div>
-                            </a>
+                             <div class="btnname">投稿する</div>
+                             <% end %>
                         </li>
                         <li>
-                            <a href="#page1" data-transition="fade" >
+                            <%= link_to( feed_users_path, "data-ajax" => "false" ) do %>
                              <img class="category" src="/assets/Infos.png" width="20px" height="20px"/>
                                  <div class="btnname">お知らせ</div>
-                            </a>
+                            <% end %>
                         </li>
                         <li>
-                            <a href="#page1" data-transition="fade">
+                            <%= link_to( user_path( session[:user_id] ), "data-ajax" => "false" ) do %>
                             <img class="category" src="/assets/mypagepic.png" width="20px" height="20px"/>
                                  <div class="btnname1">マイページ</div>
-                            </a>
+                            <% end %>
                         </li>
                     </ul>
                 </div>
