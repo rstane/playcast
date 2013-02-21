@@ -22,9 +22,12 @@ class ApplicationController < ActionController::Base
   #-------------------------------#
   # タブレット非スマートフォン化
   def disable_mobile_view_if_tablet
-    if request.mobile and request.mobile.tablet?
-      disable_mobile_view!
-    end
+    # if request.mobile and request.mobile.tablet?
+    #   disable_mobile_view!
+    # end
+
+    # TODO: 暫定全てPCビュー：2013/02/21
+    disable_mobile_view!
   end
 
   #-----------#

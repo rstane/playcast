@@ -75,7 +75,7 @@
 
           <% if session[:user_id].present? %>
             <li>
-              <%= link_to( user_path( session[:user_id] ) ) do %>
+              <%= link_to( user_path( current_user.slug ) ) do %>
                 <%= image_tag( current_user.image, size: "28x28", class: "margin_minus2" )%>
                 マイページ
               <% end %>

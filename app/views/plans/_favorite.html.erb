@@ -1,5 +1,9 @@
-<% if favorite.present? %>
-  <%= link_to( "", "javascript:void(0);", onClick: "toggle_favorite( '#{plan.id}', '#{klass}', 'delete' )", class: "#{klass}cancell" ) %>
+<% if session[:user_id].present? %>
+  <% if favorite.present? %>
+    <%= link_to( "", "javascript:void(0);", onClick: "toggle_favorite( '#{plan.id}', '#{klass}', 'delete' )", class: "#{klass}cancell" ) %>
+  <% else %>
+    <%= link_to( "", "javascript:void(0);", onClick: "toggle_favorite( '#{plan.id}', '#{klass}', 'create' )", class: klass ) %>
+  <% end %>
 <% else %>
-  <%= link_to( "", "javascript:void(0);", onClick: "toggle_favorite( '#{plan.id}', '#{klass}', 'create' )", class: klass ) %>
+  <%= link_to "", "/auth/#{Settings.provider}", class: klass %>
 <% end %>

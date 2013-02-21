@@ -38,40 +38,37 @@
 
     <div id="paging">
     <% @plans.each{ |plan| %>
-     <div class="imgcaption">
+      <div class="imgcaption">
+      <% if plan.closed? %>
+        <%# 募集終了 %>
+        <div class="ribbon2">　募集終了</div>
+      <% elsif plan.hold_decide? %>
+        <%# 開催決定／募集中 %>
+        <div class="ribbon2">　開催決定！</div>
+      <% else %>
+        <%# 開催未決定／募集中 %>
+        <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
+      <% end %>
 
-     <% if plan.closed? %>
-  <%# 募集終了 %>
-  <div class="ribbon2">　募集終了</div>
-<% elsif plan.hold_decide? %>
-  <%# 開催決定／募集中 %>
-  <div class="ribbon2">　開催決定！</div>
-<% else %>
-  <%# 開催未決定／募集中 %>
-  <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
-<% end %>
-
-            <%= link_to( plan_path( plan ) ) do %>
-              <img class="planimgtop" src="/assets/category<%= plan.categories.first.try(:sort) %>.png" width="63" height="56" alt="" />
-              <div class="plancap"><%= plan.title %></div>
-           <% end %>
+      <%= link_to( plan_path( plan ) ) do %>
+        <img class="planimgtop" src="/assets/category<%= plan.categories.first.try(:sort) %>.png" width="63" height="56" alt="" />
+        <div class="plancap"><%= plan.title %></div>
+      <% end %>
 
 
-               <div class="planfoot">
-                <p class="plandes"><%= "#{plan.description.to_s.slice(0..45)}..." %></p>
-　　　　       　<%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 2px;" )%>
-                <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
+      <div class="planfoot">
+        <p class="plandes"><%= "#{plan.description.to_s.slice(0..45)}..." %></p>
+        <%= image_tag( plan.user.image, size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 2px;" )%>
+        <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
 
-          <%# お気に入りボタン %>
-          <% if session[:user_id].present? %>
-            <div id="favorite<%= plan.id %>">
-              <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "favoritebtntop" } %>
-            </div>
-          <% end %>
+        <%# お気に入りボタン %>
+        <div id="favorite<%= plan.id %>">
+          <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "favoritebtntop" } %>
         </div>
       </div>
-    <% } %>
     </div>
+  <% } %>
+  </div>
 
 
 
