@@ -26,19 +26,15 @@
 
   <div id="leftcontents">
 
-   <div id="decide">
-   <h1>開催決定！</h1>
-  <p>おめでとうございます！参加人数が集まり、開催が決定しました。</p>
-  <p class="dedes">ページ下のコメント欄にて、待ち合わせ場所と時間を決めましょう。<br>※このページは参加者以外は見る事が出来ないようになっています。<p>
-
-
-   </div>
-
+  <% if @plan.decide_flag.present? %>
+    <div id="decide">
+      <h1>開催決定！</h1>
+      <p>おめでとうございます！参加人数が集まり、開催が決定しました。</p>
+      <p class="dedes">ページ下のコメント欄にて、待ち合わせ場所と時間を決めましょう。<br>※このページは参加者以外は見る事が出来ないようになっています。<p>
+    </div>
+   <% end %>
 
     <div id="plan">
-
-
-
       <dl class="plande">
       <dt>地域：</dt> <dd><%= @plan.area %></dd>
       <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
