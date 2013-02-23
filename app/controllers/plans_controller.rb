@@ -60,8 +60,8 @@ class PlansController < ApplicationController
 
     @participations   = Participation.where( plan_id: @plan.id ).includes( :user ).all
 
-    @comment  = Comment.new
-    @comments = Comment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all
+    @comment  = PlanComment.new
+    @comments = PlanComment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all
 
     @favorite = Favorite.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @cheer    = Cheer.where( user_id: session[:user_id], plan_id: @plan.id ).first

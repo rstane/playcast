@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217093509) do
+ActiveRecord::Schema.define(:version => 20130223063841) do
+
+  create_table "boards", :force => true do |t|
+    t.integer  "plan_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "boards", ["plan_id"], :name => "index_boards_on_plan_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -40,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20130217093509) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "type"
+    t.integer  "board_id"
   end
 
   create_table "entries", :force => true do |t|

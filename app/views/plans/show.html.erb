@@ -11,28 +11,26 @@
 
   <div class="poster">投稿者：<%= render partial: '/layouts/user_icon', locals: { user: @plan.user } %><%= @plan.user.name %></div>
 
-<!--   <div class="fb-like" data-href="http://www.facebook.com/pages/Playcast/292086317583536" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div> -->
   <div class="fb-like" data-href='<%= "http://#{request.env['HTTP_HOST']}/plans/#{@plan.id}" %>' data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
 　<a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp">ツイート</a>
 　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
   </div>
-
-
-
-
 </div>
+
 <div id="content_plans">
-
   <div id="leftcontents">
-
   <% if @plan.decide_flag.present? %>
     <div id="decide">
       <h1>開催決定！</h1>
       <p>おめでとうございます！参加人数が集まり、開催が決定しました。</p>
       <p class="dedes">ページ下のコメント欄にて、待ち合わせ場所と時間を決めましょう。<br>※このページは参加者以外は見る事が出来ないようになっています。<p>
+
+      <% if @plan.participant?( session[:user_id] ) %>
+        <%= link_to( "待ち合わせ相談掲示板", plan_board_path( @plan ) ) %>
+      <% end %>
     </div>
-   <% end %>
+  <% end %>
 
     <div id="plan">
       <dl class="plande">
@@ -163,8 +161,7 @@
     <div id="commentflame">
       <img src="/assets/showcomico.png/" style="width:40px; height:30px; margin-right:3px;"><span class="comm">コメント欄</span>
 
-      <%= form_for( :comment, url: plan_comments_path( @plan ) ) do |f| %>
-        <%#= f.text_area "comment_content", params[:comment_content], rows: 5, cols: 90, class: "span6" %><br />
+      <%= form_for( :comment, url: plan_plan_comments_path( @plan ) ) do |f| %>
         <%= f.text_area :content, rows: 5, cols: 70, class: "span6" %>
         <br>
         <%= f.submit "コメントする", data: { 'disable-with' => "コメント" } %>
@@ -175,7 +172,7 @@
           <p>
             <%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.try(:name) %>：
             <%= comment.content %>
-            <%= link_to( "削除", plan_comment_path( comment.plan, comment ), confirm: "コメントを削除してよろしいですか？", method: "delete", style: "font-size: 13px; float: right;" ) if comment.user_id == session[:user_id] %>
+            <%= link_to( "削除", plan_plan_comment_path( comment.plan, comment ), confirm: "コメントを削除してよろしいですか？", method: "delete", style: "font-size: 13px; float: right;" ) if comment.user_id == session[:user_id] %>
           </p>
         </div>
       <% } %>

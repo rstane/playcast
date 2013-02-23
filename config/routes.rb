@@ -4,10 +4,13 @@ Playcast::Application.routes.draw do
   get "/pages/contact"
 
   resources :plans do
-    resources :comments, only: [:create, :destroy]
+    resources :plan_comments, only: [:create, :destroy]
 #    resources :favorites
     resources :cheers
     resources :entries
+    resource :board, only: [:show] do
+      resources :board_comments, only: [:create, :destroy]
+    end
 
     member do
       post "favorite"

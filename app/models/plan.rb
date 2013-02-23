@@ -16,6 +16,7 @@ class Plan < ActiveRecord::Base
   # コールバック
   after_create :create_owner_entry
   after_create :create_feed_plan_start
+  after_create :create_board
 
   # バリデーション
   validates :title, presence: true, length: { maximum: 40 }
@@ -31,6 +32,7 @@ class Plan < ActiveRecord::Base
   # 参加者判定
   def participant?( user_id )
     schedule_ids = Participation.where( plan_id: self.id, user_id: user_id ).pluck(:schedule_id)
+#    puts "[ ---------- schedule_ids ---------- ]" ; schedule_ids.tapp ;
     Schedule.where( id: schedule_ids, adopt_flag: true ).exists? ? true : false
   end
 
@@ -73,6 +75,14 @@ class Plan < ActiveRecord::Base
   # フィード作成
   def create_feed_plan_start
     FeedPlan.create( plan_id: self.id, user_id: self.user_id, happen: "参加募集が開始しました。" )
+  end
+
+  #--------------#
+  # create_board #
+  #--------------#
+  # ボード作成
+  def create_board
+    Board.create( plan_id: self.id )
   end
 
   #---------------------------#

@@ -1,0 +1,30 @@
+<div id="content_plans">
+  <div id="leftcontents">
+    <div id="feed">
+      <h1><%= link_to( @plan.title, plan_path( @plan ) ) %></h1>
+      <h2>待ち合わせ相談掲示板</h2>
+
+      <%= form_for( :board_comment, url: plan_board_board_comments_path( @plan ) ) do |f| %>
+        <%= f.hidden_field :board_id, value: @board.id %>
+        <%= f.text_area :content, rows: 5, cols: 70, class: "span6" %>
+        <br>
+        <%= f.submit "コメントする", data: { 'disable-with' => "コメント" } %>
+      <% end %>
+
+      <% @comments.each{ |c| %>
+        <p>
+          <%= render partial: '/layouts/user_icon', locals: { user: c.user } %>
+          <%= c.content %>
+          　<%= c.created_at.strftime("%Y/%m/%d %H:%M") %>
+          <%= link_to( "削除", plan_board_board_comment_path( c.plan_id, c ), confirm: "コメントを削除してよろしいですか？", method: "delete", style: "font-size: 13px; float: right;" ) if c.user_id == session[:user_id] %>
+        </p>
+      <% } %>
+    </div>
+  </div>
+
+  <div id="rightcontens">
+    <div id="other3">
+      <%= render partial: "/plans/recent" %>
+    </div>
+  </div>
+</div>
