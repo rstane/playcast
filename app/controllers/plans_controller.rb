@@ -42,7 +42,7 @@ class PlansController < ApplicationController
   def show( id )
     @plan = Plan.where( id: id ).includes( :categories ).order( "categories.sort ASC" ).first
 
-    if @plan.decide_flag == true
+    if @plan.entry_close_flag == true
       # 参加者チェック
       unless @plan.participant?( session[:user_id] )
         flash[:alert] = "募集終了後のプランは参加者以外閲覧出来ません。<br>↓新しくあなたのプランを投稿してみましょう↓"
