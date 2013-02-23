@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223063841) do
+ActiveRecord::Schema.define(:version => 20130223074539) do
 
   create_table "boards", :force => true do |t|
     t.integer  "plan_id"
@@ -74,8 +74,9 @@ ActiveRecord::Schema.define(:version => 20130223063841) do
     t.integer  "entry_id"
     t.integer  "comment_id"
     t.string   "happen"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.datetime "mail_sent_at"
   end
 
   create_table "participations", :force => true do |t|
