@@ -16,7 +16,7 @@
     <% end %>
 
     <h2>地域選択<span class="postmark">必須</span></h2>
-    <%= f.select :area, Settings.plan.area %>
+    <%= f.select :area, Settings.plan.area, class: "postarea" %>
 
     <h2>何をして遊びますか？<span style="font-size: 14px;" >カテゴリを選択してください。</span><span class="postmark">必須</span></h2>
     <% Category.all.each.with_index(1){ |category, index| %>

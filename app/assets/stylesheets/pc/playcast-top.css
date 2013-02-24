@@ -11,46 +11,6 @@ font-family: sans-serif;
 }
 
 
-table, tr, th, td {
-border: none;
-}
-
-#like-fake .uiGrid {
-border: 0;
-border-collapse: collapse;
-border-spacing: 0;
-position: relative;
-top: -19px;
-left: 66px;
-}
-
-
-#like-fake {
-font-size: 11px;
-font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
-color:
-#333;
-line-height: 1.28;
-text-align: left;
-direction: ltr;
-margin-top: 1px !important;
-margin-left: -2px!important;
-position: relative;
-float: left;
-top: 16px;
-}
-
-
-.fb_iframe_widget span {
-display: inline-block;
-position: relative;
-text-align: justify;
-vertical-align: text-bottom;
-top: -41px;
-}
-
-
-
 #container {width: 100%;
   margin: auto;}
 
@@ -92,24 +52,24 @@ z-index: 1;
 
 .alert {
 position: relative;
-top: 43px;
-font-size: 19px;
-margin-top: -42px;
-background-color: rgb(255, 0, 90);
-padding: 10px;
+top: 21px;
+font-size: 17px;
+padding: 15px 0px 15px 0px;
+margin: 0;
 color: rgb(255, 255, 255);
+background-color: rgb(255, 111, 123);
 text-align: center;
-margin-bottom: -15px;
-z-index: 2;
 }
 
 .alert2 {
 position: relative;
-top: 46px;
-font-weight: bold;
+top: 21px;
 font-size: 17px;
-margin-top: -30px;
-color: green;
+padding: 15px 0px 0px 0px;
+margin: 0;
+color: rgb(255, 0, 0);
+background-color: rgb(255, 255, 255);
+text-align: center;
 }
 
 /* ==================== ヘッダー ==================== */
@@ -117,17 +77,31 @@ color: green;
 #header {
 width: 100%;
 height: 45px;
-ackground-image: url("/assets/headerimg.png");
 background-color: rgb(218, 0, 0);
 color: rgb(255, 255, 255);
-position: fixed;
 z-index: 2;
+position: fixed;
 top: 0;
 left: 0;
 box-shadow: 0 1px 8px #333333;
 -moz-box-shadow: 0 1px 8px #333333;
 -webkit-box-shadow: 0 1px 8px #333333;
 }
+
+#headermobi {
+width: 100%;
+height: 45px;
+background-color: rgb(218, 0, 0);
+color: rgb(255, 255, 255);
+z-index: 2;
+margin-top: -25px;
+margin-bottom: -21px;
+box-shadow: 0 1px 8px #333333;
+-moz-box-shadow: 0 1px 8px #333333;
+-webkit-box-shadow: 0 1px 8px #333333;
+}
+
+
 
 #header_inner {
   width: 950px;
@@ -235,6 +209,18 @@ background-repeat: no-repeat;
 }
 
 
+.postbuttontop2 {
+margin: auto;
+position: relative;
+top: 114px;
+display: block;
+width: 340px;
+height: 58px;
+background-image: url(startbtn2.png);
+background-repeat: no-repeat;
+}
+
+
 #social {
 text-align: center;
 position: relative;
@@ -310,8 +296,8 @@ margin-bottom: -20px;
 font-size: 1em;
 margin: 0;
 margin-bottom: 10px;
+margin-left: 15px;
 }
-
 
 /* ===== プラン一覧 ========= */
 
@@ -334,16 +320,14 @@ width: 145px;
 
 .imgcaption {
 float: left;
-width: 273px;
-margin-right: 20px;
-margin-bottom: 20px;
+width: 260px;
+margin: 0px 15px 25px 15px;
 border: solid 4px rgb(209, 209, 209);
 padding: 7px;
 background-color: white;
 height: 185px;
 box-shadow: 0px 1px 0px rgb(117, 117, 117);
 }
-
 
 
 
@@ -356,7 +340,7 @@ top: 5px;
 
 
 .plancap {
-font-size: 15px;
+font-size: 14px;
 overflow: auto;
 height: 95px;
 font-weight: bold;
@@ -365,7 +349,7 @@ top: 5px;
 }
 
 .ribbon {
-background-image: url(/assets/ribbontt.png);
+background-image: url(/assets/ribbon.png);
 background-repeat: no-repeat;
 position: relative;
 left: -18px;
@@ -376,7 +360,7 @@ padding-bottom: 5px;
 
 
 .ribbon2 {
-background-image: url(/assets/ribbontt.png);
+background-image: url(/assets/ribbonlong.png);
 background-repeat: no-repeat;
 position: relative;
 left: -18px;
@@ -386,7 +370,7 @@ padding-bottom: 5px;
 }
 
 .ribbon3 {
-background-image: url(/assets/ribbontr.jpg);
+background-image: url(/assets/ribbonred.png);
 background-repeat: no-repeat;
 position: relative;
 left: -18px;
@@ -398,15 +382,14 @@ padding-bottom: 5px;
 
 .planfoot {
 border-top: dotted 1px rgb(170, 170, 170);
-width: 270px;
+width: 260px;
 padding-top: 10px;
 position: relative;
 top: -25px;
 }
 
-
 .plandes {
-font-size: 11px;
+font-size: 12px;
 color: rgb(119, 119, 119);
 position: relative;
 top: -15px;
@@ -421,7 +404,7 @@ background-image: url(attendbtntop.png);
 background-repeat: no-repeat;
 float: left;
 position: relative;
-left: 40px;
+left: 30px;
 }
 
 .favoritebtntop {
@@ -431,19 +414,14 @@ height: 28px;
 background-image: url(favoritebtntop.png);
 background-repeat: no-repeat;
 float: right;
-position: relative;
-top: -24px;
 }
-
 
 .favoritebtntopcancell {display:block;
       width: 96px;
       height: 28px;
     background-image:url(favingbtn.png);
     background-repeat:no-repeat;
-    float: right;
-    position: relative;
-    top: -24px; }
+    float: right;}
 
 
 
@@ -468,6 +446,17 @@ margin-left: -5px;
 border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
+
+
+
+#plan_area {
+font-size: 16px;
+background-size: 1px;
+height: 35px;
+width: 150px;
+margin-top: 10px;
+}
+
 
 
 #planpost h1 {
@@ -580,12 +569,23 @@ background-repeat:no-repeat;}
 /* ==================== プラン詳細ページ ==================== */
 
 
+.fbbtnshow {
+position: relative;
+top: 15px;
+right: 90px;
+}
+.twitterbtnshow {
+position: relative;
+top: -40px;
+right: 63px;
+}
+
 #plantitle {
 background-color: rgb(255, 255, 255);
-height: 230px;
+height: 195px;
 border-bottom: solid 1px rgb(199, 199, 199);
 margin-bottom: -30px;
-margin-top: 15px;
+margin-top: 0px;
 }
 
 #plantitleinner {
@@ -607,11 +607,12 @@ margin-bottom: 10px;
 margin-top: -10px;
 }
 
-.imageeee {
+.category_img {
 float: left;
 margin-right: 10px;
-margin-top: 30px;
+margin-top: 10px;
 }
+
 
 #plantitleinner h1 {
 position: relative;
@@ -619,18 +620,20 @@ top: 25px;
 color: rgb(0, 0, 0);
 width: 700px;
 line-height: 40px;
-height: 80px;}
+height: 80px;
+overflow: hidden;
+}
 
 .poster {
 font-size: 14px;
 position: relative;
 top: 23px;
-left: -330px;
+left: -140px;
 }
 
 #socialshow {
 position: relative;
-left: -200px;
+left: -222px;
 top: 28px;
 text-align: right;
 }
@@ -639,10 +642,11 @@ text-align: right;
 #rightcontens {
 float: right;
 }
+
 #rightcontensshow {
 float: right;
 position: relative;
-top: -135px;
+top: -78px;
 }
 
 #leftcontents{float:left;}
@@ -661,17 +665,16 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 
 #decide h1 {
 margin: 0;
-background-color: rgb(250, 17, 82);
+background-color: rgb(219, 0, 9);
 color: white;
 padding: 5px;
 }
 
 #decide p {
 font-weight: bold;
-color: rgb(233, 0, 75);
+color: rgb(0, 0, 0);
+font-size: 20px;
 }
-
-
 
 #plan{width: 680px;
      margin-bottom:10px;
@@ -685,25 +688,23 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 
 
 
-
 dl.plande dt {
 font-weight: bold;
 clear: left;
 margin-bottom: -5px;
 border-left: solid 7px rgb(210, 0, 0);
-padding-left: 3px;
+padding-left: 5px;
 color: #000;
-font-size: 15px;
-
+font-size: 17px;
 }
 
 dl.plande dd {
 position: relative;
-top: -18px;
-padding-left: 116px;
+top: -20px;
+padding-left: 140px;
 left: -40px;
-width: 550px;
-font-size: 15px;
+width: 520px;
+font-size: 17px;
 background: url("/assets/dotted.png") repeat-x 0 bottom;
 }
 
@@ -735,9 +736,8 @@ width: 210px;
 padding: 10px;
 margin-bottom: 10px;
 position: relative;
-top: -20px;
+top: -5px;
 }
-
 
 
 #cast{width: 680px;
@@ -830,7 +830,7 @@ top: -5px;
 
 .atndmembers {
 margin-left: 10px;
-font-size: 12px;
+font-size: 13px;
 vertical-align: top;
 position: relative;
 top: -5px;
@@ -845,10 +845,10 @@ margin-bottom: -25px;
 
 
 #attend h4 {
+font-size: 18px;
 font-weight: bold;
 margin: 10x 0 10px 0;
-border-bottom: solid 1px
-#ACACAC;
+border-bottom: solid 1px #ACACAC;
 }
 
 .attenduser{ vertical-align:middle;
@@ -862,6 +862,49 @@ margin-top: -10px;
 margin-bottom: -10px;
 margin-left: 10px;
 }
+
+
+
+table, tr, th, td {
+border: none;
+}
+
+#like-fake .uiGrid {
+border: 0;
+border-collapse: collapse;
+border-spacing: 0;
+position: relative;
+top: -19px;
+left: 66px;
+}
+
+
+#like-fake {
+font-size: 11px;
+font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+color:
+#333;
+line-height: 1.28;
+text-align: left;
+direction: ltr;
+margin-top: 1px !important;
+margin-left: -2px!important;
+position: relative;
+float: left;
+top: 16px;
+}
+
+
+.fb_iframe_widget span {
+display: inline-block;
+position: relative;
+text-align: justify;
+vertical-align: text-bottom;
+top: -41px;
+}
+
+
+
 
 .attendbutton {
 display: block;
@@ -993,16 +1036,15 @@ margin: -4px;
 padding: 3px;
 }
 
-#other3{width: 210px;
-     padding:10px;
-     background-color:#FFF;
-      /* firefox　*/
-  /* safari、chorme */
-border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
-    -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
-    -moz-border-radius: 5px;   /* Firefox用 */}
-
-
+#other3 {
+width: 210px;
+padding: 10px;
+background-color: #FFF;
+border: solid 1px #E0E0E0;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+}
 
 
 
@@ -1242,6 +1284,7 @@ padding-left: 8px;
 padding-right: 8px;
 padding-top: 5px;
 }
+
 #feed p {
     margin: 15px 0 -1px 0;
     border-bottom: solid 1px rgb(156, 156, 156);
