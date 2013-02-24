@@ -42,7 +42,7 @@ class PlansController < ApplicationController
   def show( id )
     @plan = Plan.where( id: id ).includes( :categories ).order( "categories.sort ASC" ).first
 
-    if @plan.decide_flag == true
+    if @plan.entry_close_flag == true
       # 参加者チェック
       unless @plan.participant?( session[:user_id] )
         flash[:alert] = "募集終了後のプランは参加者以外閲覧出来ません。<br>↓新しくあなたのプランを投稿してみましょう↓"
@@ -60,8 +60,8 @@ class PlansController < ApplicationController
 
     @participations   = Participation.where( plan_id: @plan.id ).includes( :user ).all
 
-    @comment  = Comment.new
-    @comments = Comment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all
+    @comment  = PlanComment.new
+    @comments = PlanComment.where( plan_id: @plan.id ).includes( :user ).order( "comments.created_at ASC" ).all
 
     @favorite = Favorite.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @cheer    = Cheer.where( user_id: session[:user_id], plan_id: @plan.id ).first

@@ -202,7 +202,7 @@ margin: auto;
 position: relative;
 top: 114px;
 display: block;
-width: 340px;
+width: 380px;
 height: 58px;
 background-image: url(startbtn.png);
 background-repeat: no-repeat;
@@ -293,7 +293,7 @@ margin-bottom: -20px;
 }
 
 .post h2 {
-font-size: 1em;
+font-size: 1.2em;
 margin: 0;
 margin-bottom: 10px;
 margin-left: 15px;
@@ -305,30 +305,29 @@ margin-left: 15px;
 
 a { color:#333;}
 
-.planp {
-margin: 0;
-font-size: 10px;
+.areatop {
 margin-top: -25px;
-background-color: rgb(255, 0, 61);
-color: white;
+margin-bottom: -5px;
 text-align: center;
-border-radius: 2px;
-margin-bottom: 5px;
-padding: 2px 0 0 0;
-width: 145px;
+font-size: 11px;
+background-color: rgb(155, 155, 155);
+padding: 0px;
+z-index: 1;
+margin-left: 185px;
+color: white;
+border-radius: 3px;
 }
 
 .imgcaption {
 float: left;
-width: 260px;
-margin: 0px 15px 25px 15px;
+width: 270px;
+margin: 0px 10px 15px 10px;
 border: solid 4px rgb(209, 209, 209);
 padding: 7px;
 background-color: white;
-height: 185px;
+height: 188px;
 box-shadow: 0px 1px 0px rgb(117, 117, 117);
 }
-
 
 
 .planimgtop {
@@ -356,6 +355,7 @@ left: -18px;
 font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
+padding-top: 1px;
 }
 
 
@@ -367,6 +367,7 @@ left: -18px;
 font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
+padding-top: 1px;
 }
 
 .ribbon3 {
@@ -377,12 +378,13 @@ left: -18px;
 font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
+padding-top: 1px;
 }
 
 
 .planfoot {
 border-top: dotted 1px rgb(170, 170, 170);
-width: 260px;
+width: 270px;
 padding-top: 10px;
 position: relative;
 top: -25px;
@@ -404,7 +406,7 @@ background-image: url(attendbtntop.png);
 background-repeat: no-repeat;
 float: left;
 position: relative;
-left: 30px;
+left: 40px;
 }
 
 .favoritebtntop {
@@ -580,6 +582,16 @@ top: -40px;
 right: 63px;
 }
 
+.waiting {
+background-image: url(/assets/waiting.png);
+background-repeat: no-repeat;
+width: 655px;
+height: 57px;
+display: block;
+margin: auto;
+}
+
+
 #plantitle {
 background-color: rgb(255, 255, 255);
 height: 195px;
@@ -636,6 +648,7 @@ position: relative;
 left: -222px;
 top: 28px;
 text-align: right;
+height: 0px;
 }
 
 
@@ -671,10 +684,11 @@ padding: 5px;
 }
 
 #decide p {
+font-size: 17px;
+line-height: 30px;
 font-weight: bold;
-color: rgb(0, 0, 0);
-font-size: 20px;
 }
+
 
 #plan{width: 680px;
      margin-bottom:10px;
@@ -1121,6 +1135,7 @@ overflow: auto;
 height: 69px;
 line-height: 20px;
 }
+
 
 /* ==================== ユーザーページ ==================== */
 

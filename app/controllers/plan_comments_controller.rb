@@ -1,10 +1,10 @@
 # coding: utf-8
-class CommentsController < ApplicationController
+class PlanCommentsController < ApplicationController
   #--------#
   # create #
   #--------#
   def create( plan_id, comment )
-    com = Comment.new( comment )
+    com = PlanComment.new( comment )
     com.user_id = session[:user_id]
     com.plan_id = plan_id
 
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
   # destroy #
   #---------#
   def destroy( id, plan_id )
-    comment = Comment.where( id: id, user_id: session[:user_id] ).first
+    comment = PlanComment.where( id: id, user_id: session[:user_id] ).first
     comment.destroy
 
     redirect_to( plan_path( plan_id ) )

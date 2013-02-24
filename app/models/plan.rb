@@ -16,6 +16,7 @@ class Plan < ActiveRecord::Base
   # コールバック
   after_create :create_owner_entry
   after_create :create_feed_plan_start
+  after_create :create_board
 
   # バリデーション
   validates :title, presence: true, length: { maximum: 39 }
@@ -31,6 +32,7 @@ class Plan < ActiveRecord::Base
   # 参加者判定
   def participant?( user_id )
     schedule_ids = Participation.where( plan_id: self.id, user_id: user_id ).pluck(:schedule_id)
+#    puts "[ ---------- schedule_ids ---------- ]" ; schedule_ids.tapp ;
     Schedule.where( id: schedule_ids, adopt_flag: true ).exists? ? true : false
   end
 
@@ -75,6 +77,14 @@ class Plan < ActiveRecord::Base
     FeedPlan.create( plan_id: self.id, user_id: self.user_id, happen: "参加募集が開始しました。" )
   end
 
+  #--------------#
+  # create_board #
+  #--------------#
+  # ボード作成
+  def create_board
+    Board.create( plan_id: self.id )
+  end
+
   #---------------------------#
   # self.max_min_people_check #
   #---------------------------#
@@ -98,8 +108,10 @@ class Plan < ActiveRecord::Base
       schedule_ids = entry_count.select{ |x| x[1] >= max_count }.map{ |x| x[0] }
       Schedule.where( plan_id: plan.id, id: schedule_ids ).update_all( adopt_flag: true )
 
-      # 開催決定フィード作成
+      # 開催取消フィード削除
       FeedPlan.where( plan_id: plan.id, happen: "開催決定が取り消されました。" ).delete_all
+
+      # 開催決定フィード作成
       Entry.where( plan_id: plan.id ).all.each{ |e|
         FeedPlan.where( plan_id: e.plan_id, user_id: e.user_id, happen: "開催が決定しました。" ).first_or_create
       }
@@ -108,9 +120,11 @@ class Plan < ActiveRecord::Base
       plan.decide_flag = false
       Schedule.where( plan_id: plan.id ).update_all( adopt_flag: false )
 
-      # 開催取り消しフィード作成
       if FeedPlan.where( plan_id: plan.id, happen: "開催が決定しました。" ).exists?
+        # 開催決定フィード削除
         FeedPlan.where( plan_id: plan.id, happen: "開催が決定しました。" ).delete_all
+
+        # 開催取り消しフィード作成
         Entry.where( plan_id: plan.id ).all.each{ |e|
           FeedPlan.where( plan_id: e.plan_id, user_id: e.user_id, happen: "開催決定が取り消されました。" ).first_or_create
         }

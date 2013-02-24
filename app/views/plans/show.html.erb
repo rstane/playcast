@@ -16,22 +16,22 @@
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </div>
   </div>
-
-
-
-
 </div>
+
 <div id="content_plans">
-
   <div id="leftcontents">
-
   <% if @plan.decide_flag.present? %>
     <div id="decide">
 
       <h1>☆開催決定！</h1>
-      <p class="dedes">おめでとうございます！参加人数が集まり、開催が決定しました。<br>参加者の方は「参加者専用ルーム」に入り、待ち合わせ場所と時間を決めましょう。<p>
+      <p class="dedes">おめでとうございます！参加人数が集まり、開催が決定しました。<br>参加者の方は「待ち合わせ相談ルーム」に入り、待ち合わせ場所と時間を決めましょう。<br><span style="font-weight: 100; color: rgb(0, 175, 35);">※待ち合わせ相談ルームは参加者以外入る事ができません。<span><p>
+
+      <% if @plan.participant?( session[:user_id] ) %>
+        <%= link_to( "", plan_board_path( @plan ), class: "waiting" ) %>
+      <% end %>
+
     </div>
-   <% end %>
+  <% end %>
 
     <a href="#attendlink" ><img src="/assets/atndbtnbig.png/" style="margin-bottom: 10px;"></a>
 
@@ -61,8 +61,6 @@
 
         <br><a href="http://0.0.0.0:3000/plans/new" style="color: rgb(255, 79, 79); font-size: 13px; text-decoration: underline;">※行きたいけど予定が合いませんか？それでしたら同じ内容のプランを、あなたの都合の良い日時で投稿してみましょう。</a><br><br>
       </dd>
-
-      <dt>地域：</dt> <dd><%= @plan.area %></dd>
       <dt>場所：</dt> <dd><%= @plan.place %></dd>
       <dt>予算：</dt> <dd><%= @plan.budget %></dd>
       <dt>最低開催人数：</dt> <dd><%= @plan.min_people %>人以上集まらないと開催しない</dd>
@@ -163,10 +161,9 @@
     </div>
 
     <div id="commentflame">
-      <div class="com_p" style="margin-bottom: -20px;"><img src="/assets/showcomico.png/" style="width:40px; height:30px; margin-right:3px;"><span class="comm">コメント欄</span></div>
+      <div class="com_p"><img src="/assets/showcomico.png/" style="width:40px; height:30px; margin-right:3px;"><span class="comm">コメント欄</span></div>
 
-      <%= form_for( :comment, url: plan_comments_path( @plan ) ) do |f| %>
-        <%#= f.text_area "comment_content", params[:comment_content], rows: 5, cols: 90, class: "span6" %><br />
+      <%= form_for( :comment, url: plan_plan_comments_path( @plan ) ) do |f| %>
         <%= f.text_area :content, rows: 5, cols: 70, class: "span6" %>
         <br>
         <%= f.submit "コメントする", data: { 'disable-with' => "コメント" } %>
@@ -177,7 +174,7 @@
           <p>
             <%= render partial: '/layouts/user_icon', locals: { user: comment.user } %><%= comment.user.try(:name) %>：
             <%= comment.content %>
-            <%= link_to( "削除", plan_comment_path( comment.plan, comment ), confirm: "コメントを削除してよろしいですか？", method: "delete", style: "font-size: 13px; float: right;" ) if comment.user_id == session[:user_id] %>
+            <%= link_to( "削除", plan_plan_comment_path( comment.plan, comment ), confirm: "コメントを削除してよろしいですか？", method: "delete", style: "font-size: 13px; float: right;" ) if comment.user_id == session[:user_id] %>
           </p>
         </div>
       <% } %>
