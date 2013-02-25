@@ -26,7 +26,7 @@
     <% Category.all.each.with_index(1){ |category, index| %>
       <div class="catego">
       <%= link_to( plans_path( category_id: category.id ) ) do %>
-        <span class="cateimg"><%= image_tag( "category#{category.sort}.png" )%></span><span class="catedes"><%= category.name %></span>
+        <span class="cateimg"><%= image_tag( "category#{category.sort.to_i}.png" )%></span><span class="catedes"><%= category.name %></span>
       <% end %>
     </div>
     <% } %>
@@ -54,7 +54,7 @@
 
 
       <%= link_to( plan_path( plan ) ) do %>
-        <img class="planimgtop" src="/assets/category<%= plan.categories.first.try(:sort) %>.png" width="63" height="56" alt="" />
+        <img class="planimgtop" src="/assets/category<%= plan.categories.first.try(:sort).to_i %>.png" width="63" height="56" alt="" />
         <div class="plancap"><%= plan.title %></div>
       <% end %>
 

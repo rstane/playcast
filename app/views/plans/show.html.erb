@@ -2,7 +2,7 @@
 <div id="plantitle">
 <div id="plantitleinner">
 
- <img class="category_img" src="/assets/category<%= @plan.categories.first.try(:sort) %>.png"  />
+ <img class="category_img" src="/assets/category<%= @plan.categories.first.try(:sort).to_i %>.png"  />
 
   <h1><%= @plan.title %></h1>
 
