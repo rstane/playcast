@@ -2,8 +2,7 @@
 <div id="plantitle">
 <div id="plantitleinner">
 
- <p class="planshowp">カラオケ・アミューズメント</p>
- <img class="imageeee" src="/assets/category_img<%= @plan.categories.first.try(:sort) %>.png"  width="120px" />
+ <img class="category_img" src="/assets/category<%= @plan.categories.first.try(:sort) %>.png"  />
 
   <h1><%= @plan.title %></h1>
 
@@ -11,10 +10,11 @@
 
   <div class="poster">投稿者：<%= render partial: '/layouts/user_icon', locals: { user: @plan.user } %><%= @plan.user.name %></div>
 
-  <div class="fb-like" data-href='<%= "http://#{request.env['HTTP_HOST']}/plans/#{@plan.id}" %>' data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
-　<a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp">ツイート</a>
-　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
+<!--   <div class="fb-like" data-href="http://www.facebook.com/playcast.jp" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div> -->
+  <div class="fbbtnshow"><div class="fb-like" data-href='<%= "http://#{request.env['HTTP_HOST']}/plans/#{@plan.id}" %>' data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div></div>
+　<div class="twitterbtnshow"><a href="https://twitter.com/share" class="twitter-share-button" data-text="「<%= @plan.title %>」ソーシャルレジャーマッチングPlaycastに投稿しました。" data-lang="ja" data-related="Playcast_jp">ツイート</a></div>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </div>
   </div>
 </div>
 
@@ -22,19 +22,21 @@
   <div id="leftcontents">
   <% if @plan.decide_flag.present? %>
     <div id="decide">
-      <h1>開催決定！</h1>
-      <p>おめでとうございます！参加人数が集まり、開催が決定しました。</p>
-      <p class="dedes">ページ下のコメント欄にて、待ち合わせ場所と時間を決めましょう。<br>※このページは参加者以外は見る事が出来ないようになっています。<p>
+
+      <h1>☆開催決定！</h1>
+      <p class="dedes">おめでとうございます！参加人数が集まり、開催が決定しました。<br>参加者の方は「待ち合わせ相談ルーム」に入り、待ち合わせ場所と時間を決めましょう。<br><span style="font-weight: 100; color: rgb(0, 175, 35);">※待ち合わせ相談ルームは参加者以外入る事ができません。<span><p>
 
       <% if @plan.participant?( session[:user_id] ) %>
-        <%= link_to( "待ち合わせ相談掲示板", plan_board_path( @plan ) ) %>
+        <%= link_to( "", plan_board_path( @plan ), class: "waiting" ) %>
       <% end %>
+
     </div>
   <% end %>
 
+    <a href="#attendlink" ><img src="/assets/atndbtnbig.png/" style="margin-bottom: 10px;"></a>
+
     <div id="plan">
       <dl class="plande">
-      <dt>地域：</dt> <dd><%= @plan.area %></dd>
       <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
       <dt>こんな人に来てほしい：</dt> <dd class="target"><%= @plan.target_people %></dd>
       <dt>日時候補：</dt>
@@ -159,7 +161,7 @@
     </div>
 
     <div id="commentflame">
-      <img src="/assets/showcomico.png/" style="width:40px; height:30px; margin-right:3px;"><span class="comm">コメント欄</span>
+      <div class="com_p"><img src="/assets/showcomico.png/" style="width:40px; height:30px; margin-right:3px;"><span class="comm">コメント欄</span></div>
 
       <%= form_for( :comment, url: plan_plan_comments_path( @plan ) ) do |f| %>
         <%= f.text_area :content, rows: 5, cols: 70, class: "span6" %>
@@ -181,23 +183,10 @@
 
   <div id="rightcontensshow">
     <div id="other1">
-      <%= link_to( "", { anchor: "attendlink" }, class: 'attendbutton2' ) %>
-
       <%# お気に入りボタン %>
       <div id="favorite<%= @plan.id %>">
         <%= render partial: '/plans/favorite', locals: { favorite: @favorite, plan: @plan, klass: "btn2" } %>
       </div>
-    </div>
-
-    <div id="other2">
-      <div class="ouen">プランを応援しましょう</div>
-      <p style="font-size:0.9em">応援している人が多いと、人気ランキングに載り易くなります。</p>
-
-      <% if @cheer.present? %>
-        <%= link_to( "", plan_cheer_path( @plan, @cheer ), method: "delete", confirm: "応援をやめてもよろしいですか？" , :class => 'ouenbuttoncancell' ) %>
-      <% else %>
-        <%= link_to( "", plan_cheers_path( @plan ), method: "post" , :class => 'ouenbutton' ) %>
-      <% end %>
     </div>
 
     <div id="other3">

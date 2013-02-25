@@ -2,8 +2,7 @@
   <div id="leftcontents">
     <div id="feed">
       <h1><%= link_to( @plan.title, plan_path( @plan ) ) %></h1>
-      <h2>待ち合わせ相談掲示板</h2>
-
+      <h2>待ち合わせ相談ルーム</h2>
       <%= form_for( :board_comment, url: plan_board_board_comments_path( @plan ) ) do |f| %>
         <%= f.hidden_field :board_id, value: @board.id %>
         <%= f.text_area :content, rows: 5, cols: 70, class: "span6" %>
