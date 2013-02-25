@@ -84,4 +84,8 @@ Playcast::Application.configure do
     sender_address:       "rails.dev0115@gmail.com",
     exception_recipients: [ "rails.dev0115@gmail.com" ]
   )
+
+  # For Puma
+  config.threadsafe!
 end
+
