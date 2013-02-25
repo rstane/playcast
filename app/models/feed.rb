@@ -15,7 +15,8 @@ class Feed < ActiveRecord::Base
   # メール送信バッチ処理
   #  ruby script/rails runner "Feed.send_mail_batch"
   def self.send_mail_batch
-    plan_feeds = FeedPlan.where( mail_sent_at: nil ).includes( :plan, :user ).all
+#    plan_feeds = FeedPlan.where( mail_sent_at: nil ).includes( :plan, :user ).all
+    plan_feeds = FeedPlan.where( mail_sent_at: nil ).includes( :plan, :user ).limit(100).all
     puts "[ ---------- plan_feeds.length ---------- ]" ; plan_feeds.length.tapp ;
 
     plan_feeds.each{ |feed|
