@@ -75,7 +75,7 @@
 
           <li><%= link_to( "お知らせ", feed_users_path ) %></li>
 
-          <% if session[:user_id].present? %>
+          <% if current_user.present? %>
             <li>
               <%= link_to( user_path( current_user.slug ) ) do %>
                 <%= image_tag( current_user.image, size: "28x28", class: "margin_minus2" )%>
