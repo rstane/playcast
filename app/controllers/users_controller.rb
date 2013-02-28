@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   # feed #
   #------#
   def feed
+    session[:feed_reed_at] = Time.now
     @feeds = Feed.where( user_id: session[:user_id] ).includes( [:plan, {:entry => :user}, {:comment => [:user, :plan]}, :user] ).order( "created_at DESC" ).all
   end
 end

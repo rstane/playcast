@@ -73,7 +73,13 @@
 
           <li class="first"><a href="/plans/new"><img src="/assets/postmini.png"></a></li>
 
-          <li><%= link_to( "お知らせ", feed_users_path ) %></li>
+          <li>
+            <% if Feed.where( user_id: session[:user_id] ).where( "created_at > ?", (session[:feed_reed_at].presence || current_user.created_at) ).exists? %>
+              <%= link_to( "お知らせアリ", feed_users_path ) %>
+            <% else %>
+              <%= link_to( "お知らせ", feed_users_path ) %>
+            <% end %>
+          </li>
 
           <% if current_user.present? %>
             <li>
