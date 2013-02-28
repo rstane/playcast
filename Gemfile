@@ -83,3 +83,7 @@ gem 'jpmobile'
 
 # Friendly ID
 gem "friendly_id"
+
+# Admin Page
+gem 'rails_admin'
+gem 'devise'
