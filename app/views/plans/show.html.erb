@@ -22,14 +22,12 @@
   <div id="leftcontents">
   <% if @plan.decide_flag.present? %>
     <div id="decide">
-
       <h1>☆開催決定！</h1>
       <p class="dedes">おめでとうございます！参加人数が集まり、開催が決定しました。<br>参加者の方は「待ち合わせ相談ルーム」に入り、待ち合わせ場所と時間を決めましょう。<br><span style="font-weight: 100; color: rgb(0, 175, 35);">※待ち合わせ相談ルームは参加者以外入る事ができません。<span><p>
 
       <% if @plan.participant?( session[:user_id] ) %>
         <%= link_to( "", plan_board_path( @plan ), class: "waiting" ) %>
       <% end %>
-
     </div>
   <% end %>
 
