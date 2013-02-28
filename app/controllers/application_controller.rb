@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :disable_mobile_view_if_tablet
 
   # BASIC認証
-  http_basic_authenticate_with name: "playcast", password: "playcast1226" unless Rails.env.development?
+#  http_basic_authenticate_with name: "playcast", password: "playcast1226" unless Rails.env.development?
 
   # ログイン認証
   before_filter :authorize
