@@ -33,7 +33,7 @@
     </div>
   <% end %>
 
-    <a href="#attendlink" ><img src="/assets/atndbtnbig.png/" style="margin-bottom: 10px;"></a>
+    <% unless @entry.present? %><a href="#attendlink" ><img src="/assets/atndbtnbig.png/" style="margin-bottom: 10px;"></a><% end %>
 
     <div id="plan">
       <dl class="plande">
@@ -122,7 +122,7 @@
     <div id="attendlink"></div>
 
     <div id="attend">
-      <h3>参加はこちらから</h3>
+      <h3><% if @entry.present? %>参加状況<% else %>参加はこちらから<% end %></h3>
 
       <div id="attendinner">
         <% if @entry.present? %><br>
@@ -145,8 +145,6 @@
                   <% end %>
                 <% } %>
               </div>
-
-
 
               <h4 style="margin: 25px 0 5px 0;">2.一言コメントを入力してください。(必須)</h4>        
               <%#= text_field_tag( "entry[comment]", nil, class: "span6" ) %><br />
