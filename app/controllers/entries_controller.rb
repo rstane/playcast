@@ -30,7 +30,7 @@ class EntriesController < ApplicationController
     # 定員／最少開催人数チェック
     Plan.max_min_people_check( plan_id )
 
-    redirect_to( plan_path( plan_id ), notice: "プランに参加しました。" )
+    redirect_to( plan_path( plan_id ), notice: "プランに参加しました。開催が決定しましたら「#{new_entry.user.email}」にお知らせが届きます。" )
   end
 
   #---------#
