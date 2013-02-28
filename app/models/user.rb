@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
   # バリデーション
   validate :slug, uniqueness: { case_sensitive: false }
 
+  # コールバック
+  before_save { |u|
+    if u.nickname.blank?
+      u.nickname = u.uid
+      u.slug     = u.uid
+    end
+  }
+
   #-------------#
   # auth_update #
   #-------------#
