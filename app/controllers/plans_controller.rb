@@ -47,7 +47,7 @@ class PlansController < ApplicationController
       redirect_to plans_path and return
     end
 
-    if @plan.entry_close_flag == true
+    if @plan.closed?
       # 参加者チェック
       unless @plan.participant?( session[:user_id] )
         flash[:alert] = "募集終了後のプランは参加者以外閲覧出来ません。<br>↓新しくあなたのプランを投稿してみましょう↓"
