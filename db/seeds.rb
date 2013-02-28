@@ -27,6 +27,9 @@ Schedule.all.each{ |schedule|
   end
 }
 
+# Userスラグ更新
+User.all.each{ |u| u.update_attributes( nickname: u.nickname ) }
+
 # -------------------------------------------------- #
 
 # サンプルデータ
