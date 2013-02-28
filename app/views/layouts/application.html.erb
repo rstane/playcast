@@ -73,7 +73,7 @@
           <% if current_user.present? %>
             <li>
               <% if Feed.where( user_id: session[:user_id] ).where( "created_at > ?", (session[:feed_reed_at].presence || current_user.created_at) ).exists? %>
-                <%= link_to( "お知らせアリ", feed_users_path ) %>
+                <%= link_to( "お知らせあり!", feed_users_path, class: "feedact" ) %>
               <% else %>
                 <%= link_to( "お知らせ", feed_users_path ) %>
               <% end %>

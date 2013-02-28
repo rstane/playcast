@@ -43,7 +43,7 @@ class PlansController < ApplicationController
     @plan = Plan.where( id: id ).includes( :categories ).order( "categories.sort ASC" ).first
 
     if @plan.blank?
-      flash[:alert] = "プランが存在しません。"
+      flash[:alert] = "募集終了後のプランは、参加者以外閲覧出来ません。<br>新しく遊ぶメンバーを募集してみましょう↓"
       redirect_to plans_path and return
     end
 

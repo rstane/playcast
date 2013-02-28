@@ -37,10 +37,12 @@
 
     <div id="plan">
       <dl class="plande">
-      <dt>プラン説明：</dt> <dd><%= @plan.description %></dd>
-      <dt>こんな人に来てほしい：</dt> <dd class="target"><%= @plan.target_people %></dd>
+      <dt>プラン説明：</dt> <dd style="margin-top: 0px;"><%= @plan.description %></dd>
+      <dt>こんな人に来てほしい：</dt> <dd><%= @plan.target_people %></dd>
       <dt>日時候補：</dt>
-      <dd><span class="datedes">下記候補の中で、<%= @plan.min_people %>人以上集まった日時で開催</span><br>
+      <dd>下記候補の中で、<%= @plan.min_people %>人以上集まった日時で開催<br>
+
+        <div class="datedes">
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
             <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M スタート") if schedule[1].present? %></span>
@@ -59,7 +61,8 @@
           <% end %>
         <% } %>
 
-        <br><a href="http://0.0.0.0:3000/plans/new" style="color: rgb(255, 79, 79); font-size: 13px; text-decoration: underline;">※行きたいけど予定が合いませんか？それでしたら同じ内容のプランを、あなたの都合の良い日時で投稿してみましょう。</a><br><br>
+        <br><a href="http://playcast.jp/plans/new" style="color: rgb(255, 79, 79); font-size: 13px; text-decoration: underline;">※行きたいけど予定が合いませんか？それでしたら同じ内容のプランを、あなたの都合の良い日時で投稿してみましょう。</a><br><br>
+        </div>
       </dd>
       <dt>場所：</dt> <dd><%= @plan.place %></dd>
       <dt>予算：</dt> <dd><%= @plan.budget %></dd>
