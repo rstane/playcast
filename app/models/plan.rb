@@ -113,16 +113,16 @@ class Plan < ActiveRecord::Base
 
       # 開催決定フィード作成
       Entry.where( plan_id: plan.id ).all.each{ |e|
-        FeedPlan.where( plan_id: e.plan_id, user_id: e.user_id, happen: "開催が決定しました。" ).first_or_create
+        FeedPlan.where( plan_id: e.plan_id, user_id: e.user_id, happen: "開催が決定しました！" ).first_or_create
       }
     else
       # 開催未定戻し
       plan.decide_flag = false
       Schedule.where( plan_id: plan.id ).update_all( adopt_flag: false )
 
-      if FeedPlan.where( plan_id: plan.id, happen: "開催が決定しました。" ).exists?
+      if FeedPlan.where( plan_id: plan.id, happen: "開催が決定しました！" ).exists?
         # 開催決定フィード削除
-        FeedPlan.where( plan_id: plan.id, happen: "開催が決定しました。" ).delete_all
+        FeedPlan.where( plan_id: plan.id, happen: "開催が決定しました！" ).delete_all
 
         # 開催取り消しフィード作成
         Entry.where( plan_id: plan.id ).all.each{ |e|

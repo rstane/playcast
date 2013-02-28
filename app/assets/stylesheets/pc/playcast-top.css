@@ -926,20 +926,19 @@ top: -41px;
 
 
 
-
 .attendbutton {
 display: block;
-width: 222px;
-height: 51px;
+width: 555px;
+height: 53px;
 background-image: url("attendbutton.png");
 border: none;
 background-color: #fff;
 background-repeat: no-repeat;
 margin: auto;
-margin-bottom: 10px;
+margin-bottom: 20px;
 }
 
-.attendbutton:hover { background-position:0px -55px;
+.attendbutton:hover { background-position:0px -58px;
            background-color:#fff;
              background-repeat:no-repeat;}
 
