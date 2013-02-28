@@ -32,6 +32,7 @@ User.all.each{ |u| u.update_attributes( nickname: u.nickname ) }
 
 # -------------------------------------------------- #
 
+=begin
 # サンプルデータ
 if Rails.env.development?
   1.upto(10){ |num|
@@ -51,3 +52,4 @@ if Rails.env.development?
     schedule.save
   }
 end
+=end
