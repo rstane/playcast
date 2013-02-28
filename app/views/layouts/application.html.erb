@@ -58,30 +58,27 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
-
 <div id="container">
   <div id="header<%= request.smart_phone? ? 'mobi' : '' %>">
     <div id="header_inner">
       <h1><a href="/plans"><img src="/assets/logo.png"> </a></h1>
       <p>実名性ソーシャル・レジャーマッチングサービス「プレイキャスト」</p>
 
-
-  <div id="navbar">
+      <div id="navbar">
       <div id="submenu">
         <ul>
 
           <li class="first"><a href="/plans/new"><img src="/assets/postmini.png"></a></li>
 
-          <li>
-            <% if Feed.where( user_id: session[:user_id] ).where( "created_at > ?", (session[:feed_reed_at].presence || current_user.created_at) ).exists? %>
-              <%= link_to( "お知らせアリ", feed_users_path ) %>
-            <% else %>
-              <%= link_to( "お知らせ", feed_users_path ) %>
-            <% end %>
-          </li>
-
           <% if current_user.present? %>
+            <li>
+              <% if Feed.where( user_id: session[:user_id] ).where( "created_at > ?", (session[:feed_reed_at].presence || current_user.created_at) ).exists? %>
+                <%= link_to( "お知らせアリ", feed_users_path ) %>
+              <% else %>
+                <%= link_to( "お知らせ", feed_users_path ) %>
+              <% end %>
+            </li>
+
             <li>
               <%= link_to( user_path( current_user.slug ) ) do %>
                 <%= image_tag( current_user.image, size: "28x28", class: "margin_minus2" )%>
@@ -89,6 +86,8 @@
               <% end %>
             </li>
           <% else %>
+            <li><%= link_to( "お知らせ", feed_users_path ) %></li>
+
             <%# 未ログイン %>
             <li><%= link_to "ログイン", "/auth/#{Settings.provider}" %></li>
           <% end %>
