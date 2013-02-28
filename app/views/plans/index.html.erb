@@ -26,7 +26,7 @@
     <% Category.all.each.with_index(1){ |category, index| %>
       <div class="catego">
       <%= link_to( plans_path( category_id: category.id ) ) do %>
-        <span class="cateimg"><%= image_tag( "category#{category.sort.to_i}.png" )%></span><span class="catedes"><%= category.name %></span>
+        <span class="cateimg"><%= image_tag( "category#{category.sort.to_i}.png" )%></span><span class="catedes" <% if category.id.to_i == params[:category_id].to_i %>style="color: red;"<% end %>><%= category.name %></span>
       <% end %>
     </div>
     <% } %>
