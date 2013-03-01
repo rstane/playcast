@@ -51,7 +51,7 @@
       <p>
         <%= i %>.<%= text_field_tag( "schedules[#{s.id}][date]", (s.candidate_day.present? ? s.candidate_day.strftime("%Y/%m/%d") : nil), id: "datepicker#{i}", placeholder: "⇒カレンダーが開きます", class: "inputdate", readonly: s.participations.present? ) %>
         <%= datetime_select( "schedules[#{s.id}]", "time", { discard_day: true, discard_month: true, discard_year: true, minute_step: 10, default: s.candidate_day } ) %>
-        にスタート
+        くらいにスタート
 
         <% s.participations.each{ |participation| %>
           <%= link_to_unless( participation.user.nickname.blank?, image_tag( participation.user.image, size: "18x18", class: "margin_under_plus4" ), "#{Settings.provider_page}#{participation.user.nickname}", target: "_blank" ) %>

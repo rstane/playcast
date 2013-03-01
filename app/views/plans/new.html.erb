@@ -47,7 +47,7 @@
       <p>
         <%= n %>.<%= text_field_tag( "schedules[#{n}][date]", nil, placeholder: "⇒カレンダーが開きます", id: "datepicker#{n}", size: "21", class: "inputdate" ) %>
         <%= datetime_select( "schedules[#{n}]", "time", { discard_day: true, discard_month: true, discard_year: true, minute_step: 10 }, class: "inputtime" ) %>
-        にスタート
+        くらいにスタート
       </p>
     <% } %>
 

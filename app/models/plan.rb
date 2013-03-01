@@ -66,7 +66,7 @@ class Plan < ActiveRecord::Base
     entry = Entry.where(
       user_id: self.user_id,
       plan_id: self.id,
-      comment: "主催者"
+      comment: "投稿者"
     ).first_or_create
   end
 
