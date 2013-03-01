@@ -193,7 +193,8 @@ class PlansController < ApplicationController
   #---------#
   def destroy( id )
     plan = Plan.where( id: id, user_id: session[:user_id] ).first
-    plan.destroy ? flash[:notice] = "プランを削除しました。" : flash[:alert] = "Plan was failed deleted."
+
+    plan.destroy ? flash[:notice] = "プランを削除しました。" : flash[:alert] = "プランの削除に失敗しました。"
 
     redirect_to plans_path
   end
