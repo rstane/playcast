@@ -138,7 +138,7 @@ border-radius: 10px;
 border: 1px solid
 #CCC;
 padding: 4px;
-width: 385px;
+width: 405px;
 float: right;
 }
 
@@ -152,8 +152,6 @@ margin-left: -40px;
 
 #submenu li a {
 font-size: 0.75em;
-color:
-#000;
 text-decoration: none;
 }
 
@@ -177,6 +175,14 @@ top: -2px;
 
 #submenu li img {
 vertical-align: -10px;
+}
+
+.feedact {
+background-color: rgb(255, 23, 78);
+padding: 7px 2px 7px 2px;
+color: white;
+font-weight: bold;
+border-radius: 5px;
 }
 
 /* ==================== アイキャッチ ==================== */
@@ -294,9 +300,9 @@ margin-bottom: -20px;
 
 .post h2 {
 font-size: 1.2em;
-margin: 0;
 margin-bottom: 10px;
 margin-left: 15px;
+margin-top: 10px;
 }
 
 /* ===== プラン一覧 ========= */
@@ -356,6 +362,7 @@ font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
 padding-top: 1px;
+height: 23px;
 }
 
 
@@ -368,6 +375,7 @@ font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
 padding-top: 1px;
+height: 23px;
 }
 
 .ribbon3 {
@@ -379,6 +387,7 @@ font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
 padding-top: 1px;
+height: 23px;
 }
 
 
@@ -704,34 +713,33 @@ border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
 
 dl.plande dt {
 font-weight: bold;
-clear: left;
-margin-bottom: -5px;
 border-left: solid 7px rgb(210, 0, 0);
-padding-left: 5px;
 color: #000;
 font-size: 17px;
+float: left;
+margin-right: 10px;
+padding-left: 5px;
 }
 
 dl.plande dd {
-position: relative;
-top: -20px;
-padding-left: 140px;
-left: -40px;
-width: 520px;
 font-size: 17px;
 background: url("/assets/dotted.png") repeat-x 0 bottom;
+margin: 10px;
+padding: 5px;
+position: relative;
+top: -5px;
 }
 
 dl.plande {margin:auto;
-           padding: 10px 20px 0 10px;
-         font-size:0.8em;}
+           padding: 10px 20px 0 10px;}
 
 .target {
 margin-top: 25px;
 }
 
 .datedes {
-font-family: sans-serif;
+margin-left: 110px;
+margin-top: 10px;
 }
 
 .plandatedes {
@@ -821,7 +829,6 @@ background-color: rgb(226, 9, 9);
 font-weight: bold;
 color: #F06;
 font-size: 1.2em;
-margin-top: -10px;
 }
 
 .dates {
@@ -832,7 +839,7 @@ line-height: 30px;
 .atndcom {
 width: 600px;
 font-size: 14px;
-margin: -15px 0 15px 0;
+margin: -5px 0 15px 0;
 }
 
 .comm {
@@ -863,6 +870,7 @@ font-size: 18px;
 font-weight: bold;
 margin: 10x 0 10px 0;
 border-bottom: solid 1px #ACACAC;
+padding-bottom: 10px;
 }
 
 .attenduser{ vertical-align:middle;
@@ -919,20 +927,19 @@ top: -41px;
 
 
 
-
 .attendbutton {
 display: block;
-width: 222px;
-height: 51px;
+width: 555px;
+height: 53px;
 background-image: url("attendbutton.png");
 border: none;
 background-color: #fff;
 background-repeat: no-repeat;
 margin: auto;
-margin-bottom: 10px;
+margin-bottom: 20px;
 }
 
-.attendbutton:hover { background-position:0px -55px;
+.attendbutton:hover { background-position:0px -58px;
            background-color:#fff;
              background-repeat:no-repeat;}
 

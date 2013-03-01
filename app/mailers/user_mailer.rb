@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
 
     mail(
       to:      user.email,
-      subject: "[#{Settings.app_name}] 「#{plan.title}」の#{feed.happen}",
+      subject: "【#{Settings.app_name}】 「#{plan.title}」の#{feed.happen}",
     )
   end
 end
