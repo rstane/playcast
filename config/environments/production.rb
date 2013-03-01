@@ -88,4 +88,3 @@ Playcast::Application.configure do
   # For Puma
   config.threadsafe!
 end
-
