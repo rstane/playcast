@@ -57,7 +57,6 @@
           <%= link_to_unless( participation.user.nickname.blank?, image_tag( participation.user.image, size: "18x18", class: "margin_under_plus4" ), "#{Settings.provider_page}#{participation.user.nickname}", target: "_blank" ) %>
         <% } %>
       </p>
-      <br />
     <% } %>
 
      <h2>場所<span class="postmark">必須</span><span class="des"> ※決まっていない場合は、大体の場所を記入しておきましょう。</span></h2>
@@ -67,7 +66,7 @@
    <h2>予算<span class="postmark">必須</span></h2>
     <%= f.text_field :budget, placeholder: "一人3000円くらい", size: "30", class: "inputplace" %>
 
-    <h2>最低開催人数<span class="postmark">必須</span></h2>
+    <h2>最低開催人数<span style="font-size: 14px;" >（あなたを含めた人数を入力してください。）</span><span class="postmark">必須</span></h2>
     <%= f.number_field :min_people, min: "1", max: "9999", class: "inputcount" %>人以上集まったら開催決定
 
     <h2>定員</h2>

@@ -2,7 +2,7 @@
 </script>
 
 <div id="mainpic">
-  <div class="copy"><img src="/assets/copy.png" width="" height="" alt="遊びを通じて、趣味の合う仲間を作れる。あなたのやりたい趣味を募集して、集まった仲間と実際に遊ぶ。ソーシャル・レジャーマッチングサービス「Playcast」" /></div>
+  <div class="copy"><img src="/assets/copy.png" alt="遊びを通じて、趣味の合う仲間を作れる。ソーシャル・レジャーマッチングサービス「Playcast」" /></div>
 
   <%= link_to "" , new_plan_path, class: "postbuttontop#{session[:user_id].present? ? '2' : '1'}" %>
   </div>
@@ -15,8 +15,8 @@
 
   <style type="text/css">#fake-like-rapper{display: inline-block;margin:0;padding:0;}#fake-like-rapper div{float:left;margin:0;padding:0;}#like-fake div.connect_widget_button_count_including, td.connect_widget_simple_including{margin:0;padding:0;}#like-fake td, td.label{font-size: 11px;text-align: left;margin:0;padding:0;}#like-fake{font-size: 11px;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;color:#333;line-height:1.28;text-align: left;direction: ltr;margin-top: 1px !important; margin-left: -2px!important;position: relative;float:left;}#like-fake .uiGrid{border: 0;border-collapse: collapse;border-spacing: 0;}#like-fake .connect_widget_button_count_count{background: white;border: 1px solid #D1D1D1;float: left;font-weight: normal;height: 14px;margin-left: 1px;min-width: 17px;padding: 1px 2px 1px 2px;text-align: center;line-height: 14px;white-space: nowrap;}#like-fake .connect_widget_button_count_nub s, #like-fake .connect_widget_button_count_nub i{border: solid transparent;border-right-color: #D7D7D7;top: 1px;display: block;position: relative;border-width: 4px 5px 4px 0;}#like-fake .connect_widget_button_count_nub i{left: 2px;top: -7px;border-right-color: white;}#like-fake .connect_widget_button_count_nub {float: left; position: relative; height: 0; width: 5px; top: -5px; left: 2px; }</style><div id="fake-like-rapper"><div class="fb-like" data-href="http://www.facebook.com/playcast.jp" data-send="false" data-layout="box_count" data-width="48" data-show-faces="false" data-font="arial" style="width: 70px; height: 21px; overflow: hidden;"></div><div id="like-fake"><div class="connect_widget_button_count_including"><table class="uiGrid" cellspacing="0" cellpadding="0"><tbody><tr><td><div class="thumbs_up hidden_elem"></div></td><td><div class="undo hidden_elem"></div></td></tr><tr><td><div class="connect_widget_button_count_nub"><s></s><i></i></div></td><td><div class="connect_widget_button_count_count">6.9k</div></td></tr></tbody></table></div></div></div>
 
-　<a href="https://twitter.com/share" class="twitter-share-button" data-text="“友達も恋人も、もっと自然に作りたい” 　自分の好きな遊びを通じて新たな仲間を作れるサービス「Playcast」" data-lang="ja" data-related="Playcast_jp" data-count="none">ツイート</a>
-　<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-text="あなたの本当にやりたかった遊びを実現できるサービス『Playcast』" data-via="Playcast_jp" data-lang="ja" data-related="Playcast_jp" data-count="none" data-hashtags="playcast" data-dnt="true">ツイート</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </div>
 
     <%# カテゴリ一覧 %>
@@ -54,7 +54,7 @@
 
 
       <%= link_to( plan_path( plan ) ) do %>
-        <img class="planimgtop" src="/assets/category<%= plan.categories.first.try(:sort).to_i %>.png" width="63" height="56" alt="" />
+        <img class="planimgtop" src="/assets/category<%= plan.categories.first.try(:sort).to_i %>.png" alt="" />
         <div class="plancap"><%= plan.title %></div>
       <% end %>
 
@@ -74,6 +74,29 @@
 
 
 
+
+      <div class="imgcaption">
+        <div class="ribbon2">　開催決定！まだ参加可能</div>
+
+     <p class="areatop">関東<p>
+
+
+      <a href="/plans/78">
+        <img class="planimgtop" src="/assets/category4.png" alt="" />
+        <div class="plancap">いんてす222２</div>
+</a>
+
+      <div class="planfoot">
+        <p class="plandes">あsf...</p>
+        <img alt="Picture?width=200&amp;height=200" class="margin_minus2" height="28" src="https://graph.facebook.com/yokoyama.shin.1/picture?width=200&amp;height=200" style="float: left; position: relative; left: 2px;" width="28" />
+        <a href="/plans/78" class="sannkabtn"></a>
+
+        <div id="favorite78">
+              <a href="javascript:void(0);" class="favoritebtntop" onClick="toggle_favorite( &#x27;78&#x27;, &#x27;favoritebtntop&#x27;, &#x27;create&#x27; )"></a>
+
+        </div>
+      </div>
+    </div>
      <div class="imgcaption">
         <div class="ribbon3">　募集終了</div>
       <p class="areatop">関東<p>
