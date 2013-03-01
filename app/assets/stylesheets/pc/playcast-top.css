@@ -246,6 +246,10 @@ left: 70px;
 top: -4px;
 }
 
+.news {
+font-size: 10px;
+margin-bottom: 30px;
+}
 
 .catewrap {}
 
@@ -499,8 +503,7 @@ font-size: 13px;
 color:
 white;
 padding: 2px 3px;
-background-color:
-rgb(112, 112, 112);
+background-color: rgb(240, 0, 0);
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 -ms-border-radius: 3px;
