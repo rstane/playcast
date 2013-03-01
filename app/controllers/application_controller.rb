@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     # セッション／トップコントローラ以外で
     if params[:controller] != "sessions" and params[:controller] != "top"
       # 未ログインであればルートヘリダイレクト
-      if session[:user_id].blank?
+      if current_user.blank?
         # リクエストURL保管
         session[:request_url] = request.url
 
