@@ -1,17 +1,17 @@
 # coding: utf-8
 class PagesController < ApplicationController
+  skip_before_filter :authorize
+
   #---------#
   # privacy #
   #---------#
   def privacy
-#    render layout: false
   end
 
   #-------#
   # terms #
   #-------#
   def terms
-#    render layout: false
   end
 
   #---------#
