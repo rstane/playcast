@@ -2,7 +2,24 @@
 ja:
   activerecord:
     models:
+      admin_user: "管理ユーザ"
+      board: "掲示板"
+      board_comment: "掲示板コメント"
+      categorize: "カテゴライズ"
+      category: "カテゴリ"
+      cheer: "応援"
+      comment: "コメント"
+      entry: "参加登録"
+      favorite: "お気に入り"
+      feed: "フィード"
+      feed_comment: "コメントフィード"
+      feed_entry: "参加フィード"
+      feed_plan: "プランフィード"
+      participation: "参加希望日"
       plan: "プラン"
+      plan_comment: "プランコメント"
+      schedule: "開催予定日"
+      user: "ユーザ"
     attributes:
       plan:
         budget: "予算"
