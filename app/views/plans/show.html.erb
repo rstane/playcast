@@ -37,7 +37,7 @@
 
     <div id="plan">
       <dl class="plande">
-      <dt>プラン説明：</dt> <dd style="margin-top: 0px;"><%= @plan.description %></dd>
+      <dt>プラン説明：</dt> <dd style="margin-top: 0px;"><br /><%=raw show_markdown( @plan.description ) %></dd>
       <dt>こんな人に来てほしい：</dt> <dd><%= @plan.target_people %>　</dd>
       <dt>日時候補：</dt>
       <dd>下記候補の中で、<%= @plan.min_people %>人以上集まった日時で開催<br>

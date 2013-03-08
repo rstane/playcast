@@ -94,7 +94,7 @@ class PlansController < ApplicationController
   #--------#
   def create( plan, categories, schedules )
     @plan = Plan.new( plan )
-    @plan.user_id = session[:user_id]
+    @plan.user_id = current_user.id
 
     date_count = 0
     schedules.each{ |s|

@@ -46,6 +46,9 @@ gem 'omniauth-scaffold'
 # Scaffold Template
 gem 'custom-template'
 
+# Markdown
+gem "markdown-scaffold"
+
 # Utility
 gem 'kaminari'
 gem 'action_args'
