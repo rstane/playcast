@@ -209,7 +209,7 @@ position: relative;
 top: 114px;
 display: block;
 width: 380px;
-height: 58px;
+height: 80px;
 background-image: url(startbtn.png);
 background-repeat: no-repeat;
 }
@@ -221,10 +221,11 @@ position: relative;
 top: 114px;
 display: block;
 width: 340px;
-height: 58px;
+height: 78px;
 background-image: url(startbtn2.png);
 background-repeat: no-repeat;
 }
+
 
 
 #social {
@@ -419,7 +420,7 @@ background-image: url(attendbtntop.png);
 background-repeat: no-repeat;
 float: left;
 position: relative;
-left: 40px;
+left: 65px;
 }
 
 .favoritebtntop {
@@ -606,7 +607,7 @@ margin: auto;
 
 #plantitle {
 background-color: rgb(255, 255, 255);
-height: 195px;
+height: 180px;
 border-bottom: solid 1px rgb(199, 199, 199);
 margin-bottom: -30px;
 margin-top: 0px;
@@ -658,7 +659,7 @@ left: -140px;
 #socialshow {
 position: relative;
 left: -222px;
-top: 28px;
+top: 45px;
 text-align: right;
 height: 0px;
 }

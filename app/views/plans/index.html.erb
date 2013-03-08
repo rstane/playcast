@@ -5,6 +5,7 @@
   <div class="copy"><img src="/assets/copy1.png" alt="遊びを通じて、趣味の合う仲間を作れる。ソーシャル・レジャーマッチングサービス「Playcast」" /></div>
 
   <%= link_to "" , new_plan_path, class: "postbuttontop#{session[:user_id].present? ? '2' : '1'}" %>
+
   </div>
 </div>
 
@@ -62,7 +63,6 @@
 
       <div class="planfoot">
         <p class="plandes"><%= "#{plan.description.to_s.slice(0..45)}..." %></p>
-        <%= image_tag( plan.user.try(:image), size: "28x28", class: "margin_minus2", style: "float: left; position: relative; left: 2px;" )%>
         <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
 
         <%# お気に入りボタン %>
@@ -85,7 +85,6 @@
 
       <div class="planfoot">
         <p class="plandes">美味しいものが大好きな皆さん！焼き肉を食べに行きましょう^0^場所は東...</p>
-        <img alt="Picture?width=200&amp;height=200" class="margin_minus2" height="28" src="/assets/graph.facebook.com.7653456.png" style="float: left; position: relative; left: 2px;" width="28" />
         <a href="/plans/71" class="sannkabtn"></a>
 
         <div id="favorite71">
@@ -107,7 +106,6 @@
 
       <div class="planfoot">
         <p class="plandes">みんなで盛り上がりましょー♪...</p>
-        <img alt="Picture?width=200&amp;height=200" class="margin_minus2" height="28" src="/assets/graph.facebook.com.4537.png" style="float: left; position: relative; left: 2px;" width="28" />
         <a href="/plans/68" class="sannkabtn"></a>
 
         <div id="favorite68">
