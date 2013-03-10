@@ -15,15 +15,19 @@ class Feed < ActiveRecord::Base
   # メール送信バッチ処理
   #  ruby script/rails runner "Feed.send_mail_batch"
   def self.send_mail_batch
-#    plan_feeds = FeedPlan.where( mail_sent_at: nil ).includes( :plan, :user ).all
-    plan_feeds = FeedPlan.where( mail_sent_at: nil ).includes( :plan, :user ).limit(100).all
-    puts "[ ---------- plan_feeds.length ---------- ]" ; plan_feeds.length.tapp ;
+    begin
+      plan_feeds = FeedPlan.where( mail_sent_at: nil ).includes( :plan, :user )
+      puts "[ ---------- plan_feeds.length ---------- ]" ; plan_feeds.length.tapp ;
 
-    plan_feeds.each{ |feed|
-      if feed.user.present?
-        result = UserMailer.plan_feed( feed.plan, feed, feed.user ).deliver
-        feed.update_attributes( mail_sent_at: Time.now ) if result.present?
-      end
-    }
+      plan_feeds.find_each{ |feed|
+        if feed.user.present?
+          result = UserMailer.plan_feed( feed.plan, feed, feed.user ).deliver
+          puts "[ ---------- result user:#{feed.user.id} ---------- ]" ; result.tapp ;
+          feed.update_attributes( mail_sent_at: Time.now ) if result.present?
+        end
+      }
+    rescue Exception => e
+      puts "[ ---------- send_mail_batch Exception ---------- ]" ; e.tapp ;
+    end
   end
 end
