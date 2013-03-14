@@ -27,9 +27,6 @@ class Plan < ActiveRecord::Base
   validates :max_people, numericality: { only_integer: true, allow_blank: true }
   validates :min_people, presence: true, numericality: { only_integer: true }
 
-  #--------------#
-  # participant? #
-  #--------------#
   # 参加者判定
   def participant?( user_id )
     schedule_ids = Participation.where( plan_id: self.id, user_id: user_id ).pluck(:schedule_id)
@@ -37,18 +34,12 @@ class Plan < ActiveRecord::Base
     Schedule.where( id: schedule_ids, adopt_flag: true ).exists? ? true : false
   end
 
-  #--------------#
-  # hold_decide? #
-  #--------------#
   # 開催決定判定
   def hold_decide?
     return true if self.decide_flag == true
     return false
   end
 
-  #---------#
-  # closed? #
-  #---------#
   # 募集終了判定
   def closed?
     return true if self.entry_close_flag == true
@@ -58,9 +49,6 @@ class Plan < ActiveRecord::Base
 
   private
 
-  #--------------------#
-  # create_owner_entry #
-  #--------------------#
   # プラン投稿者：参加メンバー作成
   def create_owner_entry
     entry = Entry.where(
@@ -70,25 +58,17 @@ class Plan < ActiveRecord::Base
     ).first_or_create
   end
 
-  #------------------------#
-  # create_feed_plan_start #
-  #------------------------#
   # フィード作成
   def create_feed_plan_start
     FeedPlan.create( plan_id: self.id, user_id: self.user_id, happen: "参加募集が開始しました。" )
   end
 
-  #--------------#
-  # create_board #
-  #--------------#
   # ボード作成
   def create_board
     Board.create( plan_id: self.id )
   end
 
-  #---------------------------#
-  # self.max_min_people_check #
-  #---------------------------#
+  # 最大／最小参加人数チェック
   def self.max_min_people_check( plan_id )
     plan = Plan.where( id: plan_id ).includes( :schedules ).first
 
@@ -114,7 +94,7 @@ class Plan < ActiveRecord::Base
 
       # 開催決定フィード作成
       Entry.where( plan_id: plan.id ).all.each{ |e|
-        FeedPlan.where( plan_id: e.plan_id, user_id: e.user_id, happen: "開催が決定しました！" ).first_or_create
+        FeedPlan.where( plan_id: e.plan_id, user_id: e.user_id, happen: "開催が決定しました！", send_mail_flag: true ).first_or_create
       }
     else
       # 開催未定戻し
@@ -127,7 +107,7 @@ class Plan < ActiveRecord::Base
 
         # 開催取り消しフィード作成
         Entry.where( plan_id: plan.id ).all.each{ |e|
-          FeedPlan.where( plan_id: e.plan_id, user_id: e.user_id, happen: "開催決定が取り消されました。" ).first_or_create
+          FeedPlan.where( plan_id: e.plan_id, user_id: e.user_id, happen: "開催決定が取り消されました。", send_mail_flag: true ).first_or_create
         }
       end
     end

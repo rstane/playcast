@@ -40,7 +40,8 @@ Playcast::Application.configure do
   config.logger = Logger.new( 'log/development.log', 5, 1*1024*1024 )  # 1MB * 5
 
   # メールテスト用
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options   = { host: '0.0.0.0:3000' }
+  config.action_mailer.delivery_method       = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
     address:              "smtp.gmail.com",
