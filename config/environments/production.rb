@@ -66,7 +66,7 @@ Playcast::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # メール用
-  config.action_mailer.default_url_options   = { host: 'http://playcast.jp/' }
+  config.action_mailer.default_url_options   = { host: 'playcast.jp' }
   config.action_mailer.delivery_method       = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
