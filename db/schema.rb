@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315031032) do
+ActiveRecord::Schema.define(:version => 20130315064057) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",               :default => "", :null => false
@@ -172,5 +172,15 @@ ActiveRecord::Schema.define(:version => 20130315031032) do
   end
 
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
+
+  create_table "will_entries", :force => true do |t|
+    t.integer  "plan_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "will_entries", ["plan_id"], :name => "index_will_entries_on_plan_id"
+  add_index "will_entries", ["user_id"], :name => "index_will_entries_on_user_id"
 
 end

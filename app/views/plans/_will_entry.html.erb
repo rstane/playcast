@@ -1,0 +1,99 @@
+
+<div id="plantitle">
+<div id="plantitleinner">
+
+ <img class="category_img" src="/assets/category<%= @plan.categories.first.try(:sort).to_i %>.png"  />
+
+  <h1><%= @plan.title %></h1>
+
+  <div id="socialshow">
+  <!--   <div class="fb-like" data-href="http://www.facebook.com/playcast.jp" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div> -->
+  <div class="fbbtnshow"><div class="fb-like" data-href='<%= "http://#{request.env['HTTP_HOST']}/plans/#{@plan.id}" %>' data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div></div>
+　<div class="twitterbtnshow"><a href="https://twitter.com/share" class="twitter-share-button" data-text="「<%= @plan.title %>」｜あなたの本当にやりたかった遊びを実現できるサービス『Playcast』に投稿しました。" data-via="Playcast_jp" data-lang="ja" data-related="Playcast_jp" data-hashtags="playcast" data-dnt="true">ツイート</a></div>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+  </div>
+  </div>
+</div>
+
+<div id="content_plans">
+  <div id="leftcontents">
+  <% if @plan.decide_flag.present? %>
+    <div id="decide">
+      <h1>開催決定！</h1>
+      <p class="dedes">おめでとうございます！参加人数が集まり、開催が決定しました。<br>参加者の方は「待ち合わせ相談ルーム」に入り、待ち合わせ場所と時間を決めましょう。<br><span style="font-weight: 100; color: rgb(0, 175, 35);">※待ち合わせ相談ルームは参加者以外入る事ができません。<span><p>
+
+      <% if @plan.participant?( session[:user_id] ) %>
+        <%= link_to( "", plan_board_path( @plan ), class: "waiting" ) %>
+      <% end %>
+    </div>
+  <% end %>
+
+    <% unless @entry.present? %><a href="#attendlink" ><img src="/assets/atndbtnbig.png/" style="margin-bottom: 10px;"></a><% end %>
+
+    <div id="plan">
+      <dl class="plande">
+      <dt>プラン説明：</dt> <dd style="margin-top: 0px;"><br /><%=raw show_markdown( @plan.description ) %></dd>
+      <dt>こんな人に来てほしい：</dt> <dd><%= @plan.target_people %>　</dd>
+      <dt>同性孤立防止昨日</dt> <dd>男性：<%= @plan.male_min %>人／女性：<%= @plan.female_min %>人以上集まらないと開催しない</dd>
+      <dt>定員：</dt> <dd>男性：<%= @plan.show_male_max %>／女性：<%= @plan.show_female_max %></dd>
+
+      <dt>日時候補：</dt>
+      <dd>下記候補の中で、男性:<%= @plan.male_min %>人／女性:<%= @plan.female_min %>人以上集まった日時で開催<br>
+        <div class="datedes">
+        <% @schedules.each.with_index(1){ |schedule, index| %>
+          <% if schedule[1].candidate_day.present? %>
+            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M くらいにスタート") if schedule[1].present? %></span>
+            <br />
+          <% end %>
+        <% } %>
+
+        <br><a href="http://playcast.jp/plans/new" style="color: rgb(255, 79, 79); font-size: 13px; text-decoration: underline;">※行きたいけど予定が合いませんか？それでしたら同じ内容のプランを、あなたの都合の良い日時で投稿してみましょう。</a><br><br>
+        </div>
+      </dd>
+      <dt>場所：</dt> <dd><%= @plan.place %></dd>
+      <dt>予算：</dt> <dd><%= @plan.budget %></dd>
+
+      </dd>
+      </dl>
+
+      <% if @plan.user_id == session[:user_id] %>
+        <div class="planedit">
+          <%= link_to( "編集", edit_plan_path( @plan ) ) %>
+          　<%= link_to( "削除", plan_path( @plan ), method: "delete", confirm: "「#{@plan.title}」を削除してよろしいですか？" ) %>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="cast">
+      <div id="t-accordion" class="st-accordion">
+        <ul>
+          <li>
+            <p><img src="/assets/showmemberico.png/" style="width:40px; height:30px; margin-right:3px;">参加予定中のメンバー</p>
+            参加予定メンバーは〜
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="attendlink"></div>
+
+    <div id="attend">
+      <%= link_to( plan_path(@plan, will_entry: true), method: "post" ) do %><h3>応募ルームへ</h3><% end %>
+    </div>
+  </div>
+
+  <div id="rightcontensshow">
+    <div id="other1">
+      <%# お気に入りボタン %>
+      <div id="favorite<%= @plan.id %>">
+        <%= render partial: '/plans/favorite', locals: { favorite: @favorite, plan: @plan, klass: "btn2" } %>
+      </div>
+    </div>
+
+    <div id="other3">
+      <%= render partial: "/plans/recent" %>
+    </div>
+  </div>
+</div>
