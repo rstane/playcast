@@ -36,11 +36,11 @@
       <dl class="plande">
       <dt>プラン説明：</dt> <dd style="margin-top: 0px;"><br /><%=raw show_markdown( @plan.description ) %></dd>
       <dt>こんな人に来てほしい：</dt> <dd><%= @plan.target_people %>　</dd>
-      <dt>同性孤立防止昨日</dt> <dd>男性：<%= @plan.male_min %>人／女性：<%= @plan.female_min %>人以上集まらないと開催しない</dd>
-      <dt>定員：</dt> <dd>男性：<%= @plan.show_male_max %>／女性：<%= @plan.show_female_max %></dd>
+      <dt>同性孤立防止機能：</dt> <dd>男性<%= @plan.male_min %>人以上・女性<%= @plan.female_min %>人以上集まった日時で開催</dd>
+      <dt>定員：</dt> <dd>男性<%= @plan.show_male_max %>・女性<%= @plan.show_female_max %></dd>
 
       <dt>日時候補：</dt>
-      <dd>下記候補の中で、男性:<%= @plan.male_min %>人／女性:<%= @plan.female_min %>人以上集まった日時で開催<br>
+      <dd>下記候補の中で、男性<%= @plan.male_min %>人以上・女性<%= @plan.female_min %>人以上集まった日時で開催<br>
         <div class="datedes">
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
