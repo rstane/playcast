@@ -37,7 +37,7 @@
       <dt>プラン説明：</dt> <dd style="margin-top: 0px;"><br /><%=raw show_markdown( @plan.description ) %></dd>
       <dt>こんな人に来てほしい：</dt> <dd><%= @plan.target_people %>　</dd>
       <dt>日時候補：</dt>
-      <dd>下記候補の中で、<%= @plan.min_people %>人以上集まった日時で開催<br>
+      <dd>下記候補の中で、男性:<%= @plan.male_min %>人／女性:<%= @plan.female_min %>人以上集まった日時で開催<br>
 
         <div class="datedes">
         <% @schedules.each.with_index(1){ |schedule, index| %>
@@ -132,7 +132,7 @@
           <% if @plan.entry_close_flag %>
             <span style="color: red;">既に募集が終了しています。</span>
           <% else %>
-            <div class="sannkazyoukenn">※<%= @plan.min_people %>人以上集まった日時で開催/定員<%= @plan.max_people %>人まで</div>
+            <div class="sannkazyoukenn">※男性:<%= @plan.male_min %>人／女性:<%= @plan.female_min %>人以上集まった日時で開催/定員<%= @plan.max_people %>人まで</div>
 
             <h4>1.候補日を選択 （都合がつかない日のチェックを外してください。）</h4>
 

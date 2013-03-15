@@ -26,10 +26,10 @@ class Plan < ActiveRecord::Base
   validates :budget, presence: true, length: { maximum: 100 }
   # validates :min_people, presence: true, numericality: { only_integer: true }
   # validates :max_people, numericality: { only_integer: true, allow_blank: true }
-  validates :male_min, presence: true, numericality: { only_integer: true }
-  validates :male_max, numericality: { only_integer: true, allow_blank: true }
-  validates :female_min, presence: true, numericality: { only_integer: true }
-  validates :female_max, numericality: { only_integer: true, allow_blank: true }
+  validates :male_min, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 2 }
+  validates :male_max, numericality: { only_integer: true, allow_blank: true, greater_than_or_equal_to: 2 }
+  validates :female_min, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 2 }
+  validates :female_max, numericality: { only_integer: true, allow_blank: true, greater_than_or_equal_to: 2 }
 
   # 参加者判定
   def participant?( user_id )
@@ -61,6 +61,18 @@ class Plan < ActiveRecord::Base
     self.female_max.present? ? "#{self.female_max}人" : "無し"
   end
 
+  # 募集終了フラグ判定
+  def entry_close?(male_count, female_count)
+    # 男性／女性ともに定員に達していたらプラン募集終了
+    if (self.male_max.present? and male_count >= self.male_max) and (self.female_max.present? and female_count >= self.female_max)
+      # 募集終了
+      true
+    else
+      # 募集中
+      false
+    end
+  end
+
   private
 
   # プラン投稿者：参加メンバー作成
@@ -86,21 +98,32 @@ class Plan < ActiveRecord::Base
   def self.max_min_people_check( plan_id )
     plan = Plan.where( id: plan_id ).includes( :schedules ).first
 
-    entry_count = Participation.where( plan_id: plan.id ).group( "schedule_id" ).count.sort{ |a, b| b[1].to_i <=> a[1].to_i }
-    max_count = (entry_count.present? ? entry_count.first[1] : 0)
+    # 各スケジュール参加者数降順にカウント
+    male_entry_counts   = Participation.where( plan_id: plan.id ).includes( :user ).where( "users.gender = ?", "male" ).group( "schedule_id" ).count.sort{ |a, b| b[1].to_i <=> a[1].to_i }
+    female_entry_counts = Participation.where( plan_id: plan.id ).includes( :user ).where( "users.gender = ?", "female" ).group( "schedule_id" ).count.sort{ |a, b| b[1].to_i <=> a[1].to_i }
+    male_count          = (male_entry_counts.present? ? male_entry_counts.first[1] : 0)
+    female_count        = (female_entry_counts.present? ? female_entry_counts.first[1] : 0)
 
-    if plan.max_people.present? and max_count >= plan.max_people.to_i
-      # 募集終了
-      plan.entry_close_flag = true
-    else
-      # 募集再開
-      plan.entry_close_flag = false
-    end
+#    entry_count = Participation.where( plan_id: plan.id ).group( "schedule_id" ).count.sort{ |a, b| b[1].to_i <=> a[1].to_i }
+#    max_count = (entry_count.present? ? entry_count.first[1] : 0)
 
-    if max_count >= plan.min_people.to_i
+    # 募集終了判定
+    # if plan.max_people.present? and max_count >= plan.max_people.to_i
+    #   # 募集終了
+    #   plan.entry_close_flag = true
+    # else
+    #   # 募集再開
+    #   plan.entry_close_flag = false
+    # end
+    # 募集終了フラグ判定
+    plan.entry_close_flag = plan.entry_close?(male_count, female_count)
+
+    # 開催決定判定
+#    if max_count >= plan.min_people.to_i
+    if male_count >= plan.male_min and female_count >= plan.female_min
       # 開催決定
       plan.decide_flag = true
-      schedule_ids = entry_count.select{ |x| x[1] >= max_count }.map{ |x| x[0] }
+      schedule_ids = (male_entry_counts.select{ |x| x[1] >= male_count }.map{ |x| x[0] } + female_entry_counts.select{ |x| x[1] >= female_count }.map{ |x| x[0] })
       Schedule.where( plan_id: plan.id, id: schedule_ids ).update_all( adopt_flag: true )
 
       # 開催取消フィード削除

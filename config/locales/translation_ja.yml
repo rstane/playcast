@@ -32,3 +32,7 @@ ja:
         publish_start_at: "募集開始日時"
         target_people: "こんな人に来てほしい"
         title: "タイトル"
+        male_min: "最低開催人数(男性)"
+        female_min: "最低開催人数(女性)"
+        male_max: "定員(男性)"
+        female_max: "定員(女性)"

@@ -49,7 +49,7 @@
         <div class="ribbon2">　開催決定！まだ参加可能</div>
       <% else %>
         <%# 開催未決定／募集中 %>
-        <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
+        <div class="ribbon2">　先着:男性<%= plan.male_min %>女性<%= plan.female_min %>で開催！</div>
       <% end %>
 
      <p class="areatop"><%= plan.area %><p>
