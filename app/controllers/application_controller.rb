@@ -49,12 +49,16 @@ class ApplicationController < ActionController::Base
   def authorize
     # セッション／トップコントローラ以外で
     if params[:controller] != "sessions" and params[:controller] != "top"
-      # 未ログインであればルートヘリダイレクト
-      if current_user.blank?
+      # 未ログインor性別空欄であればルートヘリダイレクト
+      if current_user.blank? or current_user.gender.blank?
         # リクエストURL保管
         session[:request_url] = request.url
 
-        redirect_to "/auth/#{Settings.provider}"
+        # ユーザIDセッションクリア
+        session[:user_id] = nil
+
+#        redirect_to "/auth/#{Settings.provider}"
+        redirect_to root_path
       end
     end
   end

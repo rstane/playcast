@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314074959) do
+ActiveRecord::Schema.define(:version => 20130315025539) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",               :default => "", :null => false
@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(:version => 20130314074959) do
     t.string   "email"
     t.string   "location"
     t.string   "slug"
+    t.string   "gender"
   end
 
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
