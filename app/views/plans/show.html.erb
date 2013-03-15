@@ -63,8 +63,8 @@
       </dd>
       <dt>場所：</dt> <dd><%= @plan.place %></dd>
       <dt>予算：</dt> <dd><%= @plan.budget %></dd>
-      <dt>最低開催人数：</dt> <dd><%= @plan.min_people %>人以上集まらないと開催しない</dd>
-      <dt>定員：</dt> <dd><% if @plan.max_people.present? %><%= @plan.max_people %>人まで<% else %>無し<% end %></dd>
+      <dt>最低開催人数：</dt> <dd>男性：<%= @plan.male_min %>人／女性：<%= @plan.female_min %>人以上集まらないと開催しない</dd>
+      <dt>定員：</dt> <dd>男性：<%= @plan.show_male_max %>／女性：<%= @plan.show_female_max %></dd>
 
       </dd>
       </dl>

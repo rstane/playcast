@@ -1,6 +1,6 @@
 # coding: utf-8
 class Plan < ActiveRecord::Base
-  attr_accessible :budget, :description, :image_url, :max_people, :min_people, :place, :publish_end_at, :publish_start_at, :target_people, :title, :user_id, :cheers_count, :favorites_count, :area
+  attr_accessible :budget, :description, :image_url, :max_people, :min_people, :place, :publish_end_at, :publish_start_at, :target_people, :title, :user_id, :cheers_count, :favorites_count, :area, :male_min, :male_max, :female_min, :female_max
 
   belongs_to :user
   has_many :comments,       :dependent => :destroy
@@ -24,8 +24,12 @@ class Plan < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 1000 }
   validates :place, presence: true, length: { maximum: 500 }
   validates :budget, presence: true, length: { maximum: 100 }
-  validates :max_people, numericality: { only_integer: true, allow_blank: true }
-  validates :min_people, presence: true, numericality: { only_integer: true }
+  # validates :min_people, presence: true, numericality: { only_integer: true }
+  # validates :max_people, numericality: { only_integer: true, allow_blank: true }
+  validates :male_min, presence: true, numericality: { only_integer: true }
+  validates :male_max, numericality: { only_integer: true, allow_blank: true }
+  validates :female_min, presence: true, numericality: { only_integer: true }
+  validates :female_max, numericality: { only_integer: true, allow_blank: true }
 
   # 参加者判定
   def participant?( user_id )
@@ -45,6 +49,16 @@ class Plan < ActiveRecord::Base
     return true if self.entry_close_flag == true
     return true if self.schedules.sort{ |a, b| b.try(:close_at).to_i <=> a.try(:close_at).to_i }.first.try(:close_at).to_i <= Time.now.to_i
     return false
+  end
+
+  # 男性定員
+  def show_male_max
+    self.male_max.present? ? "#{self.male_max}人" : "無し"
+  end
+
+  # 女性定員
+  def show_female_max
+    self.female_max.present? ? "#{self.female_max}人" : "無し"
   end
 
   private
