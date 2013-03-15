@@ -86,7 +86,7 @@ class Plan < ActiveRecord::Base
 
       (self.female_max.present? and female_count >= self.female_max) ? true : false
     else
-      true
+      false
     end
   end
 

@@ -41,7 +41,7 @@
     <div id="paging">
     <% @plans.each{ |plan| %>
       <div class="imgcaption">
-      <% if plan.closed? or plan.gender_entry_close?( current_user.gender ) %>
+      <% if plan.closed? or plan.gender_entry_close?( current_user.try(:gender) ) %>
         <%# 募集終了 %>
         <div class="ribbon3">　募集終了</div>
       <% elsif plan.hold_decide? %>
