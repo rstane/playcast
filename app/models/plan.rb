@@ -94,6 +94,8 @@ class Plan < ActiveRecord::Base
 
   # プラン投稿者：参加メンバー作成
   def create_owner_entry
+    WillEntry.where( user_id: self.user_id, plan_id: self.id ).first_or_create
+
     entry = Entry.where(
       user_id: self.user_id,
       plan_id: self.id,
