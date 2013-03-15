@@ -4,6 +4,12 @@ class EntriesController < ApplicationController
   # create #
   #--------#
   def create( plan_id, entry )
+    plan = Plan.where( id: plan_id ).first
+
+    if plan.blank? or plan.entry_close_flag == true or plan.gender_entry_close?( current_user.gender )
+      redirect_to plans_path, alert: "既に募集が終了しています。" and return
+    end
+
     if entry.present?
       if entry[:schedules].blank?
         redirect_to( plan_path( plan_id ), alert: "参加日を選択してください。" ) and return

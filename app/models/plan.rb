@@ -73,6 +73,23 @@ class Plan < ActiveRecord::Base
     end
   end
 
+  # 性別ごと募集終了(定員チェック)
+  def gender_entry_close?( gender )
+    if gender == "male"
+      male_entry_counts   = Participation.where( plan_id: self.id ).includes( :user ).where( "users.gender = ?", "male" ).group( "schedule_id" ).count.sort{ |a, b| b[1].to_i <=> a[1].to_i }
+      male_count          = (male_entry_counts.present? ? male_entry_counts.first[1] : 0)
+
+      (self.male_max.present? and male_count >= self.male_max) ? true : false
+    elsif gender == "female"
+      female_entry_counts = Participation.where( plan_id: self.id ).includes( :user ).where( "users.gender = ?", "female" ).group( "schedule_id" ).count.sort{ |a, b| b[1].to_i <=> a[1].to_i }
+      female_count        = (female_entry_counts.present? ? female_entry_counts.first[1] : 0)
+
+      (self.female_max.present? and female_count >= self.female_max) ? true : false
+    else
+      true
+    end
+  end
+
   private
 
   # プラン投稿者：参加メンバー作成

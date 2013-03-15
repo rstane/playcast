@@ -24,7 +24,7 @@
      <span style=" color: rgb(255, 0, 112); font-weight: bold;">現在参加中です：</span>
         <%= link_to( "参加日時変更・参加キャンセル", plan_entry_path( @entry.plan, @entry ), method: "delete", confirm: "参加をキャンセルします。よろしいですか？" ) %><br>
       <% else %>
-        <% if @plan.entry_close_flag %>
+        <% if @plan.entry_close_flag or @plan.gender_entry_close?( current_user.gender ) %>
           <span style="color: red;">既に募集が終了しています。</span>
         <% else %>
           <div class="sannkazyoukenn">※男性:<%= @plan.male_min %>人／女性:<%= @plan.female_min %>人以上集まった日時で開催/定員<%= @plan.max_people %>人まで</div>
