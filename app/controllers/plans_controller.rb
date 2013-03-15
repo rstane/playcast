@@ -96,7 +96,7 @@ class PlansController < ApplicationController
   # new #
   #-----#
   def new
-    @plan = Plan.new( min_people: 1, max_people: 1 )
+    @plan = Plan.new( male_min: 2, female_min: 2 )
   end
 
   #------#
