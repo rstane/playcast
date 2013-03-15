@@ -59,12 +59,12 @@
     <%= f.text_field :budget, placeholder: "一人3000円くらい", size: "30", class: "inputplace" %>
 
     <h2>最低開催人数<span style="font-size: 14px;" >（あなたを含めた人数を入力してください。）</span><span class="postmark">必須</span></h2>
-    男性：<%= f.number_field :male_min, min: "1", max: "9999", class: "inputcount" %>人以上集まったら開催決定<br />
-    女性：<%= f.number_field :female_min, min: "1", max: "9999", class: "inputcount" %>人以上集まったら開催決定<br />
+    男性：<%= f.number_field :male_min, min: "2", max: "9999", class: "inputcount" %>人以上集まったら開催決定<br />
+    女性：<%= f.number_field :female_min, min: "2", max: "9999", class: "inputcount" %>人以上集まったら開催決定<br />
 
     <h2>定員</h2>
-    男性：<%= f.number_field :male_max, min: "1", max: "9999", value: "", class: "inputcount" %>人まで<br />
-    女性：<%= f.number_field :female_max, min: "1", max: "9999", value: "", class: "inputcount" %>人まで<br />
+    男性：<%= f.number_field :male_max, min: "2", max: "9999", value: "", class: "inputcount" %>人まで<br />
+    女性：<%= f.number_field :female_max, min: "2", max: "9999", value: "", class: "inputcount" %>人まで<br />
 
     <br><br>
 
