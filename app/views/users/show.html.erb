@@ -13,20 +13,19 @@
         </div>
       </div>
 
-
       <div class="userplanmenu">
         <ul>
           <li><%= link_to( "投稿したプラン", { anchor: "toukou" } ) %></li>
+          <% if session[:user_id] == @user.id %>
           <li><%= link_to( "参加表明したプラン", { anchor: "sannka" } ) %></li>
           <li><%= link_to( "お気に入りのプラン", { anchor: "okiniiri" } ) %></li>
           <li><%= link_to( "応援したプラン", { anchor: "ouen" } ) %></li>
+          <% end %>
         </ul>
       </div>
 
       <br class="clear" style="clear:both" />
-      <div id="toukou"></div>
-      <br>
-
+      <div id="toukou"></div><br>
       <h3>投稿したプラン</h3>
       <% @my_plans.each{ |plan| %>
         <a href="<%= plan_path( plan ) %>">
@@ -37,10 +36,10 @@
         </a>
       <% } %>
 
+<% if session[:user_id] == @user.id %>
       <br class="clear" style="clear:both" />
       <div id="sannka"></div>
       <div class="space"></div>
-
       <h3>参加表明したプラン</h3>
       <% @entries.each{ |entry| %>
         <a href="<%= plan_path( entry.plan ) %>">
@@ -70,7 +69,6 @@
       <br class="clear" style="clear:both" />
       <div id="ouen"></div>
       <div class="space"></div>
-
       <h3>応援したプラン</h3>
       <% @cheers.each{ |cheer| %>
         <a href="<%= plan_path( cheer.plan ) %>">
@@ -80,6 +78,7 @@
           </div>
         </a>
       <% } %>
+<% end %>
 
         <br class="clear" style="clear:both" />
       </div>
