@@ -48,10 +48,8 @@ class ApplicationController < ActionController::Base
         # ユーザIDセッションクリア
         session[:user_id] = nil
 
-        flash[:alert] = "ログインしてください。"
-
 #        redirect_to "/auth/#{Settings.provider}"
-        redirect_to root_path
+        redirect_to plans_path, alert: "ログインしてください。"
       end
     end
   end
