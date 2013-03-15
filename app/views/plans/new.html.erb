@@ -2,7 +2,7 @@
 <div id="content_plans">
 <%= form_for( :plan, url: plans_path, html: { class: "plan_form" } ) do |f| %>
   <div id="planpost">
-    <h1>遊びのメンバーを募集</h1>
+    <h1>プラン投稿</h1>
 
     <%# エラーメッセージ %>
     <% if @plan.errors.any? %>
@@ -18,7 +18,7 @@
     <h2>地域選択<span class="postmark">必須</span></h2>
     <%= f.select :area, Settings.plan.area, class: "postarea" %>
 
-    <h2>何をして遊びますか？<span style="font-size: 14px;" >カテゴリを選択してください。</span><span class="postmark">必須</span></h2>
+    <h2>カテゴリを選択してください。<span class="postmark">必須</span></h2>
     <% Category.all.each.with_index(1){ |category, index| %>
       <%= check_box_tag "categories[#{index}]", category.id, (params[:categories].present? ? params[:categories].has_value?(category.id.to_s) : false) %>
        <%= label_tag "categories[#{index}]" do %><span class="cateimg2"><%= image_tag( "category#{index}.png" )%></span><% end %>

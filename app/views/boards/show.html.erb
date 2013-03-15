@@ -1,8 +1,11 @@
 <div id="content_plans">
   <div id="leftcontents">
-    <div id="feed">
+    <div id="waitroom">
       <h1><%= link_to( @plan.title, plan_path( @plan ) ) %></h1>
-      <h2>待ち合わせ相談ルーム</h2>
+      <h2 style="margin: 0; color: green;">待ち合わせ相談ルーム</h2>
+
+      <p style="margin:0px 0px 10px 0px;">待ち合わせ時間・場所を決めましょう。</p>
+
       <%= link_to( "【更新】", plan_board_path( @plan ), style: "font-size: 22px;" ) %>
 
       <%= form_for( :board_comment, url: plan_board_board_comments_path( @plan ) ) do |f| %>

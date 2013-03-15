@@ -2,26 +2,19 @@
 </script>
 
 <div id="mainpic">
-  <div class="copy"><img src="/assets/copy1.png" alt="遊びを通じて、趣味の合う仲間を作れる。ソーシャル・レジャーマッチングサービス「Playcast」" /></div>
+  <div class="copy"><img src="/assets/copy.png" alt="あなたの行きたい所・やりたい趣味が実現出来るサービス『プレイキャスト』" /></div>
 
   <%= link_to "" , new_plan_path, class: "postbuttontop#{session[:user_id].present? ? '2' : '1'}" %>
 
   </div>
 </div>
 
+
 <div id="content">
   <div id="content_inner">
 
- <div id="social">
-
-  <style type="text/css">#fake-like-rapper{display: inline-block;margin:0;padding:0;}#fake-like-rapper div{float:left;margin:0;padding:0;}#like-fake div.connect_widget_button_count_including, td.connect_widget_simple_including{margin:0;padding:0;}#like-fake td, td.label{font-size: 11px;text-align: left;margin:0;padding:0;}#like-fake{font-size: 11px;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;color:#333;line-height:1.28;text-align: left;direction: ltr;margin-top: 1px !important; margin-left: -2px!important;position: relative;float:left;}#like-fake .uiGrid{border: 0;border-collapse: collapse;border-spacing: 0;}#like-fake .connect_widget_button_count_count{background: white;border: 1px solid #D1D1D1;float: left;font-weight: normal;height: 14px;margin-left: 1px;min-width: 17px;padding: 1px 2px 1px 2px;text-align: center;line-height: 14px;white-space: nowrap;}#like-fake .connect_widget_button_count_nub s, #like-fake .connect_widget_button_count_nub i{border: solid transparent;border-right-color: #D7D7D7;top: 1px;display: block;position: relative;border-width: 4px 5px 4px 0;}#like-fake .connect_widget_button_count_nub i{left: 2px;top: -7px;border-right-color: white;}#like-fake .connect_widget_button_count_nub {float: left; position: relative; height: 0; width: 5px; top: -5px; left: 2px; }</style><div id="fake-like-rapper"><div class="fb-like" data-href="http://www.facebook.com/playcast.jp" data-send="false" data-layout="box_count" data-width="48" data-show-faces="false" data-font="arial" style="width: 70px; height: 21px; overflow: hidden;"></div><div id="like-fake"><div class="connect_widget_button_count_including"><table class="uiGrid" cellspacing="0" cellpadding="0"><tbody><tr><td><div class="thumbs_up hidden_elem"></div></td><td><div class="undo hidden_elem"></div></td></tr><tr><td><div class="connect_widget_button_count_nub"><s></s><i></i></div></td><td><div class="connect_widget_button_count_count">6.9k</div></td></tr></tbody></table></div></div></div>
-
-  <a href="https://twitter.com/share" class="twitter-share-button" data-text="あなたの本当にやりたかった遊びを実現できるサービス『Playcast』" data-via="Playcast_jp" data-lang="ja" data-related="Playcast_jp" data-count="none" data-hashtags="playcast" data-dnt="true">ツイート</a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  </div>
 
     <%# カテゴリ一覧 %>
-    <div class="news"><span style="background-color: rgb(255, 50, 50); color: white; padding: 2px; margin-right: 5px;">new!</span>3/1 カテゴリ並び替え機能がつきました。</div>
     <div class="catewrap">
     <%= link_to( plans_path( category_id: nil ), class:"cateall" ) do %><%= image_tag( "category0.png" )%><span class="catealldes">すべて</span><% end %>
 
@@ -49,7 +42,7 @@
         <div class="ribbon2">　開催決定！まだ参加可能</div>
       <% else %>
         <%# 開催未決定／募集中 %>
-        <div class="ribbon">　先着<%= plan.min_people %>人で開催！</div>
+        <div class="ribbon">　募集中！</div>
       <% end %>
 
      <p class="areatop"><%= plan.area %><p>

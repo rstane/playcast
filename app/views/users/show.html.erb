@@ -13,19 +13,8 @@
         </div>
       </div>
 
-
-      <div class="userplanmenu">
-        <ul>
-          <li><%= link_to( "投稿したプラン", { anchor: "toukou" } ) %></li>
-          <li><%= link_to( "参加表明したプラン", { anchor: "sannka" } ) %></li>
-          <li><%= link_to( "お気に入りのプラン", { anchor: "okiniiri" } ) %></li>
-          <li><%= link_to( "応援したプラン", { anchor: "ouen" } ) %></li>
-        </ul>
-      </div>
-
       <br class="clear" style="clear:both" />
       <div id="toukou"></div>
-      <br>
 
       <h3>投稿したプラン</h3>
 
@@ -43,7 +32,7 @@
         <br class="clear" style="clear:both" />
         <div id="sannka"></div>
         <div class="space"></div>
-        <h3>参加表明したプラン</h3>
+        <h3>参加応募したプラン</h3>
 
 
 　　　　　　 <% @entries.each{ |entry| %>
@@ -73,20 +62,7 @@
            <% } %>
 
         <br class="clear" style="clear:both" />
-        <div id="ouen"></div>
-        <div class="space"></div>
-        <h3>応援したプラン</h3>
-      
-　　　　　　 <% @cheers.each{ |cheer| %>
-               <a href="<%= plan_path( cheer.plan ) %>">
-               <div class="imgcaptionshow">
-              <img class="planimgtopshow" src="/assets/amuplanico.png" width="63" height="56" alt="" />
-              <div class="plancapshow"><%= cheer.plan.title %></div>
-          　</div>
-          </a>
-           <% } %>
 
-        <br class="clear" style="clear:both" />
       </div>
 
       <%= link_to( "ページの上へ", { anchor: "planmenulink" }, class: "gotop" ) %>
