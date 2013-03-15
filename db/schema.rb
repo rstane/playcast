@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228082327) do
+ActiveRecord::Schema.define(:version => 20130315031032) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",               :default => "", :null => false
@@ -89,9 +89,11 @@ ActiveRecord::Schema.define(:version => 20130228082327) do
     t.integer  "entry_id"
     t.integer  "comment_id"
     t.string   "happen"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.datetime "mail_sent_at"
+    t.boolean  "send_mail_flag", :default => false
+    t.text     "sentence"
   end
 
   create_table "participations", :force => true do |t|
@@ -119,9 +121,15 @@ ActiveRecord::Schema.define(:version => 20130228082327) do
     t.datetime "updated_at",                          :null => false
     t.boolean  "decide_flag",      :default => false
     t.boolean  "entry_close_flag", :default => false
+    t.integer  "index"
+    t.integer  "number"
     t.integer  "cheers_count",     :default => 0
     t.integer  "favorites_count",  :default => 0
     t.string   "area"
+    t.integer  "male_min",         :default => 1
+    t.integer  "male_max"
+    t.integer  "female_min",       :default => 1
+    t.integer  "female_max"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -160,6 +168,7 @@ ActiveRecord::Schema.define(:version => 20130228082327) do
     t.string   "email"
     t.string   "location"
     t.string   "slug"
+    t.string   "gender"
   end
 
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true

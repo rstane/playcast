@@ -14,12 +14,9 @@ class Comment < ActiveRecord::Base
 
   private
 
-  #---------------------#
-  # create_feed_comment #
-  #---------------------#
   # フィード作成
   def create_feed_comment
     plan = Plan.where( id: self.plan_id ).first
-    FeedComment.create( comment_id: self.id, plan_id: self.plan_id, user_id: plan.user_id, happen: "コメントが投稿されました。" )
+    FeedComment.create( comment_id: self.id, plan_id: self.plan_id, user_id: plan.user_id, happen: "コメントが投稿されました。", send_mail_flag: true )
   end
 end

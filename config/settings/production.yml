@@ -12,3 +12,6 @@ facebook_app_secret: <%= ENV['FACEBOOK_APP_SECRET'] %>
 
 # Mail Pass
 mail_password: <%= ENV['MAIL_PASSWORD'] %>
+
+# メール
+mailer_sender: "info@playcast.jp"

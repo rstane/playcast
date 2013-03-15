@@ -33,12 +33,13 @@ class User < ActiveRecord::Base
 
 #    puts "[ ---------- auth ---------- ]" ; auth["extra"]["raw_info"]["gender"].tapp ;
 
-    if self.name != auth["info"]["name"] or self.nickname != auth["info"]["nickname"] or self.image != image_path or self.email != auth["info"]["email"] or self.location != auth["info"]["location"]
+    if self.gender.blank? or self.name != auth["info"]["name"] or self.nickname != auth["info"]["nickname"] or self.image != image_path or self.email != auth["info"]["email"] or self.location != auth["info"]["location"]
       self.name     = auth["info"]["name"]
       self.nickname = auth["info"]["nickname"]
       self.image    = image_path
       self.email    = auth["info"]["email"]
       self.location = auth["info"]["location"]
+      self.gender   = auth["extra"]["raw_info"]["gender"]
       self.save
     end
   end
