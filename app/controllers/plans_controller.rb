@@ -47,6 +47,16 @@ class PlansController < ApplicationController
       redirect_to plans_path and return
     end
 
+    # 性別ごと募集終了判定
+    if @plan.gender_entry_close?( current_user.try(:gender) )
+      # 参加者チェック
+      unless @plan.participant?( session[:user_id] )
+        flash[:alert] = "募集終了後のプランは参加者以外閲覧出来ません。<br>新しく遊ぶメンバーを募集してみましょう↓"
+        redirect_to plans_path and return
+      end
+    end
+
+    # 募集終了判定
     if @plan.closed?
       # 参加者チェック
       unless @plan.participant?( session[:user_id] )
