@@ -18,6 +18,10 @@ class Entry < ActiveRecord::Base
   # フィード作成
   def create_feed_entry
     plan = Plan.where( id: self.plan_id ).first
-    FeedEntry.create( entry_id: self.id, plan_id: self.plan_id, user_id: plan.user_id, happen: "参加しました。", send_mail_flag: true )
+
+    # プラン投稿者以外の参加／プラン投稿者へのフィード
+    unless self.user_id == plan.user_id
+      FeedEntry.create( entry_id: self.id, plan_id: self.plan_id, user_id: plan.user_id, happen: "参加しました。", send_mail_flag: true )
+    end
   end
 end
