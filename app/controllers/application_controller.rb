@@ -17,9 +17,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  #---------------#
-  # show_markdown #
-  #---------------#
   # Markdown変換
   def show_markdown( text )
     html_render = HtmlWithPygments.new( hard_wrap: true, filter_html: true )
@@ -29,9 +26,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :show_markdown
 
-  #-------------------------------#
-  # disable_mobile_view_if_tablet #
-  #-------------------------------#
   # タブレット非スマートフォン化
   def disable_mobile_view_if_tablet
     # if request.mobile and request.mobile.tablet?
@@ -42,9 +36,6 @@ class ApplicationController < ActionController::Base
     disable_mobile_view!
   end
 
-  #-----------#
-  # authorize #
-  #-----------#
   # ログイン認証
   def authorize
     # セッション／トップコントローラ以外で
@@ -57,23 +48,19 @@ class ApplicationController < ActionController::Base
         # ユーザIDセッションクリア
         session[:user_id] = nil
 
+        flash[:alert] = "ログインしてください。"
+
 #        redirect_to "/auth/#{Settings.provider}"
         redirect_to root_path
       end
     end
   end
 
-  #-----------------------#
-  # reset_session_expires #
-  #-----------------------#
   # セッション期限延長
   def reset_session_expires
     request.session_options[:expire_after] = 2.weeks
   end
 
-  #--------------#
-  # current_user #
-  #--------------#
   def current_user
     @current_user ||= User.where( id: session[:user_id] ).first
   end
