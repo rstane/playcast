@@ -39,7 +39,7 @@ class PlansController < ApplicationController
   #------#
   # show #
   #------#
-  def show( id )
+  def show( id, will_entry )
     @plan = Plan.where( id: id ).includes( :categories ).order( "categories.sort ASC" ).first
 
     if @plan.blank?
@@ -71,6 +71,15 @@ class PlansController < ApplicationController
     @favorite = Favorite.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @cheer    = Cheer.where( user_id: session[:user_id], plan_id: @plan.id ).first
     @entry    = Entry.where( user_id: session[:user_id], plan_id: @plan.id ).first
+
+    # 参加検討中ユーザ
+    if will_entry.present?
+      @will_entry = WillEntry.where( user_id: session[:user_id], plan_id: @plan.id ).first_or_create
+    else
+      @will_entry = WillEntry.where( user_id: session[:user_id], plan_id: @plan.id ).first
+    end
+
+    @will_entries = WillEntry.where( plan_id: @plan.id ).includes( :user ).all
   end
 
   #-----#
