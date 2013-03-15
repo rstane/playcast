@@ -121,8 +121,6 @@ ActiveRecord::Schema.define(:version => 20130315031032) do
     t.datetime "updated_at",                          :null => false
     t.boolean  "decide_flag",      :default => false
     t.boolean  "entry_close_flag", :default => false
-    t.integer  "index"
-    t.integer  "number"
     t.integer  "cheers_count",     :default => 0
     t.integer  "favorites_count",  :default => 0
     t.string   "area"
