@@ -1,6 +1,6 @@
 # coding: utf-8
 class Plan < ActiveRecord::Base
-  attr_accessible :budget, :description, :image_url, :max_people, :min_people, :place, :publish_end_at, :publish_start_at, :target_people, :title, :user_id, :cheers_count, :favorites_count, :area, :male_min, :male_max, :female_min, :female_max
+  attr_accessible :budget, :description, :image_url, :max_people, :min_people, :place, :publish_end_at, :publish_start_at, :target_people, :title, :user_id, :cheers_count, :favorites_count, :area, :male_min, :male_max, :female_min, :female_max, :entry_close_flag
 
   belongs_to :user
   has_many :comments,       :dependent => :destroy
@@ -172,8 +172,6 @@ class Plan < ActiveRecord::Base
         }
       end
     end
-
-    puts "[ plan.decide_flag : #{plan.decide_flag} ]"
 
     plan.save!
   end
