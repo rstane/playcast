@@ -137,6 +137,11 @@ class Plan < ActiveRecord::Base
     # 募集終了フラグ判定
     plan.entry_close_flag = plan.entry_close?(male_count, female_count)
 
+    puts "[ male_count : #{male_count} ]"
+    puts "[ plan.male_min : #{plan.male_min} ]"
+    puts "[ female_count : #{female_count} ]"
+    puts "[ plan.female_min : #{plan.female_min} ]"
+
     # 開催決定判定
 #    if max_count >= plan.min_people.to_i
     if male_count >= plan.male_min and female_count >= plan.female_min
@@ -168,6 +173,8 @@ class Plan < ActiveRecord::Base
       end
     end
 
-    plan.save
+    puts "[ plan.decide_flag : #{plan.decide_flag} ]"
+
+    plan.save!
   end
 end
