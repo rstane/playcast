@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   def authorize
     # セッション／トップコントローラ以外で
     if params[:controller] != "sessions" and params[:controller] != "top"
-      # 未ログインor性別空欄であればルートヘリダイレクト
+      # 未ログインor性別空欄であればリダイレクト
       if current_user.blank? or current_user.gender.blank?
         # リクエストURL保管
         session[:request_url] = request.url
