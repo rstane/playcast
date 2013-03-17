@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315025539) do
+ActiveRecord::Schema.define(:version => 20130315064057) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",               :default => "", :null => false
@@ -121,11 +121,13 @@ ActiveRecord::Schema.define(:version => 20130315025539) do
     t.datetime "updated_at",                          :null => false
     t.boolean  "decide_flag",      :default => false
     t.boolean  "entry_close_flag", :default => false
-    t.integer  "index"
-    t.integer  "number"
     t.integer  "cheers_count",     :default => 0
     t.integer  "favorites_count",  :default => 0
     t.string   "area"
+    t.integer  "male_min",         :default => 1
+    t.integer  "male_max"
+    t.integer  "female_min",       :default => 1
+    t.integer  "female_max"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -168,5 +170,15 @@ ActiveRecord::Schema.define(:version => 20130315025539) do
   end
 
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
+
+  create_table "will_entries", :force => true do |t|
+    t.integer  "plan_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "will_entries", ["plan_id"], :name => "index_will_entries_on_plan_id"
+  add_index "will_entries", ["user_id"], :name => "index_will_entries_on_user_id"
 
 end

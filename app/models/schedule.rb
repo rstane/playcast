@@ -25,13 +25,15 @@ class Schedule < ActiveRecord::Base
   #--------------------#
   # プラン投稿者：参加作成
   def create_owner_entry
-    entry = Entry.where( user_id: self.plan.user_id, plan_id: self.plan_id ).first
+    if self.candidate_day.present?
+      entry = Entry.where( user_id: self.plan.user_id, plan_id: self.plan_id ).first
 
-    Participation.where(
-      user_id: entry.user_id,
-      plan_id: entry.plan_id,
-      schedule_id: self.id,
-      entry_id: entry.id
-    ).first_or_create
+      Participation.where(
+        user_id: entry.user_id,
+        plan_id: entry.plan_id,
+        schedule_id: self.id,
+        entry_id: entry.id
+      ).first_or_create
+    end
   end
 end

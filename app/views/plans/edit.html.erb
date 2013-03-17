@@ -15,10 +15,10 @@
       </div>
     <% end %>
 
-    <h2>地域選択<span class="postmark">必須</span></h2>
+    <h2>地域を選択<span class="postmark">必須</span></h2>
     <%= f.select :area, Settings.plan.area %>
 
-       <h2>カテゴリ選択<span class="postmark">必須</span></h2>
+       <h2>カテゴリを選択<span class="postmark">必須</span></h2>
     <% Category.all.each.with_index(1){ |category, index| %>
       <%= check_box_tag "categories[#{index}]", category.id, @categorize.index(category.id).present? %>
       <%= label_tag "categories[#{index}]", category.name %>
@@ -39,6 +39,16 @@
 
 　　 <h2>こんな人に来てほしい</h2>
     <%= f.text_area :target_people, rows: "4", cols: "43", placeholder: "J-POP好きな人、20代の人、男女両方OK", class: "inputtitle" %>　　　
+
+
+    <h2>募集する人数<span style="font-size: 14px;" >（あなたを含めた人数です。）</span></h2>
+     <p style="font-size: 18px; font-weight: bold;">・何人以上？<span class="postmark">必須</span><br><span style="font-size: 14px; position: relative; top: 5px; font-weight: 200; color: rgb(21, 177, 0);" >　※「同性がひとりぼっちで気まずい！」という状況を防止するため、男女共に2人以上集まらないと開催出来ないようになりました。</span></p>
+     　男性：<%= f.number_field :male_min, min: "2", max: "9999", class: "inputcount" %>人以上<br />
+     　女性：<%= f.number_field :female_min, min: "2", max: "9999", class: "inputcount" %>人以上<br />
+     <p style="font-size: 18px; font-weight: bold;">・何人まで？</p>
+     　男性：<%= f.number_field :male_max, min: "2", max: "9999", value: "", class: "inputcount" %>人まで<br />
+     　女性：<%= f.number_field :female_max, min: "2", max: "9999", value: "", class: "inputcount" %>人まで<br />
+
 
      <h2>日時候補を選択（必ず１つ以上選択〜最大5つまで）<span class="postmark">必須</span></h2>
     <p class="des">日時候補とは<br>あらかじめ、開催する日時の候補を決めておき、一番参加者が多く集まった日時で開催します。あなたの都合が良い日時を選びましょう。</p>
@@ -63,16 +73,8 @@
 
     <%= f.text_field :place, placeholder: "渋谷", size: "30", class: "inputplace" %>
 
-   <h2>予算<span class="postmark">必須</span></h2>
+   <h2>予算<span class="postmark">必須</span><span class="des"> ※決まっていない場合は、未定・または大体の予算を記入しておきましょう。</span></h2>
     <%= f.text_field :budget, placeholder: "一人3000円くらい", size: "30", class: "inputplace" %>
-
-    <h2>最低開催人数<span style="font-size: 14px;" >（あなたを含めた人数を入力してください。）</span><span class="postmark">必須</span></h2>
-    <%= f.number_field :min_people, min: "1", max: "9999", class: "inputcount" %>人以上集まったら開催決定
-
-    <h2>定員</h2>
-    <%= f.number_field :max_people, min: "1", max: "9999", class: "inputcount" %>人まで
-
-
 
     <br><br>
 
