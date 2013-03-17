@@ -57,8 +57,7 @@ class ApplicationController < ActionController::Base
         # ユーザIDセッションクリア
         session[:user_id] = nil
 
-#        redirect_to "/auth/#{Settings.provider}"
-        redirect_to root_path
+        redirect_to "/auth/#{Settings.provider}"
       end
     end
   end
