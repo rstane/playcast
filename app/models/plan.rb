@@ -168,6 +168,6 @@ class Plan < ActiveRecord::Base
       end
     end
 
-    plan.save
+    plan.save!
   end
 end

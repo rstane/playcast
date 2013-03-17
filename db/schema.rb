@@ -126,9 +126,9 @@ ActiveRecord::Schema.define(:version => 20130315064057) do
     t.integer  "cheers_count",     :default => 0
     t.integer  "favorites_count",  :default => 0
     t.string   "area"
-    t.integer  "male_min",         :default => 1
+    t.integer  "male_min",         :default => 2
     t.integer  "male_max"
-    t.integer  "female_min",       :default => 1
+    t.integer  "female_min",       :default => 2
     t.integer  "female_max"
   end
 
