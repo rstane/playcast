@@ -13,7 +13,7 @@
    <div id="content_inner">
 
 
-    <div class="news"><span style="background-color: rgb(255, 50, 50); color: white; padding: 2px; margin-right: 5px;">new!</span>『女性（男性）一人になってしまうのが気まずい』という声に答え、男女人数設定機能が付きました。</div>
+    <div class="news"><span style="background-color: rgb(255, 50, 50); color: white; padding: 2px; margin-right: 5px;">new!</span>「女性（男性）一人だけ参加するのは気まずい！」という声に応え、男女共に２人以上集まらないと開催出来ないようになりました。</div>
 
 
     <%# カテゴリ一覧 %>
@@ -41,7 +41,7 @@
         <div class="ribbon3">　募集終了</div>
       <% elsif plan.hold_decide? %>
         <%# 開催決定／募集中 %>
-        <div class="ribbon2">　開催決定！まだ参加可能</div>
+        <div class="ribbon">　募集中！</div>
       <% else %>
         <%# 開催未決定／募集中 %>
 
@@ -69,50 +69,6 @@
       </div>
     </div>
   <% } %>
-   <div class="imgcaption">
-        <div class="ribbon3">　募集終了</div>
-
-     <p class="areatop">関東<p>
-
-
-      <a href="/plans/71">
-        <img class="planimgtop" src="/assets/category2.png" alt="" />
-        <div class="plancap">美味しい焼き肉食べに行きませんか？v(ﾟ▽^*)ﾉ</div>
-</a>
-
-      <div class="planfoot">
-        <p class="plandes">美味しいものが大好きな皆さん！焼き肉を食べに行きましょう^0^場所は東...</p>
-        <a href="/plans/71" class="sannkabtn"></a>
-
-        <div id="favorite71">
-              <a href="javascript:void(0);" class="favoritebtntop" onClick="toggle_favorite( &#x27;71&#x27;, &#x27;favoritebtntop&#x27;, &#x27;create&#x27; )"></a>
-
-        </div>
-      </div>
-    </div>
- <div class="imgcaption">
-        <div class="ribbon3">　募集終了</div>
-
-     <p class="areatop">関東<p>
-
-
-      <a href="/plans/68">
-        <img class="planimgtop" src="/assets/category1.png" alt="" />
-        <div class="plancap">オールジャンル！カラオケ行きましょう☆</div>
-</a>
-
-      <div class="planfoot">
-        <p class="plandes">みんなで盛り上がりましょー♪...</p>
-        <a href="/plans/68" class="sannkabtn"></a>
-
-        <div id="favorite68">
-              <a href="javascript:void(0);" class="favoritebtntop" onClick="toggle_favorite( &#x27;68&#x27;, &#x27;favoritebtntop&#x27;, &#x27;create&#x27; )"></a>
-
-        </div>
-      </div>
-    </div>
-
-
 
   </div>
 

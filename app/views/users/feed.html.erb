@@ -10,9 +10,9 @@
         <% when "FeedPlan" %>
           「<%= link_to( feed.plan.title, plan_path(feed.plan) ) %>」の<%= feed.happen %>
         <% when "FeedEntry" %>
-          「<%= link_to( feed.plan.title, plan_path(feed.plan) ) %>」に「<%= link_to( feed.entry.user.name, user_path(feed.entry.user) ) if feed.entry.present? %>」さんが<%= feed.happen %>
+          「<%= link_to( feed.plan.title, plan_path(feed.plan) ) %>」に「<%= link_to( feed.entry.user.name, user_path(feed.entry.user), target: "_blank" ) if feed.entry.present? %>」さんが<%= feed.happen %>
         <% when "FeedComment" %>
-          「<%= link_to( feed.plan.title, plan_path(feed.plan) ) %>」に「<%= link_to( feed.comment.user.name, user_path(feed.comment.user) ) if feed.comment.present? %>」さんから<%= feed.happen %>
+          「<%= link_to( feed.plan.title, plan_path(feed.plan) ) %>」に「<%= link_to( feed.comment.user.name, user_path(feed.comment.user), target: "_blank" ) if feed.comment.present? %>」さんから<%= feed.happen %>
         <% end %>
         </p>
       <% } %>
