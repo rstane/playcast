@@ -35,7 +35,7 @@
        <div class="datedes">
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
-            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M くらいにスタート") if schedule[1].present? %></span>
+            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日(%a) %H:%M くらいにスタート") if schedule[1].present? %></span>
             <div class="atndmembers">【参加応募したメンバー】:</div>
 
             <div class="atndmembersimg">
@@ -154,7 +154,7 @@
         <div class="datedes">
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
-            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M くらいにスタート") if schedule[1].present? %></span>
+            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日(%a) %H:%M くらいにスタート") if schedule[1].present? %></span>
             <br />
           <% end %>
         <% } %>

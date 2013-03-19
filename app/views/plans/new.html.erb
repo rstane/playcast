@@ -36,16 +36,16 @@
     <%= f.text_area :target_people, rows: "4", cols: "43", placeholder: "J-POP好きな人、20代の人、男女両方OK", class: "inputtitle" %>
 
     <h2>募集する人数<span style="font-size: 14px;" >（あなたを含めた人数です。）</span></h2>
-     <p style="font-size: 18px; font-weight: bold;">・何人以上？<span class="postmark">必須</span><br><span style="font-size: 14px; position: relative; top: 5px; font-weight: 200; color: rgb(21, 177, 0);" >　※「女性（男性）一人だけ参加するのは気まずい！」という声に応え、男女人数設定機能が付きました。</span></p>
+     <p style="font-size: 18px; font-weight: bold;">・何人以上集まったら開催しますか？<span class="postmark">必須</span><br><span style="font-size: 14px; position: relative; top: 5px; font-weight: 200; color: rgb(21, 177, 0);" >　※「女性（男性）一人だけ参加するのは気まずい！」という声に応え、男女人数設定機能が付きました。</span></p>
      　男性：<%= f.number_field :male_min, min: "0", max: "9999", class: "inputcount" %>人以上<br />
      　女性：<%= f.number_field :female_min, min: "0", max: "9999", class: "inputcount" %>人以上<br />
-     <p style="font-size: 18px; font-weight: bold;">・何人まで？</p>
+     <p style="font-size: 18px; font-weight: bold;">・何人まで参加可能にしますか？</p>
      　男性：<%= f.number_field :male_max, min: "0", max: "9999", value: "", class: "inputcount" %>人まで<br />
      　女性：<%= f.number_field :female_max, min: "0", max: "9999", value: "", class: "inputcount" %>人まで<br />
 
-    <h2>日時候補を選択（必ず１つ以上選択〜最大5つまで）<span class="postmark">必須</span></h2>
+    <h2>日時候補を選択（必ず１つ以上選択〜最大3つまで）<span class="postmark">必須</span></h2>
     <p class="des">※日時候補とは<br>あらかじめ、開催する日時の候補を決めておき、一番参加者が多く集まった日時で開催します。あなたの都合が良い日時を選びましょう。</p>
-    <% 1.upto(5){ |n| %>
+    <% 1.upto(3){ |n| %>
       <script type="text/javascript">
         $(function(){ $("#datepicker<%= n %>").datepicker(); });
       </script>
