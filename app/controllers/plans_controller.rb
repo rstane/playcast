@@ -48,6 +48,7 @@ class PlansController < ApplicationController
     end
 
     # 性別ごと募集終了判定
+=begin
     if @plan.gender_entry_close?( current_user.try(:gender) )
       # 参加者チェック
       unless @plan.participant?( session[:user_id] )
@@ -55,6 +56,7 @@ class PlansController < ApplicationController
         redirect_to plans_path and return
       end
     end
+=end
 
     # 募集終了判定
     if @plan.closed?
