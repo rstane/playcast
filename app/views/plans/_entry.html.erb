@@ -49,11 +49,11 @@
           <% end %>
         <% } %>
        </div>
-
-
       <% else %>
-        <% if @plan.entry_close_flag or @plan.gender_entry_close?( current_user.gender ) %>
+        <% if @plan.entry_close_flag %>
           <span style="color: red;">既に募集が終了しています。</span>
+        <% elsif @plan.gender_entry_close?( current_user.gender ) %>
+          <span style="color: red;">既に<%= Settings[current_user.gender] %>の募集は終了しています。</span>
         <% else %>
           <div class="sannkazyoukenn">男性<%= @plan.male_min %>人以上、女性<%= @plan.female_min %>人以上集まった日時で開催<br>定員：男性<%= @plan.show_male_max %>、女性<%= @plan.show_female_max %></div>
 

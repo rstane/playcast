@@ -23,3 +23,6 @@ plan:
 
 # メール
 mailer_sender: "rails.dev0115@gmail.com"
+
+male: "男性"
+female: "女性"
