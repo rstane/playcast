@@ -24,5 +24,6 @@ plan:
 # メール
 mailer_sender: "rails.dev0115@gmail.com"
 
+# 性別
 male: "男性"
 female: "女性"
