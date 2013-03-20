@@ -199,14 +199,14 @@ margin-top: 10px;
 .copy {
 text-align: center;
 position: relative;
-top: 108px;
+top: 102px;
 }
 
 
 .postbuttontop1 {
 margin: auto;
 position: relative;
-top: 120px;
+top: 113px;
 display: block;
 width: 380px;
 height: 80px;
@@ -214,18 +214,16 @@ background-image: url(startbtn.png);
 background-repeat: no-repeat;
 }
 
-
 .postbuttontop2 {
 margin: auto;
 position: relative;
-top: 120px;
+top: 112px;
 display: block;
 width: 340px;
 height: 78px;
 background-image: url(startbtn2.png);
 background-repeat: no-repeat;
 }
-
 
 
 #social {

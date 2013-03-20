@@ -15,7 +15,7 @@
   </div>
 </div>
 
-  <p class="atndroomtitle">参加応募ルーム<span style="font-size:15px;">（参加検討者以外には表示されません。）</span></p>
+  <p class="atndroomtitle">参加応募ルーム<span style="font-size:15px;">（参加考え中メンバー以外には表示されません。）</span></p>
 
 <div id="content_plans">
 
@@ -35,7 +35,7 @@
        <div class="datedes">
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
-            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M くらいにスタート") if schedule[1].present? %></span>
+            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日(%a) %H:%M くらいにスタート") if schedule[1].present? %></span>
             <div class="atndmembers">【参加応募したメンバー】:</div>
 
             <div class="atndmembersimg">
@@ -146,7 +146,7 @@
      <dt>募集人数：</dt>
         <dd><br><p style="margin: 5px 0px 5px 0px;">・何人以上：男性<%= @plan.male_min %>人以上、女性<%= @plan.female_min %>人以上</p>
             <p style="margin: 0px 0px 5px 0px;">・何人まで：男性<%= @plan.show_male_max %>、女性<%= @plan.show_female_max %></p>
-            <p style="font-size: 14px; position: relative; top: 5px; font-weight: 200; color: rgb(21, 177, 0); left: 5px;" >※「同性がひとりぼっちで気まずい！」という状況を防止するため、男女共に2人以上集まらないと開催出来ないようになりました。</p>
+            <p style="font-size: 14px; position: relative; top: 5px; font-weight: 200; color: rgb(21, 177, 0); left: 5px;" >※「女性（男性）一人だけ参加するのは気まずい！」という声に応え、男女人数設定機能が付きました。</p>
         </dd>
       <dt>日時候補：</dt>
       <dd>下記候補の中で、募集人数が集まった日時で開催<br>
@@ -154,7 +154,7 @@
         <div class="datedes">
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
-            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日 %H:%M くらいにスタート") if schedule[1].present? %></span>
+            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日(%a) %H:%M くらいにスタート") if schedule[1].present? %></span>
             <br />
           <% end %>
         <% } %>
