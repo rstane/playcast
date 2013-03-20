@@ -253,8 +253,6 @@ margin-bottom: 40px;
 margin-top: -30px;
 }
 
-.catewrap {}
-
 .cateall {
 float: left;
 position: relative;
@@ -276,8 +274,6 @@ padding-right: 10px;
 float: left;
 margin-top: -30px;
 }
-
-.cateimg {}
 
 .catedes {
 font-weight: bold;
@@ -449,8 +445,6 @@ margin-right: 10px;
 font-size: 14px;
 margin-left: -5px;
 }
-
-.cateimg2 {}
 
 
 #planpost{width:100%;
@@ -936,17 +930,18 @@ top: -41px;
 
 .attendbutton {
 display: block;
-width: 555px;
+width: 318px;
 height: 53px;
 background-image: url("attendbutton.png");
 border: none;
 background-color: #fff;
 background-repeat: no-repeat;
 margin: auto;
-margin-bottom: 20px;
+margin-top: 10px;
+margin-bottom: 15px;
 }
 
-.attendbutton:hover { background-position:0px -58px;
+.attendbutton:hover { background-position:0px -55px;
            background-color:#fff;
              background-repeat:no-repeat;}
 
