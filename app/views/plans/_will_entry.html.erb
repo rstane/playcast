@@ -20,15 +20,13 @@
 <div id="content_plans">
   <div id="leftcontents">
 
-    <% unless @entry.present? %><a href="#attend" ><img src="/assets/atndbtnbig.png/" style="margin-bottom: 10px;"></a><% end %>
-
     <div id="plan">
       <dl class="plande">
       <dt>プラン説明：</dt> <dd style="margin-top: 0px;"><br /><%=raw show_markdown( @plan.description ) %></dd>
       <dt>こんな人に来てほしい：</dt> <dd><%= @plan.target_people %>　</dd>
       <dt>募集人数：</dt>
         <dd><br>
-            <p style="font-size: 14px; font-weight: 200; color: rgb(21, 177, 0); " >「女性（男性）一人だけ参加するのは気まずい！」という声に応え、<br>　男女人数設定機能が付きました。</p>
+            <p style="font-size: 14px; font-weight: 200; color: rgb(21, 177, 0); " >「女性（男性）1人だけ参加するのは気まずい！」という声に応え、<br>　男女共に2人以上集まらないと開催出来ないようになりました。</p>
             <p style="margin: 5px 0px 5px 0px;">【何人以上】男性<%= @plan.male_min %>人以上、女性<%= @plan.female_min %>人以上集まったら開催</p>
             <p style="margin: 0px 0px 5px 0px;">【何人まで】男性<%= @plan.show_male_max %>、女性<%= @plan.show_female_max %></p><br>
        </dd>
@@ -64,14 +62,17 @@
         <ul>
           <li>
             <p><img src="/assets/showmemberico.png/" style="width:40px; height:30px; margin-right:3px;">参加予定メンバー</p>
-            <img src="/assets/lock.png/" style="width: 20px; margin-right: 5px; margin-left: 15px;">参加予定メンバーは、「参加応募ルーム」の中で見る事ができます。<br>　　　参加応募ルームの中を見た人は、「参加考え中メンバー」として足あとが残ります。
+            <img src="/assets/lock.png/" style="width: 20px; margin-right: 5px; margin-left: 15px;">参加予定メンバーは、参加を考えている同士以外には表示されません。<br>　　「自分の顔を表示されるのは恥ずかしい」という方も安心して参加することが出来ます。
           </li>
         </ul>
       </div>
 
   <div id="attend" style="margin-bottom: 40px;">
     <h3>参加はこちらから</h3>
-    <%= link_to( plan_path(@plan, will_entry: true), method: "post" ) do %><img src="/assets/atndroom.png/" style="margin: 20px 10px 20px 10px; width: 660px;"><% end %>
+
+    <p style="margin: 15px 0px -0px 10px; line-height: 25px;">参加考え中の方は、参加応募ルームへ移動してください。<br>※参加応募ルームへ移動した人は、「参加考え中メンバー」として表示されます。<p>
+
+    <%= link_to( plan_path(@plan, will_entry: true), method: "post" ) do %><img src="/assets/atndroom.png/" style="margin: 0px 0px -5px 7px;"><% end %>
    </div>
 
 </div>
