@@ -1165,10 +1165,10 @@ line-height: 20px;
 
 
 #userplan h1 {
-background: rgb(220, 0, 0);
+background: rgb(68, 68, 68);
 display: block;
 font-size: 30px;
-font-weight: 600;
+font-weight: 200;
 height: 39px;
 margin-left: 0px;
 margin-right: 0px;
@@ -1179,12 +1179,6 @@ padding-right: 8px;
 padding-top: 5px;
 color: white;
 }
-
-.fbbutton {
-position: relative;
-left: -10px;
-}
-
 
 #userdatawrap { width: 680px;
             height: 180px; margin:auto;}
