@@ -1,6 +1,6 @@
 # coding: utf-8
 class UserMailer < ActionMailer::Base
-  default from: Settings.mailer_sender
+  default from: "Playcast運営事務局 <#{Settings.mailer_sender}>"
   layout 'user_mailer'
 
   # 開催決定／取消メール
