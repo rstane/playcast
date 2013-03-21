@@ -23,7 +23,7 @@
     <%= render partial: '/plans/decide' %>
 
   <div id="attend">
-    <h3><% if @entry.present? %>参加状況<% else %>参加はこちらから<% end %></h3>
+    <h3><% if @entry.present? %>参加状況<% else %>参加したい方はこちら<% end %></h3>
 
     <div id="attendinner">
       <% if @entry.present? %><br>
@@ -144,9 +144,9 @@
       <dt>プラン説明：</dt> <dd style="margin-top: 0px;"><br /><%=raw show_markdown( @plan.description ) %></dd>
       <dt>こんな人に来てほしい：</dt> <dd><%= @plan.target_people %>　</dd>
      <dt>募集人数：</dt>
-        <dd><br><p style="margin: 5px 0px 5px 0px;">・何人以上：男性<%= @plan.male_min %>人以上、女性<%= @plan.female_min %>人以上</p>
-            <p style="margin: 0px 0px 5px 0px;">・何人まで：男性<%= @plan.show_male_max %>、女性<%= @plan.show_female_max %></p>
-            <p style="font-size: 14px; position: relative; top: 5px; font-weight: 200; color: rgb(21, 177, 0); left: 5px;" >※「女性（男性）一人だけ参加するのは気まずい！」という声に応え、男女人数設定機能が付きました。</p>
+        <dd><br><p style="margin: 5px 0px 5px 0px;">【何人以上】男性<%= @plan.male_min %>人以上、女性<%= @plan.female_min %>人以上集まったら開催</p>
+            <p style="margin: 0px 0px 5px 0px;">【何人まで】男性<%= @plan.show_male_max %>、女性<%= @plan.show_female_max %></p>
+            <p style="font-size: 14px; position: relative; top: 5px; font-weight: 200; color: rgb(21, 177, 0); left: 5px;" >※「女性（男性）1人だけ参加するのは気まずい！」という声に応え、<br>　　男女共に2人以上集まらないと開催出来ないようになりました。</p>
         </dd>
       <dt>日時候補：</dt>
       <dd>下記候補の中で、募集人数が集まった日時で開催<br>
