@@ -14,7 +14,8 @@ module Batch
 
   # メルマガ送付
   #  ruby script/rails runner "Batch.send_mail_magazine( target: 'all', id: 1 )"
-  def self.send_mail_magazine( target: Settings.mailer_sender, id: nil )
+#  def self.send_mail_magazine( target: Settings.mailer_sender, id: nil )
+  def self.send_mail_magazine( target, id )
     mail_maga = MailMagazine.where( id: id ).first
     return "MailMagazine Not Found" if mail_maga.blank?
 
