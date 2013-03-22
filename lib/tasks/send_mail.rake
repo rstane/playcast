@@ -2,8 +2,6 @@ namespace :send_mail do
   desc "メール送信"
 
   task :mail_magazine, [:target, :id] => :environment do |task, args|
-    puts "[ ---------- task ---------- ]" ; task.tapp ;
-    puts "[ ---------- args ---------- ]" ; args.tapp ;
     target = args[:target]
     id     = args[:id]
 
