@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.0.0"
-#ruby "1.9.3"
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -68,12 +67,9 @@ group :development do
   gem "binding_of_caller"
   gem "certified"
   gem "rails_best_practices"
-
-  # For Twitter Bootstrap
   gem 'twitter-bootstrap-scaffold'
-
-  # For Routing
   gem 'sextant'
+  gem 'pry-rails'
 end
 
 # Production
