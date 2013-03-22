@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315064057) do
+ActiveRecord::Schema.define(:version => 20130322031235) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",               :default => "", :null => false
@@ -96,6 +96,15 @@ ActiveRecord::Schema.define(:version => 20130315064057) do
     t.text     "sentence"
   end
 
+  create_table "mail_magazines", :force => true do |t|
+    t.string   "subject"
+    t.text     "content"
+    t.datetime "last_sent_at"
+    t.string   "target"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "participations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "plan_id"
@@ -121,6 +130,8 @@ ActiveRecord::Schema.define(:version => 20130315064057) do
     t.datetime "updated_at",                          :null => false
     t.boolean  "decide_flag",      :default => false
     t.boolean  "entry_close_flag", :default => false
+    t.integer  "index"
+    t.integer  "number"
     t.integer  "cheers_count",     :default => 0
     t.integer  "favorites_count",  :default => 0
     t.string   "area"

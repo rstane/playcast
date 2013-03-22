@@ -15,4 +15,14 @@ class UserMailer < ActionMailer::Base
       subject: "【#{Settings.app_name}】#{feed.sentence}",
     )
   end
+
+  # メールマガジン
+  def mail_magazine( address, mail_magazine )
+    @content = mail_magazine.content
+
+    mail(
+      to:      address,
+      subject: "【#{Settings.app_name}】#{mail_magazine.subject}",
+    )
+  end
 end
