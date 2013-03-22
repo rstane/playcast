@@ -104,4 +104,8 @@ Playcast::Application.configure do
 
   # For Puma
   config.threadsafe!
+
+  # Enable threaded mode
+#  config.threadsafe!
+  config.dependency_loading = true if $rails_rake_task
 end
