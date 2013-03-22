@@ -2,6 +2,7 @@
 ja:
   activerecord:
     models:
+      mail_magazine: "メルマガ"
       admin_user: "管理ユーザ"
       board: "掲示板"
       board_comment: "掲示板コメント"
