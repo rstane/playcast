@@ -11,7 +11,7 @@ namespace :send_mail do
     if target == "all"
       users = User.all
 
-      users.each_with_index(1) { |user, i|
+      users.each.with_index(1) { |user, i|
         begin
           UserMailer.mail_magazine( user.email, mail_maga ).deliver
           puts "[ #{i} : #{user.email} ]"
