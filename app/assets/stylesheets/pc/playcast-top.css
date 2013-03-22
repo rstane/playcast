@@ -741,6 +741,7 @@ margin-top: 25px;
 .datedes {
 margin-left: 110px;
 margin-top: 10px;
+margin-bottom: 10px;
 }
 
 .plandatedes {
@@ -1020,7 +1021,10 @@ background-position: -210px -100px;
           -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
           -moz-border-radius: 5px;   /* Firefox用 */}
 
-.comment {border-bottom: 1px dotted #BDB8AD;}
+.comment {
+border-bottom: 1px dotted #BDB8AD;
+font-size: 15px;
+}
 
 .comment2 {border-top: 1px dotted #BDB8AD;
           margin-bottom: -5px;
