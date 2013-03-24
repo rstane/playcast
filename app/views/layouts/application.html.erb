@@ -51,6 +51,23 @@
   })();
 
 </script>
+
+  <script type="text/javascript">
+      $(function($) {
+  var tab = $('#side'),
+    offset = tab.offset();
+
+$(window).scroll(function () {
+  if($(window).scrollTop() > offset.top) {
+    tab.addClass('fixed');
+  } else {
+    tab.removeClass('fixed');
+  }
+});
+});
+
+  </script>
+
 </head>
 
 <body>

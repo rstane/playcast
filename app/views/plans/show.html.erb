@@ -65,7 +65,7 @@
     <div id="attendlink"></div>
 
   <div id="attend">
-    <h3><% if @entry.present? %>参加状況<% else %>開催決定したら参加したい方はこちら<% end %></h3>
+    <h3><% if @entry.present? %>参加状況<% else %>参加したい方はこちら<% end %></h3>
 
     <div id="attendinner">
       <% if @entry.present? %><br>
@@ -122,6 +122,7 @@
             <br><%= text_area_tag "entry[comment]", "", placeholder: "開催されると良いな♪よろしくおねがいします^^", class: "atndcom" %>
 
             <%= submit_tag '', class: "attendbutton" %>
+            <p style="margin: 0; font-size: 13px; text-align: center; margin-bottom: 10px;">※募集が終了するとこのページは参加者以外見られなくなります。気になる方は参加しておきましょう！</p>
           <% end %>
         <% end %>
       <% end %>
