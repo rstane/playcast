@@ -70,22 +70,7 @@ Playcast::Application.configure do
   config.action_mailer.delivery_method       = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-    # address:              "smtp.live.com",
-    # port:                 587,
-    # user_name:            "info@playcast.jp",
-    # password:             Settings.mail_password,
-    # authentication:       'plain',
-    # enable_starttls_auto: true,
-
-    # ----- Mandrill ----- #
-    # port:           '587',
-    # address:        'smtp.mandrillapp.com',
-    # user_name:      ENV['MANDRILL_USERNAME'],
-    # password:       ENV['MANDRILL_APIKEY'],
-    # domain:         'heroku.com',
-    # authentication: :plain
-
-    # ----- mailgun ----- #
+    # ----- Mailgun ----- #
     :port           => ENV['MAILGUN_SMTP_PORT'],
     :address        => ENV['MAILGUN_SMTP_SERVER'],
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],

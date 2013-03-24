@@ -1,6 +1,6 @@
 # coding: utf-8
 class User < ActiveRecord::Base
-  attr_accessible :provider, :uid, :name, :nickname, :image, :email, :location, :token, :secret, :slug
+  attr_accessible :provider, :uid, :name, :nickname, :image, :email, :location, :token, :secret, :slug, :admin_flag
 
   has_many :plans,          :dependent => :destroy
   has_many :comments,       :dependent => :destroy

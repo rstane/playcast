@@ -1,0 +1,29 @@
+<div class="imgcaption">
+  <% if plan.closed? or plan.gender_entry_close?( current_user.try(:gender) ) %>
+    <%# 募集終了 %>
+    <div class="ribbon3">　募集終了</div>
+  <% elsif plan.hold_decide? %>
+    <%# 開催決定／募集中 %>
+    <div class="ribbon">　募集中！</div>
+  <% else %>
+    <%# 開催未決定／募集中 %>
+    <div class="ribbon">　募集中！</div>
+  <% end %>
+
+  <p class="areatop"><%= plan.area %><p>
+
+  <%= link_to( plan_path( plan ) ) do %>
+    <img class="planimgtop" src="/assets/category<%= plan.categories.first.try(:sort).to_i %>.png" alt="" />
+    <div class="plancap"><%= plan.title %></div>
+  <% end %>
+
+  <div class="planfoot">
+    <p class="plandes"><%= "#{plan.description.to_s.slice(0..45)}..." %></p>
+    <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
+
+    <%# お気に入りボタン %>
+    <div id="favorite<%= plan.id %>">
+      <%= render partial: '/plans/favorite', locals: { favorite: favorites[plan.id], plan: plan, klass: "favoritebtntop" } %>
+    </div>
+  </div>
+</div>

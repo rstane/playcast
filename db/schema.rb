@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322031235) do
+ActiveRecord::Schema.define(:version => 20130324074011) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",               :default => "", :null => false
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20130322031235) do
     t.integer  "male_max"
     t.integer  "female_min",       :default => 2
     t.integer  "female_max"
+    t.boolean  "admin_flag",       :default => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -172,12 +173,13 @@ ActiveRecord::Schema.define(:version => 20130322031235) do
     t.string   "image"
     t.string   "token"
     t.string   "secret"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "email"
     t.string   "location"
     t.string   "slug"
     t.string   "gender"
+    t.boolean  "admin_flag", :default => false
   end
 
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true

@@ -3,77 +3,55 @@
 
 <div id="mainpic">
   <div class="copy"><img src="/assets/copy.png" alt="あなたの行きたい所・やりたい趣味が実現出来るサービス『プレイキャスト』" /></div>
-
   <%= link_to "" , new_plan_path, class: "postbuttontop#{session[:user_id].present? ? '2' : '1'}" %>
-
-  </div>
 </div>
 
- <div id="content">
-   <div id="content_inner">
-
-
+<div id="content">
+  <div id="content_inner">
     <div class="news"><span style="background-color: rgb(255, 50, 50); color: white; padding: 2px; margin-right: 5px;">new!</span>「女性（男性）一人だけ参加するのは気まずい！」という声に応え、男女共に２人以上集まらないと開催出来ないようになりました。</div>
-
 
     <%# カテゴリ一覧 %>
     <div class="catewrap">
-    <%= link_to( plans_path( category_id: nil ), class:"cateall" ) do %><%= image_tag( "category0.png" )%><span class="catealldes">すべて</span><% end %>
+      <%= link_to( plans_path( category_id: nil ), class:"cateall" ) do %><%= image_tag( "category0.png" )%><span class="catealldes">すべて</span><% end %>
 
-    <% Category.all.each.with_index(1){ |category, index| %>
-      <div class="catego">
-      <%= link_to( plans_path( category_id: category.id ) ) do %>
-        <span class="cateimg"><%= image_tag( "category#{category.sort.to_i}.png" )%></span><span class="catedes" <% if category.id.to_i == params[:category_id].to_i %>style="color: red;"<% end %>><%= category.name %></span>
-      <% end %>
-    </div>
-    <% } %>
+      <% Category.all.each.with_index(1){ |category, index| %>
+        <div class="catego">
+        <%= link_to( plans_path( category_id: category.id ) ) do %>
+          <span class="cateimg"><%= image_tag( "category#{category.sort.to_i}.png" )%></span><span class="catedes" <% if category.id.to_i == params[:category_id].to_i %>style="color: red;"<% end %>><%= category.name %></span>
+        <% end %>
+        </div>
+      <% } %>
     </div>
 
     <br><br>
-        <div class="post">
-      <h2>本日の参加募集中プラン一覧</h2>
 
-    <div id="paging">
-    <% @plans.each{ |plan| %>
-      <div class="imgcaption">
-      <% if plan.closed? or plan.gender_entry_close?( current_user.try(:gender) ) %>
-        <%# 募集終了 %>
-        <div class="ribbon3">　募集終了</div>
-      <% elsif plan.hold_decide? %>
-        <%# 開催決定／募集中 %>
-        <div class="ribbon">　募集中！</div>
-      <% else %>
-        <%# 開催未決定／募集中 %>
+    <% if @admin_plans.present? %>
+    <div class="post">
+      <h2>本日の参加募集中運営プラン一覧</h2>
 
-        <div class="ribbon">　募集中！</div>
-
-      <% end %>
-
-     <p class="areatop"><%= plan.area %><p>
-
-
-      <%= link_to( plan_path( plan ) ) do %>
-        <img class="planimgtop" src="/assets/category<%= plan.categories.first.try(:sort).to_i %>.png" alt="" />
-        <div class="plancap"><%= plan.title %></div>
-      <% end %>
-
-
-      <div class="planfoot">
-        <p class="plandes"><%= "#{plan.description.to_s.slice(0..45)}..." %></p>
-        <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
-
-        <%# お気に入りボタン %>
-        <div id="favorite<%= plan.id %>">
-          <%= render partial: '/plans/favorite', locals: { favorite: @favorites[plan.id], plan: plan, klass: "favoritebtntop" } %>
-        </div>
+      <div id="paging">
+        <%# 運営プラン一覧 %>
+        <% @admin_plans.each{ |plan| %>
+          <%= render partial: '/plans/plan', locals: { plan: plan, favorites: @favorites } %>
+        <% } %>
       </div>
     </div>
-  <% } %>
 
-  </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <% end %>
 
-    <img id="loading" src='/assets/ajax-loader.gif' alt='loading' width='32px' height='32px' style="display: none;" />
-    <div style="display: none;"><%= paginate @plans %></div>
+    <div class="post">
+      <h2>本日の参加募集中プラン一覧</h2>
+
+      <div id="paging">
+        <%# プラン一覧 %>
+        <% @plans.each{ |plan| %>
+          <%= render partial: '/plans/plan', locals: { plan: plan, favorites: @favorites } %>
+        <% } %>
+      </div>
+
+      <img id="loading" src='/assets/ajax-loader.gif' alt='loading' width='32px' height='32px' style="display: none;" />
+      <div style="display: none;"><%= paginate @plans %></div>
+    </div>
   </div>
 </div>
-

@@ -6,22 +6,22 @@ class PlansController < ApplicationController
   # index #
   #-------#
   def index( category_id, sort, keyword, page )
-    @plans = Plan.page(page).per(100)
-#    @plans = @plans.includes( :user, { :categorizes => :category }, :schedules )
-    @plans = @plans.includes( :user, :categories, :schedules )
+#    plans = Plan.page(page).per(100)
+#    plans = plans.includes( :user, :categories, :schedules )
+    plans = Plan.includes( :user, :categories, :schedules )
 
     # 募集終了以外 => 全部出す => 募集終了以外(3013/03/17)
-    @plans = @plans.where( entry_close_flag: false )
+    plans = plans.where( entry_close_flag: false )
 
     # カテゴリ条件追加
     if category_id.present?
       plan_ids = Categorize.where( category_id: category_id ).pluck(:plan_id)
-      @plans   = @plans.where( id: plan_ids )
+      plans    = plans.where( id: plan_ids )
     end
 
     # 検索キーワード条件追加
     if keyword.present?
-      @plans   = @plans.where( "title LIKE ?", "%#{keyword}%" )
+      plans = plans.where( "title LIKE ?", "%#{keyword}%" )
     end
 
     # ソート順指定
@@ -31,9 +31,12 @@ class PlansController < ApplicationController
       plan_order = "plans.created_at DESC"
     end
 
-    @plans = @plans.order( "#{plan_order}, categories.sort ASC" )
+    plans = plans.order( "#{plan_order}, categories.sort ASC" )
 
-    @favorites  = Favorite.where( plan_id: @plans.map{ |a| a.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
+    @favorites  = Favorite.where( plan_id: plans.map{ |x| x.id }, user_id: session[:user_id] ).index_by{ |x| x.plan_id }
+
+    @admin_plans = plans.where( admin_flag: true )
+    @plans       = plans.where( admin_flag: false ).page(page).per(100)
   end
 
   #------#
@@ -114,8 +117,9 @@ class PlansController < ApplicationController
   # create #
   #--------#
   def create( plan, categories, schedules )
-    @plan = Plan.new( plan )
-    @plan.user_id = current_user.id
+#    @plan = Plan.new( plan )
+    @plan = Plan.new( plan.merge( { user_id: current_user.id, admin_flag: current_user.admin_flag } ) )
+#    @plan.user_id = current_user.id
 
     date_count = 0
     schedules.each{ |s|
