@@ -39,12 +39,11 @@
         <div class="datedes">
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
-            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日(%a) %H:%M くらいにスタート") if schedule[1].present? %></span>
+            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%m月%d日(%a) %H:%M くらいにスタート") if schedule[1].present? %></span>
             <br />
           <% end %>
         <% } %>
-
-        <br><a href="http://playcast.jp/plans/new" style="color: rgb(255, 79, 79); font-size: 13px; text-decoration: underline;">※行きたいけど予定が合いませんか？それでしたら同じ内容のプランを、あなたの都合の良い日時で投稿してみましょう。</a><br><br>
+          <p><a href="http://playcast.jp/plans/new" style="color: rgb(255, 79, 79); font-size: 13px; text-decoration: underline;">※行きたいけど予定が合いませんか？それでしたら同じ内容のプランを、あなたの都合の良い日時で投稿してみましょう。</a></p>
         </div>
       </dd>
       <dt>場所：</dt> <dd><%= @plan.place %></dd>
@@ -77,7 +76,7 @@
        <div class="datedes">
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
-            <span style="font-size: 13px; font-weight: bold; position: relative; line-height: 34px;"><%= schedule[1].candidate_day.strftime("%Y年%m月%d日(%a) %H:%M くらいにスタート") if schedule[1].present? %></span>
+            <span style="font-size: 13px; font-weight: bold; position: relative; line-height: 34px;"><%= schedule[1].candidate_day.strftime("%m月%d日(%a) %H:%M くらいにスタート") if schedule[1].present? %></span>
             <div style="margin-left: 10px; font-size: 10px; vertical-align: top; position: relative; top: -5px; margin-bottom: -23px;">【参加応募したメンバー】:</div>
 
             <div style="position: relative; left: 140px; margin-bottom: -25px;">
@@ -97,7 +96,7 @@
         <% elsif @plan.gender_entry_close?( current_user.gender ) %>
           <span style="color: red;">既に<%= Settings[current_user.gender] %>の募集は終了しています。</span>
         <% else %>
-          <div class="sannkazyoukenn">男性<%= @plan.male_min %>人以上、女性<%= @plan.female_min %>人以上集まった日時で開催<br>定員：男性<%= @plan.show_male_max %>、女性<%= @plan.show_female_max %></div>
+          <div class="sannkazyoukenn">下記候補の中で、男性<%= @plan.male_min %>人以上、女性<%= @plan.female_min %>人以上集まった日時で開催<br>定員：男性<%= @plan.show_male_max %>、女性<%= @plan.show_female_max %></div>
 
           <h4>1.候補日を選択 （都合がつかない日のチェックを外してください。）</h4>
           <%= form_tag( plan_entries_path( @plan ) ) do %>
@@ -105,7 +104,7 @@
               <% 5.times{ |i| %>
                 <% if @entry_schedules[i].present? and @schedules[@entry_schedules[i]].candidate_day.present? %>
                   <%= check_box_tag "entry[schedules][#{i}]", @entry_schedules[i], true %>
-                  <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%Y年%m月%d日 %H:%M くらいにスタート") %>
+                  <%= label_tag "entry[schedules][#{i}]", @schedules[@entry_schedules[i]].candidate_day.strftime("%m月%d日(%a) %H:%M くらいにスタート") %>
 
                   <% participations = @participations.select{ |x| x.schedule_id == @entry_schedules[i] } %>
                   <% participations.each{ |participation| %>
@@ -122,28 +121,12 @@
             <br><%= text_area_tag "entry[comment]", "", placeholder: "開催されると良いな♪よろしくおねがいします^^", class: "atndcom" %>
 
             <%= submit_tag '', class: "attendbutton" %>
-            <p style="margin: 0; font-size: 13px; text-align: center; margin-bottom: 10px;">※募集が終了するとこのページは参加者以外見られなくなります。気になる方は参加しておきましょう！</p>
+            <p style="margin: 0; font-size: 13px; text-align: center; margin-bottom: 10px; font-weight: bold; color: rgb(0, 117, 0);">※募集が終了するとこのページは参加者以外見られなくなります。気になる方は参加しておきましょう！</p>
           <% end %>
         <% end %>
       <% end %>
     </div>
   </div>
-
-
-  <div id="cast">
-      <ul>
-        <li>
-          <p><img src="/assets/showmemberico.png/" style="width:40px; height:30px; margin-right:3px;">参加予定中のメンバー</p>
-
-          <div class="st-content">
-            <% @entries.each.with_index(1){ |entry, index| %>
-            <div class="comment"><%= render partial: '/layouts/user_icon', locals: { user: entry.user } %><%= entry.user.name %> : <%= entry.comment %></div>
-           <br> <% } %>
-          </div>
-        </li>
-      </ul>
-  </div>
-
 
 
     <div id="commentflame">
@@ -178,5 +161,22 @@
     <div id="other3">
       <%= render partial: "/plans/recent" %>
     </div>
+
+
+    <div id="cast">
+      <ul>
+        <li>
+          <p><img src="/assets/showmemberico.png/" style="width:25px; height:20px; margin-right:3px;">参加予定中のメンバー</p>
+
+          <div class="st-content">
+            <% @entries.each.with_index(1){ |entry, index| %>
+            <div class="comment"><%= render partial: '/layouts/user_icon', locals: { user: entry.user } %> : <%= entry.comment %></div>
+           <br> <% } %>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
   </div>
 </div>
