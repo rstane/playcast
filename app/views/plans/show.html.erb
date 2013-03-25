@@ -129,8 +129,33 @@
   </div>
 
 
+        <% if @cheer.present? %>
+        <%= link_to( plan_cheer_path( @plan, @cheer ), method: "delete", confirm: "『いつか行ってみたい！』を外してよろしいですか？" , :class => 'ouenbuttoncancell', "data-transition" => "fade", "data-ajax" => "false" ) do %>
+<!--                             <a href="#page1" data-transition="fade"> -->
+
+<!--                             </a> -->
+        <% end %>
+      <% else %>
+        <%= link_to( plan_cheers_path( @plan ), method: "post" , :class => 'ouenbutton',  "data-transition" => "fade", "data-ajax" => "false" ) do %>
+<!--                             <a href="#page1" data-transition="fade"> -->
+
+<!--                             </a> -->
+        <% end %>
+      <% end %>
+
+
+    <% if @cheers.present? %>
     <div id="commentflame">
-      <div class="com_p"><img src="/assets/showcomico.png/" style="width:40px; height:30px; margin-right:3px;"><span class="comm">コメント欄</span></div>
+      <div style="margin-bottom: 5px;"><img src="/assets/showouenico.png/" style="width:35px; height:25px; margin-right:3px; margin-left: -5px;"><span class="comm">いつか行ってみたい！メンバー</span></div>
+              <% @cheers.each.with_index(1){ |cheer, index| %>
+                <%= render partial: '/layouts/user_icon', locals: { user: cheer.user } %>
+              <% } %>
+　   </div>
+    <% end %>
+
+
+    <div id="commentflame">
+      <div style="margin-bottom: 5px;"><img src="/assets/showcomico.png/" style="width:40px; height:30px; margin-right:3px;"><span class="comm">コメント欄</span></div>
 
       <%= form_for( :comment, url: plan_plan_comments_path( @plan ) ) do |f| %>
         <%= f.text_area :content, rows: 5, cols: 70, class: "span6" %>
@@ -150,18 +175,13 @@
     </div>
   </div>
 
+
+
   <div id="rightcontensshow">
-    <div id="other1">
-      <%# お気に入りボタン %>
-      <div id="favorite<%= @plan.id %>">
-        <%= render partial: '/plans/favorite', locals: { favorite: @favorite, plan: @plan, klass: "btn2" } %>
-      </div>
-    </div>
 
     <div id="other3">
       <%= render partial: "/plans/recent" %>
     </div>
-
 
     <div id="cast">
       <ul>

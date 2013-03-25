@@ -44,13 +44,13 @@
       <div id="okiniiri"></div>
       <div class="space"></div>
 
-      <h3>お気に入りのプラン</h3>
-      <% @favorites.each{ |favorite| %>
-        <% if favorite.plan.present? %>
-          <a href="<%= plan_path( favorite.plan ) %>">
+      <h3>いつか行ってみたい！プラン</h3>
+      <% @cheers.each{ |cheer| %>
+        <% if cheer.plan.present? %>
+          <a href="<%= plan_path( cheer.plan ) %>">
             <div class="imgcaptionshow">
-              <img class="planimgtopshow" src="/assets/category<%= favorite.plan.categories.first.try(:sort).to_i %>.png" width="63" height="56" alt="" />
-              <div class="plancapshow"><%= favorite.plan.title %></div>
+              <img class="planimgtopshow" src="/assets/category<%= cheer.plan.categories.first.try(:sort).to_i %>.png" width="63" height="56" alt="" />
+              <div class="plancapshow"><%= cheer.plan.title %></div>
             </div>
           </a>
         <% end %>

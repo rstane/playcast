@@ -679,7 +679,7 @@ float: right;
 #rightcontensshow {
 float: right;
 position: relative;
-top: -78px;
+top: 50px;
 }
 
 #leftcontents{float:left;}
@@ -993,29 +993,26 @@ background-position: -210px -100px;
     margin:auto;
    }
 
-.ouenbutton {display:block;
-      width: 166px;
-      height: 36px;
-      background-position: -419px 0px;
-    background-image:url("sidebuttons.png");
-    background-repeat:no-repeat;
-    margin:auto;
-   }
+.ouenbutton {
+display: block;
+width: 700px;
+height: 52px;
+background-image: url("/assets/willgobtn.png");
+background-repeat: no-repeat;
+margin: auto;
+margin-bottom: 10px;
+}
 
-.ouenbutton:hover { background-position:-419px -38px;
-             background-repeat:no-repeat;}
-
-
-
-.ouenbuttoncancell {display:block;
-      width: 166px;
-      height: 36px;
-      background-position: -419px -77px;
-    background-image:url("sidebuttons.png");
-    background-repeat:no-repeat;
-    margin:auto;
-   }
-
+.ouenbuttoncancell {
+display: block;
+width: 700px;
+height: 52px;
+background-image: url("/assets/willgobtn.png");
+background-position-y: -57px;
+background-repeat: no-repeat;
+margin: auto;
+margin-bottom: 10px;
+}
 
 #attendlink{padding-top:50px;
             margin-top:-50px;}
@@ -1025,8 +1022,9 @@ background-position: -210px -100px;
 
 
 #commentflame {width: 680px;
+          margin-bottom: 10px;
           padding:10px;
-        background-color:#FFF;
+          background-color:#FFF;
             /* firefox　*/
             /* safari、chorme */
           border: solid 1px rgb(150, 150, 150);
