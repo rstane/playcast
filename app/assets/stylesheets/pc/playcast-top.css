@@ -327,7 +327,6 @@ border-radius: 4px;
 a { color:#333;}
 
 .areatop {
-display: inline-block;
 border-radius: 2px;
 -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
@@ -339,11 +338,15 @@ color: #fff;
 float: left;
 margin-right: 7px;
 background-color: rgb(255, 29, 119);
+position: relative;
+top: 5px;
 }
 
 .ibbon {
 font-size: 11px;
-margin-top: -5px;
+position: relative;
+top: 15px;
+font-weight: 200;
 }
 
 .imgcaption {
@@ -357,13 +360,14 @@ padding-bottom: 5px;
 
 .planimgtop {
 float: left;
-margin-right: 15px;
 width: 55px;
 }
 
 .plancap {
 font-weight: bold;
 font-size: 15px;
+float: right;
+width: 345px;
 }
 
 .ribbon {
@@ -405,11 +409,7 @@ height: 23px;
 
 
 .planfoot {
-border-top: dotted 1px #aaa;
-width: 270px;
-padding-top: 10px;
-position: relative;
-top: -15px;
+width: 345px;
 }
 
 .plandes {
@@ -649,10 +649,11 @@ margin-top: 10px;
 position: relative;
 top: 25px;
 color: rgb(0, 0, 0);
-width: 700px;
+width: 870px;
 line-height: 40px;
 height: 80px;
 overflow: hidden;
+font-size: 28px;
 }
 
 .poster {
