@@ -6,7 +6,7 @@
 
 body {
 margin: 0;
-ackground-image: url("/assets/backgroundimg.png");
+background-image: url("/assets/backgroundimg.png");
 font-family: sans-serif;
 }
 
@@ -308,7 +308,7 @@ margin-bottom: -20px;
 
 .post h2 {
 font-size: 1.2em;
-margin-bottom: 10px;
+margin-bottom: 20px;
 margin-top: 10px;
 background-color: rgb(250, 0, 60);
 color: white;
@@ -327,55 +327,55 @@ border-radius: 4px;
 a { color:#333;}
 
 .areatop {
-border-radius: 2px;
--webkit-border-radius: 2px;
--moz-border-radius: 2px;
-padding: 1px;
-width: 70px;
+margin-top: -25px;
+margin-bottom: -5px;
 text-align: center;
-font-size: 50%;
-font-weight: 100;
-color: #fff;
+font-size: 11px;
+background-color: rgb(155, 155, 155);
+padding: 0px;
+z-index: 1;
+margin-left: 185px;
+color: white;
+border-radius: 3px;
+}
+
+.imgcaption {
 float: left;
-margin-right: 7px;
-background-color: rgb(255, 29, 119);
+width: 270px;
+margin: 0px 14px 15px 14px;
+border: solid 1px
+#d1d1d1;
+padding: 7px;
+background-color:
+rgb(255, 255, 255);
+height: 200px;
+box-shadow: 0px 1px 0px #757575;
+border-radius: 6px;        /* CSS3草案 */
+    -webkit-border-radius: 6px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 6px;   /* Firefox用 */}
+
+.planimgtop {
+float: left;
+margin-right: 5px;
 position: relative;
 top: 5px;
 }
 
-.ibbon {
-font-size: 11px;
-position: relative;
-top: 15px;
-font-weight: 200;
-}
-
-.imgcaption {
-display: inline-block;
-width: 410px;
-margin-right: 55px;
-border-bottom: dotted 1px rgb(77, 77, 77);
-padding-top: 10px;
-padding-bottom: 5px;
-}
-
-.planimgtop {
-float: left;
-width: 55px;
-}
 
 .plancap {
+font-size: 16px;
+overflow: hidden;
+height: 120px;
 font-weight: bold;
-font-size: 15px;
-float: right;
-width: 345px;
+position: relative;
+top: 5px;
 }
 
 .ribbon {
 background-image: url(/assets/ribbon.png);
 background-repeat: no-repeat;
 position: relative;
-left: -18px;
+left: -15px;
 font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
@@ -388,7 +388,7 @@ height: 23px;
 background-image: url(/assets/ribbonlong.png);
 background-repeat: no-repeat;
 position: relative;
-left: -18px;
+left: -15px;
 font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
@@ -400,7 +400,7 @@ height: 23px;
 background-image: url(/assets/ribbonred.png);
 background-repeat: no-repeat;
 position: relative;
-left: -18px;
+left: -15px;
 font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
@@ -410,7 +410,11 @@ height: 23px;
 
 
 .planfoot {
-width: 345px;
+border-top: dotted 1px #aaa;
+width: 270px;
+padding-top: 10px;
+position: relative;
+top: 10px;
 }
 
 .plandes {
@@ -448,6 +452,8 @@ float: right;
     background-repeat:no-repeat;
     float: right;}
 
+
+
 /* ==================== プラン投稿ページ ==================== */
 
 .catename {
@@ -464,7 +470,7 @@ margin-left: -5px;
      margin: 0px;
    padding:10px;
    background-color:#FFF;
-  border: solid 1px rgb(150, 150, 150);
+  border: solid 1px rgb(200, 200, 200);
   -moz-box-shadow: 0px 0px 6px 3px #DDD;    /* firefox　*/
   /* safari、chorme */
 border-radius: 5px;        /* CSS3草案 */
@@ -615,7 +621,7 @@ margin: auto;
 #plantitle {
 background-color: rgb(255, 255, 255);
 height: 180px;
-border-bottom: solid 1px rgb(150, 150, 150);
+border-bottom: solid 1px rgb(200, 200, 200);
 margin-bottom: -30px;
 margin-top: 0px;
 }
@@ -693,7 +699,7 @@ top: 50px;
    background-color:#FFF;
       /* firefox　*/
   /* safari、chorme */
-  border: solid 1px rgb(150, 150, 150);
+  border: solid 1px rgb(200, 200, 200);
   border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
@@ -719,7 +725,7 @@ width: 680px;
 margin: 10px 0px 10px 0px;
 padding: 10px;
 background-color: #FFF;
-border: solid 1px rgb(150, 150, 150);
+border: solid 1px rgb(200, 200, 200);
 border-radius: 5px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
@@ -784,7 +790,7 @@ margin-top: 10px;
 padding: 5px 5px 10px 5px;
 margin-bottom: 10px;
 background-color: #FFF;
-border: solid 1px rgb(150, 150, 150);
+border: solid 1px rgb(200, 200, 200);
 border-radius: 5px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
@@ -825,7 +831,7 @@ dl.castdown dd {
    background-color:#FFF;
       /* firefox　*/
       /* safari、chorme */
-      border: solid 1px rgb(150, 150, 150);
+      border: solid 1px rgb(200, 200, 200);
       border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
@@ -1028,7 +1034,7 @@ margin-bottom: 10px;
           background-color:#FFF;
             /* firefox　*/
             /* safari、chorme */
-          border: solid 1px rgb(150, 150, 150);
+          border: solid 1px rgb(200, 200, 200);
           border-radius: 5px;        /* CSS3草案 */
           -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
           -moz-border-radius: 5px;   /* Firefox用 */}
@@ -1061,7 +1067,7 @@ dl.comms dd {
    background-color:#FFF;
       /* firefox　*/
   /* safari、chorme */
-  border: solid 1px rgb(150, 150, 150);
+  border: solid 1px rgb(200, 200, 200);
   border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
@@ -1078,7 +1084,7 @@ padding: 3px;
 width: 210px;
 padding: 10px;
 background-color: #FFF;
-border: solid 1px rgb(150, 150, 150);
+border: solid 1px rgb(200, 200, 200);
 border-radius: 5px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
@@ -1221,7 +1227,7 @@ left: -10px;
      margin-bottom:10px;
    padding:10px;
    background-color:#FFF;
-   border: solid 1px rgb(150, 150, 150);    /* firefox　*/
+   border: solid 1px rgb(200, 200, 200);    /* firefox　*/
   /* safari、chorme */
 border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -1312,7 +1318,7 @@ height: 69px;
      margin-bottom:10px;
    padding:10px;
    background-color:#FFF;
-   border: solid 1px rgb(150, 150, 150);    /* firefox　*/
+   border: solid 1px rgb(200, 200, 200);    /* firefox　*/
   /* safari、chorme */
 border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -1351,7 +1357,7 @@ font-weight: bold;
      margin-bottom:10px;
    padding:10px;
    background-color:#FFF;
-   border: solid 1px rgb(150, 150, 150);    /* firefox　*/
+   border: solid 1px rgb(200, 200, 200);    /* firefox　*/
   /* safari、chorme */
 border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
