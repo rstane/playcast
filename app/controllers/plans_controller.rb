@@ -2,12 +2,8 @@
 class PlansController < ApplicationController
   skip_before_filter :authorize, only: [:index]
 
-  #-------#
-  # index #
-  #-------#
+  # 一覧
   def index( category_id, sort, keyword, page )
-#    plans = Plan.page(page).per(100)
-#    plans = plans.includes( :user, :categories, :schedules )
     plans = Plan.includes( :user, :categories, :schedules )
 
     # 募集終了以外 => 全部出す => 募集終了以外(3013/03/17)
@@ -39,9 +35,7 @@ class PlansController < ApplicationController
     @plans       = plans.where( admin_flag: false ).page(page).per(100)
   end
 
-  #------#
-  # show #
-  #------#
+  # 詳細
   def show( id, will_entry )
     @plan = Plan.where( id: id ).includes( :categories ).order( "categories.sort ASC" ).first
 
@@ -97,29 +91,24 @@ class PlansController < ApplicationController
     @will_entries = WillEntry.where( plan_id: @plan.id ).includes( :user ).all
   end
 
-  #-----#
-  # new #
-  #-----#
-  def new
+  # 新規
+  def new( id )
     @plan = Plan.new( male_min: 2, female_min: 2 )
+
+    plan = Plan.where( id: id ).first if id.present?
+    @plan.set_copy( plan ) if plan.present?
   end
 
-  #------#
-  # edit #
-  #------#
+  # 編集
   def edit( id )
     @plan = Plan.where( id: id, user_id: session[:user_id] ).first
     @categorize = Categorize.where( plan_id: @plan.id ).pluck(:category_id)
     @schedules  = Schedule.where( plan_id: @plan.id ).order( "schedules.candidate_day ASC" ).includes( :participations => :user ).all
   end
 
-  #--------#
-  # create #
-  #--------#
+  # 作成
   def create( plan, categories, schedules )
-#    @plan = Plan.new( plan )
     @plan = Plan.new( plan.merge( { user_id: current_user.id, admin_flag: current_user.admin_flag } ) )
-#    @plan.user_id = current_user.id
 
     date_count = 0
     schedules.each{ |s|
@@ -162,9 +151,7 @@ class PlansController < ApplicationController
     end
   end
 
-  #--------#
-  # update #
-  #--------#
+  # 更新
   def update( id, plan, categories, schedules )
     @plan = Plan.where( id: id, user_id: session[:user_id] ).first
     @categorize = Categorize.where( plan_id: @plan.id ).pluck(:category_id)
@@ -213,9 +200,7 @@ class PlansController < ApplicationController
     end
   end
 
-  #---------#
-  # destroy #
-  #---------#
+  # 削除
   def destroy( id )
     plan = Plan.where( id: id, user_id: session[:user_id] ).first
 
@@ -224,9 +209,7 @@ class PlansController < ApplicationController
     redirect_to plans_path
   end
 
-  #----------#
-  # favorite #
-  #----------#
+  # お気に入り
   def favorite( id, klass )
     plan = Plan.where( id: id ).first
     favorite = Favorite.where( user_id: session[:user_id], plan_id: id ).first_or_initialize
