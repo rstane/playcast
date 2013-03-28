@@ -195,7 +195,6 @@ background-position: center;
 margin-top: 10px;
 }
 
-
 .copy {
 text-align: center;
 position: relative;
@@ -226,6 +225,7 @@ background-repeat: no-repeat;
 }
 
 
+
 #social {
 text-align: center;
 position: relative;
@@ -249,9 +249,11 @@ top: -4px;
 text-align: center;
 font-size: 14px;
 font-weight: bold;
-margin-bottom: 40px;
+margin-bottom: 45px;
 margin-top: -30px;
 }
+
+.catewrap {}
 
 .cateall {
 float: left;
@@ -275,6 +277,10 @@ float: left;
 margin-top: -30px;
 }
 
+.cateimg {
+margin-right: 5px;
+}
+
 .catedes {
 font-weight: bold;
 border-right: solid 1px rgb(156, 156, 156);
@@ -282,7 +288,7 @@ padding-right: 10px;
 margin-right: 10px;
 position: relative;
 top: -14px;
-font-size: 14px;
+font-size: 15px;
 }
 
 /* ==================== コンテンツ ==================== */
@@ -302,9 +308,16 @@ margin-bottom: -20px;
 
 .post h2 {
 font-size: 1.2em;
-margin-bottom: 10px;
-margin-left: 15px;
+margin-bottom: 20px;
 margin-top: 10px;
+background-color: rgb(250, 0, 60);
+color: white;
+padding: 5px;
+padding-left: 10px;
+font-weight: 200;
+border-radius: 4px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
 }
 
 /* ===== プラン一覧 ========= */
@@ -329,14 +342,17 @@ border-radius: 3px;
 .imgcaption {
 float: left;
 width: 270px;
-margin: 0px 10px 15px 10px;
-border: solid 4px #d1d1d1;
+margin: 0px 14px 15px 14px;
+border: solid 1px
+#d1d1d1;
 padding: 7px;
-background-color: white;
+background-color:
+rgb(255, 255, 255);
 height: 200px;
 box-shadow: 0px 1px 0px #757575;
-}
-
+border-radius: 6px;        /* CSS3草案 */
+    -webkit-border-radius: 6px;    /* Safari,Google Chrome用 */
+    -moz-border-radius: 6px;   /* Firefox用 */}
 
 .planimgtop {
 float: left;
@@ -348,8 +364,8 @@ top: 5px;
 
 .plancap {
 font-size: 16px;
-overflow: auto;
-height: 95px;
+overflow: hidden;
+height: 120px;
 font-weight: bold;
 position: relative;
 top: 5px;
@@ -359,7 +375,7 @@ top: 5px;
 background-image: url(/assets/ribbon.png);
 background-repeat: no-repeat;
 position: relative;
-left: -18px;
+left: -15px;
 font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
@@ -372,7 +388,7 @@ height: 23px;
 background-image: url(/assets/ribbonlong.png);
 background-repeat: no-repeat;
 position: relative;
-left: -18px;
+left: -15px;
 font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
@@ -384,7 +400,7 @@ height: 23px;
 background-image: url(/assets/ribbonred.png);
 background-repeat: no-repeat;
 position: relative;
-left: -18px;
+left: -15px;
 font-size: 14px;
 color: rgb(255, 255, 255);
 padding-bottom: 5px;
@@ -398,7 +414,7 @@ border-top: dotted 1px #aaa;
 width: 270px;
 padding-top: 10px;
 position: relative;
-top: -15px;
+top: 10px;
 }
 
 .plandes {
@@ -446,13 +462,16 @@ font-size: 14px;
 margin-left: -5px;
 }
 
+.cateimg2 {}
+
 
 #planpost{width:100%;
      float:left;
      margin: 0px;
    padding:10px;
    background-color:#FFF;
-  border: solid 1px rgb(224, 224, 224);-moz-box-shadow: 0px 0px 6px 3px #DDD;    /* firefox　*/
+  border: solid 1px rgb(200, 200, 200);
+  -moz-box-shadow: 0px 0px 6px 3px #DDD;    /* firefox　*/
   /* safari、chorme */
 border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -602,7 +621,7 @@ margin: auto;
 #plantitle {
 background-color: rgb(255, 255, 255);
 height: 180px;
-border-bottom: solid 1px rgb(199, 199, 199);
+border-bottom: solid 1px rgb(200, 200, 200);
 margin-bottom: -30px;
 margin-top: 0px;
 }
@@ -637,10 +656,11 @@ margin-top: 10px;
 position: relative;
 top: 25px;
 color: rgb(0, 0, 0);
-width: 700px;
+width: 870px;
 line-height: 40px;
 height: 80px;
 overflow: hidden;
+font-size: 28px;
 }
 
 .poster {
@@ -666,7 +686,7 @@ float: right;
 #rightcontensshow {
 float: right;
 position: relative;
-top: -78px;
+top: 50px;
 }
 
 #leftcontents{float:left;}
@@ -679,7 +699,8 @@ top: -78px;
    background-color:#FFF;
       /* firefox　*/
   /* safari、chorme */
-border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+  border: solid 1px rgb(200, 200, 200);
+  border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
@@ -704,7 +725,7 @@ width: 680px;
 margin: 10px 0px 10px 0px;
 padding: 10px;
 background-color: #FFF;
-border: solid 1px #E0E0E0;
+border: solid 1px rgb(200, 200, 200);
 border-radius: 5px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
@@ -741,7 +762,6 @@ margin-top: 25px;
 .datedes {
 margin-left: 110px;
 margin-top: 10px;
-margin-bottom: 10px;
 }
 
 .plandatedes {
@@ -765,11 +785,12 @@ top: -5px;
 
 
 #cast {
-width: 680px;
-padding: 10px 10px 0px 10px;
+width: 220px;
+margin-top: 10px;
+padding: 5px 5px 10px 5px;
 margin-bottom: 10px;
 background-color: #FFF;
-border: solid 1px #E0E0E0;
+border: solid 1px rgb(200, 200, 200);
 border-radius: 5px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
@@ -786,10 +807,9 @@ border-radius: 5px;
 
 #cast p {
 font-weight: bold;
-font-size: 1.2em;
+font-size: 15px;
 margin-top: -20px;
 }
-
 
 dl.castdown dt {
  vertical-align:top;
@@ -811,7 +831,8 @@ dl.castdown dd {
    background-color:#FFF;
       /* firefox　*/
       /* safari、chorme */
-     border: solid 1px #E0E0E0; border-radius: 5px;        /* CSS3草案 */
+      border: solid 1px rgb(200, 200, 200);
+      border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
@@ -893,7 +914,7 @@ table, tr, th, td {
 border: none;
 }
 
-#like-fake .uiGrid {
+#like-face .uiGrid {
 border: 0;
 border-collapse: collapse;
 border-spacing: 0;
@@ -903,7 +924,7 @@ left: 66px;
 }
 
 
-#like-fake {
+#like-face {
 font-size: 11px;
 font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
 color:
@@ -927,19 +948,17 @@ vertical-align: text-bottom;
 top: -41px;
 }
 
-
-
 .attendbutton {
 display: block;
-width: 318px;
+width: 317px;
 height: 53px;
 background-image: url("attendbutton.png");
 border: none;
 background-color: #fff;
 background-repeat: no-repeat;
 margin: auto;
+margin-bottom: 20px;
 margin-top: 10px;
-margin-bottom: 15px;
 }
 
 .attendbutton:hover { background-position:0px -55px;
@@ -981,29 +1000,26 @@ background-position: -210px -100px;
     margin:auto;
    }
 
-.ouenbutton {display:block;
-      width: 166px;
-      height: 36px;
-      background-position: -419px 0px;
-    background-image:url("sidebuttons.png");
-    background-repeat:no-repeat;
-    margin:auto;
-   }
+.ouenbutton {
+display: block;
+width: 700px;
+height: 52px;
+background-image: url("/assets/willgobtn.png");
+background-repeat: no-repeat;
+margin: auto;
+margin-bottom: 10px;
+}
 
-.ouenbutton:hover { background-position:-419px -38px;
-             background-repeat:no-repeat;}
-
-
-
-.ouenbuttoncancell {display:block;
-      width: 166px;
-      height: 36px;
-      background-position: -419px -77px;
-    background-image:url("sidebuttons.png");
-    background-repeat:no-repeat;
-    margin:auto;
-   }
-
+.ouenbuttoncancell {
+display: block;
+width: 700px;
+height: 52px;
+background-image: url("/assets/willgobtn.png");
+background-position-y: -57px;
+background-repeat: no-repeat;
+margin: auto;
+margin-bottom: 10px;
+}
 
 #attendlink{padding-top:50px;
             margin-top:-50px;}
@@ -1013,18 +1029,17 @@ background-position: -210px -100px;
 
 
 #commentflame {width: 680px;
+          margin-bottom: 10px;
           padding:10px;
-        background-color:#FFF;
+          background-color:#FFF;
             /* firefox　*/
             /* safari、chorme */
-          border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+          border: solid 1px rgb(200, 200, 200);
+          border-radius: 5px;        /* CSS3草案 */
           -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
           -moz-border-radius: 5px;   /* Firefox用 */}
 
-.comment {
-border-bottom: 1px dotted #BDB8AD;
-font-size: 15px;
-}
+.comment {border-bottom: 1px dotted #BDB8AD; font-size: 13px;}
 
 .comment2 {border-top: 1px dotted #BDB8AD;
           margin-bottom: -5px;
@@ -1048,10 +1063,12 @@ dl.comms dd {
 
 #other2{width: 210px;
      padding:10px;
-   margin-bottom: 10px;background-color:#FFF;
+   margin-bottom: 10px;
+   background-color:#FFF;
       /* firefox　*/
   /* safari、chorme */
-border: solid 1px #E0E0E0;border-radius: 5px;        /* CSS3草案 */
+  border: solid 1px rgb(200, 200, 200);
+  border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
     -moz-border-radius: 5px;   /* Firefox用 */}
 
@@ -1067,7 +1084,7 @@ padding: 3px;
 width: 210px;
 padding: 10px;
 background-color: #FFF;
-border: solid 1px #E0E0E0;
+border: solid 1px rgb(200, 200, 200);
 border-radius: 5px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
@@ -1164,7 +1181,7 @@ line-height: 20px;
 
 
 #userplan h1 {
-background: rgb(68, 68, 68);
+background: #444;
 display: block;
 font-size: 30px;
 font-weight: 200;
@@ -1178,6 +1195,12 @@ padding-right: 8px;
 padding-top: 5px;
 color: white;
 }
+
+.fbbutton {
+position: relative;
+left: -10px;
+}
+
 
 #userdatawrap { width: 680px;
             height: 180px; margin:auto;}
@@ -1204,7 +1227,7 @@ color: white;
      margin-bottom:10px;
    padding:10px;
    background-color:#FFF;
-  border: solid 1px #E0E0E0;    /* firefox　*/
+   border: solid 1px rgb(200, 200, 200);    /* firefox　*/
   /* safari、chorme */
 border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -1295,7 +1318,7 @@ height: 69px;
      margin-bottom:10px;
    padding:10px;
    background-color:#FFF;
-  border: solid 1px #E0E0E0;    /* firefox　*/
+   border: solid 1px rgb(200, 200, 200);    /* firefox　*/
   /* safari、chorme */
 border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
@@ -1334,7 +1357,7 @@ font-weight: bold;
      margin-bottom:10px;
    padding:10px;
    background-color:#FFF;
-  border: solid 1px #E0E0E0;    /* firefox　*/
+   border: solid 1px rgb(200, 200, 200);    /* firefox　*/
   /* safari、chorme */
 border-radius: 5px;        /* CSS3草案 */
     -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
