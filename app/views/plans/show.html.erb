@@ -43,7 +43,7 @@
             <br />
           <% end %>
         <% } %>
-          <p><a href="http://playcast.jp/plans/new" style="color: rgb(255, 79, 79); font-size: 13px; text-decoration: underline;">※行きたいけど予定が合いませんか？それでしたら同じ内容のプランを、あなたの都合の良い日時で投稿してみましょう。</a></p>
+        <br>
         </div>
       </dd>
       <dt>場所：</dt> <dd><%= @plan.place %></dd>
@@ -52,7 +52,7 @@
       </dd>
       </dl>
 
-      <div class="planedit"><%= link_to( "コピー", new_plan_path( id: @plan.id ) ) %></div>
+      <div class="planedit"><%= link_to( "⇒このプランをコピーして新しくプランを作る", new_plan_path( id: @plan.id ), style: "color: rgb(255, 82, 82);text-decoration: underline;font-size: 15px;" ) %></div>
 
       <% if @plan.user_id == session[:user_id] %>
         <div class="planedit">
@@ -132,7 +132,7 @@
 
 
         <% if @cheer.present? %>
-        <%= link_to( plan_cheer_path( @plan, @cheer ), method: "delete", confirm: "『いつか行ってみたい！』を外してよろしいですか？" , :class => 'ouenbuttoncancell', "data-transition" => "fade", "data-ajax" => "false" ) do %>
+        <%= link_to( plan_cheer_path( @plan, @cheer ), method: "delete", confirm: "「いつか行ってみたい！」リストから外してよろしいですか？" , :class => 'ouenbuttoncancell', "data-transition" => "fade", "data-ajax" => "false" ) do %>
 <!--                             <a href="#page1" data-transition="fade"> -->
 
 <!--                             </a> -->

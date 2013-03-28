@@ -99,7 +99,6 @@ class Plan < ActiveRecord::Base
     self.male_min      = plan.male_min
     self.max_people    = plan.max_people
     self.min_people    = plan.min_people
-    self.number        = plan.number
     self.place         = plan.place
     self.target_people = plan.target_people
     self.title         = plan.title
