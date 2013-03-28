@@ -52,6 +52,8 @@
       </dd>
       </dl>
 
+      <div class="planedit"><%= link_to( "コピー", new_plan_path( id: @plan.id ) ) %></div>
+
       <% if @plan.user_id == session[:user_id] %>
         <div class="planedit">
           <%= link_to( "編集", edit_plan_path( @plan ) ) %>

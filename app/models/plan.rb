@@ -87,6 +87,24 @@ class Plan < ActiveRecord::Base
     end
   end
 
+  # プランコピー
+  def set_copy( plan )
+    self.area          = plan.area
+    self.budget        = plan.budget
+    self.description   = plan.description
+    self.female_max    = plan.female_max
+    self.female_min    = plan.female_min
+    self.image_url     = plan.image_url
+    self.male_max      = plan.male_max
+    self.male_min      = plan.male_min
+    self.max_people    = plan.max_people
+    self.min_people    = plan.min_people
+    self.number        = plan.number
+    self.place         = plan.place
+    self.target_people = plan.target_people
+    self.title         = plan.title
+  end
+
   private
 
   # プラン投稿者：参加メンバー作成
