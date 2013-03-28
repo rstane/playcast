@@ -1,6 +1,7 @@
 namespace :send_mail do
   desc "メール送信"
 
+  # rake send_mail:mail_magazine["rails.dev0115@gmail.com",1]
   task :mail_magazine, [:target, :id] => :environment do |task, args|
     target = args[:target]
     id     = args[:id]
