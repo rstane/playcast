@@ -20,7 +20,7 @@ class Plan < ActiveRecord::Base
   after_create :create_board
 
   # バリデーション
-  validates :title, presence: true, length: { maximum: 60 }
+  validates :title, presence: true, length: { maximum: 39 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :place, presence: true, length: { maximum: 500 }
   validates :budget, presence: true, length: { maximum: 100 }

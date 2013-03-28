@@ -39,7 +39,7 @@
         <div class="datedes">
         <% @schedules.each.with_index(1){ |schedule, index| %>
           <% if schedule[1].candidate_day.present? %>
-            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%m月%d日(%a) %H:%M くらいにスタート") if schedule[1].present? %></span>
+            <span class="plandatedes"><%= schedule[1].candidate_day.strftime("%m月%d日(#{Settings.weekday[schedule[1].candidate_day.wday]}) %H:%M くらいにスタート") if schedule[1].present? %></span>
             <br />
           <% end %>
         <% } %>

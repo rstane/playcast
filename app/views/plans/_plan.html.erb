@@ -1,3 +1,4 @@
+
       <div class="imgcaption">
       <% if plan.closed? or plan.gender_entry_close?( current_user.try(:gender) ) %>
         <%# 募集終了 %>
@@ -22,6 +23,7 @@
 
 
       <div class="planfoot">
+        <p class="plandes"><%= "#{plan.description.to_s.slice(0..45)}..." %></p>
         <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
 
         <%# お気に入りボタン %>
