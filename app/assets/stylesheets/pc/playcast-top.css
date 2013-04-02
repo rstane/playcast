@@ -431,7 +431,7 @@ background-image: url(attendbtntop.png);
 background-repeat: no-repeat;
 float: left;
 position: relative;
-left: 79px;
+left: 50px;
 }
 
 .favoritebtntop {
@@ -785,7 +785,7 @@ top: -5px;
 
 
 #cast {
-width: 220px;
+width: 690px;
 margin-top: 10px;
 padding: 5px 5px 10px 5px;
 margin-bottom: 10px;
@@ -807,7 +807,7 @@ border-radius: 5px;
 
 #cast p {
 font-weight: bold;
-font-size: 15px;
+font-size: 19px;
 margin-top: -20px;
 }
 

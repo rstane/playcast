@@ -24,6 +24,9 @@
 
       <div class="planfoot">
         <p class="plandes"><%= "#{plan.description.to_s.slice(0..45)}..." %></p>
+
+        <img class="planimgtop" src="<%= plan.user.image %>" style="width: 25px; height: 25px;" />
+
         <%= link_to  "" , plan_path( plan ), class: "sannkabtn" %>
 
         <%# お気に入りボタン %>

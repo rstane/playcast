@@ -2,7 +2,7 @@
 </script>
 
 <div id="mainpic">
-  <div class="copy"><img src="/assets/copy.png" alt="あなたの行きたい所・やりたい趣味が実現出来るサービス『プレイキャスト』" /></div>
+  <div class="copy"><img src="/assets/copy.png" alt="遊びを通じて、気軽に人脈を作れる『プレイキャスト』" /></div>
   <%= link_to "" , new_plan_path, class: "postbuttontop#{session[:user_id].present? ? '2' : '1'}" %>
 </div>
 
@@ -13,7 +13,7 @@
 
     <div id="social">
         <style type="text/css">#face-like-rapper{display: inline-block;margin:0;padding:0;}#face-like-rapper div{float:left;margin:0;padding:0;}#like-face div.connect_widget_button_count_including, td.connect_widget_simple_including{margin:0;padding:0;}#like-face td, td.label{font-size: 11px;text-align: left;margin:0;padding:0;}#like-face{font-size: 11px;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;color:#333;line-height:1.28;text-align: left;direction: ltr;margin-top: 1px !important; margin-left: -2px!important;position: relative;float:left;}#like-face .uiGrid{border: 0;border-collapse: collapse;border-spacing: 0;}#like-face .connect_widget_button_count_count{background: white;border: 1px solid #D1D1D1;float: left;font-weight: normal;height: 14px;margin-left: 1px;min-width: 17px;padding: 1px 2px 1px 2px;text-align: center;line-height: 14px;white-space: nowrap;}#like-face .connect_widget_button_count_nub s, #like-face .connect_widget_button_count_nub i{border: solid transparent;border-right-color: #D7D7D7;top: 1px;display: block;position: relative;border-width: 4px 5px 4px 0;}#like-face .connect_widget_button_count_nub i{left: 2px;top: -7px;border-right-color: white;}#like-face .connect_widget_button_count_nub {float: left; position: relative; height: 0; width: 5px; top: -5px; left: 2px; }</style><div id="face-like-rapper"><div class="fb-like" data-href="http://www.facebook.com/playcast.jp" data-send="false" data-layout="box_count" data-width="48" data-show-faces="false" data-font="arial" style="width: 70px; height: 21px; overflow: hidden;"></div><div id="like-face"><div class="connect_widget_button_count_including"><table class="uiGrid" cellspacing="0" cellpadding="0"><tbody><tr><td><div class="thumbs_up hidden_elem"></div></td><td><div class="undo hidden_elem"></div></td></tr><tr><td><div class="connect_widget_button_count_nub"><s></s><i></i></div></td><td><div class="connect_widget_button_count_count">6.9k</div></td></tr></tbody></table></div></div></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-text="あなたの行きたい所・やりたい趣味が実現出来るサービス『プレイキャスト』" data-via="Playcast_jp" data-lang="ja" data-related="Playcast_jp" data-count="none" data-hashtags="playcast" data-dnt="true">ツイート</a>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="遊びを通じて、気軽に人脈を作れるサービス『プレイキャスト』" data-via="Playcast_jp" data-lang="ja" data-related="Playcast_jp" data-count="none" data-hashtags="playcast" data-dnt="true">ツイート</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </div>
         <img style="position: relative; left: 560px; top: -56px; margin-bottom: -10px;" src="/assets/plsh.png"/><br>
@@ -35,11 +35,10 @@
 
     <% if @admin_plans.present? %>
     <div class="post">
-      <h2>本日の運営提案プラン一覧</h2>
-
+            <h2>本日のユーザー投稿プラン一覧</h2>
       <div id="paging">
-        <%# 運営プラン一覧 %>
-        <% @admin_plans.each{ |plan| %>
+        <%# プラン一覧 %>
+        <% @plans.each{ |plan| %>
           <%= render partial: '/plans/plan', locals: { plan: plan, favorites: @favorites } %>
         <% } %>
       </div>
@@ -49,12 +48,15 @@
 
     <p style="text-align: center; font-weight: bold; text-decoration: underline;clear: both;padding-top: 30px;"><a href="http://playcast.jp/plans/new"/>⇒行きたいプランがあなたの地域では投稿されていない場合、新しくプランを投稿してください</a></p>
     <div class="post">
-      <h2>本日のユーザー投稿プラン一覧</h2>
+
+      <h2>本日の運営提案プラン一覧</h2>
+
       <div id="paging">
-        <%# プラン一覧 %>
-        <% @plans.each{ |plan| %>
+        <%# 運営プラン一覧 %>
+        <% @admin_plans.each{ |plan| %>
           <%= render partial: '/plans/plan', locals: { plan: plan, favorites: @favorites } %>
         <% } %>
+
       </div>
     </div>
 
