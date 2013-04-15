@@ -33,9 +33,9 @@
 
     <br><br>
 
-    <% if @admin_plans.present? %>
+
     <div class="post">
-            <h2>本日のユーザー投稿プラン一覧</h2>
+      <h2>本日のユーザー投稿プラン一覧</h2>
       <div id="paging">
         <%# プラン一覧 %>
         <% @plans.each{ |plan| %>
@@ -43,22 +43,24 @@
         <% } %>
       </div>
     </div>
-    <% end %>
-    <br><br><br>
 
-    <p style="text-align: center; font-weight: bold; text-decoration: underline;clear: both;padding-top: 30px;"><a href="http://playcast.jp/plans/new"/>⇒行きたいプランがあなたの地域では投稿されていない場合、新しくプランを投稿してください</a></p>
+
+    <br><br><br><p style="text-align: center; font-weight: bold; text-decoration: underline;clear: both;padding-top: 30px;"><a href="http://playcast.jp/plans/new"/>⇒行きたいプランがあなたの地域では投稿されていない場合、新しくプランを投稿してください</a></p>
+
+
+    <% if @admin_plans.present? %>
+
     <div class="post">
-
       <h2>本日の運営提案プラン一覧</h2>
-
       <div id="paging">
         <%# 運営プラン一覧 %>
         <% @admin_plans.each{ |plan| %>
           <%= render partial: '/plans/plan', locals: { plan: plan, favorites: @favorites } %>
         <% } %>
-
       </div>
     </div>
+
+    <% end %>
 
 
       <img id="loading" src='/assets/ajax-loader.gif' alt='loading' width='32px' height='32px' style="display: none;" />
