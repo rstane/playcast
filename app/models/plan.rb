@@ -24,10 +24,10 @@ class Plan < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 1000 }
   validates :place, presence: true, length: { maximum: 500 }
   validates :budget, presence: true, length: { maximum: 100 }
-  validates :male_min, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 2 }
-  validates :male_max, numericality: { only_integer: true, allow_blank: true, greater_than_or_equal_to: 2 }
-  validates :female_min, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 2 }
-  validates :female_max, numericality: { only_integer: true, allow_blank: true, greater_than_or_equal_to: 2 }
+  #validates :male_min, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 2 }
+  #validates :male_max, numericality: { only_integer: true, allow_blank: true, greater_than_or_equal_to: 2 }
+  #validates :female_min, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 2 }
+  #validates :female_max, numericality: { only_integer: true, allow_blank: true, greater_than_or_equal_to: 2 }
 
   # 参加者判定
   def participant?( user_id )

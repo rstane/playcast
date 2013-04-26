@@ -93,7 +93,7 @@ class PlansController < ApplicationController
 
   # 新規
   def new( id )
-    @plan = Plan.new( male_min: 2, female_min: 2 )
+    @plan = Plan.new( male_min: 0, female_min: 0 )
 
     plan = Plan.where( id: id ).first if id.present?
     @plan.set_copy( plan ) if plan.present?
